@@ -8,6 +8,8 @@ import { SecurityModule } from './security/security.module';
 import { AppComponent } from './app.component';
 import { AuthServiceConfig, GoogleLoginProvider, SocialLoginModule } from 'angularx-social-login';
 import { AuthGuard } from './security/auth.guard';
+import { AuthInterceptor } from './security/auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 const config = new AuthServiceConfig([
   {
@@ -34,6 +36,9 @@ export function provideConfig() {
   ],
   providers: [
     AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+    },
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
