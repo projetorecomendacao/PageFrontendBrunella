@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       userData => {
+        console.log(userData.authToken)
         this.authGuard.setCanLoad(true);
         this.router.navigate(['/private']);
       },
