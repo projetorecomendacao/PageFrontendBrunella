@@ -5,7 +5,9 @@ import { AuthGuard } from './security/auth.guard';
 
 
 const routes: Routes = [
-  { path: '', component: IndexComponent},
+  { path: '',
+    component: IndexComponent
+  },
   {
     path: 'private',
     loadChildren: () => import('./private/private.module').then(mod => mod.PrivateModule),

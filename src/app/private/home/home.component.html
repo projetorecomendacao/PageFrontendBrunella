@@ -1,1 +1,135 @@
-<p>home works!</p>
+<main class="container-flex">
+  <!--Search-->
+  <div class="d-flex w-xl-50 w-lg-75 mx-auto mt-5">
+    <input type="text" class="w-100 rounded-pill rounded-right-0 border rounded-bottom-0 p-2 px-4 shadow-top-sm"/>
+    <button type="button" class="btn btn-primary rounded-pill rounded-bottom-0 rounded-left-0 px-5 shadow-top-sm">Search!</button>
+  </div>
+  <!---------->
+  <!--Alfabeto-->
+  <div class="container-flex w-xl-50 w-lg-75 mx-auto bg-white shadow px-4 pb-3 pt-1 rounded-lg" aria-label="alphabet">
+    <div class="row justify-content-center">
+      <button type="button" class="btn btn-default btn-primary focus text-primary font-weight-bold px-3">*</button>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6 d-flex justify-content-between pr-md-2">
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">A</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">B</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">C</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">D</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">E</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">F</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">G</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">H</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">I</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">J</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">K</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">L</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">M</button>
+      </div>
+      <div class="col-12 col-md-6 d-flex justify-content-between pl-md-2">
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">N</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">O</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">P</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">Q</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">R</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">S</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">T</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">U</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">V</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">W</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">X</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">Y</button>
+        <button type="button" class="btn btn-default text-primary font-weight-bold p-1">Z</button>
+      </div>
+    </div>
+  </div>
+  <!------------>
+
+  <!--Adicionar Participante-->
+  <div class="d-flex justify-content-center mt-5">
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addParticipant">Adicionar participante</button>
+  </div>
+  <!-------------------------->
+  <!--Menu Adicionar Participante-->
+  <form class="d-flex flex-column w-25 mx-auto bg-white shadow px-5 py-4 mt-5 collapse" id="addParticipant" [formGroup]="addParticipantForm">
+    <h3 class="font-weight-bold mb-4 text-primary">Dados</h3>
+    <!--Name-->
+    <div class="d-flex flex-column">
+      <label class="mb-0" for="name">Nome:</label>
+      <input type="text" id="name" formControlName="name">
+    </div>
+    <!-------->
+    <!--Email-->
+    <div class="d-flex flex-column my-2">
+      <label class="mb-0" for="email">Email:</label>
+      <input type="email" id="email" formControlName="email">
+    </div>
+    <!--------->
+    <!--Age-->
+    <div class="d-flex flex-column my-2">
+      <label class="mb-0" for="age">Idade:</label>
+      <input type="number" id="age" formControlName="age">
+    </div>
+    <!--------->
+    <!--Communication-->
+    <div class="d-flex flex-column my-2">
+      <label class="mb-0" for="communication">Comunicação:</label>
+      <input type="text" id="communication" formControlName="communication">
+    </div>
+    <!----------------->
+    <!--Birth Date-->
+    <div class="d-flex flex-column my-2">
+      <label class="mb-0" for="birth_date">Data de nascimento (yyyy-mm-dd):</label>
+      <input type="text" id="birth_date" formControlName="birth_date">
+    </div>
+    <!-------------->
+    <!--Gender-->
+    <div class="d-flex flex-column my-2">
+      <label class="mb-0" for="gender">Gênero:</label>
+      <select class="bg-white border-0 p-2" id="gender" formControlName="gender">
+        <option value="o">Outros</option>
+        <option value="m">Masculino</option>
+        <option value="f">Feminino</option>
+      </select>
+    </div>
+    <!---------->
+    <!--Weight-->
+    <div class="d-flex flex-column my-2">
+      <label class="mb-0" for="weight">Peso (Kg):</label>
+      <input type="number" id="weight" formControlName="weight">
+    </div>
+    <!---------->
+    <!--Height-->
+    <div class="d-flex flex-column my-2">
+      <label class="mb-0" for="height">Altura (m):</label>
+      <input type="number" id="height" formControlName="height">
+    </div>
+    <!---------->
+    <!--Image-->
+    <div class="d-flex flex-column my-2">
+      <label class="mb-0" for="profile_photo_URL">Imagem de perfil:</label>
+      <input type="file" id="profile_photo_URL" accept="image/*">
+    </div>
+    <!---------->
+    <div class="d-flex justify-content-between mt-4">
+      <button class="btn btn-danger" (click)="addParticipantForm.reset()" type="button" data-toggle="collapse" data-target="#addParticipant">Cancelar</button>
+      <button class="btn btn-primary" (click)="addParticipant()" type="button" data-toggle="collapse" data-target="#addParticipant">Adicionar participante</button>
+    </div>
+  </form>
+  <!------------------------------->
+  <!--Title-->
+  <h2 class="text-center mt-5"><span class="bg-primary rounded-pill rounded-bottom-0 text-white px-5 py-2">Participantes 2</span></h2>
+  <!--------->
+  <!--Users-->
+  <div class="d-flex flex-wrap w-xl-50 w-lg-75 mx-auto mb-5">
+    <!--User1-->
+    <div class="d-flex w-25 align-items-center flex-column p-2 border bg-white" *ngFor="let participant of participants">
+      <img class="img-fluid px-5" src="{{ participant.getProfilePhotoURL() || 'assets/profile_placeholder.svg' }}" alt="Foto de perfil">
+      <h6 class="font-weight-bold text-primary text-center">{{ participant.getName() || 'Nome não registrado' }}</h6>
+      <span class="m-0">{{ participant.getAge() || 'Idade não registrada' }}</span>
+      <button class="btn btn-primary mt-4">Detalhes</button>
+    </div>
+    <!--------->
+  </div>
+  <!-------->
+</main>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
 import {AuthGuard} from '../auth.guard';
 import {Router} from '@angular/router';
+import { DAOService } from '../../shared/dao.service';
+import { REST_URL_EXPERTS } from '../../shared/REST_API_URLs';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router, private authGuard: AuthGuard) { }
+  constructor(private authService: AuthService, private router: Router, private authGuard: AuthGuard, private dao: DAOService) { }
 
   ngOnInit() {
   }
@@ -17,9 +19,11 @@ export class LoginComponent implements OnInit {
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       userData => {
-        console.log(userData.authToken)
-        this.authGuard.setCanLoad(true);
-        this.router.navigate(['/private']);
+        console.log(userData.authToken);
+        this.dao.postObject(REST_URL_EXPERTS, {}).subscribe(_ => {
+          this.authGuard.setCanLoad(true);
+          this.router.navigate(['/private']);
+        });
       },
       rejection => {
         this.authGuard.setCanLoad(false);

@@ -9,7 +9,9 @@ import { AppComponent } from './app.component';
 import { AuthServiceConfig, GoogleLoginProvider, SocialLoginModule } from 'angularx-social-login';
 import { AuthGuard } from './security/auth.guard';
 import { AuthInterceptor } from './security/auth.interceptor';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { DAOService } from './shared/dao.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const config = new AuthServiceConfig([
   {
@@ -32,10 +34,13 @@ export function provideConfig() {
     SocialLoginModule,
     IndexModule,
     PrivateModule,
-    SecurityModule
+    SecurityModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthGuard,
+    DAOService,
     {
       provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
     },
