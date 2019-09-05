@@ -1,0 +1,17 @@
+<!--User & vagas-->
+<div *ngIf="participant" class="d-flex justify-content-center align-items-center flex-wrap p-5 bg-white">
+  <!--User-->
+  <!--Imagem-->
+  <div class="mr-md-5">
+    <img src="{{ participant.getProfilePhotoURL() || 'assets/profile_placeholder.svg' }}" width="250px" height="250px">
+  </div>
+  <!---------->
+  <!--Detalhes usuário-->
+  <div class="w-md-50 ml-md-5 mt-4 mt-md-0">
+    <h2 class="text-center text-primary">{{ participant.getId() }} - {{ participant.getName() }}</h2>
+    <p class="text-justify">{{ participant.getDescription() || 'Sem descrição' }}</p>
+    <h5 class="text-center text-primary mt-5">{{ participant.getAge() }} anos</h5>
+  </div>
+  <!-------->
+</div>
+<!-------->

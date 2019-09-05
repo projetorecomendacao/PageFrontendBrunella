@@ -18,8 +18,10 @@ export class HomeComponent implements OnInit {
     birth_date: ['', Validators.required],
     gender: ['', Validators.required],
     weight: ['', Validators.required],
-    height: ['', Validators.required]
+    height: ['', Validators.required],
+    profile_photo_URL: [null]
   });
+
 
   constructor(private dao: DAOService, private form: FormBuilder) {
     dao.getObjects(REST_URL_PARTICIPANTS).subscribe((data: any) => {

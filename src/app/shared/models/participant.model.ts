@@ -15,6 +15,7 @@ export class Participant {
     this.name = participant.name;
     this.email = participant.email;
     this.profilePhotoURL = participant.profilePhotoURL;
+    this.age = participant.age;
     this.communication = participant.communication;
     this.birthDate = participant.birthDate;
     this.gender = participant.gender;
@@ -35,6 +36,10 @@ export class Participant {
     this.height = participant.height ? participant.height : this.height;
   }
 
+  getId() {
+    return this.id;
+  }
+
   getName(): string {
     return this.name;
   }
@@ -45,5 +50,9 @@ export class Participant {
 
   getAge(): number {
     return this.age;
+  }
+
+  getDescription() {
+    return null;
   }
 }
