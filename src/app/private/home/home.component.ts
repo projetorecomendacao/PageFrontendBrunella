@@ -11,15 +11,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class HomeComponent implements OnInit {
   private participants: Participant[] = new Array<Participant>();
   private addParticipantForm: FormGroup = this.form.group({
-    name: ['', Validators.required],
-    email: ['', Validators.required],
-    age: ['', Validators.required],
-    communication: ['', Validators.required],
-    birth_date: ['', Validators.required],
-    gender: ['', Validators.required],
-    weight: ['', Validators.required],
-    height: ['', Validators.required],
-    profile_photo_URL: [null]
+    p00_email: ['', Validators.required],
+    p01_name: ['', Validators.required],
+    p02_address: ['', Validators.required],
+    p03_communication: ['', Validators.required],
+    p04_birth_date: ['', Validators.required],
+    p05_age: ['', Validators.required],
+    p06_gender: ['', Validators.required],
+    p20_profile_photo_URL: [null]
   });
 
 
@@ -34,6 +33,7 @@ export class HomeComponent implements OnInit {
   }
 
   addParticipant() {
+    console.log(this.addParticipantForm.getRawValue());
     this.dao.postObject(REST_URL_PARTICIPANTS, this.addParticipantForm.getRawValue()).subscribe((data: any) => {
       this.participants.push(new Participant(data));
     });

@@ -44,81 +44,79 @@
     </div>
   </div>
   <!------------>
-
   <!--Adicionar Participante-->
   <div class="d-flex justify-content-center mt-5">
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addParticipant">Adicionar participante</button>
   </div>
   <!-------------------------->
   <!--Menu Adicionar Participante-->
-  <form class="d-flex flex-column w-25 mx-auto bg-white shadow px-5 py-4 mt-5 collapse" id="addParticipant" [formGroup]="addParticipantForm">
-    <h3 class="font-weight-bold mb-4 text-primary">Dados</h3>
-    <!--Name-->
-    <div class="d-flex flex-column">
-      <label class="mb-0" for="name">Nome:</label>
-      <input type="text" id="name" formControlName="name">
+  <form class="d-flex flex-wrap w-50 mx-auto bg-white shadow px-4 py-4 mt-5 collapse" id="addParticipant" [formGroup]="addParticipantForm">
+    <h3 class="font-weight-bold mb-4 text-primary w-100">Dados</h3>
+    <div class="d-flex flex-column w-50 px-3">
+      <!--Email-->
+      <div class="d-flex flex-column my-2">
+        <label class="mb-0" for="email">Email:</label>
+        <input type="email" id="email" formControlName="p00_email">
+      </div>
+      <!--------->
+      <!--Name-->
+      <div class="d-flex flex-column">
+        <label class="mb-0" for="name">Nome:</label>
+        <input type="text" id="name" formControlName="p01_name">
+      </div>
+      <!-------->
+      <!--Address-->
+      <div class="d-flex flex-column my-2">
+        <label class="mb-0" for="address">Endereço:</label>
+        <input type="text" id="address" formControlName="p02_address">
+      </div>
+      <!----------->
+      <!--Communication-->
+      <div class="d-flex flex-column my-2">
+        <label class="mb-0" for="communication">Comunicação:</label>
+        <input type="text" id="communication" formControlName="p03_communication">
+      </div>
+      <!----------------->
     </div>
-    <!-------->
-    <!--Email-->
-    <div class="d-flex flex-column my-2">
-      <label class="mb-0" for="email">Email:</label>
-      <input type="email" id="email" formControlName="email">
+    <div class="d-flex flex-column w-50 px-3">
+      <!--Birth Date-->
+      <div class="d-flex flex-column my-2">
+        <label class="mb-0" for="birth_date">Data de nascimento (yyyy-mm-dd):</label>
+        <input type="text" id="birth_date" formControlName="p04_birth_date">
+      </div>
+      <!-------------->
+      <!--Age-->
+      <div class="d-flex flex-column my-2">
+        <label class="mb-0" for="age">Idade:</label>
+        <input type="number" id="age" formControlName="p05_age">
+      </div>
+      <!--------->
+      <!--Gender-->
+      <div class="d-flex flex-column my-2">
+        <label class="mb-0" for="gender">Gênero:</label>
+        <select class="bg-white border-0 p-2" id="gender" formControlName="p06_gender">
+          <option value="o">Outros</option>
+          <option value="m">Masculino</option>
+          <option value="f">Feminino</option>
+        </select>
+      </div>
+      <!---------->
+      <!--Image-->
+      <div class="d-flex flex-column my-2">
+        <label class="mb-0" for="profile_photo_URL">Imagem de perfil:</label>
+        <input type="file" id="profile_photo_URL" accept="image/*" formControlName="p20_profile_photo_URL">
+      </div>
+      <!---------->
     </div>
-    <!--------->
-    <!--Age-->
-    <div class="d-flex flex-column my-2">
-      <label class="mb-0" for="age">Idade:</label>
-      <input type="number" id="age" formControlName="age">
-    </div>
-    <!--------->
-    <!--Communication-->
-    <div class="d-flex flex-column my-2">
-      <label class="mb-0" for="communication">Comunicação:</label>
-      <input type="text" id="communication" formControlName="communication">
-    </div>
-    <!----------------->
-    <!--Birth Date-->
-    <div class="d-flex flex-column my-2">
-      <label class="mb-0" for="birth_date">Data de nascimento (yyyy-mm-dd):</label>
-      <input type="text" id="birth_date" formControlName="birth_date">
-    </div>
-    <!-------------->
-    <!--Gender-->
-    <div class="d-flex flex-column my-2">
-      <label class="mb-0" for="gender">Gênero:</label>
-      <select class="bg-white border-0 p-2" id="gender" formControlName="gender">
-        <option value="o">Outros</option>
-        <option value="m">Masculino</option>
-        <option value="f">Feminino</option>
-      </select>
-    </div>
-    <!---------->
-    <!--Weight-->
-    <div class="d-flex flex-column my-2">
-      <label class="mb-0" for="weight">Peso (Kg):</label>
-      <input type="number" id="weight" formControlName="weight">
-    </div>
-    <!---------->
-    <!--Height-->
-    <div class="d-flex flex-column my-2">
-      <label class="mb-0" for="height">Altura (m):</label>
-      <input type="number" id="height" formControlName="height">
-    </div>
-    <!---------->
-    <!--Image-->
-    <div class="d-flex flex-column my-2">
-      <label class="mb-0" for="profile_photo_URL">Imagem de perfil:</label>
-      <input type="file" id="profile_photo_URL" accept="image/*" formControlName="profile_photo_URL">
-    </div>
-    <!---------->
-    <div class="d-flex justify-content-between mt-4">
+    <div class="d-flex justify-content-between mt-4 w-100">
       <button class="btn btn-danger" (click)="addParticipantForm.reset()" type="button" data-toggle="collapse" data-target="#addParticipant">Cancelar</button>
       <button class="btn btn-primary" (click)="addParticipant()" type="button" data-toggle="collapse" data-target="#addParticipant">Adicionar participante</button>
     </div>
   </form>
   <!------------------------------->
   <!--Title-->
-  <h2 class="text-center mt-5"><span class="bg-primary rounded-pill rounded-bottom-0 text-white px-5 py-2">Participantes 2</span></h2>
+  <h2 class="text-center mt-5"><span class="bg-primary rounded-pill rounded-bottom-0 text-white px-5 py-2" *ngIf="participants.length">Participantes 2</span></h2>
+  <h5 class="text-center text-primary mt-5" *ngIf="!participants.length">Nenhum participante adicionado</h5>
   <!--------->
   <!--Users-->
   <div class="d-flex flex-wrap w-xl-50 w-lg-75 mx-auto mb-5">
