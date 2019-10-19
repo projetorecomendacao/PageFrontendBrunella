@@ -13,11 +13,12 @@ import { NegativeAttitudesAgingComponent } from './participant/page/psychologica
 import { DepressionComponent } from './participant/page/psychological-aspects/depression/depression.component';
 import { PsychologicalAspectsComponent } from './participant/page/psychological-aspects/psychological-aspects.component';
 import { ParticipantFormComponent } from './participant/page/participant-form/participant-form.component';
+import { ObservationsComponent } from './participant/page/psychological-aspects/observations/observations.component';
 
 
 
 @NgModule({
-  declarations: [PrivateComponent, HomeComponent, ParticipantComponent, SidebarComponent, ParticipantInfoComponent, PageComponent, CognitiveDeficitComponent, NegativeAttitudesAgingComponent, DepressionComponent, PsychologicalAspectsComponent, ParticipantFormComponent],
+  declarations: [PrivateComponent, HomeComponent, ParticipantComponent, SidebarComponent, ParticipantInfoComponent, PageComponent, CognitiveDeficitComponent, NegativeAttitudesAgingComponent, DepressionComponent, PsychologicalAspectsComponent, ParticipantFormComponent, ObservationsComponent],
   imports: [
     CommonModule,
     PrivateRoutingModule,
