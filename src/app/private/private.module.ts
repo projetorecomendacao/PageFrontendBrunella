@@ -29,6 +29,11 @@ import {
 import {
   ObservationsBiologicalComponent
 } from './participant/page/biological-aspects/observations-biological/observations-biological.component';
+import { SocialAspectsComponent } from './participant/page/social-aspects/social-aspects.component';
+import { LowSocialSupportComponent } from './participant/page/social-aspects/low-social-support/low-social-support.component';
+import { EnvironmentalProblemsComponent } from './participant/page/social-aspects/environmental-problems/environmental-problems.component';
+import { ViolenceComponent } from './participant/page/social-aspects/violence/violence.component';
+import { ObservationsSocialComponent } from './participant/page/social-aspects/observations-social/observations-social.component';
 
 
 
@@ -52,7 +57,12 @@ import {
     MalnutritionComponent,
     CardiovascularFactorsComponent,
     MisuseMedicationsComponent,
-    ObservationsBiologicalComponent
+    ObservationsBiologicalComponent,
+    SocialAspectsComponent,
+    LowSocialSupportComponent,
+    EnvironmentalProblemsComponent,
+    ViolenceComponent,
+    ObservationsSocialComponent
   ],
   imports: [
     CommonModule,
