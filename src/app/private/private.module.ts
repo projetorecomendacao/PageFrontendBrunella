@@ -34,6 +34,9 @@ import { LowSocialSupportComponent } from './participant/page/social-aspects/low
 import { EnvironmentalProblemsComponent } from './participant/page/social-aspects/environmental-problems/environmental-problems.component';
 import { ViolenceComponent } from './participant/page/social-aspects/violence/violence.component';
 import { ObservationsSocialComponent } from './participant/page/social-aspects/observations-social/observations-social.component';
+import { MultidimensionalAspectComponent } from './participant/page/multidimensional-aspect/multidimensional-aspect.component';
+import { FallsComponent } from './participant/page/multidimensional-aspect/falls/falls.component';
+import { ObservationsMultidimensionalComponent } from './participant/page/multidimensional-aspect/observations-multidimensional/observations-multidimensional.component';
 
 
 
@@ -62,7 +65,10 @@ import { ObservationsSocialComponent } from './participant/page/social-aspects/o
     LowSocialSupportComponent,
     EnvironmentalProblemsComponent,
     ViolenceComponent,
-    ObservationsSocialComponent
+    ObservationsSocialComponent,
+    MultidimensionalAspectComponent,
+    FallsComponent,
+    ObservationsMultidimensionalComponent
   ],
   imports: [
     CommonModule,
