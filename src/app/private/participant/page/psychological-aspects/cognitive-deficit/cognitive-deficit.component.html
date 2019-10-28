@@ -2,23 +2,20 @@
 <h2 class="text-center mt-5"><span class="bg-primary rounded-pill rounded-bottom-0 text-white px-5 py-2">Déficit cognitivo</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="cognitiveDeficitForm">
   <!--Perguntas-->
   <div class="p-3">
     <!--Pergunta1-->
     <div class="container-flex border-bottom escuro p-4">
       <div class="row">
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">1.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) considera que sua memória é tão boa quanto antes?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim1">
-            <label class="m-0 ml-1" for="sim1">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao1">
-            <label class="m-0 ml-1" for="nao1">Não</label>
-          </div>
+        <span class="col-12 col-md-8">O(A) senhor(a) considera que sua memória é tão boa quanto antes?</span>
+        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
+          <select class="w-100 form-control" formControlName="q1_memory_good_like_before" [class.is-invalid]="q1_memory_good_like_before.invalid && q1_memory_good_like_before.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -27,16 +24,13 @@
     <div class="container-flex border-bottom escuro p-4">
       <div class="row">
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">2.</div>
-        <span class="col-12 col-md-9">Memória:</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim2">
-            <label class="m-0 ml-1" for="sim2">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao2">
-            <label class="m-0 ml-1" for="nao2">Não</label>
-          </div>
+        <span class="col-12 col-md-8">Memória:</span>
+        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
+          <select class="w-100 form-control" formControlName="q2_memory_test" [class.is-invalid]="q2_memory_test.invalid && q2_memory_test.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -45,27 +39,39 @@
     <div class="container-flex border-bottom escuro p-4">
       <div class="row">
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">3.</div>
-        <span class="col-12 col-md-9">Linguagem, função executiva e atenção:</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim3">
-            <label class="m-0 ml-1" for="sim3">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao3">
-            <label class="m-0 ml-1" for="nao3">Não</label>
-          </div>
+        <span class="col-12 col-md-8">Linguagem, função executiva e atenção:</span>
+        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
+          <select class="w-100 form-control" formControlName="q3_language_function_attention" [class.is-invalid]="q3_language_function_attention.invalid && q3_language_function_attention.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
     <!------------->
     <!--Pergunta4-->
-    <div class="container-flex border-bottom escuro p-4">
+    <div class="container-flex escuro p-4">
       <div class="row">
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">4.</div>
-        <span class="col-12 col-md-9">Habilidade visuoespacial:</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <input class="w-100" type="number">
+        <span class="col-12 col-md-8">Habilidade visuoespacial:</span>
+        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
+          <select class="w-100 form-control" formControlName="q4_visospatial_ability" [class.is-invalid]="q4_visospatial_ability.invalid && q4_visospatial_ability.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <!------------->
+    <!--Pergunta4A-->
+    <div class="container-flex border-bottom escuro p-4">
+      <div class="row">
+        <div class="col-12 col-md-1"></div>
+        <span class="col-12 col-md-8">Habilidade visuoespacial - Pontuação:</span>
+        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
+          <input class="w-100 form-control" type="number" formControlName="q4_visospatial_ability_score" [class.is-invalid]="q4_visospatial_ability_score.invalid && q4_visospatial_ability_score.touched">
         </div>
       </div>
     </div>
@@ -74,16 +80,13 @@
     <div class="container-flex border-bottom escuro p-4">
       <div class="row">
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">5.</div>
-        <span class="col-12 col-md-9">Praxia:</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim5">
-            <label class="m-0 ml-1" for="sim5">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao5">
-            <label class="m-0 ml-1" for="nao5">Não</label>
-          </div>
+        <span class="col-12 col-md-8">Praxia:</span>
+        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
+          <select class="w-100 form-control" formControlName="q5_praxia" [class.is-invalid]="q5_praxia.invalid && q5_praxia.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -92,16 +95,13 @@
     <div class="container-flex border-bottom escuro p-4">
       <div class="row">
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">6.</div>
-        <span class="col-12 col-md-9">Memória:</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim6">
-            <label class="m-0 ml-1" for="sim6">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao6">
-            <label class="m-0 ml-1" for="nao6">Não</label>
-          </div>
+        <span class="col-12 col-md-8">Memória:</span>
+        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
+          <select class="w-100 form-control" formControlName="q6_memory_test" [class.is-invalid]="q6_memory_test.invalid && q6_memory_test.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -115,10 +115,19 @@
   </div>
   <!------------->
   <!--Intervenção-->
-  <div class="d-flex justify-content-center align-items-center p-3">
-    <input type="checkbox" id="depression-intervention">
-    <label class="mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
+  <div class="d-flex flex-wrap w-25 mx-auto justify-content-center align-items-center p-3">
+    <label class="text-center mb-0 ml-2" for="depression-intervention" style="flex-basis: 100%">Necessita intervenção?</label>
+    <select class="w-100 form-control" id="depression-intervention" formControlName="need_investigation_cognition" [class.is-invalid]="need_investigation_cognition.invalid && need_investigation_cognition.touched">
+      <option value="" selected disabled>Selecione</option>
+      <option value="S">Sim</option>
+      <option value="N">Não</option>
+    </select>
   </div>
   <!--------------->
+  <!--Continue-->
+  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
+    <button class="btn btn-primary" (click)="submit()">Salvar e continuar</button>
+  </div>
+  <!------------>
 </div>
 <!----------->

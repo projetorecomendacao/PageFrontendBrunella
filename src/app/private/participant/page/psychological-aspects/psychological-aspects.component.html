@@ -1,4 +1,4 @@
-<app-cognitive-deficit></app-cognitive-deficit>
-<app-negative-attitudes-aging></app-negative-attitudes-aging>
-<app-depression></app-depression>
-<app-observations-psychological></app-observations-psychological>
+<app-cognitive-deficit [cognitionDeficit]="cognitionDeficit" (cognitionDeficit)="setCognitiveDeficit($event)"></app-cognitive-deficit>
+<app-negative-attitudes-aging [negativeAttitudesAging]="negativeAttitudesAging" (negativeAttitudesAging)="setNegativeAttitudesAging($event)"></app-negative-attitudes-aging>
+<app-depression [depression]="depression" (depression)="setDepression($event)"></app-depression>
+<app-observations-psychological [comments]="comments_psico" (comments)="setComments($event)"></app-observations-psychological>
