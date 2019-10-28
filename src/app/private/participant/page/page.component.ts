@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ParticipantSituation } from '../../../shared/models/participant.model';
 
 @Component({
   selector: 'app-page',
@@ -6,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageComponent implements OnInit {
 
+  private participantForm: ParticipantSituation;
+
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
+
+  setParticipantForm(pf: ParticipantSituation) { this.participantForm = pf; }
 
 }

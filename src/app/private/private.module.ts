@@ -17,6 +17,13 @@ import { SensoryDeficitComponent } from './participant/page/biological-aspects/s
 import { FunctionalDisabilityComponent } from './participant/page/biological-aspects/functional-disability/functional-disability.component';
 import { MalnutritionComponent } from './participant/page/biological-aspects/malnutrition/malnutrition.component';
 import { MisuseMedicationsComponent } from './participant/page/biological-aspects/misuse-medications/misuse-medications.component';
+import { SocialAspectsComponent } from './participant/page/social-aspects/social-aspects.component';
+import { LowSocialSupportComponent } from './participant/page/social-aspects/low-social-support/low-social-support.component';
+import { EnvironmentalProblemsComponent } from './participant/page/social-aspects/environmental-problems/environmental-problems.component';
+import { ViolenceComponent } from './participant/page/social-aspects/violence/violence.component';
+import { ObservationsSocialComponent } from './participant/page/social-aspects/observations-social/observations-social.component';
+import { MultidimensionalAspectComponent } from './participant/page/multidimensional-aspect/multidimensional-aspect.component';
+import { FallsComponent } from './participant/page/multidimensional-aspect/falls/falls.component';
 import {
   CardiovascularFactorsComponent
 } from './participant/page/biological-aspects/cardiovascular-factors/cardiovascular-factors.component';
@@ -29,14 +36,9 @@ import {
 import {
   ObservationsBiologicalComponent
 } from './participant/page/biological-aspects/observations-biological/observations-biological.component';
-import { SocialAspectsComponent } from './participant/page/social-aspects/social-aspects.component';
-import { LowSocialSupportComponent } from './participant/page/social-aspects/low-social-support/low-social-support.component';
-import { EnvironmentalProblemsComponent } from './participant/page/social-aspects/environmental-problems/environmental-problems.component';
-import { ViolenceComponent } from './participant/page/social-aspects/violence/violence.component';
-import { ObservationsSocialComponent } from './participant/page/social-aspects/observations-social/observations-social.component';
-import { MultidimensionalAspectComponent } from './participant/page/multidimensional-aspect/multidimensional-aspect.component';
-import { FallsComponent } from './participant/page/multidimensional-aspect/falls/falls.component';
-import { ObservationsMultidimensionalComponent } from './participant/page/multidimensional-aspect/observations-multidimensional/observations-multidimensional.component';
+import {
+  ObservationsMultidimensionalComponent
+} from './participant/page/multidimensional-aspect/observations-multidimensional/observations-multidimensional.component';
 
 
 

@@ -4,15 +4,15 @@
 <!--Content-->
 <div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
   <!--Perguntas-->
-  <div class="p-3">
+  <div class="p-3" [formGroup]="participantForm">
     <!--Pergunta1-->
     <div class="container-flex border-bottom escuro p-4">
       <div class="row">
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">1.</div>
         <span class="col-12 col-md-8">Estado civil:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100">
-            <option selected disabled>Selecione</option>
+          <select class="w-100 form-control" formControlName="p07_marital_status" [class.is-invalid]="p07_marital_status.invalid && p07_marital_status.touched">
+            <option value="" selected disabled>Selecione</option>
             <option value="Solteiro(a)">Solteiro(a)</option>
             <option value="Casado(a)/União Estável">Casado(a)/União Estável</option>
             <option value="Separado(a)/Divorciado(a)">Separado(a)/Divorciado(a)</option>
@@ -28,8 +28,8 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">2.</div>
         <span class="col-12 col-md-8">Escolaridade:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100">
-            <option selected disabled>Selecione</option>
+          <select class="w-100 form-control" formControlName="p08_schooling" [class.is-invalid]="p08_schooling.invalid && p08_schooling.touched">
+            <option value="" selected disabled>Selecione</option>
             <option value="analfabeto">analfabeto</option>
             <option value="ensino fundamental (incompleto)">ensino fundamental (incompleto)</option>
             <option value="ensino fundamental (completo)">ensino fundamental (completo)</option>
@@ -49,7 +49,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">3.</div>
         <span class="col-12 col-md-8">Tempo de estudo:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100" type="number">
+          <input class="w-100 form-control" type="number" formControlName="p09_study_time" [class.is-invalid]="p09_study_time.invalid && p09_study_time.touched">
         </div>
       </div>
     </div>
@@ -60,8 +60,8 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">4.</div>
         <span class="col-12 col-md-8">É Aposentado ou pensionista?:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100">
-            <option selected disabled>Selecione</option>
+          <select class="w-100 form-control" formControlName="p10_is_retired" [class.is-invalid]="p10_is_retired.invalid && p10_is_retired.touched">
+            <option value="" selected disabled>Selecione</option>
             <option value="S">Sim</option>
             <option value="N">Não</option>
           </select>
@@ -75,7 +75,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">5.</div>
         <span class="col-12 col-md-8">Aposentado por qual profissao:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100" type="text">
+          <input class="w-100 form-control" type="text" formControlName="p10_retired_profession">
         </div>
       </div>
     </div>
@@ -86,7 +86,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">6.</div>
         <span class="col-12 col-md-8">Profissão atual:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100" type="text">
+          <input class="w-100 form-control" type="text" formControlName="p10_actual_profession" [class.is-invalid]="p10_actual_profession.invalid && p10_actual_profession.touched">
         </div>
       </div>
     </div>
@@ -97,7 +97,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">7.</div>
         <span class="col-12 col-md-8">Se aposentado, qual profissão exerceu por mais tempo:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100" type="text">
+          <input class="w-100 form-control" type="text" formControlName="p11_retire_more_time_activity">
         </div>
       </div>
     </div>
@@ -108,8 +108,8 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">8.</div>
         <span class="col-12 col-md-8">Exerce atividade remunerada?:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100">
-            <option selected disabled>Selecione</option>
+          <select class="w-100 form-control" formControlName="p12_is_working_professionals_activities" [class.is-invalid]="p12_is_working_professionals_activities.invalid && p12_is_working_professionals_activities.touched">
+            <option value="" selected disabled>Selecione</option>
             <option value="S">Sim</option>
             <option value="N">Não</option>
           </select>
@@ -123,7 +123,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">9.</div>
         <span class="col-12 col-md-8">Atividade Remunerada exercida:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100" type="text">
+          <input class="w-100 form-control" type="text" formControlName="p12_professional_activities">
         </div>
       </div>
     </div>
@@ -134,8 +134,8 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">10.</div>
         <span class="col-12 col-md-8">Rendimento Mensal Individual:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100">
-            <option selected disabled>Selecione</option>
+          <select class="w-100 form-control" formControlName="p13_income_I" [class.is-invalid]="p13_income_I.invalid && p13_income_I.touched">
+            <option value="" selected disabled>Selecione</option>
             <option value="BPC">BPC</option>
             <option value="Até um salário mínimo">Até um salário mínimo</option>
             <option value="mais de 1 a 2 salários mínimos">mais de 1 a 2 salários mínimos</option>
@@ -155,8 +155,8 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">11.</div>
         <span class="col-12 col-md-8">Rendimento Mensal Familiar:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100">
-            <option selected disabled>Selecione</option>
+          <select class="w-100 form-control" formControlName="p13_income_F" [class.is-invalid]="p13_income_F.invalid && p13_income_F.touched">
+            <option value="" selected disabled>Selecione</option>
             <option value="BPC">BPC</option>
             <option value="Até um salário mínimo">Até um salário mínimo</option>
             <option value="mais de 1 a 2 salários mínimos">mais de 1 a 2 salários mínimos</option>
@@ -176,7 +176,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">12.</div>
         <span class="col-12 col-md-8">Mora com:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <textarea class="w-100"></textarea>
+          <textarea class="w-100 form-control" formControlName="p14_lives_with"></textarea>
         </div>
       </div>
     </div>
@@ -187,8 +187,8 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">13.</div>
         <span class="col-12 col-md-8">Possui religião?:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100">
-            <option selected disabled>Selecione</option>
+          <select class="w-100 form-control" formControlName="p15_has_religion" [class.is-invalid]="p15_has_religion.invalid && p15_has_religion.touched">
+            <option value="" selected disabled>Selecione</option>
             <option value="S">Sim</option>
             <option value="N">Não</option>
           </select>
@@ -202,7 +202,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">14.</div>
         <span class="col-12 col-md-8">Religião:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100" type="text">
+          <input class="w-100 form-control" type="text" formControlName="p15_religion">
         </div>
       </div>
     </div>
@@ -210,10 +210,10 @@
     <!--Pergunta15-->
     <div class="container-flex border-bottom escuro p-4">
       <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">14.</div>
+        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">15.</div>
         <span class="col-12 col-md-8">Autorelato de saúde:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <textarea class="w-100"></textarea>
+          <textarea class="w-100 form-control" formControlName="p16_health_self_report" [class.is-invalid]="p16_health_self_report.invalid && p16_health_self_report.touched"></textarea>
         </div>
       </div>
     </div>
@@ -224,7 +224,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">16.</div>
         <span class="col-12 col-md-8">Peso:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100" type="text">
+          <input class="w-100 form-control" type="number" formControlName="p20_weight" [class.is-invalid]="p20_weight.invalid && p20_weight.touched">
         </div>
       </div>
     </div>
@@ -235,7 +235,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">17.</div>
         <span class="col-12 col-md-8">Altura:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100" type="text">
+          <input class="w-100 form-control" type="number" formControlName="p20_height" [class.is-invalid]="p20_height.invalid && p20_height.touched">
         </div>
       </div>
     </div>
@@ -246,7 +246,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">18.</div>
         <span class="col-12 col-md-8">IMC:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100" type="text">
+          <input class="w-100 form-control" type="number" formControlName="p20_IMC" [class.is-invalid]="p20_IMC.invalid && p20_IMC.touched">
         </div>
       </div>
     </div>
@@ -257,7 +257,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">19.</div>
         <span class="col-12 col-md-8">Observações:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <textarea class="w-100"></textarea>
+          <textarea class="w-100 form-control" disabled></textarea>
         </div>
       </div>
     </div>
@@ -266,7 +266,7 @@
   <!------------->
   <!--Continue-->
   <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <button class="btn btn-secondary">Salvar e continuar</button>
+    <button class="btn btn-secondary" (click)="submit()">Salvar e continuar</button>
   </div>
   <!------------>
 </div>
