@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DAOService } from '../../../../shared/dao.service';
 import { REST_URL_DEPRESSION, REST_URL_PARTICIPANT_SITUATION } from '../../../../shared/REST_API_URLs';
-import { Depression } from '../../../../shared/models/psychologicalAspects.model';
+import { Depression } from '../../../../shared/models/psychological-aspects.model';
 import { ParticipantSituation } from '../../../../shared/models/participant.model';
 
 @Component({

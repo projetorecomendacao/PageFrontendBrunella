@@ -110,4 +110,12 @@ export class PsychologicalAspects {
   }
 
   public getId() { return this.id; }
+  public getRaw() {
+    return {
+      cognition_deficit: this.cognition_deficit,
+      negative_attitudes_aging: this.negative_attitudes_aging,
+      depression: this.depression,
+      comments_psico: this.comments_psico
+    };
+  }
 }

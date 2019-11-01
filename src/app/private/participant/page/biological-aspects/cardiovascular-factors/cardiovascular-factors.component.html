@@ -1,8 +1,8 @@
 <!--Title-->
-<h2 class="text-center mt-5"><span class="bg-success rounded-pill rounded-bottom-0 text-white px-5 py-2">Desnutrição</span></h2>
+<h2 class="text-center mt-5"><span class="bg-success rounded-pill rounded-bottom-0 text-white px-5 py-2">Fatores cardiovasculares</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="cardiovascularFactorsForm">
   <!--Perguntas-->
   <div class="p-3">
     <!--Pergunta1-->
@@ -11,86 +11,116 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">33.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) tem histórico familiar (1º grau) de DCV (infarto, derrama e/ou angina)?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim1">
-            <label class="m-0 ml-1" for="sim1">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao1">
-            <label class="m-0 ml-1" for="nao1">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q33_dcv_familiar_history" [class.is-invalid]="q33_dcv_familiar_history.invalid && q33_dcv_familiar_history.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
     <!------------->
-    <!--Pergunta2-->
-    <div class="container-flex border-bottom escuro p-4">
+    <!--Pergunta2A-->
+    <div class="container-flex escuro p-4">
       <div class="row">
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">34.</div>
         <span class="col-12 col-md-9">O(a) senhor(a) tem hipertensão arterial descontrolada? [Pontuar como sim quando PA auto referida for superior a 140/90mmHg ou caso o(a) idoso(a) não saiba informar].</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim2">
-            <label class="m-0 ml-1" for="sim2">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao2">
-            <label class="m-0 ml-1" for="nao2">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q34_hypertension" [class.is-invalid]="q34_hypertension.invalid && q34_hypertension.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
-    <!------------->
-    <!--Pergunta3-->
+    <!-------------->
+    <!--Pergunta2B-->
     <div class="container-flex border-bottom escuro p-4">
+      <div class="row">
+        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold"></div>
+        <span class="col-12 col-md-9">Desconhece os valores da PA?</span>
+        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
+          <select class="w-100 form-control" formControlName="q34_hypertension_unknow" [class.is-invalid]="q34_hypertension_unknow.invalid && q34_hypertension_unknow.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-------------->
+    <!--Pergunta3A-->
+    <div class="container-flex escuro p-4">
       <div class="row">
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">35.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) tem diabetes? Se sim, está descontrolada? [Pontuar como sim quando glicemia em jejum verificada em último exame for superior a 100 mg/dL, respectivamente, ou caso o(a) idoso(a) não saiba informar]:</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim3">
-            <label class="m-0 ml-1" for="sim3">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao3">
-            <label class="m-0 ml-1" for="nao3">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q35_uncontrolled_diabetes" [class.is-invalid]="q35_uncontrolled_diabetes.invalid && q35_uncontrolled_diabetes.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
-    <!------------->
-    <!--Pergunta4-->
+    <!-------------->
+    <!--Pergunta3B-->
+    <div class="container-flex border-bottom escuro p-4">
+      <div class="row">
+        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold"></div>
+        <span class="col-12 col-md-9">Desconhece os valores de glicemia?</span>
+        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
+          <select class="w-100 form-control" formControlName="q35_unknown_value_glycemia" [class.is-invalid]="q35_unknown_value_glycemia.invalid && q35_unknown_value_glycemia.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-------------->
+    <!--Pergunta4A-->
     <div class="container-flex border-bottom escuro p-4">
       <div class="row">
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">36.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) colesterol alterado? [Pontuar como sim quando CT e HDL forem verificados em último exame como superior a 200 mg/dL e 60mg/dL, respectivamente, ou caso o(a) idoso(a) não saiba informar].</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim4">
-            <label class="m-0 ml-1" for="sim4">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao4">
-            <label class="m-0 ml-1" for="nao4">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q36_cholesterol" [class.is-invalid]="q36_cholesterol.invalid && q36_cholesterol.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
-    <!------------->
+    <!-------------->
+    <!--Pergunta4B-->
+    <div class="container-flex border-bottom escuro p-4">
+      <div class="row">
+        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold"></div>
+        <span class="col-12 col-md-9">Desconhece os valores de CT e HDL?</span>
+        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
+          <select class="w-100 form-control" formControlName="q36_unknown_value_ct_hdl" [class.is-invalid]="q36_unknown_value_ct_hdl.invalid && q36_unknown_value_ct_hdl.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-------------->
     <!--Pergunta5-->
     <div class="container-flex border-bottom escuro p-4">
       <div class="row">
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">37.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) fuma ou é ex-fumante?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim5">
-            <label class="m-0 ml-1" for="sim5">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao5">
-            <label class="m-0 ml-1" for="nao5">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q37_smoker" [class.is-invalid]="q37_smoker.invalid && q37_smoker.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -101,14 +131,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">38.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) pratica mais de 150 minutos de exercícios físicos por semana?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim6">
-            <label class="m-0 ml-1" for="sim6">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao6">
-            <label class="m-0 ml-1" for="nao6">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q38_practice_150_minutes_exercises" [class.is-invalid]="q38_practice_150_minutes_exercises.invalid && q38_practice_150_minutes_exercises.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -119,14 +146,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">39.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) considera que sua alimentação é saudável?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim7">
-            <label class="m-0 ml-1" for="sim7">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao7">
-            <label class="m-0 ml-1" for="nao7">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q39_healthy_eating" [class.is-invalid]="q39_healthy_eating.invalid && q39_healthy_eating.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -136,21 +160,18 @@
       <div class="row">
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">40.</div>
         <div class="col-12 col-md-9 flex-column">
-          <span>Na última semana, o(a) senhor(a) ingeriu bebidas alcoólicas? Se sim, tipo:<input type="text"> quantidade:<input type="number"> [Depois assinale ao lado a resposta equivalente, considerando as seguintes referências]</span>
+          <span>Na última semana, o(a) senhor(a) ingeriu bebidas alcoólicas? Se sim, quantidade: <input class="form-control d-inline-block" type="number" formControlName="q40_alcohol_Ingested_last_week_amount" [class.is-invalid]="q40_alcohol_Ingested_last_week_amount.invalid && q40_alcohol_Ingested_last_week_amount.touched" style="width: 80px;"> [Depois assinale ao lado a resposta equivalente, considerando as seguintes referências]</span>
           <div class="d-flex flex-wrap">
             <span class="w-100 w-md-50 border p-4"><strong>Homens:</strong> Mais do que 14 doses de destilado (350 ml), 7 taças de vinho (2 litros) ou 14 latas de cerveja (5 litros)</span>
             <span class="w-100 w-md-50 border p-4"><strong>Mulheres:</strong> Mais do que 7 doses de destilado (175 ml), 3 e 1⁄2 taças de vinho (1 litro) ou 7 latas de cerveja (2,5 litros)</span>
           </div>
         </div>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim8">
-            <label class="m-0 ml-1" for="sim7">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao8">
-            <label class="m-0 ml-1" for="nao7">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q40_alcohol_Ingested_last_week" [class.is-invalid]="q40_alcohol_Ingested_last_week.invalid && q40_alcohol_Ingested_last_week.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -161,14 +182,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">41.</div>
         <span class="col-12 col-md-9">IMC para obesidade: ≥ 27 Kg/m2 [Verificar na questão 18]</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim9">
-            <label class="m-0 ml-1" for="sim9">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao9">
-            <label class="m-0 ml-1" for="nao9">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q41_bmi_obesity" [class.is-invalid]="q41_bmi_obesity.invalid && q41_bmi_obesity.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -182,10 +200,19 @@
   </div>
   <!------------->
   <!--Intervenção-->
-  <div class="d-flex justify-content-center align-items-center p-3">
-    <input type="checkbox" id="depression-intervention">
-    <label class="mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
+  <div class="d-flex flex-wrap w-25 mx-auto justify-content-center align-items-center p-3">
+    <label class="text-center mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
+    <select class="w-100 form-control" id="depression-intervention" formControlName="need_investigation_cardio" [class.is-invalid]="need_investigation_cardio.invalid && need_investigation_cardio.touched">
+      <option value="" selected disabled>Selecione</option>
+      <option value="S">Sim</option>
+      <option value="N">Não</option>
+    </select>
   </div>
   <!--------------->
+  <!--Continue-->
+  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
+    <button class="btn btn-success" (click)="submit()">Salvar e continuar</button>
+  </div>
+  <!------------>
 </div>
 <!----------->

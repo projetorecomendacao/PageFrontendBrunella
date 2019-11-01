@@ -3,7 +3,7 @@ import {
   CognitionDeficit, Depression,
   NegativeAttitudesAging,
   PsychologicalAspects
-} from '../../../../shared/models/psychologicalAspects.model';
+} from '../../../../shared/models/psychological-aspects.model';
 import { DAOService } from '../../../../shared/dao.service';
 import { REST_URL_PSYCHOLOGICAL_ASPECTS } from '../../../../shared/REST_API_URLs';
 
@@ -35,9 +35,6 @@ export class PsychologicalAspectsComponent implements OnInit {
         negative_attitudes_aging: this.negativeAttitudesAging.getId(),
         depression: this.depression.getId(),
         comments_psico: this.comments_psico
-      }).subscribe(data => {
-        this.psychologicalAspects = new PsychologicalAspects(data);
-        console.log(this.psychologicalAspects);
-    });
+      }).subscribe(data => this.psychologicalAspects = new PsychologicalAspects(data));
   }
 }

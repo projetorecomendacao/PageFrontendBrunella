@@ -2,7 +2,7 @@
 <h2 class="text-center mt-5"><span class="bg-success rounded-pill rounded-bottom-0 text-white px-5 py-2">Incapacidade funcional</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="functionalDisabilityForm">
   <!--Perguntas-->
   <div class="p-3">
     <!--Pergunta1-->
@@ -11,14 +11,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">20.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) necessita de ajuda para fazer compras?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim1">
-            <label class="m-0 ml-1" for="sim1">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao1">
-            <label class="m-0 ml-1" for="nao1">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q20_to_shop" [class.is-invalid]="q20_to_shop.invalid && q20_to_shop.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -29,14 +26,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">21.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) necessita de ajuda para Usar meios de transporte?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim2">
-            <label class="m-0 ml-1" for="sim2">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao2">
-            <label class="m-0 ml-1" for="nao2">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q21_use_transport" [class.is-invalid]="q21_use_transport.invalid && q21_use_transport.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -47,14 +41,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">22.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) necessita de ajuda para Preparar a própria comida?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim3">
-            <label class="m-0 ml-1" for="sim3">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao3">
-            <label class="m-0 ml-1" for="nao3">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q22_to_cook" [class.is-invalid]="q22_to_cook.invalid && q22_to_cook.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -65,14 +56,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">23.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) necessita de ajuda para Usar o telefone?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim4">
-            <label class="m-0 ml-1" for="sim4">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao4">
-            <label class="m-0 ml-1" for="nao4">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q23UseTelephone" [class.is-invalid]="q23UseTelephone.invalid && q23UseTelephone.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -83,14 +71,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">24.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) necessita de ajuda para Vestir-se?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim5">
-            <label class="m-0 ml-1" for="sim5">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao5">
-            <label class="m-0 ml-1" for="nao5">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q24_dress_up" [class.is-invalid]="q24_dress_up.invalid && q24_dress_up.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -101,14 +86,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">25.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) necessita de ajuda para Tomar banho?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim6">
-            <label class="m-0 ml-1" for="sim6">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao6">
-            <label class="m-0 ml-1" for="nao6">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q25TakeShower" [class.is-invalid]="q25TakeShower.invalid && q25TakeShower.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -122,10 +104,19 @@
   </div>
   <!------------->
   <!--Intervenção-->
-  <div class="d-flex justify-content-center align-items-center p-3">
-    <input type="checkbox" id="depression-intervention">
-    <label class="mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
+  <div class="d-flex flex-wrap w-25 mx-auto justify-content-center align-items-center p-3">
+    <label class="text-center mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
+    <select class="w-100 form-control" id="depression-intervention" formControlName="need_investigation_functional" [class.is-invalid]="need_investigation_functional.invalid && need_investigation_functional.touched">
+      <option value="" selected disabled>Selecione</option>
+      <option value="S">Sim</option>
+      <option value="N">Não</option>
+    </select>
   </div>
   <!--------------->
+  <!--Continue-->
+  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
+    <button class="btn btn-success" (click)="submit()">Salvar e continuar</button>
+  </div>
+  <!------------>
 </div>
 <!----------->

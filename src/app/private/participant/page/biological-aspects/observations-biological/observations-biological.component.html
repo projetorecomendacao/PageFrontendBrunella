@@ -11,7 +11,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">54.</div>
         <span class="col-12 col-md-7">Observações sobre o bloco biológico:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <textarea class="w-100"></textarea>
+          <textarea class="w-100 form-control" [formControl]="commentsForm"></textarea>
         </div>
       </div>
     </div>
@@ -20,8 +20,10 @@
   <!------------->
   <!--Continue-->
   <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <button class="btn btn-success">Salvar e continuar</button>
+    <button class="btn btn-success" (click)="submit()">Salvar e continuar</button>
   </div>
   <!------------>
+  Valid: {{ commentsForm.valid }}
+  Value: {{ commentsForm.value }}
 </div>
 <!----------->

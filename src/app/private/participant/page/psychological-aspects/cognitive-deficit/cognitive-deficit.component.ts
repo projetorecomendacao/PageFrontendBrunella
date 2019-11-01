@@ -6,7 +6,7 @@ import {
   REST_URL_PARTICIPANT_SITUATION
 } from '../../../../../shared/REST_API_URLs';
 import { DAOService } from '../../../../../shared/dao.service';
-import { CognitionDeficit, Depression } from '../../../../../shared/models/psychologicalAspects.model';
+import { CognitionDeficit, Depression } from '../../../../../shared/models/psychological-aspects.model';
 
 @Component({
   selector: 'app-cognitive-deficit',

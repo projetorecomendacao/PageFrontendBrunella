@@ -2,7 +2,7 @@
 <h2 class="text-center mt-5"><span class="bg-success rounded-pill rounded-bottom-0 text-white px-5 py-2">Uso inadequado de medicamentos</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="misuseMedicationsForm">
   <!--Perguntas-->
   <div class="p-3">
     <!--Pergunta1-->
@@ -19,14 +19,11 @@
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">A.</div>
         <span class="col-12 col-md-8">Doença do coração (angina, infarto ou ataque cardíaco)?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim1A">
-            <label class="m-0 ml-1" for="sim1A">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao1A">
-            <label class="m-0 ml-1" for="nao1A">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_a" [class.is-invalid]="q42_diseases_last_5_years_a.invalid && q42_diseases_last_5_years_a.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -37,14 +34,11 @@
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">B.</div>
         <span class="col-12 col-md-8">Pressão alta/ hipertensão?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim1B">
-            <label class="m-0 ml-1" for="sim1B">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao1B">
-            <label class="m-0 ml-1" for="nao1B">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_b" [class.is-invalid]="q42_diseases_last_5_years_b.invalid && q42_diseases_last_5_years_b.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -55,14 +49,11 @@
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">C.</div>
         <span class="col-12 col-md-8">Derrame/AVC/Isquemia?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim1C">
-            <label class="m-0 ml-1" for="sim1C">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao1C">
-            <label class="m-0 ml-1" for="nao1C">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_c" [class.is-invalid]="q42_diseases_last_5_years_c.invalid && q42_diseases_last_5_years_c.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -73,14 +64,11 @@
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">D.</div>
         <span class="col-12 col-md-8">Diabetes Mellitus?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim1D">
-            <label class="m-0 ml-1" for="sim1D">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao1D">
-            <label class="m-0 ml-1" for="nao1D">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_d" [class.is-invalid]="q42_diseases_last_5_years_d.invalid && q42_diseases_last_5_years_d.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -91,14 +79,11 @@
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">E.</div>
         <span class="col-12 col-md-8">Tumor maligno/ Câncer?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim1E">
-            <label class="m-0 ml-1" for="sim1E">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao1E">
-            <label class="m-0 ml-1" for="nao1E">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_e" [class.is-invalid]="q42_diseases_last_5_years_e.invalid && q42_diseases_last_5_years_e.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -109,14 +94,11 @@
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">F.</div>
         <span class="col-12 col-md-8">Asma/Bronquite/Enfisema?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim1F">
-            <label class="m-0 ml-1" for="sim1F">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao1F">
-            <label class="m-0 ml-1" for="nao1F">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_f" [class.is-invalid]="q42_diseases_last_5_years_f.invalid && q42_diseases_last_5_years_f.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -127,14 +109,11 @@
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">G.</div>
         <span class="col-12 col-md-8">Osteoporose?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim1G">
-            <label class="m-0 ml-1" for="sim1G">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao1G">
-            <label class="m-0 ml-1" for="nao1G">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_g" [class.is-invalid]="q42_diseases_last_5_years_g.invalid && q42_diseases_last_5_years_g.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -145,14 +124,11 @@
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">H.</div>
         <span class="col-12 col-md-8">Reumatismo?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim1H">
-            <label class="m-0 ml-1" for="sim1H">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao1H">
-            <label class="m-0 ml-1" for="nao1H">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_h" [class.is-invalid]="q42_diseases_last_5_years_h.invalid && q42_diseases_last_5_years_h.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -163,14 +139,11 @@
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">I.</div>
         <span class="col-12 col-md-8">Tendinite?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim1I">
-            <label class="m-0 ml-1" for="sim1I">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao1I">
-            <label class="m-0 ml-1" for="nao1I">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_i" [class.is-invalid]="q42_diseases_last_5_years_i.invalid && q42_diseases_last_5_years_i.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -181,14 +154,26 @@
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">J.</div>
         <span class="col-12 col-md-8">Problemas de circulação?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim1J">
-            <label class="m-0 ml-1" for="sim1J">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao1J">
-            <label class="m-0 ml-1" for="nao1J">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_j" [class.is-invalid]="q42_diseases_last_5_years_j.invalid && q42_diseases_last_5_years_j.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <!------------->
+    <!--Pergunta1.K-->
+    <div class="container-flex escuro p-4">
+      <div class="row">
+        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">J.</div>
+        <span class="col-12 col-md-8">Depressão?</span>
+        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
+          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_k" [class.is-invalid]="q42_diseases_last_5_years_k.invalid && q42_diseases_last_5_years_k.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -199,7 +184,7 @@
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">L.</div>
         <span class="col-12 col-md-7">Outra?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100" type="text">
+          <input class="w-100 form-control" formControlName="q42_diseases_last_5_years_l" [class.is-invalid]="q42_diseases_last_5_years_l.invalid && q42_diseases_last_5_years_l.touched" type="text">
         </div>
       </div>
     </div>
@@ -218,14 +203,11 @@
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">A.</div>
         <span class="col-12 col-md-8">Dor de cabeça?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim2A">
-            <label class="m-0 ml-1" for="sim2A">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao2A">
-            <label class="m-0 ml-1" for="nao2A">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q43_health_problems_a" [class.is-invalid]="q43_health_problems_a.invalid && q43_health_problems_a.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -236,14 +218,11 @@
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">B.</div>
         <span class="col-12 col-md-8">Dor nas costas ou em outra parte do corpo?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim2B">
-            <label class="m-0 ml-1" for="sim2B">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao2B">
-            <label class="m-0 ml-1" for="nao2B">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q43_health_problems_b" [class.is-invalid]="q43_health_problems_b.invalid && q43_health_problems_b.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -254,14 +233,11 @@
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">C.</div>
         <span class="col-12 col-md-8">Alergia?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim2C">
-            <label class="m-0 ml-1" for="sim2C">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao2C">
-            <label class="m-0 ml-1" for="nao2C">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q43_health_problems_c" [class.is-invalid]="q43_health_problems_c.invalid && q43_health_problems_c.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -272,14 +248,11 @@
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">D.</div>
         <span class="col-12 col-md-8">Problema emocional?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim2D">
-            <label class="m-0 ml-1" for="sim2D">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao2D">
-            <label class="m-0 ml-1" for="nao2D">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q43_health_problems_d" [class.is-invalid]="q43_health_problems_d.invalid && q43_health_problems_d.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -290,14 +263,11 @@
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">E.</div>
         <span class="col-12 col-md-8">Tontura?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim2E">
-            <label class="m-0 ml-1" for="sim2E">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao2E">
-            <label class="m-0 ml-1" for="nao2E">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q43_health_problems_e" [class.is-invalid]="q43_health_problems_e.invalid && q43_health_problems_e.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -308,14 +278,11 @@
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">F.</div>
         <span class="col-12 col-md-8">Dificuldades para dormir?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim2F">
-            <label class="m-0 ml-1" for="sim2F">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao2F">
-            <label class="m-0 ml-1" for="nao2F">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q43_health_problems_f" [class.is-invalid]="q43_health_problems_f.invalid && q43_health_problems_f.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -324,16 +291,13 @@
     <div class="container-flex escuro p-4">
       <div class="row">
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">G.</div>
-        <span class="col-12 col-md-8">ncontinência urinária/perda de urina:?</span>
+        <span class="col-12 col-md-8">Incontinência urinária/perda de urina:?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim2G">
-            <label class="m-0 ml-1" for="sim2G">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao2G">
-            <label class="m-0 ml-1" for="nao2G">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q43_health_problems_g" [class.is-invalid]="q43_health_problems_g.invalid && q43_health_problems_g.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -344,7 +308,7 @@
         <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">H.</div>
         <span class="col-12 col-md-7">Outra?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100" type="text">
+          <input class="w-100 form-control" formControlName="q43_health_problems_h" [class.is-invalid]="q43_health_problems_h.invalid && q43_health_problems_h.touched" type="text">
         </div>
       </div>
     </div>
@@ -355,7 +319,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">44.</div>
         <span class="col-12 col-md-8">Quantidade de diagnósticos (doenças):</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100" type="number">
+          <input class="w-100 form-control" formControlName="q44_amount_diagnostics" [class.is-invalid]="q44_amount_diagnostics.invalid && q44_amount_diagnostics.touched" type="number">
         </div>
       </div>
     </div>
@@ -366,7 +330,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">45.</div>
         <span class="col-12 col-md-8">[Solicitar as bulas dos medicamentos utilizados pelo(a) senhor(a) e fazer registro legível dos respectivos nomes e classes terapêuticas]:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <textarea class="w-100"></textarea>
+          <textarea class="w-100 form-control" formControlName="q45_medicines" [class.is-invalid]="q45_medicines.invalid && q45_medicines.touched"></textarea>
         </div>
       </div>
     </div>
@@ -377,14 +341,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">46.</div>
         <span class="col-12 col-md-9">Nos últimos 6 meses, a quantidade de medicamentos que o(a) senhor(a) toma aumentou muito?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim4">
-            <label class="m-0 ml-1" for="sim4">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao4">
-            <label class="m-0 ml-1" for="nao4">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q46_medicines_increase" [class.is-invalid]="q46_medicines_increase.invalid && q46_medicines_increase.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -395,14 +356,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">47.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) sabe para que serve todos os seus medicamentos?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim5">
-            <label class="m-0 ml-1" for="sim5">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao5">
-            <label class="m-0 ml-1" for="nao5">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q47_know_medicines" [class.is-invalid]="q47_know_medicines.invalid && q47_know_medicines.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -413,14 +371,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">48.</div>
         <span class="col-12 col-md-9">Os medicamentos que o(a) senhor(a) faz uso foram prescritos por médicos diferentes?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim6">
-            <label class="m-0 ml-1" for="sim6">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao6">
-            <label class="m-0 ml-1" for="nao6">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q48_medications_prescribed" [class.is-invalid]="q48_medications_prescribed.invalid && q48_medications_prescribed.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -431,14 +386,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">49.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) toma os medicamentos de acordo com as orientações médicas?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim7">
-            <label class="m-0 ml-1" for="sim7">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao7">
-            <label class="m-0 ml-1" for="nao7">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q49_medicine_medical_advice" [class.is-invalid]="q49_medicine_medical_advice.invalid && q49_medicine_medical_advice.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -449,14 +401,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">50.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) alguma vez já deixou de tomar os medicamentos?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim8">
-            <label class="m-0 ml-1" for="sim8">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao8">
-            <label class="m-0 ml-1" for="nao8">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q50_already_stopped_medicines" [class.is-invalid]="q50_already_stopped_medicines.invalid && q50_already_stopped_medicines.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -467,14 +416,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">51.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) tem o costume de tomar remédios por conta própria?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim9">
-            <label class="m-0 ml-1" for="sim9">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao9">
-            <label class="m-0 ml-1" for="nao9">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q51_self_medication" [class.is-invalid]="q51_self_medication.invalid && q51_self_medication.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -485,14 +431,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">52.</div>
         <span class="col-12 col-md-9">Verificar na lista de medicamentos potencialmente inapropriados para idosos brasileiros (anexada ao PAGe) se o(a) idoso(a) toma algum dos medicamentos citados na mesma. [Caso sim, pontue ao lado e os deixe destacados na lista]:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim10">
-            <label class="m-0 ml-1" for="sim10">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao10">
-            <label class="m-0 ml-1" for="nao10">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q52_inappropriate_medication" [class.is-invalid]="q52_inappropriate_medication.invalid && q52_inappropriate_medication.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -503,14 +446,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">53.</div>
         <span class="col-12 col-md-9">Cálculo do risco para reações adversas. [Verifique as respostas das questões 30 e 38. Circule e cruze as informações na tabela abaixo. Em seguida, verifique os registros da questão 31 e assinale ao lado se o(a) idoso(a) utiliza uma quantidade de medicamentos superior ao valor indicado na tabela] :</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim11">
-            <label class="m-0 ml-1" for="sim11">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao11">
-            <label class="m-0 ml-1" for="nao11">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q53_risk_adverse_reaction" [class.is-invalid]="q53_risk_adverse_reaction.invalid && q53_risk_adverse_reaction.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
       <table class="mx-auto mt-3" border="1">
@@ -559,10 +499,19 @@
   </div>
   <!------------->
   <!--Intervenção-->
-  <div class="d-flex justify-content-center align-items-center p-3">
-    <input type="checkbox" id="depression-intervention">
-    <label class="mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
+  <div class="d-flex flex-wrap w-25 mx-auto justify-content-center align-items-center p-3">
+    <label class="text-center mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
+    <select class="w-100 form-control" id="depression-intervention" formControlName="need_investigation_misuse" [class.is-invalid]="need_investigation_misuse.invalid && need_investigation_misuse.touched">
+      <option value="" selected disabled>Selecione</option>
+      <option value="S">Sim</option>
+      <option value="N">Não</option>
+    </select>
   </div>
   <!--------------->
+  <!--Continue-->
+  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
+    <button class="btn btn-success" (click)="submit()">Salvar e continuar</button>
+  </div>
+  <!------------>
 </div>
 <!----------->

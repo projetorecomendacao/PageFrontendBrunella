@@ -1,8 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { REST_URL_NEGATIVE_ATTITUDE_AGING } from '../../../../../shared/REST_API_URLs';
-import { NegativeAttitudesAging } from '../../../../../shared/models/psychologicalAspects.model';
-import { DAOService } from '../../../../../shared/dao.service';
 
 @Component({
   selector: 'app-observations-psychological',
@@ -14,7 +11,7 @@ export class ObservationsPsychologicalComponent implements OnInit {
   @Output('comments') commentsOutput = new EventEmitter<string>();
   private commentsForm: FormControl;
 
-  constructor(private dao: DAOService) { }
+  constructor() { }
 
   ngOnInit() {
     if (this.commentsInput) this.commentsForm = new FormControl(this.commentsForm);

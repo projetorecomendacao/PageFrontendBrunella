@@ -6,7 +6,7 @@ import {
   REST_URL_DEPRESSION,
   REST_URL_NEGATIVE_ATTITUDE_AGING
 } from '../../../../../shared/REST_API_URLs';
-import { Depression, NegativeAttitudesAging } from '../../../../../shared/models/psychologicalAspects.model';
+import { Depression, NegativeAttitudesAging } from '../../../../../shared/models/psychological-aspects.model';
 
 @Component({
   selector: 'app-negative-attitudes-aging',

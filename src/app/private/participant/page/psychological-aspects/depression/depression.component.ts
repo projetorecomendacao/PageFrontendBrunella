@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DAOService } from '../../../../../shared/dao.service';
 import { REST_URL_COGNITION_DEFICIT, REST_URL_DEPRESSION } from '../../../../../shared/REST_API_URLs';
-import { CognitionDeficit, Depression } from '../../../../../shared/models/psychologicalAspects.model';
+import { CognitionDeficit, Depression } from '../../../../../shared/models/psychological-aspects.model';
 
 @Component({
   selector: 'app-depression',

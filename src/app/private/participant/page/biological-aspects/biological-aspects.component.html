@@ -1,6 +1,6 @@
-<app-sensory-deficit></app-sensory-deficit>
-<app-functional-disability></app-functional-disability>
-<app-malnutrition></app-malnutrition>
-<app-cardiovascular-factors></app-cardiovascular-factors>
-<app-misuse-medications></app-misuse-medications>
-<app-observations-biological></app-observations-biological>
+<app-sensory-deficit [sensoryDeficit]="sensoryDeficit" (sensoryDeficit)="setSensoryDeficit($event)"></app-sensory-deficit>
+<app-functional-disability [functionalDisability]="functionalDisability" (functionalDisability)="setFunctionalDisability($event)"></app-functional-disability>
+<app-malnutrition [malnutrition]="malnutrition" (malnutrition)="setMalnutrition($event)"></app-malnutrition>
+<app-cardiovascular-factors [cardiovascularFactors]="cardiovascularFactors" (cardiovascularFactors)="setCardiovascularFactors($event)"></app-cardiovascular-factors>
+<app-misuse-medications [misuseMedications]="misuseMedications" (misuseMedications)="setMisuseMedications($event)"></app-misuse-medications>
+<app-observations-biological [comments]="comments_bio" (comments)="setComments($event)"></app-observations-biological>

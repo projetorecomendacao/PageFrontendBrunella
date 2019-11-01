@@ -2,7 +2,7 @@
 <h2 class="text-center mt-5"><span class="bg-success rounded-pill rounded-bottom-0 text-white px-5 py-2">Desnutrição</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="malnutritionForm">
   <!--Perguntas-->
   <div class="p-3">
     <!--Pergunta1-->
@@ -11,14 +11,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">26.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) que está desnutrido?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim1">
-            <label class="m-0 ml-1" for="sim1">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao1">
-            <label class="m-0 ml-1" for="nao1">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="d26_yourself_malnourished" [class.is-invalid]="d26_yourself_malnourished.invalid && d26_yourself_malnourished.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -29,14 +26,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">27.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) tem lesões na região bucal ou algum outro problema que provoque dificuldades de mastigação?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim2">
-            <label class="m-0 ml-1" for="sim2">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao2">
-            <label class="m-0 ml-1" for="nao2">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="d27_chewing_mouth_problems" [class.is-invalid]="d27_chewing_mouth_problems.invalid && d27_chewing_mouth_problems.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -47,14 +41,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">28.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) faz menos de três refeições por dia?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim3">
-            <label class="m-0 ml-1" for="sim3">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao3">
-            <label class="m-0 ml-1" for="nao3">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="d28_less3_meal_daily" [class.is-invalid]="d28_less3_meal_daily.invalid && d28_less3_meal_daily.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -65,14 +56,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">29.</div>
         <span class="col-12 col-md-9">Nos últimos 3 meses, o(a) senhor(a) Diminuiu sua ingesta alimentar sem motivo?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim4">
-            <label class="m-0 ml-1" for="sim4">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao4">
-            <label class="m-0 ml-1" for="nao4">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="d29_decreases_amount_food" [class.is-invalid]="d29_decreases_amount_food.invalid && d29_decreases_amount_food.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -83,14 +71,13 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">30.</div>
         <span class="col-12 col-md-9">Nos últimos 3 meses, o(a) senhor(a) Perdeu peso sem motivo aparente?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim5">
-            <label class="m-0 ml-1" for="sim5">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao5">
-            <label class="m-0 ml-1" for="nao5">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="d30_lost_weight_no_reason" [class.is-invalid]="d30_lost_weight_no_reason.invalid && d30_lost_weight_no_reason.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="Não">Não</option>
+            <option value="Não sabe">Não sabe</option>
+            <option value="Entre 1 e 3 KG">Entre 1 e 3 KG</option>
+            <option value="Mais de 3 KG">Mais de 3 Kg</option>
+          </select>
         </div>
       </div>
     </div>
@@ -101,14 +88,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">31.</div>
         <span class="col-12 col-md-9">Passou por algum estresse psicológico, doença aguda ou internações?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim6">
-            <label class="m-0 ml-1" for="sim6">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao6">
-            <label class="m-0 ml-1" for="nao6">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="d31_stress_illness_hospitalization" [class.is-invalid]="d31_stress_illness_hospitalization.invalid && d31_stress_illness_hospitalization.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -119,14 +103,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">32.</div>
         <span class="col-12 col-md-9">Índice de Massa Corporal (peso[kg]/ estatura[m2]) = kg/m2) igual ou menor que 22 kg/m2?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim7">
-            <label class="m-0 ml-1" for="sim7">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao7">
-            <label class="m-0 ml-1" for="nao7">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q32_bmi_less22" [class.is-invalid]="q32_bmi_less22.invalid && q32_bmi_less22.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -140,10 +121,19 @@
   </div>
   <!------------->
   <!--Intervenção-->
-  <div class="d-flex justify-content-center align-items-center p-3">
-    <input type="checkbox" id="depression-intervention">
-    <label class="mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
+  <div class="d-flex flex-wrap w-25 mx-auto justify-content-center align-items-center p-3">
+    <label class="text-center mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
+    <select class="w-100 form-control" id="depression-intervention" formControlName="need_investigation_malnutrition" [class.is-invalid]="need_investigation_malnutrition.invalid && need_investigation_malnutrition.touched">
+      <option value="" selected disabled>Selecione</option>
+      <option value="S">Sim</option>
+      <option value="N">Não</option>
+    </select>
   </div>
   <!--------------->
+  <!--Continue-->
+  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
+    <button class="btn btn-success" (click)="submit()">Salvar e continuar</button>
+  </div>
+  <!------------>
 </div>
 <!----------->
