@@ -2,7 +2,7 @@
 <h2 class="text-center mt-5"><span class="bg-warning rounded-pill rounded-bottom-0 text-white px-5 py-2">Problemas Ambientais</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="environmentalProblemsForm">
   <!--Perguntas-->
   <div class="p-3">
     <!--Ambiente interno-->
@@ -14,14 +14,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">63.</div>
         <span class="col-12 col-md-9">Na casa do(a) senhor(a):[Ambiente interno] Os móveis são estáveis?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim1">
-            <label class="m-0 ml-1" for="sim1">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao1">
-            <label class="m-0 ml-1" for="nao1">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q63_estable_furniture" [class.is-invalid]="q63_estable_furniture.invalid && q63_estable_furniture.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -32,14 +29,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">64.</div>
         <span class="col-12 col-md-9">Na casa do(a) senhor(a): Há objetos e/ou tapetes soltos nas áreas de circulação?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim2">
-            <label class="m-0 ml-1" for="sim2">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao2">
-            <label class="m-0 ml-1" for="nao2">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q64_loose_objects_carpets" [class.is-invalid]="q64_loose_objects_carpets.invalid && q64_loose_objects_carpets.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -50,14 +44,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">65.</div>
         <span class="col-12 col-md-9">Na casa do(a) senhor(a): O piso é escorregadio (ex. encerado, molhado)?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim3">
-            <label class="m-0 ml-1" for="sim3">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao3">
-            <label class="m-0 ml-1" for="nao3">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q65_slippery_floor" [class.is-invalid]="q65_slippery_floor.invalid && q65_slippery_floor.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -68,14 +59,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">66.</div>
         <span class="col-12 col-md-9">Na casa do(a) senhor(a): As escadas possuem corrimão em ambos os lados?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim4">
-            <label class="m-0 ml-1" for="sim4">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao4">
-            <label class="m-0 ml-1" for="nao4">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q66_handrail_on_stairs" [class.is-invalid]="q66_handrail_on_stairs.invalid && q66_handrail_on_stairs.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -86,14 +74,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">67.</div>
         <span class="col-12 col-md-9">Na casa do(a) senhor(a): As escadas/ degraus são iluminados adequadamente:</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim5">
-            <label class="m-0 ml-1" for="sim5">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao5">
-            <label class="m-0 ml-1" for="nao5">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q67_lighted_stairs" [class.is-invalid]="q67_lighted_stairs.invalid && q67_lighted_stairs.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -104,14 +89,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">68.</div>
         <span class="col-12 col-md-9">Na casa do(a) senhor(a): Os degraus são adequados (tamanho, rebordos, largura e padronagem, etc)?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim6">
-            <label class="m-0 ml-1" for="sim6">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao6">
-            <label class="m-0 ml-1" for="nao6">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q68_suitable_stairs_steps" [class.is-invalid]="q68_suitable_stairs_steps.invalid && q68_suitable_stairs_steps.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -122,14 +104,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">69.</div>
         <span class="col-12 col-md-9">Na casa do(a) senhor(a): Há tapetes antiderrapantes (fora e dentro box)?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim7">
-            <label class="m-0 ml-1" for="sim7">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao7">
-            <label class="m-0 ml-1" for="nao7">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q69_non_slippery_carpet" [class.is-invalid]="q69_non_slippery_carpet.invalid && q69_non_slippery_carpet.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -144,14 +123,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">70.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) costuma: Subir em banquetas ou cadeiras para alcançar objetos altos?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim8">
-            <label class="m-0 ml-1" for="sim8">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao8">
-            <label class="m-0 ml-1" for="nao8">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q70_get_on_stool" [class.is-invalid]="q70_get_on_stool.invalid && q70_get_on_stool.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -162,14 +138,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">71.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) costuma: Deixa as luzes apagadas quando se levanta à noite:</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim9">
-            <label class="m-0 ml-1" for="sim9">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao9">
-            <label class="m-0 ml-1" for="nao9">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q71_turn_lights_off" [class.is-invalid]="q71_turn_lights_off.invalid && q71_turn_lights_off.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -180,14 +153,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">72.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) costuma: Utiliza calçados seguros e adequados (solado antiderrapante, bem ajustados e firmes no pé, sem saltos, etc)?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim10">
-            <label class="m-0 ml-1" for="sim10">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao10">
-            <label class="m-0 ml-1" for="nao10">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q72_safe_shoes" [class.is-invalid]="q72_safe_shoes.invalid && q72_safe_shoes.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -202,14 +172,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">73.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) está satisfeito com As calçadas do seu bairro são bem cuidadas (pavimentadas, lisas e sem buracos)?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim11">
-            <label class="m-0 ml-1" for="sim11">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao11">
-            <label class="m-0 ml-1" for="nao11">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q73_manicure_sidewalks" [class.is-invalid]="q73_manicure_sidewalks.invalid && q73_manicure_sidewalks.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -220,14 +187,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">74.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) está satisfeito com o acesso ao transporte público no seu bairro?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim12">
-            <label class="m-0 ml-1" for="sim12">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao12">
-            <label class="m-0 ml-1" for="nao12">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q74_public_transport_access" [class.is-invalid]="q74_public_transport_access.invalid && q74_public_transport_access.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -238,14 +202,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">75.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) está satisfeito com o acesso ao comércio no seu bairro?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim13">
-            <label class="m-0 ml-1" for="sim13">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao13">
-            <label class="m-0 ml-1" for="nao13">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q75_commerce_access" [class.is-invalid]="q75_commerce_access.invalid && q75_commerce_access.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -256,14 +217,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">76.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) está satisfeito com a facilidade e prazer em andar (a pé/ com cadeira de rodas/bengala/andador) no seu bairro?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim14">
-            <label class="m-0 ml-1" for="sim14">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao14">
-            <label class="m-0 ml-1" for="nao14">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q76_ease_plasewalking" [class.is-invalid]="q76_ease_plasewalking.invalid && q76_ease_plasewalking.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -274,14 +232,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">77.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) está satisfeito com o acesso à diversão no seu bairro (restaurantes, cinema, clubes, etc.)?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim15">
-            <label class="m-0 ml-1" for="sim15">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao15">
-            <label class="m-0 ml-1" for="nao15">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q77_fun_access" [class.is-invalid]="q77_fun_access.invalid && q77_fun_access.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -292,14 +247,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">78.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) está satisfeito com a segurança quanto à ameaça da criminalidade no seu bairro?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim16">
-            <label class="m-0 ml-1" for="sim16">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao16">
-            <label class="m-0 ml-1" for="nao16">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q78_safety" [class.is-invalid]="q78_safety.invalid && q78_safety.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -313,10 +265,19 @@
   </div>
   <!------------->
   <!--Intervenção-->
-  <div class="d-flex justify-content-center align-items-center p-3">
-    <input type="checkbox" id="depression-intervention">
-    <label class="mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
+  <div class="d-flex flex-wrap w-25 mx-auto justify-content-center align-items-center p-3">
+    <label class="text-center mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
+    <select class="w-100 form-control" id="depression-intervention" formControlName="need_investigation_env" [class.is-invalid]="need_investigation_env.invalid && need_investigation_env.touched">
+      <option value="" selected disabled>Selecione</option>
+      <option value="S">Sim</option>
+      <option value="N">Não</option>
+    </select>
   </div>
   <!--------------->
+  <!--Continue-->
+  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
+    <button class="btn btn-warning text-white"" (click)="submit()">Salvar e continuar</button>
+  </div>
+  <!------------>
 </div>
 <!----------->

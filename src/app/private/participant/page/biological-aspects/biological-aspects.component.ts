@@ -1,9 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  CognitionDeficit,
-  Depression,
-  NegativeAttitudesAging, PsychologicalAspects
-} from '../../../../shared/models/psychological-aspects.model';
 import { DAOService } from '../../../../shared/dao.service';
 import { REST_URL_BIOLOGICAL_ASPECTS, REST_URL_PSYCHOLOGICAL_ASPECTS } from '../../../../shared/REST_API_URLs';
 import {
@@ -41,7 +36,6 @@ export class BiologicalAspectsComponent implements OnInit {
   setComments(c: string) { this.comments_bio = c; this.submit(); }
 
   submit() {
-    console.log(this.sensoryDeficit, this.functionalDisability, this.malnutrition, this.cardiovascularFactors, this.misuseMedications, this.comments_bio);
     if (this.sensoryDeficit && this.functionalDisability && this.malnutrition && this.cardiovascularFactors && this.misuseMedications && this.comments_bio) this.dao.postObject(REST_URL_BIOLOGICAL_ASPECTS, {
       sensoryDeficit: this.sensoryDeficit.getId(),
       functionalDisability: this.functionalDisability.getId(),

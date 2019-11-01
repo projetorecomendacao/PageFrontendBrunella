@@ -2,7 +2,7 @@
 <h2 class="text-center mt-5"><span class="bg-warning rounded-pill rounded-bottom-0 text-white px-5 py-2">Violência</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="violenceForm">
   <!--Perguntas-->
   <div class="p-3">
     <!--Pergunta1-->
@@ -11,14 +11,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">79.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) tem medo de alguém próximo/do seu convívio? </span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim1">
-            <label class="m-0 ml-1" for="sim1">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao1">
-            <label class="m-0 ml-1" for="nao1">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q79_afraid_close_person" [class.is-invalid]="q79_afraid_close_person.invalid && q79_afraid_close_person.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -29,14 +26,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">80.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) se sente só ou abandonado?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim2">
-            <label class="m-0 ml-1" for="sim2">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao2">
-            <label class="m-0 ml-1" for="nao2">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q80_feels_abandoned" [class.is-invalid]="q80_feels_abandoned.invalid && q80_feels_abandoned.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -47,14 +41,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">81.</div>
         <span class="col-12 col-md-9">Alguém tem falado com o(a) senhor(a) de forma que se sinta constrangido(a) ou desrespeitado(a)?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim3">
-            <label class="m-0 ml-1" for="sim3">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao3">
-            <label class="m-0 ml-1" for="nao3">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q81_forced" [class.is-invalid]="q81_forced.invalid && q81_forced.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -65,14 +56,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">82.</div>
         <span class="col-12 col-md-9">Alguém tem agredido o(a) senhor(a) fisicamente?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim4">
-            <label class="m-0 ml-1" for="sim4">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao4">
-            <label class="m-0 ml-1" for="nao4">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q82_assauteld" [class.is-invalid]="q82_assauteld.invalid && q82_assauteld.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -83,14 +71,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">83.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) tem passado necessidade de roupas, alimentação, medicamentos ou outras?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim5">
-            <label class="m-0 ml-1" for="sim5">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao5">
-            <label class="m-0 ml-1" for="nao5">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q83_in_need" [class.is-invalid]="q83_in_need.invalid && q83_in_need.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -101,14 +86,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">84.</div>
         <span class="col-12 col-md-9">Alguém tem usado o dinheiro do(a) senhor(a) sem a sua autorização?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim6">
-            <label class="m-0 ml-1" for="sim6">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao6">
-            <label class="m-0 ml-1" for="nao6">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q84_someone_used_money" [class.is-invalid]="q84_someone_used_money.invalid && q84_someone_used_money.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -119,14 +101,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">85.</div>
         <span class="col-12 col-md-9">Alguém do seu convívio já tocou o corpo do(a) senhor(a) sem o seu consentimento?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim7">
-            <label class="m-0 ml-1" for="sim7">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao7">
-            <label class="m-0 ml-1" for="nao7">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q85_touched_without_permission" [class.is-invalid]="q85_touched_without_permission.invalid && q85_touched_without_permission.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -137,14 +116,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">86.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) está deixando de cuidar da sua própria saúde e/ou segurança?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim8">
-            <label class="m-0 ml-1" for="sim8">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao8">
-            <label class="m-0 ml-1" for="nao8">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q86_dont_take_care_health" [class.is-invalid]="q86_dont_take_care_health.invalid && q86_dont_take_care_health.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -158,10 +134,19 @@
   </div>
   <!------------->
   <!--Intervenção-->
-  <div class="d-flex justify-content-center align-items-center p-3">
-    <input type="checkbox" id="depression-intervention">
-    <label class="mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
+  <div class="d-flex flex-wrap w-25 mx-auto justify-content-center align-items-center p-3">
+    <label class="text-center mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
+    <select class="w-100 form-control" id="depression-intervention" formControlName="need_investigation_violence" [class.is-invalid]="need_investigation_violence.invalid && need_investigation_violence.touched">
+      <option value="" selected disabled>Selecione</option>
+      <option value="S">Sim</option>
+      <option value="N">Não</option>
+    </select>
   </div>
   <!--------------->
+  <!--Continue-->
+  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
+    <button class="btn btn-warning text-white"" (click)="submit()">Salvar e continuar</button>
+  </div>
+  <!------------>
 </div>
 <!----------->

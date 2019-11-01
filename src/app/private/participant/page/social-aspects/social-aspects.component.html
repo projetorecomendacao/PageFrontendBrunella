@@ -1,4 +1,4 @@
-<app-low-social-support></app-low-social-support>
-<app-environmental-problems></app-environmental-problems>
-<app-violence></app-violence>
-<app-observations-social></app-observations-social>
+<app-low-social-support [lowSocialSupport]="lowSocialSupport" (lowSocialSupport)="setLowSocialSupport($event)"></app-low-social-support>
+<app-environmental-problems [environmentalProblems]="environmentalProblems" (environmentalProblems)="setEnvironmentalProblems($event)"></app-environmental-problems>
+<app-violence [violence]="violence" (violence)="setViolence($event)"></app-violence>
+<app-observations-social [comments]="comments_social" (comments)="setComments($event)"></app-observations-social>

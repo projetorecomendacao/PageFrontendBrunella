@@ -2,7 +2,7 @@
 <h2 class="text-center mt-5"><span class="bg-warning rounded-pill rounded-bottom-0 text-white px-5 py-2">Baixo suporte Social</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="lowSocialSupportForm">
   <!--Perguntas-->
   <div class="p-3">
     <!--Pergunta1-->
@@ -11,14 +11,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">54.A.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) tem: cônjuge?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim1">
-            <label class="m-0 ml-1" for="sim1">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao1">
-            <label class="m-0 ml-1" for="nao1">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q54_spouse" [class.is-invalid]="q54_spouse.invalid && q54_spouse.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -29,14 +26,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">54.B.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) tem: Mãe?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim2">
-            <label class="m-0 ml-1" for="sim2">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao2">
-            <label class="m-0 ml-1" for="nao2">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q54_mother" [class.is-invalid]="q54_mother.invalid && q54_mother.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -47,14 +41,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">54.C.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) tem: Pai?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim3">
-            <label class="m-0 ml-1" for="sim3">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao3">
-            <label class="m-0 ml-1" for="nao3">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q54_father" [class.is-invalid]="q54_father.invalid && q54_father.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -65,7 +56,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">54.D.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) tem quantos irmãos?</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100" type="text">
+          <input class="w-100 form-control" formControlName="q54_brothers" [class.is-invalid]="q54_brothers.invalid && q54_brothers.touched" type="number">
         </div>
       </div>
     </div>
@@ -76,7 +67,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">54.E.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) tem quantos filhos?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <input class="w-100" type="text">
+          <input class="w-100 form-control" formControlName="q54_children" [class.is-invalid]="q54_children.invalid && q54_children.touched" type="number">
         </div>
       </div>
     </div>
@@ -87,7 +78,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">54.F.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) tem quantos netos?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <input class="w-100" type="text">
+          <input class="w-100 form-control" formControlName="q54_gran_children" [class.is-invalid]="q54_gran_children.invalid && q54_gran_children.touched" type="number">
         </div>
       </div>
     </div>
@@ -98,14 +89,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">20.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) encontra familiares e/ou amigos com frequência?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim7">
-            <label class="m-0 ml-1" for="sim7">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao7">
-            <label class="m-0 ml-1" for="nao7">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q55_meet_family_friends" [class.is-invalid]="q55_meet_family_friends.invalid && q55_meet_family_friends.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -116,14 +104,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">21.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) participa de decisões importantes da sua família?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim8">
-            <label class="m-0 ml-1" for="sim8">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao8">
-            <label class="m-0 ml-1" for="nao8">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q56_participate_family_decisions" [class.is-invalid]="q56_participate_family_decisions.invalid && q56_participate_family_decisions.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -134,14 +119,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">22.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) se sente satisfeito(a) com o relacionamento afetivo que tem com os seus familiares?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim9">
-            <label class="m-0 ml-1" for="sim9">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao9">
-            <label class="m-0 ml-1" for="nao9">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q57_satisfied_family_relationship" [class.is-invalid]="q57_satisfied_family_relationship.invalid && q57_satisfied_family_relationship.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -152,14 +134,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">20.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) tem ajuda de alguém se precisar de dinheiro?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim10">
-            <label class="m-0 ml-1" for="sim10">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao10">
-            <label class="m-0 ml-1" for="nao10">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q58_helped_if_need_money" [class.is-invalid]="q58_helped_if_need_money.invalid && q58_helped_if_need_money.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -170,14 +149,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">21.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) pode contar com alguém para ajuda-lo(a) a resolver problemas?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim11">
-            <label class="m-0 ml-1" for="sim11">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao11">
-            <label class="m-0 ml-1" for="nao11">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q59_someone_helps_if_need" [class.is-invalid]="q59_someone_helps_if_need.invalid && q59_someone_helps_if_need.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -188,14 +164,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">22.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) tem pessoas com quem possa se divertir e relaxar?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim12">
-            <label class="m-0 ml-1" for="sim12">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao12">
-            <label class="m-0 ml-1" for="nao12">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q60_someone_to_have_fun" [class.is-invalid]="q60_someone_to_have_fun.invalid && q60_someone_to_have_fun.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -206,14 +179,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">21.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) participa de eventos sócio-culturais, tais como: peças de teatro, cinema, universidade aberta a terceira idade, centro de convivência, festas, ligados à religião, etc).</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim13">
-            <label class="m-0 ml-1" for="sim13">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao13">
-            <label class="m-0 ml-1" for="nao13">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q61_participate_social_events" [class.is-invalid]="q61_participate_social_events.invalid && q61_participate_social_events.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -224,14 +194,11 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">22.</div>
         <span class="col-12 col-md-9">O(A) senhor(a) é acompanhado regularmente por serviços de saúde?</span>
         <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="sim14">
-            <label class="m-0 ml-1" for="sim14">Sim</label>
-          </div>
-          <div class="d-flex justify-content-center align-items-center flex-wrap">
-            <input type="checkbox" id="nao14">
-            <label class="m-0 ml-1" for="nao14">Não</label>
-          </div>
+          <select class="w-100 form-control" formControlName="q62_regulary_healt_services" [class.is-invalid]="q62_regulary_healt_services.invalid && q62_regulary_healt_services.touched">
+            <option value="" selected disabled>Selecione</option>
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
         </div>
       </div>
     </div>
@@ -245,10 +212,19 @@
   </div>
   <!------------->
   <!--Intervenção-->
-  <div class="d-flex justify-content-center align-items-center p-3">
-    <input type="checkbox" id="depression-intervention">
-    <label class="mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
+  <div class="d-flex flex-wrap w-25 mx-auto justify-content-center align-items-center p-3">
+    <label class="text-center mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
+    <select class="w-100 form-control" id="depression-intervention" formControlName="need_investigation_low" [class.is-invalid]="need_investigation_low.invalid && need_investigation_low.touched">
+      <option value="" selected disabled>Selecione</option>
+      <option value="S">Sim</option>
+      <option value="N">Não</option>
+    </select>
   </div>
   <!--------------->
+  <!--Continue-->
+  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
+    <button class="btn btn-warning text-white"" (click)="submit()">Salvar e continuar</button>
+  </div>
+  <!------------>
 </div>
 <!----------->

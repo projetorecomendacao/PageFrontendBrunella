@@ -17,3 +17,10 @@ export const REST_URL_MALNUTRITION = REST_URL + 'malnutrition/';
 export const REST_URL_CARDIO_VASCULAR_FACTOR = REST_URL + 'cardiovascularFactors/';
 export const REST_URL_MISUSE_MEDICATION = REST_URL + 'misuseMedications/';
 export const REST_URL_BIOLOGICAL_ASPECTS = REST_URL + 'biologicalAspects/';
+
+export const REST_URL_LOW_SOCIAL_SUPPORT = REST_URL + 'lowSocialSupport/';
+export const REST_URL_ENVIRONMENTAL_PROBLEMS = REST_URL + 'environmentalProblems/';
+export const REST_URL_VIOLENCE = REST_URL + 'violence/';
+export const REST_URL_SOCIAL_ASPECTS = REST_URL + 'socialAspects/';
+
+export const REST_URL_FALLS = REST_URL + 'falls/';
