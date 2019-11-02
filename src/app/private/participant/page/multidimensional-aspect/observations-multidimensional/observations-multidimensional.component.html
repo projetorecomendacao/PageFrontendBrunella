@@ -11,7 +11,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-danger font-weight-bold">9.</div>
         <span class="col-12 col-md-7">Observações sobre o bloco multidimensional:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <textarea class="w-100"></textarea>
+          <textarea class="w-100 form-control" [formControl]="commentsForm"></textarea>
         </div>
       </div>
     </div>
@@ -20,7 +20,7 @@
   <!------------->
   <!--Continue-->
   <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <button class="btn btn-danger text-white">Salvar e continuar</button>
+    <button class="btn btn-danger text-white" (click)="submit()">Salvar e continuar</button>
   </div>
   <!------------>
 </div>

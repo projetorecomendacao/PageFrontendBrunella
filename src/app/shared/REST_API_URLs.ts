@@ -24,3 +24,4 @@ export const REST_URL_VIOLENCE = REST_URL + 'violence/';
 export const REST_URL_SOCIAL_ASPECTS = REST_URL + 'socialAspects/';
 
 export const REST_URL_FALLS = REST_URL + 'falls/';
+export const REST_URL_MULTIDISCIPLINARY_DOMAIN = REST_URL + 'multidisciplinaryDomain/';
