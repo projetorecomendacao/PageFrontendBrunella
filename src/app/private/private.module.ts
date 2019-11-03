@@ -39,6 +39,7 @@ import {
 import {
   ObservationsMultidimensionalComponent
 } from './participant/page/multidimensional-aspect/observations-multidimensional/observations-multidimensional.component';
+import { UserService } from '../security/user.service';
 
 
 
@@ -76,6 +77,7 @@ import {
     CommonModule,
     PrivateRoutingModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers: [UserService]
 })
 export class PrivateModule { }

@@ -25,3 +25,5 @@ export const REST_URL_SOCIAL_ASPECTS = REST_URL + 'socialAspects/';
 
 export const REST_URL_FALLS = REST_URL + 'falls/';
 export const REST_URL_MULTIDISCIPLINARY_DOMAIN = REST_URL + 'multidisciplinaryDomain/';
+
+export const REST_URL_PAGE = REST_URL + 'page/';

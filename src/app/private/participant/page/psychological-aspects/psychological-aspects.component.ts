@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   CognitionDeficit, Depression,
   NegativeAttitudesAging,
@@ -6,6 +6,7 @@ import {
 } from '../../../../shared/models/psychological-aspects.model';
 import { DAOService } from '../../../../shared/dao.service';
 import { REST_URL_PSYCHOLOGICAL_ASPECTS } from '../../../../shared/REST_API_URLs';
+import { ParticipantSituation } from '../../../../shared/models/participant.model';
 
 @Component({
   selector: 'app-psychological-aspects',
@@ -13,12 +14,13 @@ import { REST_URL_PSYCHOLOGICAL_ASPECTS } from '../../../../shared/REST_API_URLs
 })
 export class PsychologicalAspectsComponent implements OnInit {
 
+  @Input('psychologicalAspect') psychologicalAspectInput: PsychologicalAspects;
+  @Output('psychologicalAspect') psychologicalAspectOutput = new EventEmitter<PsychologicalAspects>();
+
   private cognitionDeficit: CognitionDeficit;
   private negativeAttitudesAging: NegativeAttitudesAging;
   private depression: Depression;
   private comments_psico: string;
-
-  private psychologicalAspects: PsychologicalAspects;
 
   constructor(private dao: DAOService) { }
 
@@ -35,6 +37,9 @@ export class PsychologicalAspectsComponent implements OnInit {
         negative_attitudes_aging: this.negativeAttitudesAging.getId(),
         depression: this.depression.getId(),
         comments_psico: this.comments_psico
-      }).subscribe(data => this.psychologicalAspects = new PsychologicalAspects(data));
+      }).subscribe(data => {
+      this.psychologicalAspectInput = new PsychologicalAspects(data);
+      this.psychologicalAspectOutput.emit(this.psychologicalAspectInput);
+    });
   }
 }

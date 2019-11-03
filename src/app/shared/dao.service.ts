@@ -15,12 +15,10 @@ export class DAOService {
     }
 
     postObject(urlObject: string, object: any) {
-      console.log('posted: ', object);
       return this.http.post(urlObject, object);
     }
 
     patchObject(urlObject: string, object: any) {
-      console.log('patched: ', object);
       return this.http.patch(urlObject + `${object.id}/`,  object);
     }
 

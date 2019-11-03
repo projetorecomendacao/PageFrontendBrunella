@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DAOService } from '../../../../shared/dao.service';
-import { REST_URL_BIOLOGICAL_ASPECTS, REST_URL_PSYCHOLOGICAL_ASPECTS } from '../../../../shared/REST_API_URLs';
+import { REST_URL_BIOLOGICAL_ASPECTS } from '../../../../shared/REST_API_URLs';
 import {
   BiologicalAspects,
   CardiovascularFactors,
@@ -15,14 +15,15 @@ import {
 })
 export class BiologicalAspectsComponent implements OnInit {
 
+  @Input('biologicalAspect') biologicalAspectInput: BiologicalAspects;
+  @Output('biologicalAspect') biologicalAspectOutput = new EventEmitter<BiologicalAspects>();
+
   private sensoryDeficit: SensoryDeficit;
   private functionalDisability: FunctionalDisability;
   private malnutrition: Malnutrition;
   private cardiovascularFactors: CardiovascularFactors;
   private misuseMedications: MisuseMedications;
   private comments_bio: string;
-
-  private biologicalAspects: BiologicalAspects;
 
   constructor(private dao: DAOService) { }
 
@@ -43,6 +44,9 @@ export class BiologicalAspectsComponent implements OnInit {
       cardiovascularFactors: this.cardiovascularFactors.getId(),
       misuseMedications: this.misuseMedications.getId(),
       comments_bio: this.comments_bio
-    }).subscribe(data => this.biologicalAspects = new BiologicalAspects(data));
+    }).subscribe(data => {
+      this.biologicalAspectInput = new BiologicalAspects(data);
+      this.biologicalAspectOutput.emit(this.biologicalAspectInput);
+    });
   }
 }

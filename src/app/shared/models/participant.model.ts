@@ -50,6 +50,7 @@ export class ParticipantSituation {
   private p20_IMC: number;
 
   constructor(data) {
+    this.id = data.id;
     this.p07_marital_status = data.p07_marital_status;
     this.p08_schooling = data.p08_schooling;
     this.p09_study_time = data.p09_study_time;
