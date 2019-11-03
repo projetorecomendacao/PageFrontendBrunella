@@ -33,7 +33,6 @@ export class ParticipantFormComponent implements OnInit {
   constructor(private fb: FormBuilder, private dao: DAOService) { }
 
   ngOnInit() {
-    console.log(this.participantFormInput);
     if (this.participantFormInput) this.participantForm = this.fb.group({
       p07_marital_status: [this.participantFormInput.getQ7(), [Validators.required, Validators.maxLength(30)]],
       p08_schooling: [this.participantFormInput.getQ8(), [Validators.required, Validators.maxLength(35)]],
@@ -101,5 +100,4 @@ export class ParticipantFormComponent implements OnInit {
       });
     this.participantForm.markAllAsTouched();
   }
-
 }
