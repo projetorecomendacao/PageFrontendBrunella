@@ -40,6 +40,7 @@ import {
   ObservationsMultidimensionalComponent
 } from './participant/page/multidimensional-aspect/observations-multidimensional/observations-multidimensional.component';
 import { UserService } from '../security/user.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -76,7 +77,8 @@ import { UserService } from '../security/user.service';
   imports: [
     CommonModule,
     PrivateRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [UserService]
 })

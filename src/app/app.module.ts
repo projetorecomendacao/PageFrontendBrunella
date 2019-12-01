@@ -12,6 +12,7 @@ import { AuthInterceptor } from './security/auth.interceptor';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { DAOService } from './shared/dao.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const config = new AuthServiceConfig([
   {
@@ -36,7 +37,8 @@ export function provideConfig() {
     PrivateModule,
     SecurityModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [
     AuthGuard,

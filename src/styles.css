@@ -106,6 +106,42 @@ input.form-control {
   border-color: #10707f;
 }
 
+.sidebar-expand-xl:not(.show) {
+  display: none;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.sidebar-toggler {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.sidebar-toggler-icon {
+  z-index: 1;
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  content: "";
+  background: no-repeat center center;
+  background-size: 100% 100%;
+  color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(0, 0, 0, 0.1);
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 123, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
 @media (min-width: 576px) {
   .w-sm-25 {
     width: 25% !important;
@@ -161,6 +197,10 @@ input.form-control {
 }
 
 @media (min-width: 1200px) {
+  .sidebar-expand-xl {
+    display: flex !important;
+  }
+
   .w-xl-25 {
     width: 25% !important;
   }

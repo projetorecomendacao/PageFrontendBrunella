@@ -1,5 +1,5 @@
 <!--Sidebar-->
-<div class="col-2 p-0 m-0 bg-primary" style="position: fixed; top: 0px; bottom: 0px; left: 0px; overflow-y: auto;">
+<div class="col-10 col-xl-2 p-0 m-0 bg-primary sidebar sidebar-expand-xl flex-column" [class.collapsing]="sidebarState === 1" [class.show]="sidebarState === 2">
   <div class="d-flex justify-content-center align-items-center bg-primary py-5" style="height: 250px; box-sizing: initial">
     <span class="text-white font-weight-bold text-center" style="font-size: 35px;">Active aging recommendation project</span>
   </div>
@@ -95,3 +95,11 @@
   </div>
 </div>
 <!----------->
+
+<!--Sidebar-toggler-->
+<div class="m-3 bg-white rounded-lg" style="position: fixed; z-index: 1;">
+  <button class="d-xl-none btn sidebar-toggler" type="button" (click)="changeSidebarState()">
+    <span class="sidebar-toggler-icon text-primary"></span>
+  </button>
+</div>
+<!------------------->
