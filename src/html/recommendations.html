@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="style.css" type="text/css">
+
+	<title>Nome do usuário</title>
+</head>
+<body class="bg-light">
+	<main class="container-flex">
+		<div class="row mx-0">
+			<!--Sidebar-->
+			<div class="col-2 p-0 m-0 bg-primary" style="position: fixed; top: 0px; bottom: 0px; left: 0px; overflow-y: auto;">
+				<div class="d-flex justify-content-center align-items-center bg-primary py-5" style="height: 250px; box-sizing: initial">
+					<span class="text-white font-weight-bold text-center" style="font-size: 35px;">Active aging recommendation project</span>
+				</div>
+				<div class="d-flex flex-column p-3" style="font-size: 1.2rem;">
+					<!--Dados de identificação-->
+					<button class="btn text-left text-white font-weight-bold">Dados de identificação</button>
+					<!-------------------------->
+					<!--Dropdown areas-->
+					<button class="btn text-left text-white font-weight-bold mt-4" type="button" data-toggle="collapse" data-target="#areas">Areas</button>
+					<!------------------>
+					<!--Áreas-->
+					<div class="container bg-white text-primary rounded-lg shadow-lg py-2 collapse" id="areas" style="font-size: 1rem;">
+						<div class="row align-items-center py-2 m-2 rounded-pill btn-outline-primary">
+							<div class="col-1 font-weight-bold">A</div>
+							<div class="col">Atitudes em relação a velhice e envelhecimento</div>
+						</div>
+						<div class="row align-items-center py-2 m-2 rounded-pill btn-outline-primary">
+							<div class="col-1 font-weight-bold">B</div>
+							<div class="col">Qualidade de vida</div>
+						</div>
+						<div class="row align-items-center py-2 m-2 rounded-pill btn-outline-primary">
+							<div class="col-1 font-weight-bold">C</div>
+							<div class="col">Sentidos</div>
+						</div>
+						<div class="row align-items-center py-2 m-2 rounded-pill btn-outline-primary">
+							<div class="col-1 font-weight-bold">D</div>
+							<div class="col">Desnutrição</div>
+						</div>
+						<div class="row align-items-center py-2 m-2 rounded-pill btn-outline-primary">
+							<div class="col-1 font-weight-bold">E</div>
+							<div class="col">Capacidade funcional</div>
+						</div>
+						<div class="row align-items-center py-2 m-2 rounded-pill btn-outline-primary focus">
+							<div class="col-1 font-weight-bold">F</div>
+							<div class="col">Depressão</div>
+						</div>
+						<div class="row align-items-center py-2 m-2 rounded-pill btn-outline-primary">
+							<div class="col-1 font-weight-bold">G</div>
+							<div class="col">Cognição</div>
+						</div>
+						<div class="row align-items-center py-2 m-2 rounded-pill btn-outline-primary">
+							<div class="col-1 font-weight-bold">H</div>
+							<div class="col">Fatores cardiovasculares</div>
+						</div>
+						<div class="row align-items-center py-2 m-2 rounded-pill btn-outline-primary">
+							<div class="col-1 font-weight-bold">I</div>
+							<div class="col">Administração de medicamentos</div>
+						</div>
+						<div class="row align-items-center py-2 m-2 rounded-pill btn-outline-primary">
+							<div class="col-1 font-weight-bold">J</div>
+							<div class="col">Ambiente</div>
+						</div>
+						<div class="row align-items-center py-2 m-2 rounded-pill btn-outline-primary">
+							<div class="col-1 font-weight-bold">K</div>
+							<div class="col">Quedas</div>
+						</div>
+						<div class="row align-items-center py-2 m-2 rounded-pill btn-outline-primary">
+							<div class="col-1 font-weight-bold">L</div>
+							<div class="col">Violência</div>
+						</div>
+						<div class="row align-items-center py-2 m-2 rounded-pill btn-outline-primary">
+							<div class="col-1 font-weight-bold">M</div>
+							<div class="col">Vulnerabilidade social</div>
+						</div>
+						<div class="row align-items-center py-2 m-2 rounded-pill btn-outline-primary">
+							<div class="col-1 font-weight-bold">N</div>
+							<div class="col">Fragilidade</div>
+						</div>
+					</div>
+					<!--------->
+					<!--Botão resultados-->
+					<button class="btn text-left text-white font-weight-bold mt-4" type="button" data-toggle="collapse" data-target="#results">Resultados</button>
+					<!-------------------->
+					<!--Resultados-->
+					<div class="container bg-white text-primary rounded-lg shadow-lg py-2 collapse" id="results" style="font-size: 1rem;">
+						<div class="d-flex justify-content-center py-2 m-2 rounded-pill btn-outline-primary">
+							Todos
+						</div>
+						<div class="d-flex justify-content-center py-2 m-2 rounded-pill btn-outline-primary">
+							01/2019
+						</div>
+						<div class="d-flex justify-content-center py-2 m-2 rounded-pill btn-outline-primary">
+							02/2018
+						</div>
+						<div class="d-flex justify-content-center py-2 m-2 rounded-pill btn-outline-primary">
+							01/2018
+						</div>
+					</div>
+					<!-------------->
+					<!--Botão recomendações-->
+					<button class="btn text-left text-white font-weight-bold mt-4" type="button" data-toggle="collapse" data-target="#recommendations">Recomendações</button>
+					<!----------------------->
+                </div>
+                <div class="d-flex justify-content-center mt-5">
+                    <button class="btn btn-light text-primary font-weight-bold rounded-pill py-2 px-4">Voltar</button>
+                </div>
+			</div>
+			<!----------->
+			<!--Content-->
+			<div class="col-10 ml-auto px-0 pb-5">
+				<!--User & vagas-->
+				<div class="d-flex justify-content-center align-items-center flex-wrap p-5 bg-white">
+					<!--User-->
+					<!--Imagem-->
+					<div class="mr-md-5">
+						<img src="assets/undraw_male_avatar_323b.svg" width="250px" height="250px">
+					</div>
+					<!---------->
+					<!--Detalhes usuário-->
+					<div class="w-md-50 ml-md-5 mt-4 mt-md-0">
+						<h2 class="text-center text-primary">10801221 - Nome do usuário</h2>
+						<p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac dignissim magna, faucibus malesuada velit. Vestibulum congue gravida justo, a varius eros porttitor sit amet. Sed id pharetra dolor. Aliquam feugiat eget quam a egestas. Sed non lectus vitae est dapibus gravida non ut erat.</p>
+						<h5 class="text-center text-primary mt-5">19 anos</h5>
+					</div>
+					<!-------->
+				</div>
+				<!-------->
+				<!--Title 1-->
+				<h2 class="text-center mt-5"><span class="bg-primary rounded-pill rounded-bottom-0 text-white px-5 py-2">Recomendação 1</span></h2>
+				<!--------->
+				<!--Content 1-->
+				<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
+					<!--Recomendações-->
+                    <div class="container-flex p-4">
+                        <div class="row">
+                            <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-primary font-weight-bold">
+                                <img src="assets/corrida.jpg" class="img-fluid">
+                            </div>
+                            <div class="col d-flex justify-content-center align-items-center flex-wrap mt-3" style="font-size: 1.4rem;">
+                                <span class="text-primary font-weight-bold">Corrida</span>
+                                <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac dignissim magna, faucibus malesuada velit. Vestibulum congue gravida justo, a varius eros porttitor sit amet. Sed id pharetra dolor. Aliquam feugiat eget quam a egestas. Sed non lectus vitae est dapibus gravida non ut erat.</p>
+                            </div>
+                        </div>
+                    </div>
+					<!----------------->
+					<!--Options-->
+					<div class="d-flex justify-content-around flex-wrap pb-4">
+						<button class="btn btn-danger w-100 w-md-25" type="button">Recusar</button>
+						<button class="btn btn-success w-100 w-md-25" type="button">Aceitar</button>
+					</div>
+					<!----------->
+				</div>
+				<!------------->
+				<!--Title 2-->
+				<h2 class="text-center mt-5"><span class="bg-primary rounded-pill rounded-bottom-0 text-white px-5 py-2">Recomendação 2</span></h2>
+				<!--------->
+				<!--Content 2-->
+				<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
+					<!--Recomendações-->
+                    <div class="container-flex p-4">
+                        <div class="row">
+                            <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-primary font-weight-bold">
+                                <img src="assets/chess.jpg" class="img-fluid">
+                            </div>
+                            <div class="col d-flex justify-content-center align-items-center flex-wrap mt-3" style="font-size: 1.4rem;">
+                                <span class="text-primary font-weight-bold">Xadrez</span>
+                                <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac dignissim magna, faucibus malesuada velit. Vestibulum congue gravida justo, a varius eros porttitor sit amet. Sed id pharetra dolor. Aliquam feugiat eget quam a egestas. Sed non lectus vitae est dapibus gravida non ut erat.</p>
+                            </div>
+                        </div>
+                    </div>
+					<!----------------->
+					<!--Options-->
+					<div class="d-flex justify-content-around flex-wrap pb-4">
+						<button class="btn btn-danger w-100 w-md-25" type="button">Recusar</button>
+						<button class="btn btn-success w-100 w-md-25" type="button">Aceitar</button>
+					</div>
+					<!----------->
+				</div>
+				<!------------->
+			</div>
+			<!---------->
+		</div>
+	</main>
+	<script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+</body>
+</html>

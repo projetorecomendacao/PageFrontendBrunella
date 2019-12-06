@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="style.css" type="text/css">
+
+	<title>Nome do usuário</title>
+</head>
+<body class="bg-light">
+	<main class="container-flex">
+		<!--Search-->
+		<form class="d-flex w-xl-50 w-lg-75 mx-auto mt-5">
+			<input type="text" class="w-100 rounded-pill rounded-right-0 border rounded-bottom-0 p-2 px-4 shadow-top-sm"/>
+			<button type="button" class="btn btn-primary rounded-pill rounded-bottom-0 rounded-left-0 px-5 shadow-top-sm">Search!</button>
+		</form>
+		<!---------->
+		<!--Alfabeto-->
+		<div class="container-flex w-xl-50 w-lg-75 mx-auto bg-white shadow px-4 pb-3 pt-1 rounded-lg" aria-label="alphabet">
+			<div class="row justify-content-center">
+				<button type="button" class="btn btn-default btn-primary focus text-primary font-weight-bold px-3">*</button>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-6 d-flex justify-content-between pr-md-2">
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">A</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">B</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">C</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">D</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">E</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">F</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">G</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">H</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">I</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">J</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">K</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">L</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">M</button>
+				</div>
+				<div class="col-12 col-md-6 d-flex justify-content-between pl-md-2">
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">N</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">O</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">P</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">Q</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">R</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">S</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">T</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">U</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">V</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">W</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">X</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">Y</button>
+					<button type="button" class="btn btn-default text-primary font-weight-bold p-1">Z</button>
+				</div>
+			</div>
+		</div>
+		<!------------>
+		<!--Title-->
+		<!-- <h2 class="text-center mt-5"><span class="bg-primary rounded-pill rounded-bottom-0 text-white px-5 py-2">Participantes</span></h2> -->
+		<!--------->
+		<!--Users-->
+		<div class="container w-xl-50 w-lg-75 mx-auto border bg-white shadow-lg">
+			<!--User1-->
+			<!-- <div class="row border">
+				<img class="col-2 d-flex align-items-center p-4 img-fluid" src="assets/undraw_male_avatar_323b.svg" alt="Foto de perfil">
+				<div class="col-8 d-flex justify-content-center align-items-center flex-wrap py-3">
+					<h5 class="font-weight-bold text-primary m-0">Nome do participante</h5>
+					<p class="text-justify m-0">Lorem ipsum dolor sit amet, consectetur adipig elit. Vestibulum congue gravida justo, a varius eros porttitor sit amet.</p>
+				</div>
+				<div class="col d-flex justify-content-center align-items-center">
+					<button class="btn btn-primary">Detalhes</button>
+				</div>
+			</div> -->
+			<!--------->
+		</div>
+		<!-------->
+		<!--Adicionar Participante-->
+		<div class="d-flex justify-content-center mt-5">
+			<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addParticipant">Adicionar participante</button>
+		</div>
+		<!-------------------------->
+		<!--Menu Adicionar Participante-->
+		<form class="d-flex flex-column w-25 mx-auto bg-white shadow px-5 py-4 mt-5 collapse show" id="addParticipant">
+			<h3 class="font-weight-bold mb-4 text-primary">Dados</h3>
+			<!--Name-->
+			<div class="d-flex flex-column">
+				<label class="mb-0" for="name">Nome:</label>
+				<input type="text" id="name">
+			</div>
+			<!-------->
+			<!--Email-->
+			<div class="d-flex flex-column my-2">
+				<label class="mb-0" for="email">Email:</label>
+				<input type="text" id="email">
+			</div>
+			<!--------->
+			<!--Communication-->
+			<div class="d-flex flex-column my-2">
+				<label class="mb-0" for="communication">Comunicação:</label>
+				<input type="text" id="communication">
+			</div>
+			<!----------------->
+			<!--Birth Date-->
+			<div class="d-flex flex-column my-2">
+				<label class="mb-0" for="birth_date">Data de nascimento (yyyy-mm-dd):</label>
+				<input type="text" id="birth_date">
+			</div>
+			<!-------------->
+			<!--Gender-->
+			<div class="d-flex flex-column my-2">
+				<label class="mb-0" for="gender">Gênero:</label>
+				<select class="bg-white border-0 p-2" id="gender">
+					<option selected disabled>-- Selecione -- </option>
+					<option value="m">Masculino</option>
+					<option value="f">Feminino</option>
+					<option value="o">Outros</option>
+				</select>
+			</div>
+			<!---------->
+			<!--Weight-->
+			<div class="d-flex flex-column my-2">
+				<label class="mb-0" for="weight">Peso:</label>
+				<input type="text" id="weight">
+			</div>
+			<!---------->
+			<!--Height-->
+			<div class="d-flex flex-column my-2">
+				<label class="mb-0" for="height">Altura:</label>
+				<input type="text" id="height">
+			</div>
+			<!---------->
+			<div class="d-flex justify-content-between mt-4">
+				<button class="btn btn-danger">Cancelar</button>
+				<button class="btn btn-primary">Adicionar participante</button>
+			</div>
+		</form>
+		<!------------------------------->
+		<!--Title-->
+		<h2 class="text-center mt-5"><span class="bg-primary rounded-pill rounded-bottom-0 text-white px-5 py-2">Participantes 2</span></h2>
+		<!--------->
+		<!--Users2-->
+		<div class="d-flex flex-wrap w-xl-50 w-lg-75 mx-auto mb-5">
+			<!--User1-->
+			<div class="d-flex w-25 justify-content-center flex-wrap p-2 border bg-white">
+				<img class="img-fluid p-5 pb-0" src="assets/undraw_male_avatar_323b.svg" alt="Foto de perfil">
+				<h6 class="font-weight-bold text-primary text-center">Nome do participante</h6>
+				<p class="text-justify m-0">Lorem ipsum dolor sit amet, consectetur adipig elit.</p>
+				<button class="btn btn-primary mt-4">Detalhes</button>
+			</div>
+			<!--------->
+			<!--User1-->
+			<div class="d-flex w-25 justify-content-center flex-wrap p-2 border bg-white">
+					<img class="img-fluid p-5 pb-0" src="assets/undraw_male_avatar_323b.svg" alt="Foto de perfil">
+					<h6 class="font-weight-bold text-primary text-center">Nome do participante</h6>
+					<p class="text-justify m-0">Lorem ipsum dolor sit amet, consectetur adipig elit.</p>
+				<button class="btn btn-primary mt-4">Detalhes</button>
+				</div>
+				<!--------->
+			<!--User1-->
+			<div class="d-flex w-25 justify-content-center flex-wrap p-2 border bg-white">
+					<img class="img-fluid p-5 pb-0" src="assets/undraw_male_avatar_323b.svg" alt="Foto de perfil">
+					<h6 class="font-weight-bold text-primary text-center">Nome do participante</h6>
+					<p class="text-justify m-0">Lorem ipsum dolor sit amet, consectetur adipig elit.</p>
+				<button class="btn btn-primary mt-4">Detalhes</button>
+				</div>
+				<!--------->
+			<!--User1-->
+			<div class="d-flex w-25 justify-content-center flex-wrap p-2 border bg-white">
+					<img class="img-fluid p-5 pb-0" src="assets/undraw_male_avatar_323b.svg" alt="Foto de perfil">
+					<h6 class="font-weight-bold text-primary text-center">Nome do participante</h6>
+					<p class="text-justify m-0">Lorem ipsum dolor sit amet, consectetur adipig elit.</p>
+				<button class="btn btn-primary mt-4">Detalhes</button>
+				</div>
+				<!--------->
+			<!--User1-->
+			<div class="d-flex w-25 justify-content-center flex-wrap p-2 border bg-white">
+					<img class="img-fluid p-5 pb-0" src="assets/undraw_male_avatar_323b.svg" alt="Foto de perfil">
+					<h6 class="font-weight-bold text-primary text-center">Nome do participante</h6>
+					<p class="text-justify m-0">Lorem ipsum dolor sit amet, consectetur adipig elit.</p>
+				<button class="btn btn-primary mt-4">Detalhes</button>
+				</div>
+				<!--------->
+			<!--User1-->
+			<div class="d-flex w-25 justify-content-center flex-wrap p-2 border bg-white">
+					<img class="img-fluid p-5 pb-0" src="assets/undraw_male_avatar_323b.svg" alt="Foto de perfil">
+					<h6 class="font-weight-bold text-primary text-center">Nome do participante</h6>
+					<p class="text-justify m-0">Lorem ipsum dolor sit amet, consectetur adipig elit.</p>
+				<button class="btn btn-primary mt-4">Detalhes</button>
+				</div>
+				<!--------->
+			<!--User1-->
+			<div class="d-flex w-25 justify-content-center flex-wrap p-2 border bg-white">
+					<img class="img-fluid p-5 pb-0" src="assets/undraw_male_avatar_323b.svg" alt="Foto de perfil">
+					<h6 class="font-weight-bold text-primary text-center">Nome do participante</h6>
+					<p class="text-justify m-0">Lorem ipsum dolor sit amet, consectetur adipig elit.</p>
+				<button class="btn btn-primary mt-4">Detalhes</button>
+				</div>
+				<!--------->
+		</div>
+		<!-------->
+	</main>
+	<script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+</body>
+</html>
