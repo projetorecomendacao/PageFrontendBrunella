@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DAOService } from '../../../../shared/dao.service';
-import { REST_URL_DEPRESSION, REST_URL_PARTICIPANT_SITUATION } from '../../../../shared/REST_API_URLs';
-import { Depression } from '../../../../shared/models/psychological-aspects.model';
+import { REST_URL_PARTICIPANT_SITUATION } from '../../../../shared/REST_API_URLs';
 import { ParticipantSituation } from '../../../../shared/models/participant.model';
+import { PageService } from '../page.service';
 
 @Component({
   selector: 'app-participant-form',
@@ -11,49 +11,50 @@ import { ParticipantSituation } from '../../../../shared/models/participant.mode
 })
 export class ParticipantFormComponent implements OnInit {
 
-  @Input('participantForm') participantFormInput: ParticipantSituation;
-  @Output('participantForm') participantFormOutput = new EventEmitter<ParticipantSituation>();
+  private participantSituation: ParticipantSituation;
 
-  private participantForm: FormGroup;
+  private participantSituationForm: FormGroup;
 
-  get p07_marital_status() { return this.participantForm.get('p07_marital_status'); }
-  get p08_schooling() { return this.participantForm.get('p08_schooling'); }
-  get p09_study_time() { return this.participantForm.get('p09_study_time'); }
-  get p10_is_retired() { return this.participantForm.get('p10_is_retired'); }
-  get p10_actual_profession() { return this.participantForm.get('p10_actual_profession'); }
-  get p12_is_working_professionals_activities() { return this.participantForm.get('p12_is_working_professionals_activities'); }
-  get p13_income_I() { return this.participantForm.get('p13_income_I'); }
-  get p13_income_F() { return this.participantForm.get('p13_income_F'); }
-  get p15_has_religion() { return this.participantForm.get('p15_has_religion'); }
-  get p16_health_self_report() { return this.participantForm.get('p16_health_self_report'); }
-  get p20_weight() { return this.participantForm.get('p20_weight'); }
-  get p20_height() { return this.participantForm.get('p20_height'); }
-  get p20_IMC() { return this.participantForm.get('p20_IMC'); }
+  get p07_marital_status() { return this.participantSituationForm.get('p07_marital_status'); }
+  get p08_schooling() { return this.participantSituationForm.get('p08_schooling'); }
+  get p09_study_time() { return this.participantSituationForm.get('p09_study_time'); }
+  get p10_is_retired() { return this.participantSituationForm.get('p10_is_retired'); }
+  get p10_actual_profession() { return this.participantSituationForm.get('p10_actual_profession'); }
+  get p12_is_working_professionals_activities() { return this.participantSituationForm.get('p12_is_working_professionals_activities'); }
+  get p13_income_I() { return this.participantSituationForm.get('p13_income_I'); }
+  get p13_income_F() { return this.participantSituationForm.get('p13_income_F'); }
+  get p15_has_religion() { return this.participantSituationForm.get('p15_has_religion'); }
+  get p16_health_self_report() { return this.participantSituationForm.get('p16_health_self_report'); }
+  get p20_weight() { return this.participantSituationForm.get('p20_weight'); }
+  get p20_height() { return this.participantSituationForm.get('p20_height'); }
+  get p20_IMC() { return this.participantSituationForm.get('p20_IMC'); }
 
-  constructor(private fb: FormBuilder, private dao: DAOService) { }
+  constructor(private fb: FormBuilder, private dao: DAOService, private pageService: PageService) { }
 
   ngOnInit() {
-    if (this.participantFormInput) this.participantForm = this.fb.group({
-      p07_marital_status: [this.participantFormInput.getQ7(), [Validators.required, Validators.maxLength(30)]],
-      p08_schooling: [this.participantFormInput.getQ8(), [Validators.required, Validators.maxLength(35)]],
-      p09_study_time: [this.participantFormInput.getQ9(), Validators.required],
-      p10_is_retired: [this.participantFormInput.getQ10A(), [Validators.required, Validators.maxLength(1)]],
-      p10_retired_profession: [this.participantFormInput.getQ10B(), Validators.maxLength(30)],
-      p10_actual_profession: [this.participantFormInput.getQ10C(), [Validators.required, Validators.maxLength(30)]],
-      p11_retire_more_time_activity: [this.participantFormInput.getQ11(), Validators.maxLength(30)],
-      p12_is_working_professionals_activities: [this.participantFormInput.getQ12A(), [Validators.required, Validators.maxLength(1)]],
-      p12_professional_activities: [this.participantFormInput.getQ12B(), Validators.maxLength(30)],
-      p13_income_I: [this.participantFormInput.getQ13A(), [Validators.required, Validators.maxLength(70)]],
-      p13_income_F: [this.participantFormInput.getQ13B(), [Validators.required, Validators.maxLength(70)]],
-      p14_lives_with: [this.participantFormInput.getQ14()],
-      p15_has_religion: [this.participantFormInput.getQ15A(), [Validators.required, Validators.maxLength(1)]],
-      p15_religion: [this.participantFormInput.getQ15B(), Validators.maxLength(30)],
-      p16_health_self_report: [this.participantFormInput.getQ16(), Validators.required],
-      p20_weight: [this.participantFormInput.getQ20A(), Validators.required],
-      p20_height: [this.participantFormInput.getQ20B(), Validators.required],
-      p20_IMC: [this.participantFormInput.getQ20C(), Validators.required]
+    this.participantSituation = this.pageService.participantSituation;
+
+    if (this.participantSituation) this.participantSituationForm = this.fb.group({
+      p07_marital_status: [this.participantSituation.getQ7(), [Validators.required, Validators.maxLength(30)]],
+      p08_schooling: [this.participantSituation.getQ8(), [Validators.required, Validators.maxLength(35)]],
+      p09_study_time: [this.participantSituation.getQ9(), Validators.required],
+      p10_is_retired: [this.participantSituation.getQ10A(), [Validators.required, Validators.maxLength(1)]],
+      p10_retired_profession: [this.participantSituation.getQ10B(), Validators.maxLength(30)],
+      p10_actual_profession: [this.participantSituation.getQ10C(), [Validators.required, Validators.maxLength(30)]],
+      p11_retire_more_time_activity: [this.participantSituation.getQ11(), Validators.maxLength(30)],
+      p12_is_working_professionals_activities: [this.participantSituation.getQ12A(), [Validators.required, Validators.maxLength(1)]],
+      p12_professional_activities: [this.participantSituation.getQ12B(), Validators.maxLength(30)],
+      p13_income_I: [this.participantSituation.getQ13A(), [Validators.required, Validators.maxLength(70)]],
+      p13_income_F: [this.participantSituation.getQ13B(), [Validators.required, Validators.maxLength(70)]],
+      p14_lives_with: [this.participantSituation.getQ14()],
+      p15_has_religion: [this.participantSituation.getQ15A(), [Validators.required, Validators.maxLength(1)]],
+      p15_religion: [this.participantSituation.getQ15B(), Validators.maxLength(30)],
+      p16_health_self_report: [this.participantSituation.getQ16(), Validators.required],
+      p20_weight: [this.participantSituation.getQ20A(), Validators.required],
+      p20_height: [this.participantSituation.getQ20B(), Validators.required],
+      p20_IMC: [this.participantSituation.getQ20C(), Validators.required]
     });
-    else this.participantForm = this.fb.group({
+    else this.participantSituationForm = this.fb.group({
       p07_marital_status: ['', [Validators.required, Validators.maxLength(30)]],
       p08_schooling: ['', [Validators.required, Validators.maxLength(35)]],
       p09_study_time: ['', Validators.required],
@@ -76,13 +77,13 @@ export class ParticipantFormComponent implements OnInit {
   }
 
   submit() {
-    if (this.participantForm.valid)
-      if (this.participantFormInput) {
+    if (this.participantSituationForm.valid)
+      if (this.participantSituation) {
         const dirtyProps = {};
         let hasDirtyProps = false;
 
-        for (const prop in this.participantForm.controls) {
-          const propFormControl = this.participantForm.get(prop);
+        for (const prop in this.participantSituationForm.controls) {
+          const propFormControl = this.participantSituationForm.get(prop);
           if (propFormControl.dirty) {
             dirtyProps[prop] = propFormControl.value;
             hasDirtyProps = true;
@@ -90,14 +91,14 @@ export class ParticipantFormComponent implements OnInit {
         }
 
         if (hasDirtyProps) this.dao.patchObject(REST_URL_PARTICIPANT_SITUATION, dirtyProps).subscribe(data => {
-          this.participantFormInput = new ParticipantSituation(data);
-          this.participantFormOutput.emit(this.participantFormInput);
+          this.participantSituation = new ParticipantSituation(data);
+          this.pageService.setParticipantSituation(this.participantSituation);
         });
 
-      } else this.dao.postObject(REST_URL_PARTICIPANT_SITUATION, this.participantForm.getRawValue()).subscribe(data => {
-        this.participantFormInput = new ParticipantSituation(data);
-        this.participantFormOutput.emit(this.participantFormInput);
+      } else this.dao.postObject(REST_URL_PARTICIPANT_SITUATION, this.participantSituationForm.getRawValue()).subscribe(data => {
+        this.participantSituation = new ParticipantSituation(data);
+        this.pageService.setParticipantSituation(this.participantSituation);
       });
-    this.participantForm.markAllAsTouched();
+    this.participantSituationForm.markAllAsTouched();
   }
 }

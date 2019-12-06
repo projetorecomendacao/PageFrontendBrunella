@@ -8,6 +8,7 @@ import {
   Malnutrition, MisuseMedications,
   SensoryDeficit
 } from '../../../../shared/models/biological-aspects.model';
+import { PageService } from '../page.service';
 
 @Component({
   selector: 'app-biological-aspects',
@@ -15,8 +16,7 @@ import {
 })
 export class BiologicalAspectsComponent implements OnInit {
 
-  @Input('biologicalAspect') biologicalAspectInput: BiologicalAspects;
-  @Output('biologicalAspect') biologicalAspectOutput = new EventEmitter<BiologicalAspects>();
+  private biologicalAspect: BiologicalAspects;
 
   private sensoryDeficit: SensoryDeficit;
   private functionalDisability: FunctionalDisability;
@@ -25,7 +25,7 @@ export class BiologicalAspectsComponent implements OnInit {
   private misuseMedications: MisuseMedications;
   private comments_bio: string;
 
-  constructor(private dao: DAOService) { }
+  constructor(private dao: DAOService, private pageService: PageService) { }
 
   ngOnInit() { }
 
@@ -45,8 +45,8 @@ export class BiologicalAspectsComponent implements OnInit {
       misuseMedications: this.misuseMedications.getId(),
       comments_bio: this.comments_bio
     }).subscribe(data => {
-      this.biologicalAspectInput = new BiologicalAspects(data);
-      this.biologicalAspectOutput.emit(this.biologicalAspectInput);
+      this.biologicalAspect = new BiologicalAspects(data);
+      this.pageService.setBiologicalAspects(this.biologicalAspect);
     });
   }
 }

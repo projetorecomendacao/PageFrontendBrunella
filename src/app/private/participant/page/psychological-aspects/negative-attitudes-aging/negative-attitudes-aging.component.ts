@@ -1,12 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DAOService } from '../../../../../shared/dao.service';
-import {
-  REST_URL_COGNITION_DEFICIT,
-  REST_URL_DEPRESSION,
-  REST_URL_NEGATIVE_ATTITUDE_AGING
-} from '../../../../../shared/REST_API_URLs';
-import { Depression, NegativeAttitudesAging } from '../../../../../shared/models/psychological-aspects.model';
+import { REST_URL_NEGATIVE_ATTITUDE_AGING } from '../../../../../shared/REST_API_URLs';
+import { NegativeAttitudesAging } from '../../../../../shared/models/psychological-aspects.model';
 
 @Component({
   selector: 'app-negative-attitudes-aging',
@@ -53,7 +49,7 @@ export class NegativeAttitudesAgingComponent implements OnInit {
   submit() {
     if (this.negativeAttitudesAgingForm.valid)
       if (this.negativeAttitudesAgingInput) {
-        const dirtyProps = {};
+        const dirtyProps = { id: this.negativeAttitudesAgingInput.getId() };
         let hasDirtyProps = false;
 
         for (const prop in this.negativeAttitudesAgingForm.controls) {

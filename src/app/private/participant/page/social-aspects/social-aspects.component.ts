@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DAOService } from '../../../../shared/dao.service';
 import { REST_URL_SOCIAL_ASPECTS } from '../../../../shared/REST_API_URLs';
 import {
@@ -7,6 +7,7 @@ import {
   SocialAspects,
   Violence
 } from '../../../../shared/models/social-aspects.model';
+import { PageService } from '../page.service';
 
 @Component({
   selector: 'app-social-aspects',
@@ -14,15 +15,14 @@ import {
 })
 export class SocialAspectsComponent implements OnInit {
 
-  @Input('socialAspect') socialAspectInput: SocialAspects;
-  @Output('socialAspect') socialAspectOutput = new EventEmitter<SocialAspects>();
+  private socialAspect: SocialAspects;
 
   private lowSocialSupport: LowSocialSupport;
   private environmentalProblems: EnvironmentalProblems;
   private violence: Violence;
   private comments_social: string;
 
-  constructor(private dao: DAOService) { }
+  constructor(private dao: DAOService, private pageService: PageService) { }
 
   ngOnInit() { }
 
@@ -38,8 +38,8 @@ export class SocialAspectsComponent implements OnInit {
       violence: this.violence.getId(),
       comments_social: this.comments_social
     }).subscribe(data => {
-      this.socialAspectInput = new SocialAspects(data);
-      this.socialAspectOutput.emit(this.socialAspectInput);
+      this.socialAspect = new SocialAspects(data);
+      this.pageService.setSocialAspects(this.socialAspect);
     });
   }
 }

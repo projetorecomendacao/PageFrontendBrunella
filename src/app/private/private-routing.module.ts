@@ -15,7 +15,7 @@ const routes: Routes = [
     path: ':id',
     component: ParticipantComponent,
     children: [
-      { path: 'participant-info', component: ParticipantFormComponent },
+      { path: '', component: ParticipantFormComponent },
       { path: 'psychological-aspect', component: PsychologicalAspectsComponent },
       { path: 'biological-aspect', component: BiologicalAspectsComponent },
       { path: 'social-aspect', component: SocialAspects },

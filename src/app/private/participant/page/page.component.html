@@ -1,17 +1,12 @@
+{{ page.getRawValues() | json }}
 <!--Dados gerais page-->
 <div class="bg-white container-fluid pb-4">
   <div class="row">
     <label class="mt-2 mr-3 offset-3 col-3" for="service">Serviço/instituição:</label>
     <input class="form-control col-3 mb-3" id="service" type="text" (change)="setService(service.value)" #service>
     <label class="mb-0 mr-3 offset-3 col-3" for="entrance">Data de entrada no serviço/instituição (AAAA-MM-DD):</label>
-    <input class="form-control col-3" id="entrance" type="text" (change)="setEntrance(entrance.value)" #entrance>
+    <input class="form-control col-3" id="entrance" type="date" (change)="setEntrance(entrance.value)" #entrance>
   </div>
 </div>
 <!--------------------->
-<app-participant-form [participantForm]="this.page.getParticipant_situation()" (participantForm)="setParticipantForm($event)"></app-participant-form>
-<app-psychological-aspects [psychologicalAspect]="this.page.getPsychologicalAspects()" (psychologicalAspect)="setPsychologicalAspects($event)"></app-psychological-aspects>
-<app-biological-aspects [biologicalAspect]="this.page.getBiologicalAspects()" (biologicalAspect)="setBiologicalAspects($event)"></app-biological-aspects>
-<app-social-aspects [socialAspect]="this.page.getSocialAspects()" (socialAspect)="setSocialAspects($event)"></app-social-aspects>
-<app-multidimensional-aspect [multidisciplinaryDomain]="this.page.getMultidisciplinaryDomain()" (multidisciplinaryDomain)="setMultidisciplinaryDomain($event)"></app-multidimensional-aspect>
-
 <router-outlet></router-outlet>

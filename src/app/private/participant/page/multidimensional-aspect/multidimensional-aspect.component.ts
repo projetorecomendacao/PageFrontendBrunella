@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DAOService } from '../../../../shared/dao.service';
 import { REST_URL_MULTIDISCIPLINARY_DOMAIN } from '../../../../shared/REST_API_URLs';
 import { Falls, MultidisciplinaryDomain } from '../../../../shared/models/multidimentional-aspects';
+import { PageService } from '../page.service';
 
 @Component({
   selector: 'app-multidimensional-aspect',
@@ -9,13 +10,12 @@ import { Falls, MultidisciplinaryDomain } from '../../../../shared/models/multid
 })
 export class MultidimensionalAspectComponent implements OnInit {
 
-  @Input('multidisciplinaryDomain') multidisciplinaryDomainInput: MultidisciplinaryDomain;
-  @Output('multidisciplinaryDomain') multidisciplinaryDomainOutput = new EventEmitter<MultidisciplinaryDomain>();
+  private multidisciplinaryDomain: MultidisciplinaryDomain;
 
   private falls: Falls;
   private comments_multi: string;
 
-  constructor(private dao: DAOService) { }
+  constructor(private dao: DAOService, private pageService: PageService) { }
 
   ngOnInit() { }
 
@@ -27,8 +27,8 @@ export class MultidimensionalAspectComponent implements OnInit {
       falls: this.falls.getId(),
       comments_multi: this.comments_multi
     }).subscribe(data => {
-      this.multidisciplinaryDomainInput = new MultidisciplinaryDomain(data);
-      this.multidisciplinaryDomainOutput.emit(this.multidisciplinaryDomainInput);
+      this.multidisciplinaryDomain = new MultidisciplinaryDomain(data);
+      this.pageService.setMultidisciplinaryDomain(this.multidisciplinaryDomain);
     });
   }
 }
