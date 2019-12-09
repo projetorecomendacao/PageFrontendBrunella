@@ -23,26 +23,45 @@ export class PsychologicalAspectsComponent implements OnInit {
 
   constructor(private dao: DAOService, private pageService: PageService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.psychologicalAspect = this.pageService.psychologicalAspects;
+    if (this.psychologicalAspect) {
+      this.cognitionDeficit = this.psychologicalAspect.cognitionDeficitInstance;
+      this.negativeAttitudesAging = this.psychologicalAspect.negativeAttitudesAgingInstance;
+      this.depression = this.psychologicalAspect.depressionInstance;
+      this.comments_psico = this.psychologicalAspect.comments;
+    }
+  }
 
   get isComplete() { return this.cognitionDeficit && this.negativeAttitudesAging && this.depression && this.comments_psico; }
 
-  setCognitiveDeficit(cd: CognitionDeficit) { this.cognitionDeficit = cd; }
-  setNegativeAttitudesAging(nag: NegativeAttitudesAging) { this.negativeAttitudesAging = nag; }
-  setDepression(d: Depression) { this.depression = d; }
-  setComments(c: string) { this.comments_psico = c; }
+  setCognitiveDeficit(cd: CognitionDeficit) { if (this.psychologicalAspect) this.psychologicalAspect.cognitionDeficitInstance = cd; this.cognitionDeficit = cd; }
+  setNegativeAttitudesAging(nag: NegativeAttitudesAging) { if (this.psychologicalAspect) this.psychologicalAspect.negativeAttitudesAgingInstance = nag; this.negativeAttitudesAging = nag; }
+  setDepression(d: Depression) { if (this.psychologicalAspect) this.psychologicalAspect.depressionInstance = d; this.depression = d; }
+  setComments(c: string) {
+    if (this.psychologicalAspect) {
+      this.dao.patchObject(REST_URL_PSYCHOLOGICAL_ASPECTS, {
+        id: this.psychologicalAspect.getId(),
+        comments_psico: c
+      }).subscribe((data: any) => {
+        this.psychologicalAspect.comments = data.comments_psico;
+        this.comments_psico = data.comments_psico;
+      }, _ => alert('Ocorreu um erro ao tentar alterar os comentários dos aspectos psicológicos'));
+    } else this.comments_psico = c;
+  }
 
   submit() {
-    if (this.isComplete)
-      this.dao.postObject(REST_URL_PSYCHOLOGICAL_ASPECTS, {
+    if (!this.psychologicalAspect) {
+      if (this.isComplete) this.dao.postObject(REST_URL_PSYCHOLOGICAL_ASPECTS, {
         cognition_deficit: this.cognitionDeficit.getId(),
         negative_attitudes_aging: this.negativeAttitudesAging.getId(),
         depression: this.depression.getId(),
         comments_psico: this.comments_psico
       }).subscribe(data => {
-        this.psychologicalAspect = new PsychologicalAspects(data);
+        this.psychologicalAspect = new PsychologicalAspects(data, this.cognitionDeficit, this.negativeAttitudesAging, this.depression);
         this.pageService.setPsychologicalAspects(this.psychologicalAspect);
-    });
-    alert('Alguma das subareas não foi feita corretamente');
+      });
+      else alert('Alguma das subareas não foi feita corretamente');
+    }
   }
 }

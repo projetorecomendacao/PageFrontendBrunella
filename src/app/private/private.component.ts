@@ -8,10 +8,10 @@ import { UserService } from '../security/user.service';
 export class PrivateComponent implements OnInit {
 
   /*
-    User service is here because it needs to do the post request before loading the PAGE component.
-    By including it here, that is guaranteed.
+    User service is here because it needs to be instantiated before loading the PAGE component.
+    By including it here, that is guaranteed. DO NOT REMOVE.
    */
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }

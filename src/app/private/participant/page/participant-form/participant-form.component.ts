@@ -4,6 +4,7 @@ import { DAOService } from '../../../../shared/dao.service';
 import { REST_URL_PARTICIPANT_SITUATION } from '../../../../shared/REST_API_URLs';
 import { ParticipantSituation } from '../../../../shared/models/participant.model';
 import { PageService } from '../page.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-participant-form',
@@ -29,7 +30,10 @@ export class ParticipantFormComponent implements OnInit {
   get p20_height() { return this.participantSituationForm.get('p20_height'); }
   get p20_IMC() { return this.participantSituationForm.get('p20_IMC'); }
 
-  constructor(private fb: FormBuilder, private dao: DAOService, private pageService: PageService) { }
+  constructor(private fb: FormBuilder, private dao: DAOService, private pageService: PageService, private route: Router) {
+    // DEBUG
+    // route.navigate([route.url + '/psychological-aspect']);
+  }
 
   ngOnInit() {
     this.participantSituation = this.pageService.participantSituation;
@@ -79,7 +83,7 @@ export class ParticipantFormComponent implements OnInit {
   submit() {
     if (this.participantSituationForm.valid)
       if (this.participantSituation) {
-        const dirtyProps = {};
+        const dirtyProps = { id: this.participantSituation.getId() };
         let hasDirtyProps = false;
 
         for (const prop in this.participantSituationForm.controls) {

@@ -7,21 +7,28 @@ import { PsychologicalAspectsComponent } from './participant/page/psychological-
 import { BiologicalAspectsComponent } from './participant/page/biological-aspects/biological-aspects.component';
 import { SocialAspects } from '../shared/models/social-aspects.model';
 import { MultidimensionalAspectComponent } from './participant/page/multidimensional-aspect/multidimensional-aspect.component';
+import {PrivateComponent} from './private.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
   {
-    path: ':id',
-    component: ParticipantComponent,
+    path: '',
+    component: PrivateComponent,
     children: [
-      { path: '', component: ParticipantFormComponent },
-      { path: 'psychological-aspect', component: PsychologicalAspectsComponent },
-      { path: 'biological-aspect', component: BiologicalAspectsComponent },
-      { path: 'social-aspect', component: SocialAspects },
-      { path: 'multidisciplinary-domain', component: MultidimensionalAspectComponent }
+      { path: '', component: HomeComponent },
+      {
+        path: ':id',
+        component: ParticipantComponent,
+        children: [
+          { path: '', component: ParticipantFormComponent },
+          { path: 'psychological-aspect', component: PsychologicalAspectsComponent },
+          { path: 'biological-aspect', component: BiologicalAspectsComponent },
+          { path: 'social-aspect', component: SocialAspects },
+          { path: 'multidisciplinary-domain', component: MultidimensionalAspectComponent }
+        ]
+      }
     ]
-  }
+  },
 ];
 
 @NgModule({

@@ -3,14 +3,10 @@
 <app-depression [depression]="depression" (depression)="setDepression($event)"></app-depression>
 <app-observations-psychological [comments]="comments_psico" (comments)="setComments($event)"></app-observations-psychological>
 
-<!--Continuar-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
-  <!--Continue-->
-  <div class="d-flex align-items-center justify-content-around p-3 mt-3">
-    <button class="btn btn-primary" [routerLink]="['../']">Voltar</button>
-    <button *ngIf="!isComplete" class="btn btn-primary" (click)="submit()">Salvar e continuar</button>
-    <button *ngIf="isComplete" class="btn btn-primary" (click)="submit()" [routerLink]="['../biological-aspect']">Salvar e continuar</button>
-  </div>
-  <!------------>
+<!--Continue-->
+<div class="d-flex align-items-center justify-content-around p-3 mt-4">
+  <button class="btn btn-primary" [routerLink]="['../']">Voltar</button>
+  <button *ngIf="!isComplete" class="btn btn-primary" (click)="submit()">Salvar e continuar</button>
+  <button *ngIf="isComplete" class="btn btn-primary" (click)="submit()" [routerLink]="['../biological-aspect']">Salvar e continuar</button>
 </div>
-<!----------->
+<!------------>

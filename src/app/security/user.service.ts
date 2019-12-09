@@ -6,7 +6,7 @@ import { REST_URL_EXPERTS } from '../shared/REST_API_URLs';
 @Injectable()
 export class UserService {
 
-  private _user: User;
+  private _user: User = new User();
 
   constructor(protected dao: DAOService) {
     dao.postObject(REST_URL_EXPERTS + 'getSelf/', {}).subscribe(data => this._user = new User(data));

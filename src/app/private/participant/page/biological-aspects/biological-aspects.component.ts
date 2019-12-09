@@ -29,6 +29,8 @@ export class BiologicalAspectsComponent implements OnInit {
 
   ngOnInit() { }
 
+  get isComplete() { return this.sensoryDeficit && this.functionalDisability && this.malnutrition && this.cardiovascularFactors && this.misuseMedications && this.comments_bio; }
+
   setSensoryDeficit(sd: SensoryDeficit) { this.sensoryDeficit = sd; this.submit(); }
   setFunctionalDisability(fd: FunctionalDisability) { this.functionalDisability = fd; this.submit(); }
   setMalnutrition(m: Malnutrition) { this.malnutrition = m; this.submit(); }
@@ -37,7 +39,7 @@ export class BiologicalAspectsComponent implements OnInit {
   setComments(c: string) { this.comments_bio = c; this.submit(); }
 
   submit() {
-    if (this.sensoryDeficit && this.functionalDisability && this.malnutrition && this.cardiovascularFactors && this.misuseMedications && this.comments_bio) this.dao.postObject(REST_URL_BIOLOGICAL_ASPECTS, {
+    if (this.isComplete) this.dao.postObject(REST_URL_BIOLOGICAL_ASPECTS, {
       sensoryDeficit: this.sensoryDeficit.getId(),
       functionalDisability: this.functionalDisability.getId(),
       malNutrition: this.malnutrition.getId(),
@@ -48,5 +50,6 @@ export class BiologicalAspectsComponent implements OnInit {
       this.biologicalAspect = new BiologicalAspects(data);
       this.pageService.setBiologicalAspects(this.biologicalAspect);
     });
+    else alert('Alguma das subareas não foi feita corretamente');
   }
 }

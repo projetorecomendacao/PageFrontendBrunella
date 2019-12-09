@@ -11,7 +11,7 @@
         <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">Obs.</div>
         <span class="col-12 col-md-7">Observações sobre o bloco psicológico:</span>
         <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <textarea class="w-100 form-control" [formControl]="commentsForm"></textarea>
+          <textarea class="w-100 form-control" [formControl]="commentsForm" [class.is-invalid]="commentsForm.invalid && commentsForm.touched"></textarea>
         </div>
       </div>
     </div>
@@ -19,7 +19,7 @@
   </div>
   <!------------->
   <!--Continue-->
-  <div class="d-flex align-items-center justify-content-around p-3 mt-3">
+  <div class="d-flex align-items-center justify-content-around p-3">
     <button class="btn btn-primary" (click)="submit()">Salvar</button>
   </div>
   <!------------>
