@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DAOService } from '../../../../shared/dao.service';
-import {REST_URL_PSYCHOLOGICAL_ASPECTS, REST_URL_SOCIAL_ASPECTS} from '../../../../shared/REST_API_URLs';
+import { REST_URL_SOCIAL_ASPECTS } from '../../../../shared/REST_API_URLs';
 import {
   EnvironmentalProblems,
   LowSocialSupport,
@@ -41,7 +41,7 @@ export class SocialAspectsComponent implements OnInit {
   setViolence(v: Violence) { if (this.socialAspect) this.socialAspect.violenceInstance = v; this.violence = v; }
   setComments(c: string) {
     if (this.socialAspect)
-      this.dao.patchObject(REST_URL_PSYCHOLOGICAL_ASPECTS, {
+      this.dao.patchObject(REST_URL_SOCIAL_ASPECTS, {
         id: this.socialAspect.getId(),
         comments_social: c
       }).subscribe((data: any) => {
@@ -62,7 +62,8 @@ export class SocialAspectsComponent implements OnInit {
         this.socialAspect = new SocialAspects(data, this.lowSocialSupport, this.environmentalProblems, this.violence);
         this.pageService.setSocialAspects(this.socialAspect);
       });
-    } else alert('Alguma das areas está incorreta');
+      else alert('Alguma das areas está incorreta');
+    }
     // TODO - Fazer o alert igual o do psychological aspects
   }
 }

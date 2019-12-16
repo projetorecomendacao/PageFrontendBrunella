@@ -85,7 +85,7 @@ export class FallsComponent implements OnInit {
   submit() {
     if (this.fallsForm.valid)
       if (this.fallsInput) {
-        const dirtyProps = {};
+        const dirtyProps = { id: this.fallsInput.getId() };
         let hasDirtyProps = false;
 
         for (const prop in this.fallsForm.controls) {
@@ -93,6 +93,7 @@ export class FallsComponent implements OnInit {
           if (propFormControl.dirty) {
             dirtyProps[prop] = propFormControl.value;
             hasDirtyProps = true;
+            propFormControl.markAsPristine();
           }
         }
 

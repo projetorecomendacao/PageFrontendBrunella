@@ -18,10 +18,16 @@ export class PageService {
   private _page = new Page();
 
   get page() { return this._page; }
+  set page(page: Page) { this._page = page; }
+
   get participantSituation() { return this.page.getParticipant_situation(); }
   get psychologicalAspects() { return this.page.getPsychologicalAspects(); }
   get biologicalAspects() { return this.page.getBiologicalAspects(); }
   get socialAspects() { return this.page.getSocialAspects(); }
+  get multidisciplinaryDomain() { return this.page.getMultidisciplinaryDomain(); }
+
+  get hasService() { return !!this.page.getService(); }
+  get hasEntrance() { return !!this.page.getEntrance(); }
 
   setParticipant(p: Participant) {
     this.participant = p;
@@ -42,13 +48,17 @@ export class PageService {
 
   constructor(private dao: DAOService, private userService: UserService) { }
 
+  reset() {
+    this.page = new Page();
+  }
+
   submit() {
     if (
-      this.page.getParticipant_situation() &&
-      this.page.getPsychologicalAspects() &&
-      this.page.getBiologicalAspects() &&
-      this.page.getSocialAspects() &&
-      this.page.getMultidisciplinaryDomain()
+      this.participantSituation &&
+      this.psychologicalAspects &&
+      this.biologicalAspects &&
+      this.socialAspects &&
+      this.multidisciplinaryDomain
     )
       this.dao.postObject(REST_URL_PAGE, this.page.getRawValues()).subscribe(data => this._page = new Page(data));
   }

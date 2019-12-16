@@ -36,7 +36,6 @@ export class BiologicalAspectsComponent implements OnInit {
       this.cardiovascularFactors = this.biologicalAspect.cardiovascularFactorsInstance;
       this.misuseMedications = this.biologicalAspect.misuseMedicationsInstance;
       this.comments_bio = this.biologicalAspect.comments;
-      console.log(this.comments_bio);
     }
   }
 
@@ -49,12 +48,12 @@ export class BiologicalAspectsComponent implements OnInit {
   setMisuseMedications(mm: MisuseMedications) { if (this.biologicalAspect) this.biologicalAspect.misuseMedicationsInstance = mm; this.misuseMedications = mm; }
   setComments(c: string) {
     if (this.biologicalAspect) {
-      this.dao.patchObject(REST_URL_PSYCHOLOGICAL_ASPECTS, {
+      this.dao.patchObject(REST_URL_BIOLOGICAL_ASPECTS, {
         id: this.biologicalAspect.getId(),
         comments_bio: c
       }).subscribe((data: any) => {
-        this.biologicalAspect.comments = data.comments_psico;
-        this.comments_bio = data.comments_psico;
+        this.biologicalAspect.comments = data.comments_bio;
+        this.comments_bio = data.comments_bio;
       }, _ => alert('Ocorreu um erro ao tentar alterar os comentários dos aspectos psicológicos'));
     } else this.comments_bio = c;
   }
