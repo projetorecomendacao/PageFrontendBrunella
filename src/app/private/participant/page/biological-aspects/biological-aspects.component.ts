@@ -36,7 +36,7 @@ export class BiologicalAspectsComponent implements OnInit {
       this.cardiovascularFactors = this.biologicalAspect.cardiovascularFactorsInstance;
       this.misuseMedications = this.biologicalAspect.misuseMedicationsInstance;
       this.comments_bio = this.biologicalAspect.comments;
-
+      console.log(this.comments_bio);
     }
   }
 
@@ -60,18 +60,20 @@ export class BiologicalAspectsComponent implements OnInit {
   }
 
   submit() {
-    if (this.isComplete) this.dao.postObject(REST_URL_BIOLOGICAL_ASPECTS, {
-      sensoryDeficit: this.sensoryDeficit.getId(),
-      functionalDisability: this.functionalDisability.getId(),
-      malNutrition: this.malnutrition.getId(),
-      cardiovascularFactors: this.cardiovascularFactors.getId(),
-      misuseMedications: this.misuseMedications.getId(),
-      comments_bio: this.comments_bio
-    }).subscribe(data => {
-      this.biologicalAspect = new BiologicalAspects(data);
-      this.pageService.setBiologicalAspects(this.biologicalAspect);
-    });
-    else alert('Alguma das subareas não foi feita corretamente');
-    // TODO - Fazer o alerta acima como o do psychological aspects
+    if (!this.biologicalAspect) {
+      if (this.isComplete) this.dao.postObject(REST_URL_BIOLOGICAL_ASPECTS, {
+        sensoryDeficit: this.sensoryDeficit.getId(),
+        functionalDisability: this.functionalDisability.getId(),
+        malNutrition: this.malnutrition.getId(),
+        cardiovascularFactors: this.cardiovascularFactors.getId(),
+        misuseMedications: this.misuseMedications.getId(),
+        comments_bio: this.comments_bio
+      }).subscribe(data => {
+        this.biologicalAspect = new BiologicalAspects(data, this.sensoryDeficit, this.functionalDisability, this.malnutrition, this.cardiovascularFactors, this.misuseMedications);
+        this.pageService.setBiologicalAspects(this.biologicalAspect);
+      });
+      else alert('Alguma das subareas não foi feita corretamente');
+      // TODO - Fazer o alerta acima como o do psychological aspects
+    }
   }
 }

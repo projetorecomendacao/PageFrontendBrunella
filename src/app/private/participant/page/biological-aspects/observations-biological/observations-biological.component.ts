@@ -14,7 +14,8 @@ export class ObservationsBiologicalComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if (this.commentsInput) this.commentsForm = new FormControl(this.commentsForm, [Validators.required]);
+    console.log(this.commentsInput);
+    if (this.commentsInput) this.commentsForm = new FormControl(this.commentsInput, [Validators.required]);
     else this.commentsForm = new FormControl('', [Validators.required]);
   }
 
