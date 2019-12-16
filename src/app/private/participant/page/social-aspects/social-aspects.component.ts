@@ -30,6 +30,8 @@ export class SocialAspectsComponent implements OnInit {
       this.lowSocialSupport = this.socialAspect.lowSocialSupportInstance;
       this.environmentalProblems = this.socialAspect.environmentalProblemsInstance;
       this.violence = this.socialAspect.violenceInstance;
+
+      this.comments_social = this.socialAspect.comments;
     }}
 
   get isComplete() { return this.lowSocialSupport && this.environmentalProblems && this.violence && this.comments_social; }
