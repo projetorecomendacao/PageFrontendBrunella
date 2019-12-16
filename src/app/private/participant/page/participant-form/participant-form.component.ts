@@ -32,7 +32,7 @@ export class ParticipantFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private dao: DAOService, private pageService: PageService, private route: Router) {
     // DEBUG
-    // route.navigate([route.url + '/psychological-aspect']);
+    route.navigate([route.url + '/biological-aspect']);
   }
 
   ngOnInit() {

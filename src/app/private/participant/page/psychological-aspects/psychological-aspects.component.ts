@@ -30,6 +30,7 @@ export class PsychologicalAspectsComponent implements OnInit {
       this.negativeAttitudesAging = this.psychologicalAspect.negativeAttitudesAgingInstance;
       this.depression = this.psychologicalAspect.depressionInstance;
       this.comments_psico = this.psychologicalAspect.comments;
+
     }
   }
 
@@ -61,7 +62,7 @@ export class PsychologicalAspectsComponent implements OnInit {
         this.psychologicalAspect = new PsychologicalAspects(data, this.cognitionDeficit, this.negativeAttitudesAging, this.depression);
         this.pageService.setPsychologicalAspects(this.psychologicalAspect);
       });
-      else alert('Alguma das subareas não foi feita corretamente');
+      else alert('A(s) área(s) ' + (!this.cognitionDeficit ? 'Déficit Cognitivo ' : '') + (!this.negativeAttitudesAging ? 'Atitudes negativas... ' : '') + (!this.depression ? 'Depressão ' : '') + (!this.comments_psico ? 'Observação ' : '') + 'não foram preenchidas');
     }
   }
 }

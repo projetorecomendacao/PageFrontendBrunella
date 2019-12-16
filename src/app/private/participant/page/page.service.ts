@@ -20,6 +20,7 @@ export class PageService {
   get page() { return this._page; }
   get participantSituation() { return this.page.getParticipant_situation(); }
   get psychologicalAspects() { return this.page.getPsychologicalAspects(); }
+  get biologicalAspects() { return this.page.getBiologicalAspects(); }
 
   setParticipant(p: Participant) {
     this.participant = p;

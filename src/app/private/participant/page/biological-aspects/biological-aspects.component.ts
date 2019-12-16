@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DAOService } from '../../../../shared/dao.service';
-import { REST_URL_BIOLOGICAL_ASPECTS } from '../../../../shared/REST_API_URLs';
+import {REST_URL_BIOLOGICAL_ASPECTS, REST_URL_PSYCHOLOGICAL_ASPECTS} from '../../../../shared/REST_API_URLs';
 import {
   BiologicalAspects,
   CardiovascularFactors,
@@ -27,16 +27,37 @@ export class BiologicalAspectsComponent implements OnInit {
 
   constructor(private dao: DAOService, private pageService: PageService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.biologicalAspect = this.pageService.biologicalAspects;
+    if (this.biologicalAspect) {
+      this.sensoryDeficit = this.biologicalAspect.sensoryDeficitInstance;
+      this.functionalDisability = this.biologicalAspect.functionalDisabilityInstance;
+      this.malnutrition = this.biologicalAspect.malNutritionInstance;
+      this.cardiovascularFactors = this.biologicalAspect.cardiovascularFactorsInstance;
+      this.misuseMedications = this.biologicalAspect.misuseMedicationsInstance;
+      this.comments_bio = this.biologicalAspect.comments;
+
+    }
+  }
 
   get isComplete() { return this.sensoryDeficit && this.functionalDisability && this.malnutrition && this.cardiovascularFactors && this.misuseMedications && this.comments_bio; }
 
-  setSensoryDeficit(sd: SensoryDeficit) { this.sensoryDeficit = sd; this.submit(); }
-  setFunctionalDisability(fd: FunctionalDisability) { this.functionalDisability = fd; this.submit(); }
-  setMalnutrition(m: Malnutrition) { this.malnutrition = m; this.submit(); }
-  setCardiovascularFactors(cf: CardiovascularFactors) { this.cardiovascularFactors = cf; this.submit(); }
-  setMisuseMedications(mm: MisuseMedications) { this.misuseMedications = mm; this.submit(); }
-  setComments(c: string) { this.comments_bio = c; this.submit(); }
+  setSensoryDeficit(sd: SensoryDeficit) { if (this.biologicalAspect) this.biologicalAspect.sensoryDeficitInstance = sd; this.sensoryDeficit = sd; }
+  setFunctionalDisability(fd: FunctionalDisability) { if (this.biologicalAspect) this.biologicalAspect.functionalDisabilityInstance = fd; this.functionalDisability = fd; }
+  setMalnutrition(m: Malnutrition) { if (this.biologicalAspect) this.biologicalAspect.malNutritionInstance = m; this.malnutrition = m; }
+  setCardiovascularFactors(cf: CardiovascularFactors) { if (this.biologicalAspect) this.biologicalAspect.cardiovascularFactorsInstance = cf; this.cardiovascularFactors = cf; }
+  setMisuseMedications(mm: MisuseMedications) { if (this.biologicalAspect) this.biologicalAspect.misuseMedicationsInstance = mm; this.misuseMedications = mm; }
+  setComments(c: string) {
+    if (this.biologicalAspect) {
+      this.dao.patchObject(REST_URL_PSYCHOLOGICAL_ASPECTS, {
+        id: this.biologicalAspect.getId(),
+        comments_bio: c
+      }).subscribe((data: any) => {
+        this.biologicalAspect.comments = data.comments_psico;
+        this.comments_bio = data.comments_psico;
+      }, _ => alert('Ocorreu um erro ao tentar alterar os comentários dos aspectos psicológicos'));
+    } else this.comments_bio = c;
+  }
 
   submit() {
     if (this.isComplete) this.dao.postObject(REST_URL_BIOLOGICAL_ASPECTS, {
@@ -51,5 +72,6 @@ export class BiologicalAspectsComponent implements OnInit {
       this.pageService.setBiologicalAspects(this.biologicalAspect);
     });
     else alert('Alguma das subareas não foi feita corretamente');
+    // TODO - Fazer o alerta acima como o do psychological aspects
   }
 }

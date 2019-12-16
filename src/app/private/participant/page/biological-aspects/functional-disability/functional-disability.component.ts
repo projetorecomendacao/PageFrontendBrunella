@@ -49,7 +49,7 @@ export class FunctionalDisabilityComponent implements OnInit {
   submit() {
     if (this.functionalDisabilityForm.valid)
       if (this.functionalDisabilityInput) {
-        const dirtyProps = {};
+        const dirtyProps = { id: this.functionalDisabilityInput.getId() };
         let hasDirtyProps = false;
 
         for (const prop in this.functionalDisabilityForm.controls) {
@@ -57,6 +57,7 @@ export class FunctionalDisabilityComponent implements OnInit {
           if (propFormControl.dirty) {
             dirtyProps[prop] = propFormControl.value;
             hasDirtyProps = true;
+            propFormControl.markAsPristine();
           }
         }
 

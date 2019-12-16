@@ -52,7 +52,7 @@ export class MalnutritionComponent implements OnInit {
   submit() {
     if (this.malnutritionForm.valid)
       if (this.malnutritionInput) {
-        const dirtyProps = {};
+        const dirtyProps = { id: this.malnutritionInput.getId() };
         let hasDirtyProps = false;
 
         for (const prop in this.malnutritionForm.controls) {
@@ -60,6 +60,7 @@ export class MalnutritionComponent implements OnInit {
           if (propFormControl.dirty) {
             dirtyProps[prop] = propFormControl.value;
             hasDirtyProps = true;
+            propFormControl.markAsPristine();
           }
         }
 
