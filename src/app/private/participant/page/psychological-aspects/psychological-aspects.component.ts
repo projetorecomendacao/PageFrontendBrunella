@@ -30,7 +30,6 @@ export class PsychologicalAspectsComponent implements OnInit {
       this.negativeAttitudesAging = this.psychologicalAspect.negativeAttitudesAgingInstance;
       this.depression = this.psychologicalAspect.depressionInstance;
       this.comments_psico = this.psychologicalAspect.comments;
-
     }
   }
 

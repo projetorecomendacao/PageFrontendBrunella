@@ -5,9 +5,9 @@ import { ParticipantComponent } from './participant/participant.component';
 import { ParticipantFormComponent } from './participant/page/participant-form/participant-form.component';
 import { PsychologicalAspectsComponent } from './participant/page/psychological-aspects/psychological-aspects.component';
 import { BiologicalAspectsComponent } from './participant/page/biological-aspects/biological-aspects.component';
-import { SocialAspects } from '../shared/models/social-aspects.model';
+import { SocialAspectsComponent } from './participant/page/social-aspects/social-aspects.component';
 import { MultidimensionalAspectComponent } from './participant/page/multidimensional-aspect/multidimensional-aspect.component';
-import {PrivateComponent} from './private.component';
+import { PrivateComponent } from './private.component';
 
 
 const routes: Routes = [
@@ -23,7 +23,7 @@ const routes: Routes = [
           { path: '', component: ParticipantFormComponent },
           { path: 'psychological-aspect', component: PsychologicalAspectsComponent },
           { path: 'biological-aspect', component: BiologicalAspectsComponent },
-          { path: 'social-aspect', component: SocialAspects },
+          { path: 'social-aspect', component: SocialAspectsComponent },
           { path: 'multidisciplinary-domain', component: MultidimensionalAspectComponent }
         ]
       }

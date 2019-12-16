@@ -79,7 +79,7 @@ export class EnvironmentalProblemsComponent implements OnInit {
   submit() {
     if (this.environmentalProblemsForm.valid)
       if (this.environmentalProblemsInput) {
-        const dirtyProps = {};
+        const dirtyProps = { id: this.environmentalProblemsInput.getId()};
         let hasDirtyProps = false;
 
         for (const prop in this.environmentalProblemsForm.controls) {
@@ -87,6 +87,7 @@ export class EnvironmentalProblemsComponent implements OnInit {
           if (propFormControl.dirty) {
             dirtyProps[prop] = propFormControl.value;
             hasDirtyProps = true;
+            propFormControl.markAsPristine();
           }
         }
 
