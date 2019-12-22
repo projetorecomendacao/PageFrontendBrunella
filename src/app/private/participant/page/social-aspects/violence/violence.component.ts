@@ -55,7 +55,7 @@ export class ViolenceComponent implements OnInit {
   submit() {
     if (this.violenceForm.valid)
       if (this.violenceInput) {
-        const dirtyProps = {};
+        const dirtyProps = { id: this.violenceInput.getId() };
         let hasDirtyProps = false;
 
         for (const prop in this.violenceForm.controls) {
@@ -63,6 +63,7 @@ export class ViolenceComponent implements OnInit {
           if (propFormControl.dirty) {
             dirtyProps[prop] = propFormControl.value;
             hasDirtyProps = true;
+            propFormControl.markAsPristine();
           }
         }
 

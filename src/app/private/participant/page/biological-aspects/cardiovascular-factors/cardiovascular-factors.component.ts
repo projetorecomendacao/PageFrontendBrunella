@@ -70,7 +70,7 @@ export class CardiovascularFactorsComponent implements OnInit {
   submit() {
     if (this.cardiovascularFactorsForm.valid)
       if (this.cardiovascularFactorsInput) {
-        const dirtyProps = {};
+        const dirtyProps = { id: this.cardiovascularFactorsInput.getId() };
         let hasDirtyProps = false;
 
         for (const prop in this.cardiovascularFactorsForm.controls) {
@@ -78,6 +78,7 @@ export class CardiovascularFactorsComponent implements OnInit {
           if (propFormControl.dirty) {
             dirtyProps[prop] = propFormControl.value;
             hasDirtyProps = true;
+            propFormControl.markAsPristine();
           }
         }
 

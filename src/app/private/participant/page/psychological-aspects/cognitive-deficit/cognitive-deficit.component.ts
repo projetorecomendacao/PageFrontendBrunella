@@ -1,12 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {
-  REST_URL_COGNITION_DEFICIT,
-  REST_URL_DEPRESSION,
-  REST_URL_PARTICIPANT_SITUATION
-} from '../../../../../shared/REST_API_URLs';
+import { REST_URL_COGNITION_DEFICIT } from '../../../../../shared/REST_API_URLs';
 import { DAOService } from '../../../../../shared/dao.service';
-import { CognitionDeficit, Depression } from '../../../../../shared/models/psychological-aspects.model';
+import { CognitionDeficit } from '../../../../../shared/models/psychological-aspects.model';
 
 @Component({
   selector: 'app-cognitive-deficit',
@@ -56,7 +52,7 @@ export class CognitiveDeficitComponent implements OnInit {
   submit() {
     if (this.cognitiveDeficitForm.valid)
       if (this.cognitionDeficitInput) {
-        const dirtyProps = {};
+        const dirtyProps = { id: this.cognitionDeficitInput.getId() };
         let hasDirtyProps = false;
 
         for (const prop in this.cognitiveDeficitForm.controls) {
@@ -64,6 +60,7 @@ export class CognitiveDeficitComponent implements OnInit {
           if (propFormControl.dirty) {
             dirtyProps[prop] = propFormControl.value;
             hasDirtyProps = true;
+            propFormControl.markAsPristine();
           }
         }
 

@@ -4,3 +4,11 @@
 <app-cardiovascular-factors [cardiovascularFactors]="cardiovascularFactors" (cardiovascularFactors)="setCardiovascularFactors($event)"></app-cardiovascular-factors>
 <app-misuse-medications [misuseMedications]="misuseMedications" (misuseMedications)="setMisuseMedications($event)"></app-misuse-medications>
 <app-observations-biological [comments]="comments_bio" (comments)="setComments($event)"></app-observations-biological>
+
+<!--Continue-->
+<div class="d-flex align-items-center justify-content-around p-3 mt-4">
+  <button class="btn btn-success" [routerLink]="['../psychological-aspect']">Voltar</button>
+  <button *ngIf="!isComplete" class="btn btn-success" (click)="submit()">Salvar e continuar</button>
+  <button *ngIf="isComplete" class="btn btn-success" (click)="submit()" [routerLink]="['../social-aspect']">Salvar e continuar</button>
+</div>
+<!------------>

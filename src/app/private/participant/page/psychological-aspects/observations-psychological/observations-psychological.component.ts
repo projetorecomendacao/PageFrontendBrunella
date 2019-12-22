@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-observations-psychological',
@@ -14,13 +14,15 @@ export class ObservationsPsychologicalComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if (this.commentsInput) this.commentsForm = new FormControl(this.commentsForm);
-    else this.commentsForm = new FormControl('');
+    if (this.commentsInput) this.commentsForm = new FormControl(this.commentsInput, [Validators.required]);
+    else this.commentsForm = new FormControl('', [Validators.required]);
   }
 
   submit() {
-    this.commentsInput = this.commentsForm.value;
-    this.commentsOutput.emit(this.commentsInput);
+    if (this.commentsForm.valid) {
+      this.commentsInput = this.commentsForm.value;
+      this.commentsOutput.emit(this.commentsInput);
+    } else this.commentsForm.markAsTouched();
   }
 
 }

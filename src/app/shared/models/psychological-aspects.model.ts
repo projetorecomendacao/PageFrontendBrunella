@@ -96,20 +96,47 @@ export class Depression {
 
 export class PsychologicalAspects {
   private id: number;
+
+  // ids
   private cognition_deficit: number;
   private negative_attitudes_aging: number;
   private depression: number;
+
+  // instances
+  private cognition_deficit_instance: CognitionDeficit;
+  private negative_attitudes_aging_instance: NegativeAttitudesAging;
+  private depression_instance: Depression;
+
   private comments_psico: string;
 
-  constructor(data) {
+  constructor(data: any = {}, cognition_deficitInstance?: CognitionDeficit, negative_attitudes_agingInstance?: NegativeAttitudesAging, depressionInstance?: Depression) {
     this.id = data.id;
+
     this.cognition_deficit = data.cognition_deficit;
     this.negative_attitudes_aging = data.negative_attitudes_aging;
     this.depression = data.depression;
+
+    this.cognition_deficit_instance = cognition_deficitInstance;
+    this.negative_attitudes_aging_instance = negative_attitudes_agingInstance;
+    this.depression_instance = depressionInstance;
+
     this.comments_psico = data.comments_psico;
   }
 
   public getId() { return this.id; }
+
+  get cognitionDeficitInstance() { return this.cognition_deficit_instance; }
+  set cognitionDeficitInstance(cognitionDeficitInstance: CognitionDeficit) { this.cognition_deficit_instance = cognitionDeficitInstance; }
+
+  get negativeAttitudesAgingInstance() { return this.negative_attitudes_aging_instance; }
+  set negativeAttitudesAgingInstance(negativeAttitudesAgingInstance: NegativeAttitudesAging) { this.negative_attitudes_aging_instance = negativeAttitudesAgingInstance; }
+
+  get depressionInstance() { return this.depression_instance; }
+  set depressionInstance(depressionInstance: Depression) { this.depression_instance = depressionInstance; }
+
+  get comments() { return this.comments_psico; }
+  set comments(comments: string) { this.comments_psico = comments; }
+
   public getRaw() {
     return {
       cognition_deficit: this.cognition_deficit,
@@ -118,4 +145,6 @@ export class PsychologicalAspects {
       comments_psico: this.comments_psico
     };
   }
+
+
 }

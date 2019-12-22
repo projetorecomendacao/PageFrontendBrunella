@@ -1,12 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DAOService } from '../../../../../shared/dao.service';
-import {
-  REST_URL_COGNITION_DEFICIT,
-  REST_URL_DEPRESSION,
-  REST_URL_NEGATIVE_ATTITUDE_AGING
-} from '../../../../../shared/REST_API_URLs';
-import { Depression, NegativeAttitudesAging } from '../../../../../shared/models/psychological-aspects.model';
+import { REST_URL_NEGATIVE_ATTITUDE_AGING } from '../../../../../shared/REST_API_URLs';
+import { NegativeAttitudesAging } from '../../../../../shared/models/psychological-aspects.model';
 
 @Component({
   selector: 'app-negative-attitudes-aging',
@@ -31,11 +27,11 @@ export class NegativeAttitudesAgingComponent implements OnInit {
 
   ngOnInit() {
     if (this.negativeAttitudesAgingInput) this.negativeAttitudesAgingForm = this.fb.group({
-      q7_age_self_perception: [this.negativeAttitudesAgingInput.getQ7A, Validators.required],
-      q7_age_self_perception_why: [this.negativeAttitudesAgingInput.getQ7B, Validators.required],
+      q7_age_self_perception: [this.negativeAttitudesAgingInput.getQ7A(), Validators.required],
+      q7_age_self_perception_why: [this.negativeAttitudesAgingInput.getQ7B(), Validators.required],
       q7_age_self_perception_analyze: [this.negativeAttitudesAgingInput.getQ7C(), [Validators.required, Validators.maxLength(1)]],
-      q8_aging_positive_points: [this.negativeAttitudesAgingInput.getQ8A, Validators.required],
-      q8_aging_negative_points: [this.negativeAttitudesAgingInput.getQ8B, Validators.required],
+      q8_aging_positive_points: [this.negativeAttitudesAgingInput.getQ8A(), Validators.required],
+      q8_aging_negative_points: [this.negativeAttitudesAgingInput.getQ8B(), Validators.required],
       q8_aging_analyse: [this.negativeAttitudesAgingInput.getQ8C(), [Validators.required, Validators.maxLength(1)]],
       need_investigation_negative: [this.negativeAttitudesAgingInput.getNeedInvestigation(), [Validators.required, Validators.maxLength(1)]]
     });
@@ -53,7 +49,7 @@ export class NegativeAttitudesAgingComponent implements OnInit {
   submit() {
     if (this.negativeAttitudesAgingForm.valid)
       if (this.negativeAttitudesAgingInput) {
-        const dirtyProps = {};
+        const dirtyProps = { id: this.negativeAttitudesAgingInput.getId() };
         let hasDirtyProps = false;
 
         for (const prop in this.negativeAttitudesAgingForm.controls) {
@@ -61,6 +57,7 @@ export class NegativeAttitudesAgingComponent implements OnInit {
           if (propFormControl.dirty) {
             dirtyProps[prop] = propFormControl.value;
             hasDirtyProps = true;
+            propFormControl.markAsPristine();
           }
         }
 

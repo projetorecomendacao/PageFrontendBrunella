@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../security/user.service';
 
 @Component({
   selector: 'app-private',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivateComponent implements OnInit {
 
-  constructor() { }
+  /*
+    User service is here because it needs to be instantiated before loading the PAGE component.
+    By including it here, that is guaranteed. DO NOT REMOVE.
+   */
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }

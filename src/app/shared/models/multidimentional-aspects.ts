@@ -67,16 +67,28 @@ export class Falls {
 
 export class MultidisciplinaryDomain {
     private id: number;
+
     private falls: number;
+
+    private falls_instance: Falls;
+
     private comments_multi: string;
 
-    constructor(data: any = {}) {
+    constructor(data: any = {}, falls_instance?: Falls) {
       this.id = data.id;
+
       this.falls = data.falls;
+
+      this.falls_instance = falls_instance;
+
       this.comments_multi = data.string;
     }
 
     getId() { return this.id; }
-    getFalls() { return this.falls; }
-    getComments_multi() { return this.comments_multi; }
+
+    get fallsInstance() { return this.falls_instance; }
+    set fallsInstance(falls_instance: Falls) { this.falls_instance = falls_instance; }
+
+    get comments() { return this.comments_multi; }
+    set comments(comments: string) { this.comments_multi = comments; }
 }

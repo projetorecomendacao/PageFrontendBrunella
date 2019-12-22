@@ -46,7 +46,7 @@ export class SensoryDeficitComponent implements OnInit {
   submit() {
     if (this.sensoryDeficitForm.valid)
       if (this.sensoryDeficitInput) {
-        const dirtyProps = {};
+        const dirtyProps = { id: this.sensoryDeficitInput.getId() };
         let hasDirtyProps = false;
 
         for (const prop in this.sensoryDeficitForm.controls) {
@@ -54,6 +54,7 @@ export class SensoryDeficitComponent implements OnInit {
           if (propFormControl.dirty) {
             dirtyProps[prop] = propFormControl.value;
             hasDirtyProps = true;
+            propFormControl.markAsPristine();
           }
         }
 

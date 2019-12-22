@@ -3,6 +3,8 @@ import { Participant } from '../../shared/models/participant.model';
 import { DAOService } from '../../shared/dao.service';
 import { REST_URL_PARTICIPANTS } from '../../shared/REST_API_URLs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {PageService} from '../participant/page/page.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +24,7 @@ export class HomeComponent implements OnInit {
   });
 
 
-  constructor(private dao: DAOService, private form: FormBuilder) {
+  constructor(private dao: DAOService, private form: FormBuilder, private pageService: PageService, private router: Router) {
     dao.getObjects(REST_URL_PARTICIPANTS).subscribe((data: any) => {
       for (const participant of data)
         this.participants.push(new Participant(participant));
@@ -33,11 +35,14 @@ export class HomeComponent implements OnInit {
   }
 
   addParticipant() {
-    console.log(this.addParticipantForm.getRawValue());
     this.dao.postObject(REST_URL_PARTICIPANTS, this.addParticipantForm.getRawValue()).subscribe((data: any) => {
       this.participants.push(new Participant(data));
     });
     this.addParticipantForm.reset();
   }
 
+  goToParticipant(id: number) {
+    this.pageService.reset();
+    this.router.navigate([id]).then();
+  }
 }

@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DAOService } from '../../../../../shared/dao.service';
-import { REST_URL_COGNITION_DEFICIT, REST_URL_DEPRESSION } from '../../../../../shared/REST_API_URLs';
-import { CognitionDeficit, Depression } from '../../../../../shared/models/psychological-aspects.model';
+import { REST_URL_DEPRESSION } from '../../../../../shared/REST_API_URLs';
+import { Depression } from '../../../../../shared/models/psychological-aspects.model';
 
 @Component({
   selector: 'app-depression',
@@ -49,7 +49,7 @@ export class DepressionComponent implements OnInit {
   submit() {
     if (this.depressionForm.valid)
       if (this.depressionInput) {
-        const dirtyProps = {};
+        const dirtyProps = { id: this.depressionInput.getId() };
         let hasDirtyProps = false;
 
         for (const prop in this.depressionForm.controls) {
@@ -57,6 +57,7 @@ export class DepressionComponent implements OnInit {
           if (propFormControl.dirty) {
             dirtyProps[prop] = propFormControl.value;
             hasDirtyProps = true;
+            propFormControl.markAsPristine();
           }
         }
 

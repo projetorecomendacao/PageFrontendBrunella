@@ -19,6 +19,7 @@ export class DAOService {
     }
 
     patchObject(urlObject: string, object: any) {
+      console.log(object);
       return this.http.patch(urlObject + `${object.id}/`,  object);
     }
 

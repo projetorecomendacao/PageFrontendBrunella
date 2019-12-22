@@ -258,23 +258,57 @@ export class MisuseMedications {
 
 export class BiologicalAspects {
   private id: number;
+
   private sensoryDeficit: number;
   private functionalDisability: number;
   private malNutrition: number;
   private cardiovascularFactors: number;
   private misuseMedications: number;
+
+  private sensoryDeficit_instance: SensoryDeficit;
+  private functionalDisability_instance: FunctionalDisability;
+  private malNutrition_instance: Malnutrition;
+  private cardiovascularFactors_instance: CardiovascularFactors;
+  private misuseMedications_instance: MisuseMedications;
+
   private comments_bio: string;
   private max_score_bio: number;
 
-  constructor(data: any) {
+  constructor(data: any = {}, sensoryDeficit_instance?: SensoryDeficit, functionalDisability_instance?: FunctionalDisability, malNutrition_instance?: Malnutrition, cardiovascularFactors_instance?: CardiovascularFactors, misuseMedications_instance?: MisuseMedications) {
     this.id = data.id;
+
     this.sensoryDeficit = data.sensoryDeficit;
     this.functionalDisability = data.functionalDisability;
     this.malNutrition = data.malNutrition;
     this.cardiovascularFactors = data.cardiovascularFactors;
     this.misuseMedications = data.misuseMedications;
+
+    this.sensoryDeficit_instance = sensoryDeficit_instance;
+    this.functionalDisability_instance = functionalDisability_instance;
+    this.malNutrition_instance = malNutrition_instance;
+    this.cardiovascularFactors_instance = cardiovascularFactors_instance;
+    this.misuseMedications_instance = misuseMedications_instance;
+
     this.comments_bio = data.comments_bio;
   }
 
   getId() { return this.id; }
+
+  get sensoryDeficitInstance() { return this.sensoryDeficit_instance; }
+  set sensoryDeficitInstance(sensoryDeficit: SensoryDeficit) { this.sensoryDeficit_instance = sensoryDeficit; }
+
+  get functionalDisabilityInstance() { return this.functionalDisability_instance; }
+  set functionalDisabilityInstance(functionalDisability: FunctionalDisability) { this.functionalDisability_instance = functionalDisability; }
+
+  get malNutritionInstance() { return this.malNutrition_instance; }
+  set malNutritionInstance(malNutrition: Malnutrition) { this.malNutrition_instance = malNutrition; }
+
+  get cardiovascularFactorsInstance() { return this.cardiovascularFactors_instance; }
+  set cardiovascularFactorsInstance(cardiovascularFactors: CardiovascularFactors) { this.cardiovascularFactors_instance = cardiovascularFactors; }
+
+  get misuseMedicationsInstance() { return this.misuseMedications_instance; }
+  set misuseMedicationsInstance(misuseMedications: MisuseMedications) { this.misuseMedications_instance = misuseMedications; }
+
+  get comments() { return this.comments_bio; }
+  set comments(comments: string) { this.comments_bio = comments; }
 }

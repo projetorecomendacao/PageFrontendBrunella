@@ -121,7 +121,7 @@ export class MisuseMedicationsComponent implements OnInit {
   submit() {
     if (this.misuseMedicationsForm.valid)
       if (this.misuseMedicationsInput) {
-        const dirtyProps = {};
+        const dirtyProps = { id: this.misuseMedicationsInput.getId() };
         let hasDirtyProps = false;
 
         for (const prop in this.misuseMedicationsForm.controls) {
@@ -129,6 +129,7 @@ export class MisuseMedicationsComponent implements OnInit {
           if (propFormControl.dirty) {
             dirtyProps[prop] = propFormControl.value;
             hasDirtyProps = true;
+            propFormControl.markAsPristine();
           }
         }
 

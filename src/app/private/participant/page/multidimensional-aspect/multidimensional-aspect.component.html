@@ -1,2 +1,9 @@
 <app-falls [falls]="falls" (falls)="setFalls($event)"></app-falls>
 <app-observations-multidimensional [comments]="comments_multi" (comments)="setComments($event)"></app-observations-multidimensional>
+
+<!--Continue-->
+<div class="d-flex align-items-center justify-content-around p-3 mt-4 text-white">
+  <button class="btn btn-danger" [routerLink]="['../social-aspect']">Voltar</button>
+  <button class="btn btn-danger" (click)="submit()">Finalizar</button>
+</div>
+<!------------>

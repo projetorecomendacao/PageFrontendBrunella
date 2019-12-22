@@ -125,7 +125,7 @@
       <img class="img-fluid px-5" src="{{ participant.getProfilePhotoURL() || 'assets/profile_placeholder.svg' }}" alt="Foto de perfil">
       <h6 class="font-weight-bold text-primary text-center">{{ participant.getName() || 'Nome não registrado' }}</h6>
       <span class="m-0">{{ participant.getAge() + ' anos' || 'Idade não registrada' }}</span>
-      <button class="btn btn-primary mt-4" [routerLink]="[participant.getId()]">Detalhes</button>
+      <button class="btn btn-primary mt-4" (click)="goToParticipant(participant.getId())">Detalhes</button>
     </div>
     <!--------->
   </div>

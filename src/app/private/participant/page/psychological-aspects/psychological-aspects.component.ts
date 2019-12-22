@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   CognitionDeficit, Depression,
   NegativeAttitudesAging,
@@ -6,7 +6,7 @@ import {
 } from '../../../../shared/models/psychological-aspects.model';
 import { DAOService } from '../../../../shared/dao.service';
 import { REST_URL_PSYCHOLOGICAL_ASPECTS } from '../../../../shared/REST_API_URLs';
-import { ParticipantSituation } from '../../../../shared/models/participant.model';
+import { PageService } from '../page.service';
 
 @Component({
   selector: 'app-psychological-aspects',
@@ -14,32 +14,54 @@ import { ParticipantSituation } from '../../../../shared/models/participant.mode
 })
 export class PsychologicalAspectsComponent implements OnInit {
 
-  @Input('psychologicalAspect') psychologicalAspectInput: PsychologicalAspects;
-  @Output('psychologicalAspect') psychologicalAspectOutput = new EventEmitter<PsychologicalAspects>();
+  private psychologicalAspect: PsychologicalAspects;
 
   private cognitionDeficit: CognitionDeficit;
   private negativeAttitudesAging: NegativeAttitudesAging;
   private depression: Depression;
   private comments_psico: string;
 
-  constructor(private dao: DAOService) { }
+  constructor(private dao: DAOService, private pageService: PageService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.psychologicalAspect = this.pageService.psychologicalAspects;
+    if (this.psychologicalAspect) {
+      this.cognitionDeficit = this.psychologicalAspect.cognitionDeficitInstance;
+      this.negativeAttitudesAging = this.psychologicalAspect.negativeAttitudesAgingInstance;
+      this.depression = this.psychologicalAspect.depressionInstance;
+      this.comments_psico = this.psychologicalAspect.comments;
+    }
+  }
 
-  setCognitiveDeficit(cd: CognitionDeficit) { this.cognitionDeficit = cd; this.submit(); }
-  setNegativeAttitudesAging(nag: NegativeAttitudesAging) { this.negativeAttitudesAging = nag; this.submit(); }
-  setDepression(d: Depression) { this.depression = d; this.submit(); }
-  setComments(c: string) { this.comments_psico = c; this.submit(); }
+  get isComplete() { return this.cognitionDeficit && this.negativeAttitudesAging && this.depression && this.comments_psico; }
+
+  setCognitiveDeficit(cd: CognitionDeficit) { if (this.psychologicalAspect) this.psychologicalAspect.cognitionDeficitInstance = cd; this.cognitionDeficit = cd; }
+  setNegativeAttitudesAging(nag: NegativeAttitudesAging) { if (this.psychologicalAspect) this.psychologicalAspect.negativeAttitudesAgingInstance = nag; this.negativeAttitudesAging = nag; }
+  setDepression(d: Depression) { if (this.psychologicalAspect) this.psychologicalAspect.depressionInstance = d; this.depression = d; }
+  setComments(c: string) {
+    if (this.psychologicalAspect) {
+      this.dao.patchObject(REST_URL_PSYCHOLOGICAL_ASPECTS, {
+        id: this.psychologicalAspect.getId(),
+        comments_psico: c
+      }).subscribe((data: any) => {
+        this.psychologicalAspect.comments = data.comments_psico;
+        this.comments_psico = data.comments_psico;
+      }, _ => alert('Ocorreu um erro ao tentar alterar os comentários dos aspectos psicológicos'));
+    } else this.comments_psico = c;
+  }
 
   submit() {
-    if (this.cognitionDeficit && this.negativeAttitudesAging && this.depression && this.comments_psico) this.dao.postObject(REST_URL_PSYCHOLOGICAL_ASPECTS, {
+    if (!this.psychologicalAspect) {
+      if (this.isComplete) this.dao.postObject(REST_URL_PSYCHOLOGICAL_ASPECTS, {
         cognition_deficit: this.cognitionDeficit.getId(),
         negative_attitudes_aging: this.negativeAttitudesAging.getId(),
         depression: this.depression.getId(),
         comments_psico: this.comments_psico
       }).subscribe(data => {
-      this.psychologicalAspectInput = new PsychologicalAspects(data);
-      this.psychologicalAspectOutput.emit(this.psychologicalAspectInput);
-    });
+        this.psychologicalAspect = new PsychologicalAspects(data, this.cognitionDeficit, this.negativeAttitudesAging, this.depression);
+        this.pageService.setPsychologicalAspects(this.psychologicalAspect);
+      });
+      else alert('A(s) área(s) ' + (!this.cognitionDeficit ? 'Déficit Cognitivo ' : '') + (!this.negativeAttitudesAging ? 'Atitudes negativas... ' : '') + (!this.depression ? 'Depressão ' : '') + (!this.comments_psico ? 'Observação ' : '') + 'não foram preenchidas');
+    }
   }
 }

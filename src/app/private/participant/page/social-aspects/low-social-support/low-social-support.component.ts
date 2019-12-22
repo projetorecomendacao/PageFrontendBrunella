@@ -73,7 +73,7 @@ export class LowSocialSupportComponent implements OnInit {
   submit() {
     if (this.lowSocialSupportForm.valid)
       if (this.lowSocialSupportInput) {
-        const dirtyProps = {};
+        const dirtyProps = { id: this.lowSocialSupportInput.getId() };
         let hasDirtyProps = false;
 
         for (const prop in this.lowSocialSupportForm.controls) {
@@ -81,6 +81,7 @@ export class LowSocialSupportComponent implements OnInit {
           if (propFormControl.dirty) {
             dirtyProps[prop] = propFormControl.value;
             hasDirtyProps = true;
+            propFormControl.markAsPristine();
           }
         }
 
