@@ -8,6 +8,7 @@ import { BiologicalAspectsComponent } from './participant/page/biological-aspect
 import { SocialAspectsComponent } from './participant/page/social-aspects/social-aspects.component';
 import { MultidimensionalAspectComponent } from './participant/page/multidimensional-aspect/multidimensional-aspect.component';
 import { PrivateComponent } from './private.component';
+import {PagesListComponent} from './participant/pages-list/pages-list.component';
 
 
 const routes: Routes = [
@@ -17,14 +18,21 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       {
-        path: ':id',
+        path: 'participant',
         component: ParticipantComponent,
         children: [
-          { path: '', component: ParticipantFormComponent },
-          { path: 'psychological-aspect', component: PsychologicalAspectsComponent },
-          { path: 'biological-aspect', component: BiologicalAspectsComponent },
-          { path: 'social-aspect', component: SocialAspectsComponent },
-          { path: 'multidisciplinary-domain', component: MultidimensionalAspectComponent }
+          { path: '', component: PagesListComponent },
+          {
+            path: 'page/:id',
+            component: ParticipantComponent,
+            children: [
+              { path: '', component: ParticipantFormComponent },
+              { path: 'psychological-aspect', component: PsychologicalAspectsComponent },
+              { path: 'biological-aspect', component: BiologicalAspectsComponent },
+              { path: 'social-aspect', component: SocialAspectsComponent },
+              { path: 'multidisciplinary-domain', component: MultidimensionalAspectComponent }
+            ]
+          }
         ]
       }
     ]

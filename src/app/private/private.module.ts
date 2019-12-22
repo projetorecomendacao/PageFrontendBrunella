@@ -41,6 +41,7 @@ import {
 } from './participant/page/multidimensional-aspect/observations-multidimensional/observations-multidimensional.component';
 import { UserService } from '../security/user.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PagesListComponent } from './participant/pages-list/pages-list.component';
 
 
 
@@ -72,7 +73,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ObservationsSocialComponent,
     MultidimensionalAspectComponent,
     FallsComponent,
-    ObservationsMultidimensionalComponent
+    ObservationsMultidimensionalComponent,
+    PagesListComponent
   ],
   imports: [
     CommonModule,

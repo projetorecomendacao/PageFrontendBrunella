@@ -11,7 +11,6 @@ export class ParticipantInfoComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

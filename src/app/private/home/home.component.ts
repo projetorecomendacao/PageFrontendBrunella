@@ -43,6 +43,6 @@ export class HomeComponent implements OnInit {
 
   goToParticipant(id: number) {
     this.pageService.reset();
-    this.router.navigate([id]).then();
+    this.router.navigate(['private/participant']).then();
   }
 }
