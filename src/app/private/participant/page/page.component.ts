@@ -3,12 +3,13 @@ import { Participant } from '../../../shared/models/participant.model';
 import { DAOService } from '../../../shared/dao.service';
 import { UserService } from '../../../security/user.service';
 import { PageService } from './page.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-page',
   templateUrl: './page.component.html'
 })
-export class PageComponent implements OnInit, OnChanges {
+export class PageComponent implements OnInit {
 
   @Input() participant: Participant;
 
@@ -16,17 +17,9 @@ export class PageComponent implements OnInit, OnChanges {
 
   setService(service: string) { this.pageService.setService(service); }
   setEntrance(entrance: string) { this.pageService.setEntrance(entrance); }
+  setInterviewed(interviewed: string) { this.pageService.setInterviewed(interviewed); }
 
-  constructor(private dao: DAOService, private userService: UserService, private pageService: PageService) { }
+  constructor(private dao: DAOService, private pageService: PageService) { }
 
-  ngOnInit(): void {
-    if (this.participant)
-      this.pageService.setParticipant(this.participant);
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    const participant = changes.participant.currentValue;
-    if (participant)
-      this.pageService.setParticipant(participant);
-  }
+  ngOnInit(): void { }
 }

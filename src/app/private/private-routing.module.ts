@@ -9,6 +9,7 @@ import { SocialAspectsComponent } from './participant/page/social-aspects/social
 import { MultidimensionalAspectComponent } from './participant/page/multidimensional-aspect/multidimensional-aspect.component';
 import { PrivateComponent } from './private.component';
 import {PagesListComponent} from './participant/pages-list/pages-list.component';
+import {PageComponent} from './participant/page/page.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,7 @@ const routes: Routes = [
           { path: '', component: PagesListComponent },
           {
             path: 'page/:id',
-            component: ParticipantComponent,
+            component: PageComponent,
             children: [
               { path: '', component: ParticipantFormComponent },
               { path: 'psychological-aspect', component: PsychologicalAspectsComponent },

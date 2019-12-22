@@ -14,11 +14,14 @@ import { UserService } from '../../../security/user.service';
 })
 export class PageService {
 
-  private participant: Participant;
+  private _participant: Participant;
   private _page = new Page();
 
   get page() { return this._page; }
   set page(page: Page) { this._page = page; }
+
+  get participant() { return this._participant; }
+  set participant(p: Participant) { this._participant = p; }
 
   get participantSituation() { return this.page.getParticipant_situation(); }
   get psychologicalAspects() { return this.page.getPsychologicalAspects(); }
@@ -29,22 +32,47 @@ export class PageService {
   get hasService() { return !!this.page.getService(); }
   get hasEntrance() { return !!this.page.getEntrance(); }
 
-  setParticipant(p: Participant) {
-    this.participant = p;
+  setParticipant() {
     const user = this.userService.user;
     this._page.setAvaliation_date(new Date());
-    this._page.setInterviewed(this.participant.getName());
     this._page.setGerontologist(user.getId());
     this._page.setInterviewer(user.getName());
     this._page.setParticipant(this.participant);
+
+    this.submit();
   }
-  setService(service: string) { this._page.setService(service); this.submit(); }
-  setEntrance(entrance: string) { this._page.setEntrance(new Date(entrance)); this.submit(); }
-  setParticipantSituation(pf: ParticipantSituation) { this._page.setParticipant_situation(pf); this.submit(); }
-  setPsychologicalAspects(pa: PsychologicalAspects) { this._page.setPsychologicalAspects(pa); this.submit(); }
-  setBiologicalAspects(ba: BiologicalAspects) { this._page.setBiologicalAspects(ba); this.submit(); }
-  setSocialAspects(sa: SocialAspects) { this._page.setSocialAspects(sa); this.submit(); }
-  setMultidisciplinaryDomain(md: MultidisciplinaryDomain) { this._page.setMultidisciplinaryDomain(md); this.submit(); }
+  setService(service: string) {
+    this._page.setService(service);
+    this.submit({ service });
+  }
+  setEntrance(entrance: string) {
+    this._page.setEntrance(new Date(entrance));
+    this.submit({ entrance });
+  }
+  setInterviewed(interviewed: string) {
+    this._page.setInterviewed(interviewed);
+    this.submit({ interviewed });
+  }
+  setParticipantSituation(pf: ParticipantSituation) {
+    this._page.setParticipant_situation(pf);
+    this.submit({ participant_situation: pf.getId() });
+  }
+  setPsychologicalAspects(pa: PsychologicalAspects) {
+    this._page.setPsychologicalAspects(pa);
+    this.submit({ psychologicalAspects: pa.getId() });
+  }
+  setBiologicalAspects(ba: BiologicalAspects) {
+    this._page.setBiologicalAspects(ba);
+    this.submit({ biologicalAspects: ba.getId() });
+  }
+  setSocialAspects(sa: SocialAspects) {
+    this._page.setSocialAspects(sa);
+    this.submit({ socialAspects: sa.getId() });
+  }
+  setMultidisciplinaryDomain(md: MultidisciplinaryDomain) {
+    this._page.setMultidisciplinaryDomain(md);
+    this.submit({ multidisciplinaryDomain: md.getId() });
+  }
 
   constructor(private dao: DAOService, private userService: UserService) { }
 
@@ -52,14 +80,16 @@ export class PageService {
     this.page = new Page();
   }
 
-  submit() {
-    if (
-      this.participantSituation &&
-      this.psychologicalAspects &&
-      this.biologicalAspects &&
-      this.socialAspects &&
-      this.multidisciplinaryDomain
-    )
-      this.dao.postObject(REST_URL_PAGE, this.page.getRawValues()).subscribe(data => this._page = new Page(data));
+  submit(content?: any) {
+    if (this.page.getId() === -1)
+      this.dao.postObject(REST_URL_PAGE, this.page.getRawValues()).subscribe(data => this._page = new Page(data, this.participant, this.page.getParticipant_situation()));
+    else {
+      const today = new Date();
+      content = {
+        id: this.page.getId(),
+        updated_at: `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`
+      };
+      this.dao.patchObject(REST_URL_PAGE, content).subscribe(data => this._page = new Page(data, this.participant, this.page.getParticipant_situation()));
+    }
   }
 }

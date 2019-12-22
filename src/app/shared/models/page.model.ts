@@ -19,20 +19,27 @@ export class Page {
   private socialAspects: SocialAspects;
   private multidisciplinaryDomain: MultidisciplinaryDomain;
 
-  constructor(data: any = {}) {
-    this.id = data.id;
+  constructor(data: any = {}, participant?: Participant, participant_situation?: ParticipantSituation, psychologicalAspects?: PsychologicalAspects, biologicalAspects?: BiologicalAspects, socialAspects?: SocialAspects, multidisciplinaryDomain?: MultidisciplinaryDomain) {
+    // tslint:disable-next-line:no-bitwise
+    this.id = data.id | -1;
     this.service = data.service;
-    this.entrance = data.entrance;
+    if (data.entrance && !(data.entrance instanceof Date))
+      this.entrance = new Date(data.entrance);
+    else
+      this.entrance = data.entrance;
     this.interviewed = data.interviewed;
     this.interviewer = data.interviewer;
-    this.avaliation_date = data.avaliation_date;
+    if (data.avaliation_date && !(data.avaliation_date instanceof Date))
+      this.avaliation_date = new Date(data.avaliation_date);
+    else
+      this.avaliation_date = data.avaliation_date;
     this.gerontologist = data.gerontologist;
-    this.participant = data.participant;
-    this.participant_situation = data.participant_situation;
-    this.psychologicalAspects = data.psychologicalAspects;
-    this.biologicalAspects = data.biologicalAspects;
-    this.socialAspects = data.socialAspects;
-    this.multidisciplinaryDomain = data.multidisciplinaryDomain;
+    this.participant = participant;
+    this.participant_situation = participant_situation;
+    this.psychologicalAspects = psychologicalAspects;
+    this.biologicalAspects = biologicalAspects;
+    this.socialAspects = socialAspects;
+    this.multidisciplinaryDomain = multidisciplinaryDomain;
   }
 
   getId() { return this.id; }
@@ -49,31 +56,31 @@ export class Page {
   getSocialAspects() { return this.socialAspects; }
   getMultidisciplinaryDomain() { return this.multidisciplinaryDomain; }
   getRawValues() {
-    const obj = {};
+    const obj: any = {};
     if (this.service)
-      obj['service'] = this.service;
+      obj.service = this.service;
     if (this.entrance)
-      obj['entrance'] = `${this.entrance.getFullYear()}-${this.entrance.getMonth()}-${this.entrance.getDate()}`;
+      obj.entrance = `${this.entrance.getFullYear()}-${this.entrance.getMonth()}-${this.entrance.getDate()}`;
     if (this.interviewed)
-      obj['interviewed'] = this.interviewed;
+      obj.interviewed = this.interviewed;
     if (this.interviewer)
-      obj['interviewer'] = this.interviewer;
+      obj.interviewer = this.interviewer;
     if (this.avaliation_date)
-      obj['avaliation_date'] = `${this.avaliation_date.getFullYear()}-${this.avaliation_date.getMonth()}-${this.avaliation_date.getDate()}`;
+      obj.avaliation_date = `${this.avaliation_date.getFullYear()}-${this.avaliation_date.getMonth()}-${this.avaliation_date.getDate()}`;
     if (this.gerontologist)
-      obj['gerontologist'] = this.gerontologist;
+      obj.gerontologist = this.gerontologist;
     if (this.participant)
-      obj['participant'] = this.participant.getId();
+      obj.participant = this.participant.getId();
     if (this.participant_situation)
-      obj['participant_situation'] = this.participant_situation.getId();
+      obj.participant_situation = this.participant_situation.getId();
     if (this.psychologicalAspects)
-      obj['psychologicalAspects'] = this.psychologicalAspects.getId();
+      obj.psychologicalAspects = this.psychologicalAspects.getId();
     if (this.biologicalAspects)
-      obj['biologicalAspects'] = this.biologicalAspects.getId();
+      obj.biologicalAspects = this.biologicalAspects.getId();
     if (this.socialAspects)
-      obj['socialAspects'] = this.socialAspects.getId();
+      obj.socialAspects = this.socialAspects.getId();
     if (this.multidisciplinaryDomain)
-      obj['multidisciplinaryDomain'] = this.multidisciplinaryDomain.getId();
+      obj.multidisciplinaryDomain = this.multidisciplinaryDomain.getId();
     return obj;
   }
 
