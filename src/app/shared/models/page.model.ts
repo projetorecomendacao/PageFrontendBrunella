@@ -11,7 +11,16 @@ export class Page {
   private interviewed: string;
   private interviewer: string;
   private avaliation_date: Date;
+  private created_at: Date;
+  private updated_at: Date;
   private gerontologist: number;
+  private participant_id: number;
+  private participant_situation_id: number;
+  private psychologicalAspects_id: number;
+  private biologicalAspects_id: number;
+  private socialAspects_id: number;
+  private multidisciplinaryDomain_id: number;
+
   private participant: Participant;
   private participant_situation: ParticipantSituation;
   private psychologicalAspects: PsychologicalAspects;
@@ -20,20 +29,40 @@ export class Page {
   private multidisciplinaryDomain: MultidisciplinaryDomain;
 
   constructor(data: any = {}, participant?: Participant, participant_situation?: ParticipantSituation, psychologicalAspects?: PsychologicalAspects, biologicalAspects?: BiologicalAspects, socialAspects?: SocialAspects, multidisciplinaryDomain?: MultidisciplinaryDomain) {
-    // tslint:disable-next-line:no-bitwise
-    this.id = data.id | -1;
+    this.id = data.id || -1;
     this.service = data.service;
+
     if (data.entrance && !(data.entrance instanceof Date))
       this.entrance = new Date(data.entrance);
     else
       this.entrance = data.entrance;
+
     this.interviewed = data.interviewed;
     this.interviewer = data.interviewer;
+
     if (data.avaliation_date && !(data.avaliation_date instanceof Date))
       this.avaliation_date = new Date(data.avaliation_date);
     else
       this.avaliation_date = data.avaliation_date;
+
+    if (data.created_at && !(data.created_at instanceof Date))
+      this.created_at = new Date(data.created_at);
+    else
+      this.created_at = data.created_at;
+
+    if (data.updated_at && !(data.updated_at instanceof Date))
+      this.updated_at = new Date(data.updated_at);
+    else
+      this.updated_at = data.updated_at;
+
     this.gerontologist = data.gerontologist;
+    this.participant_id = data.participant;
+    this.participant_situation_id = data.participant_situation;
+    this.psychologicalAspects_id = data.psychologicalAspects;
+    this.biologicalAspects_id = data.biologicalAspects;
+    this.socialAspects_id = data.socialAspects;
+    this.multidisciplinaryDomain_id = data.multidisciplinaryDomain;
+
     this.participant = participant;
     this.participant_situation = participant_situation;
     this.psychologicalAspects = psychologicalAspects;
@@ -48,7 +77,15 @@ export class Page {
   getInterviewed() { return this.interviewed; }
   getInterviewer() { return this.interviewer; }
   getAvaliation_date() { return this.avaliation_date; }
+  getUpdated_at() { return this.updated_at; }
   getGerontologist() { return this.gerontologist; }
+  getParticipantId() { return this.participant_id; }
+  getParticipant_situationId() { return this.participant_situation_id; }
+  getPsychologicalAspectsId() { return this.psychologicalAspects_id; }
+  getBiologicalAspectsId() { return this.biologicalAspects_id; }
+  getSocialAspectsId() { return this.socialAspects_id; }
+  getMultidisciplinaryDomainId() { return this.multidisciplinaryDomain_id; }
+
   getParticipant() { return this.participant; }
   getParticipant_situation() { return this.participant_situation; }
   getPsychologicalAspects() { return this.psychologicalAspects; }

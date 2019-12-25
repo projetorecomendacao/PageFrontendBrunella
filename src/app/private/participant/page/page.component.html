@@ -1,6 +1,7 @@
 <!--Dados gerais page-->
 <div class="bg-white container-fluid pb-4">
   <div class="row">
+    {{ this.pageService.page.getService() }}
     <label class="mt-2 mr-3 offset-3 col-3" for="service">Serviço/instituição:</label>
     <input class="form-control col-3 mb-3" id="service" type="text" (change)="setService(service.value)" #service>
 

@@ -110,7 +110,7 @@ export class PsychologicalAspects {
   private comments_psico: string;
 
   constructor(data: any = {}, cognition_deficitInstance?: CognitionDeficit, negative_attitudes_agingInstance?: NegativeAttitudesAging, depressionInstance?: Depression) {
-    this.id = data.id;
+    this.id = data.id || -1;
 
     this.cognition_deficit = data.cognition_deficit;
     this.negative_attitudes_aging = data.negative_attitudes_aging;
@@ -124,6 +124,13 @@ export class PsychologicalAspects {
   }
 
   public getId() { return this.id; }
+
+  get cognitionDeficitId() { return this.cognition_deficit; }
+  set cognitionDeficitId(cognition_deficit_id: number) { this.cognition_deficit = cognition_deficit_id; }
+  get negativeAttitudesAgingId() { return this.negative_attitudes_aging; }
+  set negativeAttitudesAgingId(negative_attitudes_aging_id: number) { this.negative_attitudes_aging = negative_attitudes_aging_id; }
+  get depressionId() { return this.depression; }
+  set depressionId(depression_id: number) { this.depression = depression_id; }
 
   get cognitionDeficitInstance() { return this.cognition_deficit_instance; }
   set cognitionDeficitInstance(cognitionDeficitInstance: CognitionDeficit) { this.cognition_deficit_instance = cognitionDeficitInstance; }

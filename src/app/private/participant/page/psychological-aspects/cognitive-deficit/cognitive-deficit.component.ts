@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { REST_URL_COGNITION_DEFICIT } from '../../../../../shared/REST_API_URLs';
+import {REST_URL_COGNITION_DEFICIT, REST_URL_PARTICIPANT_SITUATION} from '../../../../../shared/REST_API_URLs';
 import { DAOService } from '../../../../../shared/dao.service';
 import { CognitionDeficit } from '../../../../../shared/models/psychological-aspects.model';
+import {ParticipantSituation} from '../../../../../shared/models/participant.model';
 
 @Component({
   selector: 'app-cognitive-deficit',
@@ -10,7 +11,7 @@ import { CognitionDeficit } from '../../../../../shared/models/psychological-asp
 })
 export class CognitiveDeficitComponent implements OnInit {
 
-  @Input('cognitionDeficit') cognitionDeficitInput: CognitionDeficit;
+  @Input('cognitionDeficit') cognitionDeficitInput: number;
   @Output('cognitionDeficit') cognitionDeficitOutput = new EventEmitter<CognitionDeficit>();
 
   private cognitiveDeficitForm: FormGroup;
@@ -27,32 +28,37 @@ export class CognitiveDeficitComponent implements OnInit {
   constructor(private fb: FormBuilder, private dao: DAOService) { }
 
   ngOnInit() {
-    if (this.cognitionDeficitInput) this.cognitiveDeficitForm = this.fb.group({
-      q1_memory_good_like_before: [this.cognitionDeficitInput.getQ1(), [Validators.required, Validators.maxLength(1)]],
-      q2_memory_test: [this.cognitionDeficitInput.getQ2(), [Validators.required, Validators.maxLength(1)]],
-      q3_language_function_attention: [this.cognitionDeficitInput.getQ3(), [Validators.required, Validators.maxLength(1)]],
-      q4_visospatial_ability: [this.cognitionDeficitInput.getQ4A(), [Validators.required, Validators.maxLength(1)]],
-      q4_visospatial_ability_score: [this.cognitionDeficitInput.getQ4B(), Validators.required],
-      q5_praxia: [this.cognitionDeficitInput.getQ5(), [Validators.required, Validators.maxLength(1)]],
-      q6_memory_test: [this.cognitionDeficitInput.getQ6(), [Validators.required, Validators.maxLength(1)]],
-      need_investigation_cognition: [this.cognitionDeficitInput.getNeedInvestigation(), [Validators.required, Validators.maxLength(1)]]
-    });
-    else this.cognitiveDeficitForm = this.fb.group({
-      q1_memory_good_like_before: ['', [Validators.required, Validators.maxLength(1)]],
-      q2_memory_test: ['', [Validators.required, Validators.maxLength(1)]],
-      q3_language_function_attention: ['', [Validators.required, Validators.maxLength(1)]],
-      q4_visospatial_ability: ['', [Validators.required, Validators.maxLength(1)]],
-      q4_visospatial_ability_score: ['', Validators.required],
-      q5_praxia: ['', [Validators.required, Validators.maxLength(1)]],
-      q6_memory_test: ['', [Validators.required, Validators.maxLength(1)]],
-      need_investigation_cognition: ['', [Validators.required, Validators.maxLength(1)]]
-    });
+    if (this.cognitionDeficitInput)
+      this.dao.getObject(REST_URL_COGNITION_DEFICIT, this.cognitionDeficitInput.toString()).subscribe(response => {
+        const tmpCognitionDeficit = new CognitionDeficit(response);
+        this.cognitiveDeficitForm = this.fb.group({
+          q1_memory_good_like_before: [tmpCognitionDeficit.getQ1(), [Validators.required, Validators.maxLength(1)]],
+          q2_memory_test: [tmpCognitionDeficit.getQ2(), [Validators.required, Validators.maxLength(1)]],
+          q3_language_function_attention: [tmpCognitionDeficit.getQ3(), [Validators.required, Validators.maxLength(1)]],
+          q4_visospatial_ability: [tmpCognitionDeficit.getQ4A(), [Validators.required, Validators.maxLength(1)]],
+          q4_visospatial_ability_score: [tmpCognitionDeficit.getQ4B(), Validators.required],
+          q5_praxia: [tmpCognitionDeficit.getQ5(), [Validators.required, Validators.maxLength(1)]],
+          q6_memory_test: [tmpCognitionDeficit.getQ6(), [Validators.required, Validators.maxLength(1)]],
+          need_investigation_cognition: [tmpCognitionDeficit.getNeedInvestigation(), [Validators.required, Validators.maxLength(1)]]
+        });
+      });
+    else
+        this.cognitiveDeficitForm = this.fb.group({
+          q1_memory_good_like_before: ['', [Validators.required, Validators.maxLength(1)]],
+          q2_memory_test: ['', [Validators.required, Validators.maxLength(1)]],
+          q3_language_function_attention: ['', [Validators.required, Validators.maxLength(1)]],
+          q4_visospatial_ability: ['', [Validators.required, Validators.maxLength(1)]],
+          q4_visospatial_ability_score: ['', Validators.required],
+          q5_praxia: ['', [Validators.required, Validators.maxLength(1)]],
+          q6_memory_test: ['', [Validators.required, Validators.maxLength(1)]],
+          need_investigation_cognition: ['', [Validators.required, Validators.maxLength(1)]]
+        });
   }
 
   submit() {
     if (this.cognitiveDeficitForm.valid)
       if (this.cognitionDeficitInput) {
-        const dirtyProps = { id: this.cognitionDeficitInput.getId() };
+        const dirtyProps = { id: this.cognitionDeficitInput };
         let hasDirtyProps = false;
 
         for (const prop in this.cognitiveDeficitForm.controls) {
@@ -64,15 +70,9 @@ export class CognitiveDeficitComponent implements OnInit {
           }
         }
 
-        if (hasDirtyProps) this.dao.patchObject(REST_URL_COGNITION_DEFICIT, dirtyProps).subscribe(data => {
-          this.cognitionDeficitInput = new CognitionDeficit(data);
-          this.cognitionDeficitOutput.emit(this.cognitionDeficitInput);
-        });
+        if (hasDirtyProps) this.dao.patchObject(REST_URL_COGNITION_DEFICIT, dirtyProps).subscribe(data => this.cognitionDeficitOutput.emit(new CognitionDeficit(data)));
 
-      } else this.dao.postObject(REST_URL_COGNITION_DEFICIT, this.cognitiveDeficitForm.getRawValue()).subscribe(data => {
-        this.cognitionDeficitInput = new CognitionDeficit(data);
-        this.cognitionDeficitOutput.emit(this.cognitionDeficitInput);
-      });
+      } else this.dao.postObject(REST_URL_COGNITION_DEFICIT, this.cognitiveDeficitForm.getRawValue()).subscribe(data => this.cognitionDeficitOutput.emit(new CognitionDeficit(data)));
     this.cognitiveDeficitForm.markAllAsTouched();
   }
 }

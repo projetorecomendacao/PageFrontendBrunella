@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DAOService } from '../../../../../shared/dao.service';
-import { REST_URL_NEGATIVE_ATTITUDE_AGING } from '../../../../../shared/REST_API_URLs';
-import { NegativeAttitudesAging } from '../../../../../shared/models/psychological-aspects.model';
+import {REST_URL_COGNITION_DEFICIT, REST_URL_NEGATIVE_ATTITUDE_AGING} from '../../../../../shared/REST_API_URLs';
+import {CognitionDeficit, NegativeAttitudesAging} from '../../../../../shared/models/psychological-aspects.model';
 
 @Component({
   selector: 'app-negative-attitudes-aging',
@@ -10,7 +10,7 @@ import { NegativeAttitudesAging } from '../../../../../shared/models/psychologic
 })
 export class NegativeAttitudesAgingComponent implements OnInit {
 
-  @Input('negativeAttitudesAging') negativeAttitudesAgingInput: NegativeAttitudesAging;
+  @Input('negativeAttitudesAging') negativeAttitudesAgingInput: number;
   @Output('negativeAttitudesAging') negativeAttitudesAgingOutput = new EventEmitter<NegativeAttitudesAging>();
 
   private negativeAttitudesAgingForm: FormGroup;
@@ -26,30 +26,35 @@ export class NegativeAttitudesAgingComponent implements OnInit {
   constructor(private fb: FormBuilder, private dao: DAOService) { }
 
   ngOnInit() {
-    if (this.negativeAttitudesAgingInput) this.negativeAttitudesAgingForm = this.fb.group({
-      q7_age_self_perception: [this.negativeAttitudesAgingInput.getQ7A(), Validators.required],
-      q7_age_self_perception_why: [this.negativeAttitudesAgingInput.getQ7B(), Validators.required],
-      q7_age_self_perception_analyze: [this.negativeAttitudesAgingInput.getQ7C(), [Validators.required, Validators.maxLength(1)]],
-      q8_aging_positive_points: [this.negativeAttitudesAgingInput.getQ8A(), Validators.required],
-      q8_aging_negative_points: [this.negativeAttitudesAgingInput.getQ8B(), Validators.required],
-      q8_aging_analyse: [this.negativeAttitudesAgingInput.getQ8C(), [Validators.required, Validators.maxLength(1)]],
-      need_investigation_negative: [this.negativeAttitudesAgingInput.getNeedInvestigation(), [Validators.required, Validators.maxLength(1)]]
-    });
-    else this.negativeAttitudesAgingForm = this.fb.group({
-      q7_age_self_perception: ['', Validators.required],
-      q7_age_self_perception_why: ['', Validators.required],
-      q7_age_self_perception_analyze: ['', [Validators.required, Validators.maxLength(1)]],
-      q8_aging_positive_points: ['', Validators.required],
-      q8_aging_negative_points: ['', Validators.required],
-      q8_aging_analyse: ['', [Validators.required, Validators.maxLength(1)]],
-      need_investigation_negative: ['', [Validators.required, Validators.maxLength(1)]]
-    });
+    if (this.negativeAttitudesAgingInput)
+      this.dao.getObject(REST_URL_NEGATIVE_ATTITUDE_AGING, this.negativeAttitudesAgingInput.toString()).subscribe(response => {
+        const tmpNegativeAttitudesAgingInput = new NegativeAttitudesAging(response);
+        this.negativeAttitudesAgingForm = this.fb.group({
+          q7_age_self_perception: [tmpNegativeAttitudesAgingInput.getQ7A(), Validators.required],
+          q7_age_self_perception_why: [tmpNegativeAttitudesAgingInput.getQ7B(), Validators.required],
+          q7_age_self_perception_analyze: [tmpNegativeAttitudesAgingInput.getQ7C(), [Validators.required, Validators.maxLength(1)]],
+          q8_aging_positive_points: [tmpNegativeAttitudesAgingInput.getQ8A(), Validators.required],
+          q8_aging_negative_points: [tmpNegativeAttitudesAgingInput.getQ8B(), Validators.required],
+          q8_aging_analyse: [tmpNegativeAttitudesAgingInput.getQ8C(), [Validators.required, Validators.maxLength(1)]],
+          need_investigation_negative: [tmpNegativeAttitudesAgingInput.getNeedInvestigation(), [Validators.required, Validators.maxLength(1)]]
+        });
+      });
+    else
+      this.negativeAttitudesAgingForm = this.fb.group({
+        q7_age_self_perception: ['', Validators.required],
+        q7_age_self_perception_why: ['', Validators.required],
+        q7_age_self_perception_analyze: ['', [Validators.required, Validators.maxLength(1)]],
+        q8_aging_positive_points: ['', Validators.required],
+        q8_aging_negative_points: ['', Validators.required],
+        q8_aging_analyse: ['', [Validators.required, Validators.maxLength(1)]],
+        need_investigation_negative: ['', [Validators.required, Validators.maxLength(1)]]
+      });
   }
 
   submit() {
     if (this.negativeAttitudesAgingForm.valid)
       if (this.negativeAttitudesAgingInput) {
-        const dirtyProps = { id: this.negativeAttitudesAgingInput.getId() };
+        const dirtyProps = { id: this.negativeAttitudesAgingInput };
         let hasDirtyProps = false;
 
         for (const prop in this.negativeAttitudesAgingForm.controls) {
@@ -61,15 +66,9 @@ export class NegativeAttitudesAgingComponent implements OnInit {
           }
         }
 
-        if (hasDirtyProps) this.dao.patchObject(REST_URL_NEGATIVE_ATTITUDE_AGING, dirtyProps).subscribe(data => {
-          this.negativeAttitudesAgingInput = new NegativeAttitudesAging(data);
-          this.negativeAttitudesAgingOutput.emit(this.negativeAttitudesAgingInput);
-        });
+        if (hasDirtyProps) this.dao.patchObject(REST_URL_NEGATIVE_ATTITUDE_AGING, dirtyProps).subscribe(data => this.negativeAttitudesAgingOutput.emit(new NegativeAttitudesAging(data)));
 
-      } else this.dao.postObject(REST_URL_NEGATIVE_ATTITUDE_AGING, this.negativeAttitudesAgingForm.getRawValue()).subscribe(data => {
-        this.negativeAttitudesAgingInput = new NegativeAttitudesAging(data);
-        this.negativeAttitudesAgingOutput.emit(this.negativeAttitudesAgingInput);
-      });
+      } else this.dao.postObject(REST_URL_NEGATIVE_ATTITUDE_AGING, this.negativeAttitudesAgingForm.getRawValue()).subscribe(data => this.negativeAttitudesAgingOutput.emit(new NegativeAttitudesAging(data)));
     this.negativeAttitudesAgingForm.markAllAsTouched();
   }
 

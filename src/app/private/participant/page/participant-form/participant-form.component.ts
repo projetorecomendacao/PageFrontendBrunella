@@ -36,48 +36,52 @@ export class ParticipantFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.participantSituation = this.pageService.participantSituation;
-
-    if (this.participantSituation) this.participantSituationForm = this.fb.group({
-      p07_marital_status: [this.participantSituation.getQ7(), [Validators.required, Validators.maxLength(30)]],
-      p08_schooling: [this.participantSituation.getQ8(), [Validators.required, Validators.maxLength(35)]],
-      p09_study_time: [this.participantSituation.getQ9(), Validators.required],
-      p10_is_retired: [this.participantSituation.getQ10A(), [Validators.required, Validators.maxLength(1)]],
-      p10_retired_profession: [this.participantSituation.getQ10B(), Validators.maxLength(30)],
-      p10_actual_profession: [this.participantSituation.getQ10C(), [Validators.required, Validators.maxLength(30)]],
-      p11_retire_more_time_activity: [this.participantSituation.getQ11(), Validators.maxLength(30)],
-      p12_is_working_professionals_activities: [this.participantSituation.getQ12A(), [Validators.required, Validators.maxLength(1)]],
-      p12_professional_activities: [this.participantSituation.getQ12B(), Validators.maxLength(30)],
-      p13_income_I: [this.participantSituation.getQ13A(), [Validators.required, Validators.maxLength(70)]],
-      p13_income_F: [this.participantSituation.getQ13B(), [Validators.required, Validators.maxLength(70)]],
-      p14_lives_with: [this.participantSituation.getQ14()],
-      p15_has_religion: [this.participantSituation.getQ15A(), [Validators.required, Validators.maxLength(1)]],
-      p15_religion: [this.participantSituation.getQ15B(), Validators.maxLength(30)],
-      p16_health_self_report: [this.participantSituation.getQ16(), Validators.required],
-      p20_weight: [this.participantSituation.getQ20A(), Validators.required],
-      p20_height: [this.participantSituation.getQ20B(), Validators.required],
-      p20_IMC: [this.participantSituation.getQ20C(), Validators.required]
-    });
-    else this.participantSituationForm = this.fb.group({
-      p07_marital_status: ['', [Validators.required, Validators.maxLength(30)]],
-      p08_schooling: ['', [Validators.required, Validators.maxLength(35)]],
-      p09_study_time: ['', Validators.required],
-      p10_is_retired: ['', [Validators.required, Validators.maxLength(1)]],
-      p10_retired_profession: ['', Validators.maxLength(30)],
-      p10_actual_profession: ['', [Validators.required, Validators.maxLength(30)]],
-      p11_retire_more_time_activity: ['', Validators.maxLength(30)],
-      p12_is_working_professionals_activities: ['', [Validators.required, Validators.maxLength(1)]],
-      p12_professional_activities: ['', Validators.maxLength(30)],
-      p13_income_I: ['', [Validators.required, Validators.maxLength(70)]],
-      p13_income_F: ['', [Validators.required, Validators.maxLength(70)]],
-      p14_lives_with: [''],
-      p15_has_religion: ['', [Validators.required, Validators.maxLength(1)]],
-      p15_religion: ['', Validators.maxLength(30)],
-      p16_health_self_report: ['', Validators.required],
-      p20_weight: ['', Validators.required],
-      p20_height: ['', Validators.required],
-      p20_IMC: ['', Validators.required]
-    });
+    if (this.pageService.page.getParticipant_situationId())
+      this.dao.getObject(REST_URL_PARTICIPANT_SITUATION, this.pageService.page.getParticipant_situationId().toString()).subscribe(response => {
+        this.pageService.page.setParticipant_situation(new ParticipantSituation(response));
+        this.participantSituation = this.pageService.participantSituation;
+        this.participantSituationForm = this.fb.group({
+          p07_marital_status: [this.participantSituation.getQ7(), [Validators.required, Validators.maxLength(30)]],
+          p08_schooling: [this.participantSituation.getQ8(), [Validators.required, Validators.maxLength(35)]],
+          p09_study_time: [this.participantSituation.getQ9(), Validators.required],
+          p10_is_retired: [this.participantSituation.getQ10A(), [Validators.required, Validators.maxLength(1)]],
+          p10_retired_profession: [this.participantSituation.getQ10B(), Validators.maxLength(30)],
+          p10_actual_profession: [this.participantSituation.getQ10C(), [Validators.required, Validators.maxLength(30)]],
+          p11_retire_more_time_activity: [this.participantSituation.getQ11(), Validators.maxLength(30)],
+          p12_is_working_professionals_activities: [this.participantSituation.getQ12A(), [Validators.required, Validators.maxLength(1)]],
+          p12_professional_activities: [this.participantSituation.getQ12B(), Validators.maxLength(30)],
+          p13_income_I: [this.participantSituation.getQ13A(), [Validators.required, Validators.maxLength(70)]],
+          p13_income_F: [this.participantSituation.getQ13B(), [Validators.required, Validators.maxLength(70)]],
+          p14_lives_with: [this.participantSituation.getQ14()],
+          p15_has_religion: [this.participantSituation.getQ15A(), [Validators.required, Validators.maxLength(1)]],
+          p15_religion: [this.participantSituation.getQ15B(), Validators.maxLength(30)],
+          p16_health_self_report: [this.participantSituation.getQ16(), Validators.required],
+          p20_weight: [this.participantSituation.getQ20A(), Validators.required],
+          p20_height: [this.participantSituation.getQ20B(), Validators.required],
+          p20_IMC: [this.participantSituation.getQ20C(), Validators.required]
+        });
+      });
+    else
+      this.participantSituationForm = this.fb.group({
+        p07_marital_status: ['', [Validators.required, Validators.maxLength(30)]],
+        p08_schooling: ['', [Validators.required, Validators.maxLength(35)]],
+        p09_study_time: ['', Validators.required],
+        p10_is_retired: ['', [Validators.required, Validators.maxLength(1)]],
+        p10_retired_profession: ['', Validators.maxLength(30)],
+        p10_actual_profession: ['', [Validators.required, Validators.maxLength(30)]],
+        p11_retire_more_time_activity: ['', Validators.maxLength(30)],
+        p12_is_working_professionals_activities: ['', [Validators.required, Validators.maxLength(1)]],
+        p12_professional_activities: ['', Validators.maxLength(30)],
+        p13_income_I: ['', [Validators.required, Validators.maxLength(70)]],
+        p13_income_F: ['', [Validators.required, Validators.maxLength(70)]],
+        p14_lives_with: [''],
+        p15_has_religion: ['', [Validators.required, Validators.maxLength(1)]],
+        p15_religion: ['', Validators.maxLength(30)],
+        p16_health_self_report: ['', Validators.required],
+        p20_weight: ['', Validators.required],
+        p20_height: ['', Validators.required],
+        p20_IMC: ['', Validators.required]
+      });
   }
 
   submit() {

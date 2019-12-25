@@ -2,7 +2,7 @@
 <h2 class="text-center mt-5"><span class="bg-primary rounded-pill rounded-bottom-0 text-white px-5 py-2">Atitude negativa em relação ao processo de envelhecimento</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="negativeAttitudesAgingForm">
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" *ngIf="negativeAttitudesAgingForm" [formGroup]="negativeAttitudesAgingForm">
   <!--Perguntas-->
   <div class="p-3">
     <!--Pergunta1-->

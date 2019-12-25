@@ -84,11 +84,7 @@ export class PageService {
     if (this.page.getId() === -1)
       this.dao.postObject(REST_URL_PAGE, this.page.getRawValues()).subscribe(data => this._page = new Page(data, this.participant, this.page.getParticipant_situation()));
     else {
-      const today = new Date();
-      content = {
-        id: this.page.getId(),
-        updated_at: `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`
-      };
+      content.id = this.page.getId();
       this.dao.patchObject(REST_URL_PAGE, content).subscribe(data => this._page = new Page(data, this.participant, this.page.getParticipant_situation()));
     }
   }
