@@ -1,0 +1,73 @@
+<div [formGroup]="activityForm">
+  <h2 class="text-center mt-5 mb-0">
+    <input class="btn-outline-primary rounded-pill rounded-bottom-0 text-center px-5 py-2" formControlName="title" (click)="$event.target.select();" style="border-style: solid; border-width: 0.5px; border-bottom-width: 1px"/>
+  </h2>
+  <div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
+    <!--Recomendações-->
+    <div class="container-flex p-4">
+      <div class="row">
+        <div class="col-12 col-md-2 d-flex flex-column justify-content-center align-items-center">
+          <img src="assets/image_placeholder.png" class="img-fluid bg-light">
+          <span class="text-center small">Clique parada adicionar uma imagem</span>
+        </div>
+        <div class="col d-flex justify-content-center align-items-center flex-wrap" style="font-size: 1.4rem;">
+          <textarea class="w-100 text-justify overflow-auto" formControlName="description" rows="5" (change)="updateDescription($event)" (click)="$event.target.select()" style="resize: none; border: none">Clique para adicionar uma descrição</textarea>
+        </div>
+      </div>
+    </div>
+    <!----------------->
+    <!--Details-->
+    <div class="container" [ngbCollapse]="!details">
+      <div class="row mx-4">
+        <!--Caracteristicas-->
+        <div class="col-3 d-flex justify-content-center">
+          <ul formArrayName="characteristic">
+            <span class="text-primary font-weight-bold">Características ({{ characteristicForm.controls.length }})</span>
+            <app-detail-item *ngFor="let characteristic of activity.characteristics" [detailItem]="characteristic" [detailItemURL]="URL_CHARACTERISTIC" (deleteDetailItem)="removeDetailItem($event)"></app-detail-item>
+          </ul>
+        </div>
+        <!------------------->
+        <!--Beneficios-->
+        <div class="col-3 d-flex justify-content-center">
+          <ul class="overflow-hidden text-nowrap">
+            <span class="text-primary font-weight-bold">Beneficios</span>
+            <li title="asd">Beneficios 1</li>
+            <li title="asd">Beneficios 2</li>
+            <li title="asd">Beneficios 3</li>
+            <li title="asd">Beneficios 4</li>
+          </ul>
+        </div>
+        <!-------------->
+        <!--Restricoes-->
+        <div class="col-3 d-flex justify-content-center">
+          <ul class="overflow-hidden text-nowrap">
+            <span class="text-primary font-weight-bold">Restricoes</span>
+            <li title="asd">Restricoes 1</li>
+            <li title="asd">Restricoes 2</li>
+            <li title="asd">Restricoes 3</li>
+            <li title="asd">Restricoes 4</li>
+          </ul>
+        </div>
+        <!-------------->
+        <!--Tipos-->
+        <div class="col-3 d-flex justify-content-center">
+          <ul class="overflow-hidden text-nowrap">
+            <span class="text-primary font-weight-bold">Tipos</span>
+            <li title="asd">Tipos 1</li>
+            <li title="asd">Tipos 2</li>
+            <li title="asd">Tipos 3</li>
+            <li title="asd">Tipos 4</li>
+          </ul>
+        </div>
+        <!--------->
+      </div>
+    </div>
+    <!----------->
+    <!--Options-->
+    <div class="d-flex justify-content-around flex-wrap pb-4 mt-3">
+      <button class="btn btn-danger w-100 w-md-25" type="button">Deletar</button>
+      <button class="btn btn-success w-100 w-md-25" type="button" (click)="details = !details">Detalhes</button>
+    </div>
+    <!----------->
+  </div>
+</div>

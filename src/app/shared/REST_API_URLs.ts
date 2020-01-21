@@ -4,6 +4,12 @@ export const REST_URL_PARTICIPANTS = REST_URL + 'participants/';
 
 export const REST_URL_EXPERTS = REST_URL + 'experts/';
 
+export const REST_URL_ACTIVITY = REST_URL + 'activities/';
+export const REST_URL_CHARACTERISTIC = REST_URL + 'characteristics/';
+export const REST_URL_BENEFIT = REST_URL + 'benefits/';
+export const REST_URL_RESTRICTION = REST_URL + 'restrictions/';
+export const REST_URL_TYPE = REST_URL + 'types/';
+
 export const REST_URL_PARTICIPANT_SITUATION = REST_URL + 'participant_situations/';
 
 export const REST_URL_COGNITION_DEFICIT = REST_URL + 'cognitionDeficit/';

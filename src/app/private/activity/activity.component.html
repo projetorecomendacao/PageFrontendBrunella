@@ -1,0 +1,12 @@
+<!--Content-->
+<div class="col ml-auto px-0 pb-5">
+  <!--Add-->
+<!--  <app-activity-item></app-activity-item>-->
+  <!------->
+  <!--Activities-->
+  <div *ngFor="let activity of activities" >
+    <app-activity-item *ngIf="hasLoaded" [activity]="activity"></app-activity-item>
+  </div>
+  <!-------------->
+</div>
+<!----------->

@@ -42,6 +42,10 @@ import {
 import { UserService } from '../security/user.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PagesListComponent } from './participant/pages-list/pages-list.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ActivityComponent } from './activity/activity.component';
+import { ActivityItemComponent } from './activity/activity-item/activity-item.component';
+import { DetailItemComponent } from './activity/activity-item/detail-item/detail-item.component';
 
 
 
@@ -74,7 +78,11 @@ import { PagesListComponent } from './participant/pages-list/pages-list.componen
     MultidimensionalAspectComponent,
     FallsComponent,
     ObservationsMultidimensionalComponent,
-    PagesListComponent
+    PagesListComponent,
+    NavbarComponent,
+    ActivityComponent,
+    ActivityItemComponent,
+    DetailItemComponent
   ],
   imports: [
     CommonModule,

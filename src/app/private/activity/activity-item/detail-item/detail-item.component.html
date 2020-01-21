@@ -1,0 +1,4 @@
+<li class="input-group align-items-center" [title]="detailItem.description">
+  <input class="form-control-plaintext text-truncate py-1" [value]="detailItem.description" (change)="updateDetailItem()" (click)="$event.target.select();" [formControl]="detailItemForm">
+  <i class="fas fa-times-circle text-danger input-group-append" (click)="_deleteDetailItem()"></i>
+</li>

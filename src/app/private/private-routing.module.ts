@@ -10,6 +10,7 @@ import { MultidimensionalAspectComponent } from './participant/page/multidimensi
 import { PrivateComponent } from './private.component';
 import {PagesListComponent} from './participant/pages-list/pages-list.component';
 import {PageComponent} from './participant/page/page.component';
+import {ActivityComponent} from './activity/activity.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
     component: PrivateComponent,
     children: [
       { path: '', component: HomeComponent },
+      { path: 'activity', component: ActivityComponent },
       {
         path: 'participant',
         component: ParticipantComponent,
