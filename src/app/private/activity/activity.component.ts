@@ -24,4 +24,8 @@ export class ActivityComponent implements OnInit {
     });
   }
 
+  addActivity(activity: Activity) {
+    this.activities.push(activity);
+  }
+
 }

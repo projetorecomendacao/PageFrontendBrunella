@@ -1,6 +1,6 @@
 <div [formGroup]="activityForm">
   <h2 class="text-center mt-5 mb-0">
-    <input class="btn-outline-primary rounded-pill rounded-bottom-0 text-center px-5 py-2" formControlName="title" (click)="$event.target.select();" style="border-style: solid; border-width: 0.5px; border-bottom-width: 1px"/>
+    <input class="btn-primary rounded-pill rounded-bottom-0 text-center px-5 py-2" formControlName="title" (click)="$event.target.select();" placeholder="Adicionar título"/>
   </h2>
   <div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
     <!--Recomendações-->
@@ -11,7 +11,7 @@
           <span class="text-center small">Clique parada adicionar uma imagem</span>
         </div>
         <div class="col d-flex justify-content-center align-items-center flex-wrap" style="font-size: 1.4rem;">
-          <textarea class="w-100 text-justify overflow-auto" formControlName="description" rows="5" (change)="updateDescription($event)" (click)="$event.target.select()" style="resize: none; border: none">Clique para adicionar uma descrição</textarea>
+          <textarea class="w-100 text-justify overflow-auto" formControlName="description" rows="5" (change)="updateDescription()" (click)="$event.target.select()" style="resize: none; border: none" placeholder="Clique para adicionar uma descrição"></textarea>
         </div>
       </div>
     </div>
@@ -21,9 +21,13 @@
       <div class="row mx-4">
         <!--Caracteristicas-->
         <div class="col-3 d-flex justify-content-center">
-          <ul formArrayName="characteristic">
-            <span class="text-primary font-weight-bold">Características ({{ characteristicForm.controls.length }})</span>
+          <ul>
+            <span class="text-primary font-weight-bold">Características ({{ activity?.characteristics?.length || 0 }})</span>
             <app-detail-item *ngFor="let characteristic of activity.characteristics" [detailItem]="characteristic" [detailItemURL]="URL_CHARACTERISTIC" (deleteDetailItem)="removeDetailItem($event)"></app-detail-item>
+            <li class="input-group align-items-center">
+              <input class="form-control-plaintext text-truncate py-1" placeholder="Adicionar" #addCharacteristic>
+              <i class="fas fa-plus-circle text-success input-group-append" (click)="addCharacteristicsItem(addCharacteristic.value)"></i>
+            </li>
           </ul>
         </div>
         <!------------------->
@@ -66,6 +70,7 @@
     <!--Options-->
     <div class="d-flex justify-content-around flex-wrap pb-4 mt-3">
       <button class="btn btn-danger w-100 w-md-25" type="button">Deletar</button>
+      <button class="btn btn-success w-100 w-md-25" type="button" (click)="details = !details">Detalhes</button>
       <button class="btn btn-success w-100 w-md-25" type="button" (click)="details = !details">Detalhes</button>
     </div>
     <!----------->

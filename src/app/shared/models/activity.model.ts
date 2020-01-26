@@ -20,8 +20,8 @@ export class Activity {
   get title() { return ''; }
   get description() { return this._description; }
   set description(description: string) { this._description = description; }
-  get characteristics() { return this._characteristics; }
-  get benefit() { return this._benefit; }
-  get restriction() { return this._restriction; }
-  get type() { return this._type; }
+  get characteristics() { return this._characteristics || []; }
+  get benefit() { return this._benefit || []; }
+  get restriction() { return this._restriction || []; }
+  get type() { return this._type || []; }
 }
