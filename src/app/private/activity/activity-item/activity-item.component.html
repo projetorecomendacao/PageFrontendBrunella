@@ -1,66 +1,63 @@
-<div [formGroup]="activityForm">
-  <h2 class="text-center mt-5 mb-0">
-    <input class="btn-primary rounded-pill rounded-bottom-0 text-center px-5 py-2" formControlName="title" (click)="$event.target.select();" placeholder="Adicionar título"/>
-  </h2>
-  <div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
+<div class="border bg-white shadow-lg mt-5 p-3">
     <!--Recomendações-->
-    <div class="container-flex p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex flex-column justify-content-center align-items-center">
-          <img src="assets/image_placeholder.png" class="img-fluid bg-light">
-          <span class="text-center small">Clique parada adicionar uma imagem</span>
+    <div class="container-flex">
+      <div class="row ml-md-5">
+        <div class="col-12 col-md-3 d-flex justify-content-center">
+          <img [src]="activity.image || 'assets/image_placeholder.png'" height="150px" class="rounded bg-light">
         </div>
-        <div class="col d-flex justify-content-center align-items-center flex-wrap" style="font-size: 1.4rem;">
-          <textarea class="w-100 text-justify overflow-auto" formControlName="description" rows="5" (change)="updateDescription()" (click)="$event.target.select()" style="resize: none; border: none" placeholder="Clique para adicionar uma descrição"></textarea>
+        <div class="col d-flex flex-column justify-content-center align-items-center">
+          <input maxlength="50" class="text-primary text-center font-weight-bold h3 mt-4 mt-md-0" [value]="activity.title || ''" (change)="updateTitle($event.target.value)" (click)="$event.target.select();" placeholder="Adicionar título"/>
+          <div class="mt-4 text-center w-100" [ngbCollapse]="!isAddActivity && !details">
+            <span class="h5 text-primary font-weight-bold">Descrição</span>
+            <textarea class="w-100 text-justify overflow-auto w-100 mt-3" rows="3" (change)="updateDescription($event.target.value)" (click)="$event.target.select()" style="resize: none; border: none" placeholder="Clique para adicionar uma descrição">{{ activity.description || '' }}</textarea>
+          </div>
+          <!--Options-->
+          <!-- These buttons are duplicated here and in the end of the page -->
+          <div class="d-flex justify-content-center flex-wrap w-100 pb-4 mt-3" *ngIf="!isAddActivity" [ngbCollapse]="details">
+            <button *ngIf="!isAddActivity" class="btn btn-danger w-100 w-md-25 mr-md-2" type="button" (click)="deleteActivity()">Deletar</button>
+            <button *ngIf="!isAddActivity" class="btn btn-success w-100 w-md-25 ml-md-2" type="button" (click)="details = !details">Detalhes</button>
+          </div>
+          <!----------->
         </div>
       </div>
     </div>
     <!----------------->
     <!--Details-->
-    <div class="container" [ngbCollapse]="!details">
-      <div class="row mx-4">
+    <div class="container" [ngbCollapse]="isAddActivity || !details">
+      <div class="row mx-4 mt-md-4" *ngIf="!isAddActivity">
         <!--Caracteristicas-->
-        <div class="col-3 d-flex justify-content-center">
+        <div class="col-12 col-md-3 d-flex justify-content-center">
           <ul>
-            <span class="text-primary font-weight-bold">Características ({{ activity?.characteristics?.length || 0 }})</span>
-            <app-detail-item *ngFor="let characteristic of activity.characteristics" [detailItem]="characteristic" [detailItemURL]="URL_CHARACTERISTIC" (deleteDetailItem)="removeDetailItem($event)"></app-detail-item>
-            <li class="input-group align-items-center">
-              <input class="form-control-plaintext text-truncate py-1" placeholder="Adicionar" #addCharacteristic>
-              <i class="fas fa-plus-circle text-success input-group-append" (click)="addCharacteristicsItem(addCharacteristic.value)"></i>
-            </li>
+            <span class="text-primary font-weight-bold">Características ({{ activity?.characteristic?.length || 0 }})</span>
+            <app-detail-item *ngFor="let characteristic of activity.characteristic" [detailItem]="characteristic" [type]="'characteristic'" (removeDetailItem)="removeDetailItem($event, 'characteristic')"></app-detail-item>
+            <app-detail-item (addDetailItem)="addDetailItem($event, 'characteristic')" [type]="'characteristic'"></app-detail-item>
           </ul>
         </div>
         <!------------------->
         <!--Beneficios-->
-        <div class="col-3 d-flex justify-content-center">
-          <ul class="overflow-hidden text-nowrap">
-            <span class="text-primary font-weight-bold">Beneficios</span>
-            <li title="asd">Beneficios 1</li>
-            <li title="asd">Beneficios 2</li>
-            <li title="asd">Beneficios 3</li>
-            <li title="asd">Beneficios 4</li>
+        <div class="col-12 col-md-3 d-flex justify-content-center">
+          <ul>
+            <span class="text-primary font-weight-bold">Benefícios ({{ activity?.benefit?.length || 0 }})</span>
+            <app-detail-item *ngFor="let benefit of activity.benefit" [detailItem]="benefit" [type]="'benefit'" (removeDetailItem)="removeDetailItem($event, 'benefit')"></app-detail-item>
+            <app-detail-item (addDetailItem)="addDetailItem($event, 'benefit')" [type]="'benefit'"></app-detail-item>
           </ul>
         </div>
         <!-------------->
         <!--Restricoes-->
-        <div class="col-3 d-flex justify-content-center">
-          <ul class="overflow-hidden text-nowrap">
-            <span class="text-primary font-weight-bold">Restricoes</span>
-            <li title="asd">Restricoes 1</li>
-            <li title="asd">Restricoes 2</li>
-            <li title="asd">Restricoes 3</li>
-            <li title="asd">Restricoes 4</li>
+        <div class="col-12 col-md-3 d-flex justify-content-center">
+          <ul>
+            <span class="text-primary font-weight-bold">Restrições ({{ activity?.restriction?.length || 0 }})</span>
+            <app-detail-item *ngFor="let restriction of activity.restriction" [detailItem]="restriction" [type]="'restriction'" (removeDetailItem)="removeDetailItem($event, 'restriction')"></app-detail-item>
+            <app-detail-item (addDetailItem)="addDetailItem($event, 'restriction')" [type]="'restriction'"></app-detail-item>
           </ul>
         </div>
         <!-------------->
         <!--Tipos-->
-        <div class="col-3 d-flex justify-content-center">
-          <ul class="overflow-hidden text-nowrap">
-            <span class="text-primary font-weight-bold">Tipos</span>
-            <li title="asd">Tipos 1</li>
-            <li title="asd">Tipos 2</li>
-            <li title="asd">Tipos 3</li>
-            <li title="asd">Tipos 4</li>
+        <div class="col-12 col-md-3 d-flex justify-content-center">
+          <ul>
+            <span class="text-primary font-weight-bold">Tipos ({{ activity?.type?.length || 0 }})</span>
+            <app-detail-item *ngFor="let type of activity.type" [detailItem]="type" [type]="'type'" (removeDetailItem)="removeDetailItem($event, 'type')"></app-detail-item>
+            <app-detail-item (addDetailItem)="addDetailItem($event, 'type')" [type]="'type'"></app-detail-item>
           </ul>
         </div>
         <!--------->
@@ -68,11 +65,10 @@
     </div>
     <!----------->
     <!--Options-->
-    <div class="d-flex justify-content-around flex-wrap pb-4 mt-3">
-      <button class="btn btn-danger w-100 w-md-25" type="button">Deletar</button>
-      <button class="btn btn-success w-100 w-md-25" type="button" (click)="details = !details">Detalhes</button>
-      <button class="btn btn-success w-100 w-md-25" type="button" (click)="details = !details">Detalhes</button>
+    <div class="d-flex justify-content-center flex-wrap pb-4 mt-3" [ngbCollapse]="!details">
+      <button *ngIf="!isAddActivity" class="btn btn-danger w-100 w-md-10 mr-md-2" type="button" (click)="deleteActivity()">Deletar</button>
+      <button *ngIf="!isAddActivity" class="btn btn-success w-100 w-md-10 ml-md-2" type="button" (click)="details = !details">Detalhes</button>
+      <button *ngIf="isAddActivity" class="btn btn-primary" type="button" (click)="createActivity()">Adicionar</button>
     </div>
     <!----------->
   </div>
-</div>

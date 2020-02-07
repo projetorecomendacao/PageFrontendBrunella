@@ -28,4 +28,10 @@ export class ActivityComponent implements OnInit {
     this.activities.push(activity);
   }
 
+  removeActivity(activityId: number) {
+    const index = this.activities.findIndex(value => value.id === activityId);
+    this.activities.splice(index, 1);
+    alert('Atividade removida com sucesso');
+  }
+
 }

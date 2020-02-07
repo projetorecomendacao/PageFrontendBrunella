@@ -1,11 +1,13 @@
 <!--Content-->
-<div class="col ml-auto px-0 pb-5">
+<div class="col w-xl-75 w-lg-75 mx-auto px-0 pb-5">
   <!--Add-->
+  <h2 class="text-primary font-weight-bold my-4">Adicionar atividade</h2>
   <app-activity-item (newActivity)="addActivity($event)"></app-activity-item>
   <!------->
   <!--Activities-->
+  <h2 class="text-primary font-weight-bold mt-5">Atividades disponíveis</h2>
   <div *ngFor="let activity of activities" >
-    <app-activity-item *ngIf="hasLoaded" [activity]="activity"></app-activity-item>
+    <app-activity-item *ngIf="hasLoaded" [activity]="activity" (removeActivity)="removeActivity($event)"></app-activity-item>
   </div>
   <!-------------->
 </div>

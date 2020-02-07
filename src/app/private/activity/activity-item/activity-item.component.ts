@@ -2,7 +2,12 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Activity} from '../../../shared/models/activity.model';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DAOService} from '../../../shared/dao.service';
-import {REST_URL_ACTIVITY, REST_URL_CHARACTERISTIC} from '../../../shared/REST_API_URLs';
+import {
+  REST_URL_ACTIVITY,
+  REST_URL_BENEFIT,
+  REST_URL_CHARACTERISTIC,
+  REST_URL_RESTRICTION, REST_URL_TYPE
+} from '../../../shared/REST_API_URLs';
 
 @Component({
   selector: 'app-activity-item',
@@ -14,76 +19,111 @@ export class ActivityItemComponent implements OnInit {
 
   @Input() activity: Activity;
   @Output() newActivity = new EventEmitter<Activity>();
+  @Output() removeActivity = new EventEmitter<number>();
 
-  activityForm: FormGroup;
-  hasActivity: boolean; // Checks if this is the add component
+  isAddActivity: boolean; // Checks if this is the add component
 
   get URL_CHARACTERISTIC() { return REST_URL_CHARACTERISTIC; }
+  get URL_BENEFIT() { return REST_URL_BENEFIT; }
+  get URL_RESTRICTION() { return REST_URL_RESTRICTION; }
+  get URL_TYPE() { return REST_URL_TYPE; }
 
-  constructor(private dao: DAOService, private fb: FormBuilder) { }
+  constructor(private dao: DAOService) { }
 
   ngOnInit() {
-    this.details = false;
-    this.hasActivity = !!this.activity;
+    this.details = !this.activity;
+    this.isAddActivity = !this.activity;
 
-    if (!this.hasActivity)
-      this.activity = new Activity();
-
-    this.activityForm = this.fb.group({
-      title: [this.activity.title, Validators.required],
-      description: [this.activity.description, Validators.required]
-    });
+    if (this.isAddActivity) this.activity = new Activity();
   }
 
-  createActivity(obj = {}) {
-    console.log(obj);
-    this.dao.postObject(REST_URL_ACTIVITY, obj).subscribe(data => {
+  createActivity() {
+    this.dao.postObject(REST_URL_ACTIVITY, {
+      title: this.activity.title,
+      description: this.activity.description,
+      image: this.activity.image
+    }).subscribe(data => {
+      console.log(data);
       this.newActivity.emit(new Activity(data));
+      this.activity = new Activity();
     }, error => alert('Não foi possível criar a atividade'));
   }
 
-  updateDescription() {
-    const description = this.activityForm.get('description');
-    if (!this.activity.id) {
-      this.createActivity({ description: description.value });
-      return;
-    }
+  deleteActivity() {
+    this.dao.deleteObject(REST_URL_ACTIVITY, this.activity.id.toString()).subscribe(data => this.removeActivity.emit(this.activity.id), error => alert('Não foi possível deletar a atividade'));
+  }
 
-    this.dao.patchObject(REST_URL_ACTIVITY, {
+  updateTitle(title: string) {
+    if (!this.isAddActivity) this.dao.patchObject(REST_URL_ACTIVITY, {
       id: this.activity.id,
-      description: description.value
-    }).subscribe((data: any) => {
-      description.setValue(data.description);
-      this.activity.description = data.description;
-    }, error => {
-      description.setValue(this.activity.description);
-      alert('Ocorreu uma falha ao tentar alterar a descrição');
-    });
+      title
+    }).subscribe(_ => {
+      this.activity.title = title;
+    }, error => alert('Ocorreu uma falha ao tentar alterar o título'));
+    else this.activity.title = title;
   }
-  removeDetailItem(id: number) {
-    const characteristIndex = this.activity.characteristics.findIndex(value => value.id === id);
-    if (characteristIndex !== -1) {
-      this.activity.characteristics.splice(characteristIndex, 1);
-      return;
-    }
+  updateDescription(description: string) {
+    if (!this.isAddActivity) this.dao.patchObject(REST_URL_ACTIVITY, {
+      id: this.activity.id,
+      description
+    }).subscribe(_ => {
+      this.activity.description = description;
+    }, error => alert('Ocorreu uma falha ao tentar alterar a descrição'));
+    else this.activity.description = description;
+  }
+  updateImage(imageURL: string) {
+    if (!this.isAddActivity) this.dao.patchObject(REST_URL_ACTIVITY, {
+      id: this.activity.id,
+      imageURL
+    }).subscribe(_ => {
+      this.activity.image = imageURL;
+    }, error => alert('Ocorreu uma falha ao tentar alterar a imagem'));
+    else this.activity.image = imageURL;
   }
 
-  addCharacteristicsItem(description: string) {
-    if (!this.activity.id)
-      this.createActivity();
+  addDetailItem(detailItem: { id: number, description: string }, type: string) {
+    let idArray: number[];
+    if (type === 'characteristic')
+      idArray = this.activity.characteristic.map(value => value.id);
+    else if (type === 'benefit')
+      idArray = this.activity.benefit.map(value => value.id);
+    else if (type === 'restriction')
+      idArray = this.activity.restriction.map(value => value.id);
+    else if (type === 'type')
+      idArray = this.activity.type.map(value => value.id);
 
-    this.dao.postObject(REST_URL_CHARACTERISTIC, { description }).subscribe((data: {id: number, description: string}) => {
-      const characteristicsId = this.activity.characteristics.map(value => value.id);
-      characteristicsId.push(data.id);
+    idArray.push(detailItem.id);
 
-      this.dao.patchObject(REST_URL_ACTIVITY, {
-        id: this.activity.id,
-        characteristic: characteristicsId
-      }).subscribe(data2 => {
-        console.log(data2);
-        this.activity = new Activity(data2);
-      }, error => alert('Não foi possível adicionar essa característica'));
-    }, error => alert('Não foi possível adicionar essa característica'));
+    const requestObj = { id: this.activity.id };
+    requestObj[type] = idArray;
+
+    this.dao.patchObject(REST_URL_ACTIVITY, requestObj).subscribe(data => this.activity = new Activity(data), error => alert('Não foi possível adicionar a característica'))
+  }
+  removeDetailItem(id: number, type: string) {
+    if (type === 'characteristic') {
+      const characteristicIndex = this.activity.characteristic.findIndex(value => value.id === id);
+      if (characteristicIndex !== -1) {
+        this.activity.characteristic.splice(characteristicIndex, 1);
+        return;
+      }
+    } else if (type === 'benefit') {
+      const benefitIndex = this.activity.benefit.findIndex(value => value.id === id);
+      if (benefitIndex !== -1) {
+        this.activity.benefit.splice(benefitIndex, 1);
+        return;
+      }
+    } else if (type === 'restriction') {
+      const restrictionIndex = this.activity.restriction.findIndex(value => value.id === id);
+      if (restrictionIndex !== -1) {
+        this.activity.restriction.splice(restrictionIndex, 1);
+        return;
+      }
+    } else if (type === 'type') {
+      const typeIndex = this.activity.type.findIndex(value => value.id === id);
+      if (typeIndex !== -1) {
+        this.activity.type.splice(typeIndex, 1);
+        return;
+      }}
   }
 
 }
