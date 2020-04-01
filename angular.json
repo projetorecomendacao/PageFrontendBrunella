@@ -126,6 +126,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "active-aging-angular"
+    }
+  },
+  "defaultProject": "active-aging-angular",
+  "cli": {
+    "analytics": false
+  }
 }
