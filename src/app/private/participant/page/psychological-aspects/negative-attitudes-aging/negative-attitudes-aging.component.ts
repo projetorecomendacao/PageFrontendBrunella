@@ -11,8 +11,8 @@ export class NegativeAttitudesAgingComponent implements OnInit {
   @Input() pageForm: FormGroup;
 
   // variáveis booleans que controlam as mensagens de certo e errado no final do form
-  private errado: boolean = false;
-  private branco: boolean = true;
+  public errado: boolean = false;
+  public branco: boolean = true;
 
 
   //dominio e dimensão
@@ -20,9 +20,9 @@ export class NegativeAttitudesAgingComponent implements OnInit {
   private dominio: string = 'psychologicalAspectsForm'; 
   
   //Pontuação máxima
-  private max_score : number = 2;
+  public max_score : number = 2;
   //Pontos da dimensão
-  private score : number = 0;
+  public score : number = 0;
   //Campos que são válidos para contar o número de acertos
   vetConta: string[] = ['q7_age_self_perception_analyze', 'q8_aging_analyse'];
   //vetor com os gabaritos dos acertos

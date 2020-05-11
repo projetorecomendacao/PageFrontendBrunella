@@ -11,17 +11,17 @@ export class LowSocialSupportComponent implements OnInit {
   @Input() pageForm: FormGroup;
 
   // variáveis booleans que controlam as mensagens de certo e errado no final do form
-  private errado: boolean = false;
-  private branco: boolean = true;
+  public errado: boolean = false;
+  public branco: boolean = true;
 
   //dominio e dimensão
   private dimensao: string = 'lowSocialSupportForm';
   private dominio: string = 'socialAspectsForm'; 
   
   //Pontuação máxima
-  private max_score : number = 8;
+  public max_score : number = 8;
   //Pontos da dimensão
-  private score : number = 0;
+  public score : number = 0;
   //Campos que são válidos para contar o número de acertos
   vetConta: string[] = ['q55_meet_family_friends','q56_participate_family_decisions','q57_satisfied_family_relationship',
                         'q58_helped_if_need_money','q59_someone_helps_if_need', 'q60_someone_to_have_fun',

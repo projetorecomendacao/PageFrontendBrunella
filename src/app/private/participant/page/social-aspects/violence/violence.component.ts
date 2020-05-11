@@ -11,17 +11,17 @@ export class ViolenceComponent implements OnInit {
   @Input() pageForm: FormGroup;
 
  // variáveis booleans que controlam as mensagens de certo e errado no final do form
- private errado: boolean = false;
- private branco: boolean = true;
+ public errado: boolean = false;
+ public branco: boolean = true;
 
  //dominio e dimensão
  private dimensao: string = 'violenceForm';
  private dominio: string = 'socialAspectsForm'; 
  
  //Pontuação máxima
- private max_score : number = 8;
+ public max_score : number = 8;
  //Pontos da dimensão
- private score : number = 0;
+ public score : number = 0;
  //Campos que são válidos para contar o número de acertos
  vetConta: string[] = [ 'q79_afraid_close_person','q80_feels_abandoned','q81_forced',
                         'q82_assauteld','q83_in_need','q84_someone_used_money',

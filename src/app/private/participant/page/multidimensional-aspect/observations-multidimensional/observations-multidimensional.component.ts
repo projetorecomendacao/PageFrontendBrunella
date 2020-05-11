@@ -10,9 +10,9 @@ export class ObservationsMultidimensionalComponent implements OnInit {
 
   @Input() pageForm: FormGroup;
 
-    // variáveis booleans que controlam as mensagens de certo e errado no final do form
-    private errado: boolean = false;
-    private branco: boolean = true;
+  // variáveis booleans que controlam as mensagens de certo e errado no final do form
+  public errado: boolean = false;
+  public branco: boolean = true;
   
   //dominio e dimensao
   private dimensao: string = 'commentsForm';

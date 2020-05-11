@@ -12,8 +12,8 @@ import {Router} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   private p: Participant;
-  private participants: Participant[] = new Array<Participant>();
-  private addParticipantForm: FormGroup = this.form.group({
+  public participants: Participant[] = new Array<Participant>();
+  public addParticipantForm: FormGroup = this.form.group({
     p00_email: ['', Validators.required],
     p01_name: ['', Validators.required],
     p02_address: ['', Validators.required],

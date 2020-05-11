@@ -10,17 +10,17 @@ export class DepressionComponent implements OnInit {
 
   @Input() pageForm: FormGroup;
   // variáveis booleans que controlam as mensagens de certo e errado no final do form
-  private errado: boolean = false;
-  private branco: boolean = true;
+  public errado: boolean = false;
+  public branco: boolean = true;
 
   //dominio e dimensao
   private dimensao: string = 'depressionForm';
   private dominio: string = 'psychologicalAspectsForm'; 
 
   //Pontuação máxima
-  private max_score : number = 6;
+  public max_score : number = 6;
   //Pontos da dimensão
-  private score : number = 0;
+  public score : number = 0;
   //vetor com os nomes dos campos que contam pontos
   vetConta: string[] = ['q9_satisfied_with_life','q10_frequently_sad','q11_stopped_doing_things',
                         'q12_fear_bad_things_happen','q13_impatient_disquiet','q14_concentration_problem'];

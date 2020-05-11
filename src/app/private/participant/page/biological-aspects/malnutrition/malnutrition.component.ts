@@ -13,18 +13,18 @@ export class MalnutritionComponent implements OnInit {
   @Input() pageForm: FormGroup;
   
   //variável que verifica se houver perda de peso
-  private perdeuPeso : boolean;
+  public perdeuPeso : boolean;
 
   // variáveis booleans que controlam as mensagens de certo e errado no final do form
-  private errado: boolean = false;
-  private branco: boolean = true;
+  public errado: boolean = false;
+  public branco: boolean = true;
 
   //dominio e dimensão
   private dimensao: string = 'malnutritionForm';
   private dominio: string = 'biologicalAspectsForm'; 
   
   //Pontuação máxima
-  private max_score : number = 7;
+  public max_score : number = 7;
   //Pontos da dimensão
   private score : number = 0;
   //Campos que são válidos para contar o número de acertos

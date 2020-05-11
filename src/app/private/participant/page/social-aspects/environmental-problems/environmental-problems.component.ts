@@ -11,17 +11,17 @@ export class EnvironmentalProblemsComponent implements OnInit {
   @Input() pageForm: FormGroup;
 
    // variáveis booleans que controlam as mensagens de certo e errado no final do form
-   private errado: boolean = false;
-   private branco: boolean = true;
+   public errado: boolean = false;
+   public branco: boolean = true;
  
    //dominio e dimensão
    private dimensao: string = 'environmentalProblemsForm';
    private dominio: string = 'socialAspectsForm'; 
    
    //Pontuação máxima
-   private max_score : number = 16;
+   public max_score : number = 16;
    //Pontos da dimensão
-   private score : number = 0;
+   public score : number = 0;
 
    //variáveis de cada ambiente
    private ambExt : number = 0;

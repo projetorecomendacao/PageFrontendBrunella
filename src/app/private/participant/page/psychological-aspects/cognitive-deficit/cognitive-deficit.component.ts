@@ -11,17 +11,17 @@ export class CognitiveDeficitComponent implements OnInit {
 
   @Input() pageForm: FormGroup;
   // variáveis booleans que controlam as mensagens de certo e errado no final do form
-  private errado: boolean = false;
-  private branco: boolean = true;
+  public errado: boolean = false;
+  public branco: boolean = true;
 
   //dominio e dimensao
   private dimensao: string = 'cognitiveDeficitForm';
   private dominio: string = 'psychologicalAspectsForm'; 
 
   //Pontuação máxima
-  private max_score : number = 6;
+  public max_score : number = 6;
   //Pontos da dimensão
-  private score : number = 0;
+  public score : number = 0;
 
   //vetor com os nomes dos campos que contam pontos
   vetConta: string[] = ['q1_memory_good_like_before', 'q2_memory_test',
@@ -51,7 +51,7 @@ export class CognitiveDeficitComponent implements OnInit {
     ngOnInit():void {}
   
     // o método mudou verifica se um campo foi atualizado
-    mudou(campo: string, pos: number){ 
+    mudou(campo: string){ 
       var volta: string = this.checaCampo.inicio();
       if(!this.pageForm.get(this.dominio).get(this.dimensao).get(campo).pristine){
         volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid);

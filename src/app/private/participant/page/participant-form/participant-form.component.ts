@@ -14,8 +14,8 @@ export class ParticipantFormComponent implements OnInit {
   @Input() participant: Participant;
 
   // variáveis booleans que controlam as mensagens de certo e errado no final do form
-  private errado: boolean = false;
-  private branco: boolean = true;
+  public errado: boolean = false;
+  public branco: boolean = true;
 
 
   //dominio e dimensão

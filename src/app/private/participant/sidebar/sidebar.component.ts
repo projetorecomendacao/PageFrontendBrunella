@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  private sidebarState: number = 0;
+  public sidebarState: number = 0;
 
   constructor() { }
 

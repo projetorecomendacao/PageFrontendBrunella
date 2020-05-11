@@ -14,17 +14,17 @@ export class FallsComponent implements OnInit {
 
 
   // variáveis booleans que controlam as mensagens de certo e errado no final do form
-  private errado: boolean = false;
-  private branco: boolean = true;
+  public errado: boolean = false;
+  public branco: boolean = true;
 
   //dominio e dimensão
   private dimensao: string = 'fallsForm';
   private dominio: string = 'multidimensionalAspectsForm'; 
   
   //Pontuação máxima
-  private max_score : number = 15;
+  public max_score : number = 15;
   //Pontos da dimensão
-  private score : number = 0;
+  public score : number = 0;
   //Campos que são válidos para contar o número de acertos
   vetConta: string[] = ['q87_falls_last_year', 'q88_fractures_due_to_falls', 'q90_strength_mmii',
   'q91_equilibrium', 'q92_older_than75', 'q93_female',

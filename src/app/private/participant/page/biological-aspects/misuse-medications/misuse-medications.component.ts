@@ -12,7 +12,7 @@ export class MisuseMedicationsComponent implements OnInit {
   @Input() pageForm: FormGroup;
 
   //Lista de doenças
-  private doencas = [
+  public doencas = [
     {letra: 'a', questao: 'Doença do coração (angina, infarto ou ataque cardíaco)?', campo: 'q42_diseases_last_5_years_a'}, 
     {letra: 'b', questao: 'Pressão alta/ hipertensão?', campo: 'q42_diseases_last_5_years_b'},
     {letra: 'c', questao: 'Derrame/AVC/Isquemia?', campo: 'q42_diseases_last_5_years_c'},
@@ -26,7 +26,7 @@ export class MisuseMedicationsComponent implements OnInit {
     {letra: 'k', questao: 'Depressão?', campo: 'q42_diseases_last_5_years_k'} 
     ];
 
-  private problemas = [
+  public problemas = [
     {letra: 'a',  questao: ' Dor de cabeça? ',  campo:  'q43_health_problems_a'},
     {letra: 'b',  questao: ' Dor nas costas ou em outra parte do corpo?',  campo:  'q43_health_problems_b'},
     {letra: 'c',  questao: ' Alergia? ',  campo:  'q43_health_problems_c'},
@@ -40,17 +40,17 @@ export class MisuseMedicationsComponent implements OnInit {
   
   
   // variáveis booleans que controlam as mensagens de certo e errado no final do form
-  private errado: boolean = false;
-  private branco: boolean = true;
+  public errado: boolean = false;
+  public branco: boolean = true;
 
   //dominio e dimensão
   private dimensao: string = 'misuseMedicationsForm';
   private dominio: string = 'biologicalAspectsForm'; 
   
   //Pontuação máxima
-  private max_score : number = 9;
+  public max_score : number = 9;
   //Pontos da dimensão
-  private score : number = 0;
+  public score : number = 0;
   //Campos que são válidos para contar o número de acertos
   vetConta: string[] = ['q46_medicines_increase','q47_know_medicines','q48_medications_prescribed',
                         'q49_medicine_medical_advice','q50_already_stopped_medicines', 'q51_self_medication',

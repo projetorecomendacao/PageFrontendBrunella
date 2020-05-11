@@ -11,7 +11,7 @@ import {REST_URL_PAGE} from '../../../shared/REST_API_URLs';
 })
 export class PagesListComponent implements OnInit {
 
-  private pages: Page[] = new Array<Page>();
+  public pages: Page[] = new Array<Page>();
 
   constructor(private router: Router, private pageService: PageService, private daoService: DAOService) {
     console.log (pageService.participant)
