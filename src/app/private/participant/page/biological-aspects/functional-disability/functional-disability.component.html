@@ -2,121 +2,178 @@
 <h2 class="text-center mt-5"><span class="bg-success rounded-pill rounded-bottom-0 text-white px-5 py-2">Incapacidade funcional</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="functionalDisabilityForm">
-  <!--Perguntas-->
-  <div class="p-3">
-    <!--Pergunta1-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">20.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) necessita de ajuda para fazer compras?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q20_to_shop" [class.is-invalid]="q20_to_shop.invalid && q20_to_shop.touched">
-            <option value="" selected disabled>Selecione</option>
+
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="pageForm">
+  <div class="form-group p-3" formGroupName="biologicalAspectsForm">
+    <div class="form-group p-3" formGroupName="functionalDisabilityForm">
+      <app-base>
+        <!-- Lado Esquerdo-->
+        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: lightgrey;">
+          <b>INCAPACIDADE FUNCIONAL</b>
+        </div>
+
+        <!-- Centro -->
+        <span class="col-12 col-md-9">
+          <!--Pergunta1-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">20.</b>O(A) senhor(a) necessita
+                de ajuda para fazer compras??
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q20_to_shop">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q20_to_shop')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!------------->
+          <!--Pergunta2-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">21.</b>O(A) senhor(a) necessita
+                de ajuda para usar meios de transporte?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q21_use_transport">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q21_use_transport')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!------------->
+          <!--Pergunta3-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">22.</b>O(A) senhor(a) necessita
+                de ajuda para preparar a própria comida?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q22_to_cook">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q22_to_cook')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+
+          <!------------->
+          <!--Pergunta4-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">23.</b>O(A) senhor(a) necessita
+                de ajuda para usar o telefone?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q23UseTelephone">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q23UseTelephone')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!------------->
+          <!--Pergunta5-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">24.</b>O(A) senhor(a) necessita
+                de ajuda para vestir-se?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q24_dress_up">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q24_dress_up')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!--Pergunta6-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">25. </b>O(A) senhor(a) necessita
+                de ajuda para tomar banho?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q25TakeShower">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q25TakeShower')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+
+
+        </span>
+        <!-- Lado Direito-->  
+        <span class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color:#90EE90 ;">
+          <!--Pontuation-->
+          Pontuação: (<b>{{conta_certo()}}</b>) - máximo: ({{max_score}})
+        </span>
+        <span class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: #90EE90 ;">
+           <!--Intervenção-->
+          Necessita de investigação?                      
+          <select style="margin-top:40px; background-color: whitesmoke; width: 100%; transform: rotate(90deg);" class="form-control"  formControlName="need_investigation_functional">
+            <option value="" selected disabled></option>
             <option value="S">Sim</option>
             <option value="N">Não</option>
           </select>
-        </div>
-      </div>
+          <img [src]="mudou('need_investigation_functional')" width="15px" height="15px" style="margin-top: 20px;">
+        </span>          
+        
+        <div class="caixa-100">
+          <app-status [valido]="formValido()" [branco]="branco" [errado]="errado"></app-status>
+        </div> 
+      </app-base>
     </div>
-    <!------------->
-    <!--Pergunta2-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">21.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) necessita de ajuda para Usar meios de transporte?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q21_use_transport" [class.is-invalid]="q21_use_transport.invalid && q21_use_transport.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta3-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">22.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) necessita de ajuda para Preparar a própria comida?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q22_to_cook" [class.is-invalid]="q22_to_cook.invalid && q22_to_cook.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta4-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">23.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) necessita de ajuda para Usar o telefone?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q23UseTelephone" [class.is-invalid]="q23UseTelephone.invalid && q23UseTelephone.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta5-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">24.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) necessita de ajuda para Vestir-se?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q24_dress_up" [class.is-invalid]="q24_dress_up.invalid && q24_dress_up.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta6-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">25.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) necessita de ajuda para Tomar banho?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q25TakeShower" [class.is-invalid]="q25TakeShower.invalid && q25TakeShower.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
   </div>
-  <!------------->
-  <!--Pontuation-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <span class="text-success font-weight-bold h4 mr-3">Pontuação:</span>
-    <span class="h5">6 pontos</span>
-  </div>
-  <!------------->
-  <!--Intervenção-->
-  <div class="d-flex flex-wrap w-25 mx-auto justify-content-center align-items-center p-3">
-    <label class="text-center mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
-    <select class="w-100 form-control" id="depression-intervention" formControlName="need_investigation_functional" [class.is-invalid]="need_investigation_functional.invalid && need_investigation_functional.touched">
-      <option value="" selected disabled>Selecione</option>
-      <option value="S">Sim</option>
-      <option value="N">Não</option>
-    </select>
-  </div>
-  <!--------------->
-  <!--Continue-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <button class="btn btn-success" (click)="submit()">Salvar</button>
-  </div>
-  <!------------>
 </div>
-<!----------->

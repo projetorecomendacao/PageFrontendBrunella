@@ -13,11 +13,14 @@ export class PagesListComponent implements OnInit {
 
   private pages: Page[] = new Array<Page>();
 
-  constructor(private router: Router, private pageService: PageService, private daoService: DAOService) { }
+  constructor(private router: Router, private pageService: PageService, private daoService: DAOService) {
+    console.log (pageService.participant)
+   }
 
   ngOnInit() {
     this.daoService.getObjects(REST_URL_PAGE).subscribe((response: any) => {
-      for (const page of response) this.pages.push(new Page(page));
+      for (const page of response) 
+        this.pages.push(new Page(page));
     });
   }
 
@@ -26,7 +29,8 @@ export class PagesListComponent implements OnInit {
     if (page.id === -1) {
       this.pageService.reset();
       this.pageService.setParticipant();
-    } else this.pageService.page = page;
+    } else 
+      this.pageService.page = page;
 
     this.router.navigate(['private/participant/page/' + page.id.toString()]).then();
   }

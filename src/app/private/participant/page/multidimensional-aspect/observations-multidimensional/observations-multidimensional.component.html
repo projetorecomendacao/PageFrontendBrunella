@@ -1,27 +1,32 @@
 <!--Title-->
-<h2 class="text-center mt-5"><span class="bg-danger rounded-pill rounded-bottom-0 text-white px-5 py-2">Observações</span></h2>
+<h2 class="text-center mt-5"><span class="mage rounded-pill rounded-bottom-0 text-white px-5 py-2">Observações</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
+<!--Content-->
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="pageForm">
   <!--Perguntas-->
-  <div class="p-3">
-    <!--Pergunta1-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-danger font-weight-bold">9.</div>
-        <span class="col-12 col-md-7">Observações sobre o bloco multidimensional:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <textarea class="w-100 form-control" [formControl]="commentsForm"></textarea>
+  <div class="form-group p-3" formGroupName="multidimensionalAspectsForm">
+    <div class="form-group p-3" formGroupName="commentsForm">
+      <app-base>
+        <div class="col-12 col-md-12 d-flex justify-content-center align-items-center">
+          Observações sobre o bloco multidimensional:
         </div>
-      </div>
+
+        <div class="caixa-100">
+          <div class="caixa-90">
+            <textarea class="w-100 form-control" formControlName="comments" style="background-color: whitesmoke;"></textarea>
+          </div>
+          <div class="caixa-10">
+            <img [src]="mudou('comments')" width="15px" height="15px">
+          </div>
+        </div>
+
+        <div class="caixa-100">
+          <app-status [valido]="formValido()" [branco]="branco" [errado]="errado"></app-status>
+        </div>     
+
+      </app-base>
     </div>
-    <!------------->
   </div>
-  <!------------->
-  <!--Continue-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <button class="btn btn-danger text-white" (click)="submit()">Salvar</button>
-  </div>
-  <!------------>
 </div>
 <!----------->

@@ -1,0 +1,151 @@
+
+
+<div *ngIf="graficos()" class="caixa-100">
+  <app-escores [pageForm]="pageForm"></app-escores>
+</div>
+
+
+
+
+<h2 class="text-center mt-5">
+  <span class="rounded-pill rounded-bottom-0 text-white px-5 py-2" style="font-size: 16px; background-color:gray; font-weight: bold ;">
+      Mapa das Demandas
+  </span>
+</h2>
+
+
+<div *ngIf="graficos()" class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
+  <center>
+    <app-grafico-dominios [pageForm]="pageForm"></app-grafico-dominios>
+    <app-grafico-dimesoes [pageForm]="pageForm"></app-grafico-dimesoes>
+  </center>
+</div> 
+
+
+
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="pageForm">
+  <div class="form-group p-3" formGroupName="finalAnaliseForm">
+    <app-base>
+      <div class="caixa-100">
+        <div class="caixa-90">
+          3. O(a) idoso(a) apresenta outras demandas não contempladas no mapa? Se sim, especificar:
+        </div>
+      </div>
+      <div class="caixa-100">
+        <div class="caixa-90">
+          <textarea class="w-100 form-control" formControlName="dm3_unmet_demands"></textarea>
+        </div>
+        <div class="caixa-10">
+          <img style="margin-left: 10px;" [src]="mudou('dm3_unmet_demands')" width="15px" height="15px">
+        </div>
+      </div>
+    </app-base>
+
+    <app-base>
+      <div class="caixa-100">
+        <div class="caixa-90">
+          Avaliação do Gerontólogo
+        </div>
+      </div>
+      <div class="caixa-100">
+        <div class="caixa-90">
+          <textarea class="w-100 form-control" formControlName="gerontologist_assessment"></textarea>
+        </div>
+        <div class="caixa-10">
+          <img style="margin-left: 10px;" [src]="mudou('gerontologist_assessment')" width="15px" height="15px">
+        </div>
+      </div>
+    </app-base>
+  </div>
+</div>
+
+
+
+<h2 class="text-center mt-5">
+  <span class="rounded-pill rounded-bottom-0 text-white px-5 py-2" style="font-size: 16px; background-color:gray; font-weight: bold ;">
+      II. Planejamento das Ações
+  </span>
+</h2>
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="pageForm">
+  <div class="form-group p-3" formGroupName="finalAnaliseForm">
+
+    <app-base>
+      <div class="caixa-100">
+        <div class="caixa-90">
+          Identificação das Demandas/Problemas (listes as demandas/problemas identificadas na avaliação de acordo com a
+            ordem de prioridade. Lembre-se de verificar se as prioridades da equipe são compatíveis com as prioridades do
+            idoso/família):
+        </div>
+      </div>
+      <div class="caixa-100">
+        <div class="caixa-90">
+          <textarea class="w-100 form-control" formControlName="demands_problems"></textarea>
+        </div>
+        <div class="caixa-10">
+          <img style="margin-left: 10px;" [src]="mudou('demands_problems')" width="15px" height="15px">
+        </div>
+      </div>
+    </app-base>
+
+    <app-base>
+      <div class="caixa-100">
+        <div class="caixa-90">
+          Estabelecimento das Metas (estipule as metas a curto, médio e longo prazos para cada 
+          problema ou demanda identificada no item anterior):
+        </div>
+      </div>
+      <div class="caixa-100">
+        <div class="caixa-90">
+          <textarea class="w-100 form-control" formControlName="goals"></textarea>
+        </div>
+        <div class="caixa-10">
+          <img style="margin-left: 10px;" [src]="mudou('goals')" width="15px" height="15px">
+        </div>
+      </div>
+    </app-base>
+
+    <app-base>
+      <div class="caixa-100">
+        <div class="caixa-90">
+          Organização das Ações e dos Serviços (especifique as características das ações e dos 
+          serviços necessários para que a pessoa idosa alcance as metas estipuladas no item 
+          anterior – exemplo: número de visitas domiciliares, agendamento de consultas, 
+          intervenções, tratamentos, encaminhamentos, etc.):
+        </div>
+      </div>
+      <div class="caixa-100">
+        <div class="caixa-90">
+          <textarea class="w-100 form-control" formControlName="actions_organization"></textarea>
+        </div>
+        <div class="caixa-10">
+          <img style="margin-left: 10px;" [src]="mudou('actions_organization')" width="15px" height="15px">
+        </div>
+      </div>
+    </app-base>
+
+  </div>
+</div>
+
+<div class="d-flex justify-content-center align-items-center">
+  <div class="caixa-75p">
+    <div class="caixa-15 d-flex justify-content-center">
+      <button type="button" class="btn btn-success" name="bc1" matStepperPrevious> 
+        <<Anterior 
+      </button>
+    </div>
+    
+
+    <div *ngIf='!formValido()' class="caixa-15r d-flex justify-content-center" >
+      <button type="button" class="btn btn-secondary" disabled >
+        Salvar 
+      </button>
+    </div>
+ 
+    <div *ngIf='formValido()' class="caixa-15r d-flex justify-content-center" >
+      <button type="button" class="btn btn-success" name="bc2" matStepperNext >
+        Salvar
+      </button>
+    </div>
+ 
+  </div>
+</div>

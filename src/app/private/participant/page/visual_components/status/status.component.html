@@ -1,0 +1,15 @@
+  <span class="col-12 col-md-12">
+    <div class="d-flex align-items-center justify-content-center p-3 mt-3">
+      <b>Situação</b>
+    </div>
+    <div *ngIf="valido" class="d-flex align-items-center justify-content-center ">    
+      <font color='green'>Formulário com todos os campos preenchidos corretamente</font>                 
+    </div>
+    <div *ngIf="branco" class="d-flex align-items-center justify-content-center">
+      <font color='blue'>Formulário com campos não preenchidos</font>                
+    </div> 
+    <div *ngIf="errado" class="d-flex align-items-center justify-content-center">
+      <font color='red'>Formulário com campos preenchidos incorretamente</font>                
+    </div> 
+  </span> 
+

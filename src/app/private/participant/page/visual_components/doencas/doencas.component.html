@@ -1,0 +1,18 @@
+<div [formGroup]="pageForm">
+    <div [formGroupName]="dominio">
+        <div class="row mtb" [formGroupName]="dimensao">
+            <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">{{letra}}.</div>
+            <span class="col-12 col-md-7 d-flex align-items-center">{{questao}}</span>
+            <div class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+                <select style="background-color : whitesmoke" class="w-100 form-control" [formControlName]="campo">
+                <option value="" selected disabled>Selecione</option>
+                <option value="S">Sim</option>
+                <option value="N">Não</option>
+                </select>
+            </div>
+            <div class="col-12 col-md-1 d-flex justify-content-around flex-wrap">
+                <img style="margin-left: 10px;" [src]="mudou()" width="15px" height="15px">
+            </div>
+        </div>
+    </div>
+</div>

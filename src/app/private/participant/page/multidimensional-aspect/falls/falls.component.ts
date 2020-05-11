@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DAOService } from '../../../../../shared/dao.service';
-import { REST_URL_FALLS } from '../../../../../shared/REST_API_URLs';
-import { Falls } from '../../../../../shared/models/multidimentional-aspects';
+import { Component, Input, OnInit} from '@angular/core';
+import { FormGroup} from '@angular/forms';
+import { ChecaCampo } from 'src/app/shared/checa-campo';
+import { Participant } from 'src/app/shared/models/participant.model';
 
 @Component({
   selector: 'app-falls',
@@ -10,102 +9,162 @@ import { Falls } from '../../../../../shared/models/multidimentional-aspects';
 })
 export class FallsComponent implements OnInit {
 
-  @Input('falls') fallsInput: Falls;
-  @Output('falls') fallsOutput = new EventEmitter<Falls>();
+  @Input() pageForm: FormGroup;
+  @Input() participant: Participant;
 
-  private fallsForm: FormGroup;
 
-  get q87_falls_last_year() { return this.fallsForm.get('q87_falls_last_year'); }
-  get q87_amount_falls_last_year() { return this.fallsForm.get('q87_amount_falls_last_year'); }
-  get q88_fractures_due_to_falls() { return this.fallsForm.get('q88_fractures_due_to_falls'); }
-  get q88_fractures_due_to_falls_list() { return this.fallsForm.get('q88_fractures_due_to_falls_list'); }
-  get q89_fractures_list() { return this.fallsForm.get('q89_fractures_list'); }
-  get q90_strength_mmii() { return this.fallsForm.get('q90_strength_mmii'); }
-  get q91_equilibrium() { return this.fallsForm.get('q91_equilibrium'); }
-  get q92_older_than75() { return this.fallsForm.get('q92_older_than75'); }
-  get q93_female() { return this.fallsForm.get('q93_female'); }
-  get q94_cognitive_alterations() { return this.fallsForm.get('q94_cognitive_alterations'); }
-  get q95_av_ds_commitment() { return this.fallsForm.get('q95_av_ds_commitment'); }
-  get q96_visual_deficit() { return this.fallsForm.get('q96_visual_deficit'); }
-  get q97_domestic_risks() { return this.fallsForm.get('q97_domestic_risks'); }
-  get q98_behavior_risk() { return this.fallsForm.get('q98_behavior_risk'); }
-  get q99_inactivity() { return this.fallsForm.get('q99_inactivity'); }
-  get q100_prior_ave() { return this.fallsForm.get('q100_prior_ave'); }
-  get q101_psychotropic_medications_use() { return this.fallsForm.get('q101_psychotropic_medications_use'); }
-  get q102_has_diseases() { return this.fallsForm.get('q102_has_diseases'); }
-  get need_investigation_falls() { return this.fallsForm.get('need_investigation_falls'); }
+  // variáveis booleans que controlam as mensagens de certo e errado no final do form
+  private errado: boolean = false;
+  private branco: boolean = true;
 
-  constructor(private fb: FormBuilder, private dao: DAOService) { }
+  //dominio e dimensão
+  private dimensao: string = 'fallsForm';
+  private dominio: string = 'multidimensionalAspectsForm'; 
+  
+  //Pontuação máxima
+  private max_score : number = 15;
+  //Pontos da dimensão
+  private score : number = 0;
+  //Campos que são válidos para contar o número de acertos
+  vetConta: string[] = ['q87_falls_last_year', 'q88_fractures_due_to_falls', 'q90_strength_mmii',
+  'q91_equilibrium', 'q92_older_than75', 'q93_female',
+  'q94_cognitive_alterations', 'q95_av_ds_commitment', 'q96_visual_deficit',
+  'q97_domestic_risks', 'q98_behavior_risk', 'q99_inactivity',
+  'q100_prior_ave', 'q101_psychotropic_medications_use', 'q102_has_diseases']
 
-  ngOnInit() {
-    if (this.fallsInput) this.fallsForm = this.fb.group({
-      q87_falls_last_year: [this.fallsInput.getQ87A(), [Validators.required, Validators.maxLength(1)]],
-      q87_amount_falls_last_year: [this.fallsInput.getQ87B()],
-      q88_fractures_due_to_falls: [this.fallsInput.getQ88A(), [Validators.required, Validators.maxLength(1)]],
-      q88_fractures_due_to_falls_list: [this.fallsInput.getQ88B()],
-      q89_fractures_list: [this.fallsInput.getQ89()],
-      q90_strength_mmii: [this.fallsInput.getQ90(), [Validators.required, Validators.maxLength(1)]],
-      q91_equilibrium: [this.fallsInput.getQ91(), [Validators.required, Validators.maxLength(1)]],
-      q92_older_than75: [this.fallsInput.getQ92(), [Validators.required, Validators.maxLength(1)]],
-      q93_female: [this.fallsInput.getQ93(), [Validators.required, Validators.maxLength(1)]],
-      q94_cognitive_alterations: [this.fallsInput.getQ94(), [Validators.required, Validators.maxLength(1)]],
-      q95_av_ds_commitment: [this.fallsInput.getQ95(), [Validators.required, Validators.maxLength(1)]],
-      q96_visual_deficit: [this.fallsInput.getQ96(), [Validators.required, Validators.maxLength(1)]],
-      q97_domestic_risks: [this.fallsInput.getQ97(), [Validators.required, Validators.maxLength(1)]],
-      q98_behavior_risk: [this.fallsInput.getQ98(), [Validators.required, Validators.maxLength(1)]],
-      q99_inactivity: [this.fallsInput.getQ99(), [Validators.required, Validators.maxLength(1)]],
-      q100_prior_ave: [this.fallsInput.getQ100(), [Validators.required, Validators.maxLength(1)]],
-      q101_psychotropic_medications_use: [this.fallsInput.getQ101(), [Validators.required, Validators.maxLength(1)]],
-      q102_has_diseases: [this.fallsInput.getQ102(), [Validators.required, Validators.maxLength(1)]],
-      need_investigation_falls: [this.fallsInput.getNeedInvestigation(), [Validators.required, Validators.maxLength(1)]],
-    });
-    else this.fallsForm = this.fb.group({
-      q87_falls_last_year: ['', [Validators.required, Validators.maxLength(1)]],
-      q87_amount_falls_last_year: ['', [Validators.required]],
-      q88_fractures_due_to_falls: ['', [Validators.required, Validators.maxLength(1)]],
-      q88_fractures_due_to_falls_list: ['', [Validators.required]],
-      q89_fractures_list: ['', [Validators.required]],
-      q90_strength_mmii: ['', [Validators.required, Validators.maxLength(1)]],
-      q91_equilibrium: ['', [Validators.required, Validators.maxLength(1)]],
-      q92_older_than75: ['', [Validators.required, Validators.maxLength(1)]],
-      q93_female: ['', [Validators.required, Validators.maxLength(1)]],
-      q94_cognitive_alterations: ['', [Validators.required, Validators.maxLength(1)]],
-      q95_av_ds_commitment: ['', [Validators.required, Validators.maxLength(1)]],
-      q96_visual_deficit: ['', [Validators.required, Validators.maxLength(1)]],
-      q97_domestic_risks: ['', [Validators.required, Validators.maxLength(1)]],
-      q98_behavior_risk: ['', [Validators.required, Validators.maxLength(1)]],
-      q99_inactivity: ['', [Validators.required, Validators.maxLength(1)]],
-      q100_prior_ave: ['', [Validators.required, Validators.maxLength(1)]],
-      q101_psychotropic_medications_use: ['', [Validators.required, Validators.maxLength(1)]],
-      q102_has_diseases: ['', [Validators.required, Validators.maxLength(1)]],
-      need_investigation_falls: ['', [Validators.required, Validators.maxLength(1)]],
-    });
+  vetGabarito: string[] = ['N','N','S','S','N','N','N','N','N','N','N','N','N','N','N'];
+  
+  //O serviço checa campo retorna as imanges de verificação dos campos 
+  constructor(private checaCampo : ChecaCampo) { }
+  
+  //contagem dos campos que combinam para calcular o score
+  conta_certo(): number{
+    this.enche();
+    this.score = 0;
+    for (let i=0;  i < this.max_score; i++){
+      if (this.vetGabarito[i] == this.pageForm.get(this.dominio).get(this.dimensao).get(this.vetConta[i]).value){
+        this.score++;
+      }
+    }
+    this.pageForm.get(this.dominio).get(this.dimensao).get('score').setValue(this.score);
+    return this.score;
   }
+  
+    ngOnInit():void{
+    }
 
-  submit() {
-    if (this.fallsForm.valid)
-      if (this.fallsInput) {
-        const dirtyProps = { id: this.fallsInput.getId() };
-        let hasDirtyProps = false;
-
-        for (const prop in this.fallsForm.controls) {
-          const propFormControl = this.fallsForm.get(prop);
-          if (propFormControl.dirty) {
-            dirtyProps[prop] = propFormControl.value;
-            hasDirtyProps = true;
-            propFormControl.markAsPristine();
-          }
+    enche(): void
+    {
+      if (this.pageForm.get('socialAspectsForm').valid){
+        // idade
+        if(this.participant.getAge() > 75){
+          this.pageForm.get(this.dominio).get(this.dimensao).get('q92_older_than75').setValue('S');
+        } else {
+          this.pageForm.get(this.dominio).get(this.dimensao).get('q92_older_than75').setValue('N');
         }
 
-        if (hasDirtyProps) this.dao.patchObject(REST_URL_FALLS, dirtyProps).subscribe(data => {
-          this.fallsInput = new Falls(data);
-          this.fallsOutput.emit(this.fallsInput);
-        });
+        // sexo
+        if(this.participant.getGender() == 'F'){
+          this.pageForm.get(this.dominio).get(this.dimensao).get('q93_female').setValue('S');
+        } else {
+          this.pageForm.get(this.dominio).get(this.dimensao).get('q93_female').setValue('N');
+        }
 
-      } else this.dao.postObject(REST_URL_FALLS, this.fallsForm.getRawValue()).subscribe(data => {
-        this.fallsInput = new Falls(data);
-        this.fallsOutput.emit(this.fallsInput);
-      });
-    this.fallsForm.markAllAsTouched();
+        //capacidade funcional
+        if (this.pageForm.get('biologicalAspectsForm').get('functionalDisabilityForm').get('score').value > 4) {
+          this.pageForm.get(this.dominio).get(this.dimensao).get('q95_av_ds_commitment').setValue('S');
+        } else {
+          this.pageForm.get(this.dominio).get(this.dimensao).get('q95_av_ds_commitment').setValue('N');
+        }
+
+        //Déficit visual
+        if (this.pageForm.get('biologicalAspectsForm').get('sensoryDeficitForm').get('q15_vision_problems').value == 'S') {
+          this.pageForm.get(this.dominio).get(this.dimensao).get('q96_visual_deficit').setValue('S');
+        } else {
+          this.pageForm.get(this.dominio).get(this.dimensao).get('q96_visual_deficit').setValue('N');
+        }
+        
+        //Riscos domésticos
+        if (this.pageForm.get('socialAspectsForm').get('environmentalProblemsForm').get('domesticRisk').value < 7) {
+          this.pageForm.get(this.dominio).get(this.dimensao).get('q97_domestic_risks').setValue('S');
+        } else {
+          this.pageForm.get(this.dominio).get(this.dimensao).get('q97_domestic_risks').setValue('N');
+        }
+
+        //Riscos comportamentais
+        if (this.pageForm.get('socialAspectsForm').get('environmentalProblemsForm').get('behaviorRisk').value < 3) {
+          this.pageForm.get(this.dominio).get(this.dimensao).get('q98_behavior_risk').setValue('S');
+        } else {
+          this.pageForm.get(this.dominio).get(this.dimensao).get('q98_behavior_risk').setValue('N');
+        }
+
+        //Inatividade
+        if (this.pageForm.get('biologicalAspectsForm').get('cardiovascularFactorsForm').get('q38_practice_150_minutes_exercises').value == 'N') {
+          this.pageForm.get(this.dominio).get(this.dimensao).get('q99_inactivity').setValue('S');
+        } else {
+          this.pageForm.get(this.dominio).get(this.dimensao).get('q99_inactivity').setValue('N');
+        }
+
+        //AVC
+        if (this.pageForm.get('biologicalAspectsForm').get('misuseMedicationsForm').get('q42_diseases_last_5_years_c').value == 'S') {
+          this.pageForm.get(this.dominio).get(this.dimensao).get('q100_prior_ave').setValue('S');
+        } else {
+          this.pageForm.get(this.dominio).get(this.dimensao).get('q100_prior_ave').setValue('N');
+        }
+      }
+    }
+
+
+    // método que verifica a situação dos campos do form
+    mudou(campo: string): string{ 
+      var volta: string = this.checaCampo.inicio();
+      if(this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid){
+        volta = this.checaCampo.checa(true);
+      } else {
+        if(!this.pageForm.get(this.dominio).get(this.dimensao).get(campo).pristine){
+          volta = this.checaCampo.checa(false);
+        }
+      }
+      //questão de quedas
+      if (campo == 'q87_falls_last_year'){
+        if(!this.pageForm.get(this.dominio).get(this.dimensao).get(campo).pristine){
+          if(this.pageForm.get(this.dominio).get(this.dimensao).get(campo).value == 'N'){
+            this.pageForm.get(this.dominio).get(this.dimensao).get('q87_amount_falls_last_year').setValue(0);
+            this.pageForm.get(this.dominio).get(this.dimensao).get('q87_amount_falls_last_year').disable;
+            this.pageForm.get(this.dominio).get(this.dimensao).get('q88_fractures_due_to_falls').setValue('N');
+            this.pageForm.get(this.dominio).get(this.dimensao).get('q88_fractures_due_to_falls').disable;
+            this.pageForm.get(this.dominio).get(this.dimensao).get('q88_fractures_due_to_falls_list').setValue('nda');
+            this.pageForm.get(this.dominio).get(this.dimensao).get('q88_fractures_due_to_falls_list').disable;
+            this.pageForm.get(this.dominio).get(this.dimensao).get('q89_fractures_list').setValue('nda');
+            this.pageForm.get(this.dominio).get(this.dimensao).get('q87_falls_last_year').disable;
+          } else {
+            this.pageForm.get(this.dominio).get(this.dimensao).get('q87_amount_falls_last_year').enable;
+            this.pageForm.get(this.dominio).get(this.dimensao).get('q87_amount_falls_last_year').enable;
+            this.pageForm.get(this.dominio).get(this.dimensao).get('q88_fractures_due_to_falls_list').enable;
+            this.pageForm.get(this.dominio).get(this.dimensao).get('q87_falls_last_year').enable;          
+          }
+        }
+      }
+      return volta;
+    }
+
+    // método que verifica se o form está válido
+    formValido(): Boolean{
+      this.branco = false;
+      this.errado = false;
+      for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+        if(!this.pageForm.get(this.dominio).get(this.dimensao).get(caca).valid){
+          if(this.pageForm.get(this.dominio).get(this.dimensao).get(caca).pristine){
+            this.branco = true;
+          } else {
+            this.errado = true;
+          }
+        }
+      }
+      return this.pageForm.get(this.dominio).get(this.dimensao).valid;
+    } 
+
+  submit() {
   }
 }
+

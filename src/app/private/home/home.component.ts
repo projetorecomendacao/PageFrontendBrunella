@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
+  private p: Participant;
   private participants: Participant[] = new Array<Participant>();
   private addParticipantForm: FormGroup = this.form.group({
     p00_email: ['', Validators.required],
@@ -43,6 +44,13 @@ export class HomeComponent implements OnInit {
 
   goToParticipant(id: number) {
     this.pageService.reset();
+    for(var i=0; i< this.participants.length; i++){
+      if (this.participants[i].getId() == id ) {
+        this.p = this.participants[i];
+      }
+    }
+    console.log(this.p);
+    this.pageService.participant = this.p;
     this.router.navigate(['private/participant']).then();
   }
 }

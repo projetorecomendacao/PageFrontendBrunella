@@ -15,6 +15,7 @@ export class LowSocialSupport {
     private q61_participate_social_events: string;
     private q62_regulary_healt_services: string;
     private need_investigation_low: string;
+    private score : number;
 
     constructor(data: any = {}) {
         this.id = data.id;
@@ -32,6 +33,7 @@ export class LowSocialSupport {
         this.q60_someone_to_have_fun = data.q60_someone_to_have_fun;
         this.q61_participate_social_events = data.q61_participate_social_events;
         this.q62_regulary_healt_services = data.q62_regulary_healt_services;
+        this.score = data.score;
         this.need_investigation_low = data.need_investigation_low;
     }
 
@@ -50,6 +52,7 @@ export class LowSocialSupport {
     getQ60() { return this.q60_someone_to_have_fun; }
     getQ61() { return this.q61_participate_social_events; }
     getQ62() { return this.q62_regulary_healt_services; }
+    getScore() { return this.score;}
     getNeedInvestigation() { return this.need_investigation_low; }
 }
 
@@ -75,6 +78,8 @@ export class EnvironmentalProblems {
     private q77_fun_access: string;
     private q78_safety: string;
 
+    private score: number;
+
     private need_investigation_env: string
 
     constructor(data: any = {}) {
@@ -98,7 +103,7 @@ export class EnvironmentalProblems {
         this.q76_ease_plasewalking = data.q76_ease_plasewalking;
         this.q77_fun_access = data.q77_fun_access;
         this.q78_safety = data.q78_safety;
-
+        this.score = data.score;
         this.need_investigation_env = data.need_investigation_env;
     }
 
@@ -124,6 +129,7 @@ export class EnvironmentalProblems {
     getQ78() { return this.q78_safety; }
 
     getNeedInvestigation() { return this.need_investigation_env; }
+    getScore() {return this.score;}
 }
 
 export class Violence {
@@ -137,6 +143,7 @@ export class Violence {
     private q85_touched_without_permission: string;
     private q86_dont_take_care_health: string;
     private need_investigation_violence: string;
+    private score: number;
 
     constructor(data: any = {}) {
         this.id = data.id;
@@ -149,6 +156,7 @@ export class Violence {
         this.q85_touched_without_permission = data.q85_touched_without_permission;
         this.q86_dont_take_care_health = data.q86_dont_take_care_health;
         this.need_investigation_violence = data.need_investigation_violence;
+        this.score = data.score;
     }
 
     getId() { return this.id; }
@@ -160,6 +168,7 @@ export class Violence {
     getQ84() { return this.q84_someone_used_money; }
     getQ85() { return this.q85_touched_without_permission; }
     getQ86() { return this.q86_dont_take_care_health; }
+    getScore() {return this.score;}
     getNeedInvestigation() { return this.need_investigation_violence; }
 }
 
@@ -173,8 +182,8 @@ export class SocialAspects {
     private lowSocialSupport_instance: LowSocialSupport;
     private environmentalProblems_instance: EnvironmentalProblems;
     private violence_instance: Violence;
-
     private comments_social: string;
+
 
     constructor(data: any = {}, lowSocialSupport_instance?: LowSocialSupport, environmentalProblems_instance?: EnvironmentalProblems, violence_instance?: Violence) {
         this.id = data.id;

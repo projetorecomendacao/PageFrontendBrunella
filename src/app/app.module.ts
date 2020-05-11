@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { IndexModule } from './index/index.module';
 import { PrivateModule } from './private/private.module';
 import { SecurityModule } from './security/security.module';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { AppComponent } from './app.component';
 import { AuthServiceConfig, GoogleLoginProvider, SocialLoginModule } from 'angularx-social-login';
@@ -12,7 +13,10 @@ import { AuthInterceptor } from './security/auth.interceptor';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { DAOService } from './shared/dao.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+
 
 const config = new AuthServiceConfig([
   {
@@ -38,7 +42,8 @@ export function provideConfig() {
     SecurityModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule
+    BrowserAnimationsModule,
+    MatTabsModule
   ],
   providers: [
     AuthGuard,

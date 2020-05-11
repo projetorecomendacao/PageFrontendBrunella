@@ -2,151 +2,212 @@
 <h2 class="text-center mt-5"><span class="bg-warning rounded-pill rounded-bottom-0 text-white px-5 py-2">Violência</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="violenceForm">
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="pageForm">
   <!--Perguntas-->
-  <div class="p-3">
-    <!--Pergunta1-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">79.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) tem medo de alguém próximo/do seu convívio? </span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q79_afraid_close_person" [class.is-invalid]="q79_afraid_close_person.invalid && q79_afraid_close_person.touched">
-            <option value="" selected disabled>Selecione</option>
+  <div class="form-group p-3" formGroupName="socialAspectsForm">
+    <div class="form-group p-3" formGroupName="violenceForm">
+      <app-base>
+
+        <!-- Lado Esquerdo-->
+        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: lightgrey;">
+          <b>BAIXO SUPORTE SOCIAL</b>
+        </div>
+
+
+        <!-- Centro -->
+        <span class="col-12 col-md-9">
+
+          <!------------->
+          <!--Pergunta1-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">79. </b> O(A) senhor(a) tem medo de alguém próximo/do seu convívio?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q79_afraid_close_person">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q79_afraid_close_person')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!--Pergunta2-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">80. </b> O(A) senhor(a) se sente só ou abandonado?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q80_feels_abandoned">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q80_feels_abandoned')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!--Pergunta3-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">81. </b> Alguém tem falado com o(a) senhor(a) de forma que se sinta constrangido(a) ou desrespeitado(a)?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q81_forced">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q81_forced')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+          
+          <!--Pergunta4-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">82. </b> Alguém tem agredido o(a) senhor(a) fisicamente?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q82_assauteld">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q82_assauteld')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>          
+
+          <!--Pergunta5-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">83. </b> O(A) senhor(a) tem passado necessidade de roupas, alimentação, medicamentos ou outras?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q83_in_need">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q83_in_need')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>     
+          
+          <!--Pergunta6-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">84. </b> Alguém tem usado o dinheiro do(a) senhor(a) sem a sua autorização?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q84_someone_used_money">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q84_someone_used_money')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>           
+          
+          <!--Pergunta7-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">85. </b> Alguém do seu convívio já tocou o corpo do(a) senhor(a) sem o seu consentimento?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q85_touched_without_permission">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q85_touched_without_permission')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>     
+          
+          <!--Pergunta8-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">86. </b> O(A) senhor(a) está deixando de cuidar da sua própria saúde e/ou segurança?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q86_dont_take_care_health">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q86_dont_take_care_health')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>            
+        </span>
+
+        <!-- Lado Direito-->  
+        <span class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: khaki ;">
+          <!--Pontuation-->
+          Pontuação: (<b>{{conta_certo()}}</b>) - máximo: ({{max_score}})
+        </span>
+        <span class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: khaki ;">
+           <!--Intervenção-->
+          Necessita de investigação?                      
+          <select style="margin-top:40px; background-color: whitesmoke; width: 100%; transform: rotate(90deg);" class="form-control"  formControlName="need_investigation_violence">
+            <option value="" selected disabled></option>
             <option value="S">Sim</option>
             <option value="N">Não</option>
           </select>
-        </div>
-      </div>
+          <img [src]="mudou('need_investigation_violence')" width="15px" height="15px" style="margin-top: 20px;">
+        </span>          
+        
+        <div class="caixa-100">
+          <app-status [valido]="formValido()" [branco]="branco" [errado]="errado"></app-status>
+        </div> 
+
+      </app-base>
     </div>
-    <!------------->
-    <!--Pergunta2-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">80.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) se sente só ou abandonado?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q80_feels_abandoned" [class.is-invalid]="q80_feels_abandoned.invalid && q80_feels_abandoned.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta3-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">81.</div>
-        <span class="col-12 col-md-9">Alguém tem falado com o(a) senhor(a) de forma que se sinta constrangido(a) ou desrespeitado(a)?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q81_forced" [class.is-invalid]="q81_forced.invalid && q81_forced.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta4-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">82.</div>
-        <span class="col-12 col-md-9">Alguém tem agredido o(a) senhor(a) fisicamente?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q82_assauteld" [class.is-invalid]="q82_assauteld.invalid && q82_assauteld.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta5-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">83.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) tem passado necessidade de roupas, alimentação, medicamentos ou outras?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q83_in_need" [class.is-invalid]="q83_in_need.invalid && q83_in_need.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta6-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">84.</div>
-        <span class="col-12 col-md-9">Alguém tem usado o dinheiro do(a) senhor(a) sem a sua autorização?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q84_someone_used_money" [class.is-invalid]="q84_someone_used_money.invalid && q84_someone_used_money.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta7-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">85.</div>
-        <span class="col-12 col-md-9">Alguém do seu convívio já tocou o corpo do(a) senhor(a) sem o seu consentimento?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q85_touched_without_permission" [class.is-invalid]="q85_touched_without_permission.invalid && q85_touched_without_permission.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta8-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">86.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) está deixando de cuidar da sua própria saúde e/ou segurança?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q86_dont_take_care_health" [class.is-invalid]="q86_dont_take_care_health.invalid && q86_dont_take_care_health.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
   </div>
-  <!------------->
-  <!--Pontuation-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <span class="text-warning font-weight-bold h4 mr-3">Pontuação:</span>
-    <span class="h5">8 pontos</span>
-  </div>
-  <!------------->
-  <!--Intervenção-->
-  <div class="d-flex flex-wrap w-25 mx-auto justify-content-center align-items-center p-3">
-    <label class="text-center mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
-    <select class="w-100 form-control" id="depression-intervention" formControlName="need_investigation_violence" [class.is-invalid]="need_investigation_violence.invalid && need_investigation_violence.touched">
-      <option value="" selected disabled>Selecione</option>
-      <option value="S">Sim</option>
-      <option value="N">Não</option>
-    </select>
-  </div>
-  <!--------------->
-  <!--Continue-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <button class="btn btn-warning text-white" (click)="submit()">Salvar</button>
-  </div>
-  <!------------>
 </div>
-<!----------->

@@ -2,229 +2,312 @@
 <h2 class="text-center mt-5"><span class="bg-warning rounded-pill rounded-bottom-0 text-white px-5 py-2">Baixo suporte Social</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="lowSocialSupportForm">
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="pageForm">
   <!--Perguntas-->
-  <div class="p-3">
-    <!--Pergunta1-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">54.A.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) tem: cônjuge?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q54_spouse" [class.is-invalid]="q54_spouse.invalid && q54_spouse.touched">
-            <option value="" selected disabled>Selecione</option>
+  <div class="form-group p-3" formGroupName="socialAspectsForm">
+    <div class="form-group p-3" formGroupName="lowSocialSupportForm">
+      <app-base>
+
+        <!-- Lado Esquerdo-->
+        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: lightgrey;">
+          <b>BAIXO SUPORTE SOCIAL</b>
+        </div>
+
+
+        <!-- Centro -->
+        <span class="col-12 col-md-9">
+
+          <app-base>
+            <div class="caixa-100">
+              <div class="caixa-100">
+                <b class="gold">54. </b>O senhor(a) tem: (fazer registro dos familiares vivos)<br><br>
+              </div>
+
+              <!--Pergunta1.A-->
+              <div class="row mtb">
+                <div class="col-12 col-md-1 d-flex justify-content-center align-items-center gold font-weight-bold">A.</div>
+                <span class="col-12 col-md-7 d-flex align-items-center">cônjuge?</span>
+                <div class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+                  <select style="background-color : whitesmoke" class="w-100 form-control" formControlName="q54_spouse" id="q42_diseases_last_5_years_a.invalid && q42_diseases_last_5_years_a.touched">
+                    <option value="" selected disabled>Selecione</option>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                  </select>
+                </div>
+                <div class="col-12 col-md d-flex justify-content-around flex-wrap">
+                  <img  [src]="mudou('q54_spouse')" width="15px" height="15px">
+                </div>                
+              </div>
+
+              <!--Pergunta1.B-->
+              <div class="row mtb">
+                <div class="col-12 col-md-1 d-flex justify-content-center align-items-center gold font-weight-bold">B. </div>
+                <span class="col-12 col-md-7 d-flex align-items-center">Mãe?</span>
+                <div class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+                  <select style="background-color : whitesmoke" class="w-100 form-control" formControlName="q54_mother" >
+                    <option value="" selected disabled>Selecione</option>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                  </select>
+                </div>
+                <div class="col-12 col-md d-flex justify-content-around flex-wrap">
+                  <img  [src]="mudou('q54_mother')" width="15px" height="15px">
+                </div>                
+              </div>
+
+              <!--Pergunta1.C-->
+              <div class="row mtb">
+                <div class="col-12 col-md-1 d-flex justify-content-center align-items-center gold font-weight-bold">C. </div>
+                <span class="col-12 col-md-7 d-flex align-items-center">Pai?</span>
+                <div class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+                  <select style="background-color : whitesmoke" class="w-100 form-control" formControlName="q54_father" id="q42_diseases_last_5_years_a.invalid && q42_diseases_last_5_years_a.touched">
+                    <option value="" selected disabled>Selecione</option>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                  </select>
+                </div>
+                <div class="col-12 col-md d-flex justify-content-around flex-wrap">
+                  <img  [src]="mudou('q54_father')" width="15px" height="15px">
+                </div>                
+              </div>              
+
+              <!--Pergunta1.D-->
+              <div class="row mtb">
+                <div class="col-12 col-md-1 d-flex justify-content-center align-items-center gold font-weight-bold">D. </div>
+                <span class="col-12 col-md-7 d-flex align-items-center">Quantos irmão?</span>
+                <div class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+                  <input class="w-100 form-control fu" formControlName="q54_brothers" type="number">
+                </div>
+                <div class="col-12 col-md d-flex justify-content-around flex-wrap">
+                  <img  [src]="mudou('q54_brothers')" width="15px" height="15px">
+                </div>                
+              </div>
+
+              <!--Pergunta1.E-->
+              <div class="row mtb">
+                <div class="col-12 col-md-1 d-flex justify-content-center align-items-center gold font-weight-bold">E. </div>
+                <span class="col-12 col-md-7 d-flex align-items-center">Quantos Filhos?</span>
+                <div class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+                  <input class="w-100 form-control fu" formControlName="q54_children" type="number">
+                </div>
+                <div class="col-12 col-md d-flex justify-content-around flex-wrap">
+                  <img  [src]="mudou('q54_children')" width="15px" height="15px">
+                </div>                
+              </div>
+
+              <!--Pergunta1.F-->
+              <div class="row mtb">
+                <div class="col-12 col-md-1 d-flex justify-content-center align-items-center gold font-weight-bold">F. </div>
+                <span class="col-12 col-md-7 d-flex align-items-center">Quantos netos?</span>
+                <div class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+                  <input class="w-100 form-control fu" formControlName="q54_gran_children" type="number">
+                </div>
+                <div class="col-12 col-md d-flex justify-content-around flex-wrap">
+                  <img  [src]="mudou('q54_gran_children')" width="15px" height="15px">
+                </div>                
+              </div> 
+            </div>
+          </app-base>              
+
+
+          <!------------->
+          <!--Pergunta5-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">55.</b> O(A) senhor(a) encontra familiares e/ou amigos com frequência?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q55_meet_family_friends">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q55_meet_family_friends')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!--Pergunta6-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">56. </b>O(A) senhor(a) participa de decisões importantes da sua  família?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q56_participate_family_decisions">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q56_participate_family_decisions')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+          
+          <!--Pergunta7-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">57. </b>O(A) senhor(a) se sente satisfeito(a) com o relacionamento
+                afetivo que tem com os seus familiares?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q57_satisfied_family_relationship">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q57_satisfied_family_relationship')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+          
+          <!--Pergunta8-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">58. </b> O(A) senhor(a) tem ajuda de alguém se precisar de dinheiro?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q58_helped_if_need_money">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q58_helped_if_need_money')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>          
+
+          <!--Pergunta9-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">59. </b>O(A) senhor(a) pode contar com alguém para ajuda-lo(a) a resolver problemas?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q59_someone_helps_if_need">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q59_someone_helps_if_need')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+          
+          <!--Pergunta10-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">60. </b>O(A) senhor(a) tem pessoas com quem possa se divertir e relaxar?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q60_someone_to_have_fun">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q60_someone_to_have_fun')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>  
+
+          <!--Pergunta10-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">61. </b>O(A) senhor(a) participa de eventos sócio-culturais, tais
+                como: peças de teatro, cinema, universidade aberta a terceira
+                idade, centro de convivência, festas, ligados à religião, etc).
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q61_participate_social_events">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q61_participate_social_events')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>  
+
+
+
+          
+          <!--Pergunta11-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">62. </b>O(A) senhor(a) é acompanhado regularmente por serviços
+                de saúde?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q62_regulary_healt_services">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q62_regulary_healt_services')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+        </span>
+
+        <!-- Lado Direito-->  
+        <span class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: khaki ;">
+          <!--Pontuation-->
+          Pontuação: (<b>{{conta_certo()}}</b>) - máximo: ({{max_score}})
+        </span>
+        <span class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: khaki ;">
+           <!--Intervenção-->
+          Necessita de investigação?                      
+          <select style="margin-top:40px; background-color: whitesmoke; width: 100%; transform: rotate(90deg);" class="form-control"  formControlName="need_investigation_low">
+            <option value="" selected disabled></option>
             <option value="S">Sim</option>
             <option value="N">Não</option>
           </select>
-        </div>
-      </div>
+          <img [src]="mudou('need_investigation_low')" width="15px" height="15px" style="margin-top: 20px;">
+        </span>          
+        
+        <div class="caixa-100">
+          <app-status [valido]="formValido()" [branco]="branco" [errado]="errado"></app-status>
+        </div> 
+
+      </app-base>
     </div>
-    <!------------->
-    <!--Pergunta2-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">54.B.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) tem: Mãe?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q54_mother" [class.is-invalid]="q54_mother.invalid && q54_mother.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta3-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">54.C.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) tem: Pai?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q54_father" [class.is-invalid]="q54_father.invalid && q54_father.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta4-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">54.D.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) tem quantos irmãos?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100 form-control" formControlName="q54_brothers" [class.is-invalid]="q54_brothers.invalid && q54_brothers.touched" type="number">
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta5-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">54.E.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) tem quantos filhos?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <input class="w-100 form-control" formControlName="q54_children" [class.is-invalid]="q54_children.invalid && q54_children.touched" type="number">
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta6-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">54.F.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) tem quantos netos?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <input class="w-100 form-control" formControlName="q54_gran_children" [class.is-invalid]="q54_gran_children.invalid && q54_gran_children.touched" type="number">
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta7-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">20.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) encontra familiares e/ou amigos com frequência?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q55_meet_family_friends" [class.is-invalid]="q55_meet_family_friends.invalid && q55_meet_family_friends.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta8-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">21.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) participa de decisões importantes da sua família?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q56_participate_family_decisions" [class.is-invalid]="q56_participate_family_decisions.invalid && q56_participate_family_decisions.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta9-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">22.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) se sente satisfeito(a) com o relacionamento afetivo que tem com os seus familiares?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q57_satisfied_family_relationship" [class.is-invalid]="q57_satisfied_family_relationship.invalid && q57_satisfied_family_relationship.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta10-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">20.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) tem ajuda de alguém se precisar de dinheiro?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q58_helped_if_need_money" [class.is-invalid]="q58_helped_if_need_money.invalid && q58_helped_if_need_money.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta11-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">21.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) pode contar com alguém para ajuda-lo(a) a resolver problemas?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q59_someone_helps_if_need" [class.is-invalid]="q59_someone_helps_if_need.invalid && q59_someone_helps_if_need.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta12-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">22.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) tem pessoas com quem possa se divertir e relaxar?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q60_someone_to_have_fun" [class.is-invalid]="q60_someone_to_have_fun.invalid && q60_someone_to_have_fun.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta13-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">21.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) participa de eventos sócio-culturais, tais como: peças de teatro, cinema, universidade aberta a terceira idade, centro de convivência, festas, ligados à religião, etc).</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q61_participate_social_events" [class.is-invalid]="q61_participate_social_events.invalid && q61_participate_social_events.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta14-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">22.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) é acompanhado regularmente por serviços de saúde?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q62_regulary_healt_services" [class.is-invalid]="q62_regulary_healt_services.invalid && q62_regulary_healt_services.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
   </div>
-  <!------------->
-  <!--Pontuation-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <span class="text-warning font-weight-bold h4 mr-3">Pontuação:</span>
-    <span class="h5">8 pontos</span>
-  </div>
-  <!------------->
-  <!--Intervenção-->
-  <div class="d-flex flex-wrap w-25 mx-auto justify-content-center align-items-center p-3">
-    <label class="text-center mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
-    <select class="w-100 form-control" id="depression-intervention" formControlName="need_investigation_low" [class.is-invalid]="need_investigation_low.invalid && need_investigation_low.touched">
-      <option value="" selected disabled>Selecione</option>
-      <option value="S">Sim</option>
-      <option value="N">Não</option>
-    </select>
-  </div>
-  <!--------------->
-  <!--Continue-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <button class="btn btn-warning text-white" (click)="submit()">Salvar</button>
-  </div>
-  <!------------>
 </div>
-<!----------->

@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-center align-items-center">
+    <div class="caixa-75p">
+      <div class="caixa-15 d-flex justify-content-center">
+        <button type="button" class="btn btn-success" name="bc1" matStepperPrevious> 
+          <<Anterior 
+        </button>
+      </div>
+      
+      <!--
+      <div class="caixa-70 ">
+        <div class="caixa-100 d-flex justify-content-center align-items-center" *ngIf="!formValido()">
+          <font color='blue'>É necessário preencher todos o campos corretamente</font>
+        </div>
+      </div>
+      -->
+  
+      <div *ngIf='!valido' class="caixa-15r d-flex justify-content-center" >
+        <button type="button" class="btn btn-secondary" disabled >
+          Próximo>> 
+        </button>
+      </div>
+   
+      <div *ngIf='valido' class="caixa-15r d-flex justify-content-center" >
+        <button type="button" class="btn btn-success" name="bc2" matStepperNext >
+          Próximo>> 
+        </button>
+      </div>
+   
+    </div>
+  </div>

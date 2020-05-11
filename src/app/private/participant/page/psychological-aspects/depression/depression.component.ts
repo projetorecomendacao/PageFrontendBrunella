@@ -1,8 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DAOService } from '../../../../../shared/dao.service';
-import {REST_URL_COGNITION_DEFICIT, REST_URL_DEPRESSION} from '../../../../../shared/REST_API_URLs';
-import {CognitionDeficit, Depression} from '../../../../../shared/models/psychological-aspects.model';
+import { Component, Input, OnInit} from '@angular/core';
+import { FormGroup} from '@angular/forms';
+import { ChecaCampo } from 'src/app/shared/checa-campo';
 
 @Component({
   selector: 'app-depression',
@@ -10,66 +8,73 @@ import {CognitionDeficit, Depression} from '../../../../../shared/models/psychol
 })
 export class DepressionComponent implements OnInit {
 
-  @Input('depression') depressionInput: number;
-  @Output('depression') depressionOutput = new EventEmitter<Depression>();
+  @Input() pageForm: FormGroup;
+  // variáveis booleans que controlam as mensagens de certo e errado no final do form
+  private errado: boolean = false;
+  private branco: boolean = true;
 
-  private depressionForm: FormGroup;
+  //dominio e dimensao
+  private dimensao: string = 'depressionForm';
+  private dominio: string = 'psychologicalAspectsForm'; 
 
-  get q9_satisfied_with_life() { return this.depressionForm.get('q9_satisfied_with_life'); }
-  get q10_frequently_sad() { return this.depressionForm.get('q10_frequently_sad'); }
-  get q11_stopped_doing_things() { return this.depressionForm.get('q11_stopped_doing_things'); }
-  get q12_fear_bad_things_happen() { return this.depressionForm.get('q12_fear_bad_things_happen'); }
-  get q13_impatient_disquiet() { return this.depressionForm.get('q13_impatient_disquiet'); }
-  get q14_concentration_problem() { return this.depressionForm.get('q14_concentration_problem'); }
-  get need_investigation_depression() { return this.depressionForm.get('need_investigation_depression'); }
+  //Pontuação máxima
+  private max_score : number = 6;
+  //Pontos da dimensão
+  private score : number = 0;
+  //vetor com os nomes dos campos que contam pontos
+  vetConta: string[] = ['q9_satisfied_with_life','q10_frequently_sad','q11_stopped_doing_things',
+                        'q12_fear_bad_things_happen','q13_impatient_disquiet','q14_concentration_problem'];
+  //vetor com os gabaritos dos acertos
+  vetGabarito: string[] = ['S','N','N','N','N','N'];
+  //Quantidade de campos no Form
 
-  constructor(private fb: FormBuilder, private dao: DAOService) { }
+  
+  //O serviço checaCampo retorna as imagens de verificação dos campos 
+  constructor(private checaCampo : ChecaCampo) {  }
 
-  ngOnInit() {
-    if (this.depressionInput)
-      this.dao.getObject(REST_URL_DEPRESSION, this.depressionInput.toString()).subscribe(response => {
-        const tmpDepression = new Depression(response);
-        this.depressionForm = this.fb.group({
-          q9_satisfied_with_life: [tmpDepression.getQ9(), [Validators.required, Validators.maxLength(1)]],
-          q10_frequently_sad: [tmpDepression.getQ10(), [Validators.required, Validators.maxLength(1)]],
-          q11_stopped_doing_things: [tmpDepression.getQ11(), [Validators.required, Validators.maxLength(1)]],
-          q12_fear_bad_things_happen: [tmpDepression.getQ12(), [Validators.required, Validators.maxLength(1)]],
-          q13_impatient_disquiet: [tmpDepression.getQ13(), [Validators.required, Validators.maxLength(1)]],
-          q14_concentration_problem: [tmpDepression.getQ14(), [Validators.required, Validators.maxLength(1)]],
-          need_investigation_depression: [tmpDepression.getNeedInvestigation(), [Validators.required, Validators.maxLength(1)]],
-        });
-      });
-    else
-      this.depressionForm = this.fb.group({
-        q9_satisfied_with_life: ['', [Validators.required, Validators.maxLength(1)]],
-        q10_frequently_sad: ['', [Validators.required, Validators.maxLength(1)]],
-        q11_stopped_doing_things: ['', [Validators.required, Validators.maxLength(1)]],
-        q12_fear_bad_things_happen: ['', [Validators.required, Validators.maxLength(1)]],
-        q13_impatient_disquiet: ['', [Validators.required, Validators.maxLength(1)]],
-        q14_concentration_problem: ['', [Validators.required, Validators.maxLength(1)]],
-        need_investigation_depression: ['', [Validators.required, Validators.maxLength(1)]],
-      });
+  //contagem dos campos que combinam para calcular o score
+  conta_certo(): number{
+    this.score = 0;
+    for (let i=0;  i < this.max_score; i++){
+      if (this.vetGabarito[i] == this.pageForm.get(this.dominio).get(this.dimensao).get(this.vetConta[i]).value){
+        this.score++;
+      }
+    }
+    this.pageForm.get(this.dominio).get(this.dimensao).get('score').setValue(this.score);
+    return this.score;
   }
+  
+    ngOnInit():void {}
+  
+    // o método mudou verifica se um campo foi atualizado
+    mudou(campo: string): string{ 
+      var volta: string = this.checaCampo.inicio();
+      if(!this.pageForm.get(this.dominio).get(this.dimensao).get(campo).pristine){
+        volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid);
+      }
+      return volta;
+    }
 
-  submit() {
-    if (this.depressionForm.valid)
-      if (this.depressionInput) {
-        const dirtyProps = { id: this.depressionInput };
-        let hasDirtyProps = false;
-
-        for (const prop in this.depressionForm.controls) {
-          const propFormControl = this.depressionForm.get(prop);
-          if (propFormControl.dirty) {
-            dirtyProps[prop] = propFormControl.value;
-            hasDirtyProps = true;
-            propFormControl.markAsPristine();
+    // método que verifica se o form está válido
+    formValido(): Boolean{
+      this.branco = false;
+      this.errado = false;
+      for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+        if(!this.pageForm.get(this.dominio).get(this.dimensao).get(caca).valid){
+          if(this.pageForm.get(this.dominio).get(this.dimensao).get(caca).pristine){
+            this.branco = true;
+          } else {
+            this.errado = true;
           }
         }
-
-        if (hasDirtyProps) this.dao.patchObject(REST_URL_DEPRESSION, dirtyProps).subscribe(data => this.depressionOutput.emit(new Depression(data)));
-
-      } else this.dao.postObject(REST_URL_DEPRESSION, this.depressionForm.getRawValue()).subscribe(data => this.depressionOutput.emit(new Depression(data)));
-    this.depressionForm.markAllAsTouched();
+      }
+      return this.pageForm.get(this.dominio).get(this.dimensao).valid;
+    } 
+  
+  submit() {
+    for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+      this.pageForm.get(this.dominio).get(this.dimensao).get(caca).markAsTouched;
+      this.pageForm.get(this.dominio).get(this.dimensao).get(caca).updateValueAndValidity;
+    }
   }
-
 }

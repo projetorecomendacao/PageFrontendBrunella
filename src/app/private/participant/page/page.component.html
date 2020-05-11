@@ -1,21 +1,53 @@
-<!--Dados gerais page-->
-<div class="bg-white container-fluid pb-4">
-  <div class="row">
-    {{ this.pageService.page.getService() }}
-    <label class="mt-2 mr-3 offset-3 col-3" for="service">Serviço/instituição:</label>
-    <input class="form-control col-3 mb-3" id="service" type="text" (change)="setService(service.value)" #service>
+<div>Nome do Paciente: </div>
+<div id="registration" class="conatiner col-md-12">
+  <form id="regForm" [formGroup]="pageForm">
+    <mat-horizontal-stepper #stepper linear>
 
-    <label class="mb-0 mr-3 offset-3 col-3" for="entrance">Data de entrada no serviço/instituição (AAAA-MM-DD):</label>
-    <input class="form-control col-3" id="entrance" type="date" (change)="setEntrance(entrance.value)" #entrance>
+      <mat-step formGroupName="cabecaPageForm" 
+        [stepControl]="pageForm.get('cabecaPageForm')">
+        <ng-template matStepLabel>Cabeçalho</ng-template>
+        <app-cabeca-page [pageForm]="pageForm"></app-cabeca-page>
+      </mat-step>
 
-    <label class="mb-0 mr-3 offset-3 col-3" for="interviewed">Entrevistado:</label>
-    <select class="form-control col-3" id="interviewed" (change)="setInterviewed(interviewed.value)" #interviewed>
-      <option value="" selected disabled>Selecione</option>
-      <option value="Participante">Participante</option>
-      <option value="Cuidador Formal">Cuidador Formal</option>
-      <option value="Familiar">Familiar</option>
-    </select>
-  </div>
+      <mat-step formGroupName="participantFormForm" 
+        [stepControl]="pageForm.get('participantFormForm')">
+        <ng-template matStepLabel>Dados Pessoais</ng-template>
+        <app-participant-form [pageForm]="pageForm" [participant]="participant"></app-participant-form>
+      </mat-step>
+
+      <mat-step formGroupName="psychologicalAspectsForm"
+        [stepControl]="pageForm.get('psychologicalAspectsForm')">
+        <ng-template matStepLabel>Aspectos Psicológicos</ng-template>
+        <app-psychological-aspects  [pageForm]="pageForm"></app-psychological-aspects>
+      </mat-step>
+
+      <mat-step formGroupName="biologicalAspectsForm"
+        [stepControl]="pageForm.get('biologicalAspectsForm')">
+        <ng-template matStepLabel>Aspectos Biológicos</ng-template>
+        <app-biological-aspects  [pageForm]="pageForm"> </app-biological-aspects>
+      </mat-step>
+
+      <mat-step formGroupName="socialAspectsForm" 
+        [stepControl]="pageForm.get('socialAspectsForm')">
+        <ng-template matStepLabel>Aspectos Sociais</ng-template>
+        <app-social-aspects [pageForm]="pageForm"></app-social-aspects>
+      </mat-step>
+
+      <mat-step formGroupName="multidimensionalAspectsForm"
+        [stepControl]="pageForm.get('multidimensionalAspectsForm')">
+        <ng-template matStepLabel>Aspectos Multidimensionais</ng-template>
+        <app-multidimensional-aspect  [pageForm]="pageForm" [participant]="participant"></app-multidimensional-aspect>
+      </mat-step>
+
+      <mat-step formGroupName="finalAnaliseForm"
+        [stepControl]="pageForm.get('finalAnaliseForm')">
+        <ng-template matStepLabel>Análise Final</ng-template>
+        <app-final-analise  [pageForm]="pageForm"></app-final-analise>
+      </mat-step>
+
+    </mat-horizontal-stepper>
+  </form>
 </div>
-<!--------------------->
-<router-outlet></router-outlet>
+
+
+

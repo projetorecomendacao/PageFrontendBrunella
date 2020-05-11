@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { MisuseMedications } from '../../../../../shared/models/biological-aspects.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DAOService } from '../../../../../shared/dao.service';
-import { REST_URL_MISUSE_MEDICATION } from '../../../../../shared/REST_API_URLs';
+import { Component, Input, OnInit} from '@angular/core';
+import { FormGroup} from '@angular/forms';
+import { ChecaCampo } from 'src/app/shared/checa-campo';
+
 
 @Component({
   selector: 'app-misuse-medications',
@@ -10,138 +9,102 @@ import { REST_URL_MISUSE_MEDICATION } from '../../../../../shared/REST_API_URLs'
 })
 export class MisuseMedicationsComponent implements OnInit {
 
-  @Input('misuseMedications') misuseMedicationsInput: MisuseMedications;
-  @Output('misuseMedications') misuseMedicationsOutput = new EventEmitter<MisuseMedications>();
+  @Input() pageForm: FormGroup;
 
-  private misuseMedicationsForm: FormGroup;
+  //Lista de doenças
+  private doencas = [
+    {letra: 'a', questao: 'Doença do coração (angina, infarto ou ataque cardíaco)?', campo: 'q42_diseases_last_5_years_a'}, 
+    {letra: 'b', questao: 'Pressão alta/ hipertensão?', campo: 'q42_diseases_last_5_years_b'},
+    {letra: 'c', questao: 'Derrame/AVC/Isquemia?', campo: 'q42_diseases_last_5_years_c'},
+    {letra: 'd', questao: 'Diabetes Mellitus?', campo: 'q42_diseases_last_5_years_d'}, 
+    {letra: 'e', questao: 'Tumor maligno/ Câncer?', campo: 'q42_diseases_last_5_years_e'},
+    {letra: 'f', questao: 'Asma/Bronquite/Enfisema?', campo: 'q42_diseases_last_5_years_f'},
+    {letra: 'g', questao: 'Osteoporose?', campo: 'q42_diseases_last_5_years_g'},
+    {letra: 'h', questao: 'Reumatismo?', campo: 'q42_diseases_last_5_years_h'},
+    {letra: 'i', questao: 'Tendinite?', campo: 'q42_diseases_last_5_years_i'},
+    {letra: 'j', questao: 'Problemas de circulação?', campo: 'q42_diseases_last_5_years_j'},
+    {letra: 'k', questao: 'Depressão?', campo: 'q42_diseases_last_5_years_k'} 
+    ];
 
-  get q42_diseases_last_5_years_a() { return this.misuseMedicationsForm.get('q42_diseases_last_5_years_a'); }
-  get q42_diseases_last_5_years_b() { return this.misuseMedicationsForm.get('q42_diseases_last_5_years_b'); }
-  get q42_diseases_last_5_years_c() { return this.misuseMedicationsForm.get('q42_diseases_last_5_years_c'); }
-  get q42_diseases_last_5_years_d() { return this.misuseMedicationsForm.get('q42_diseases_last_5_years_d'); }
-  get q42_diseases_last_5_years_e() { return this.misuseMedicationsForm.get('q42_diseases_last_5_years_e'); }
-  get q42_diseases_last_5_years_f() { return this.misuseMedicationsForm.get('q42_diseases_last_5_years_f'); }
-  get q42_diseases_last_5_years_g() { return this.misuseMedicationsForm.get('q42_diseases_last_5_years_g'); }
-  get q42_diseases_last_5_years_h() { return this.misuseMedicationsForm.get('q42_diseases_last_5_years_h'); }
-  get q42_diseases_last_5_years_i() { return this.misuseMedicationsForm.get('q42_diseases_last_5_years_i'); }
-  get q42_diseases_last_5_years_j() { return this.misuseMedicationsForm.get('q42_diseases_last_5_years_j'); }
-  get q42_diseases_last_5_years_k() { return this.misuseMedicationsForm.get('q42_diseases_last_5_years_k'); }
-  get q42_diseases_last_5_years_l() { return this.misuseMedicationsForm.get('q42_diseases_last_5_years_l'); }
-  get q43_health_problems_a() { return this.misuseMedicationsForm.get('q43_health_problems_a'); }
-  get q43_health_problems_b() { return this.misuseMedicationsForm.get('q43_health_problems_b'); }
-  get q43_health_problems_c() { return this.misuseMedicationsForm.get('q43_health_problems_c'); }
-  get q43_health_problems_d() { return this.misuseMedicationsForm.get('q43_health_problems_d'); }
-  get q43_health_problems_e() { return this.misuseMedicationsForm.get('q43_health_problems_e'); }
-  get q43_health_problems_f() { return this.misuseMedicationsForm.get('q43_health_problems_f'); }
-  get q43_health_problems_g() { return this.misuseMedicationsForm.get('q43_health_problems_g'); }
-  get q43_health_problems_h() { return this.misuseMedicationsForm.get('q43_health_problems_h'); }
-  get q44_amount_diagnostics() { return this.misuseMedicationsForm.get('q44_amount_diagnostics'); }
-  get q45_medicines() { return this.misuseMedicationsForm.get('q45_medicines'); }
-  get q46_medicines_increase() { return this.misuseMedicationsForm.get('q46_medicines_increase'); }
-  get q47_know_medicines() { return this.misuseMedicationsForm.get('q47_know_medicines'); }
-  get q48_medications_prescribed() { return this.misuseMedicationsForm.get('q48_medications_prescribed'); }
-  get q49_medicine_medical_advice() { return this.misuseMedicationsForm.get('q49_medicine_medical_advice'); }
-  get q50_already_stopped_medicines() { return this.misuseMedicationsForm.get('q50_already_stopped_medicines'); }
-  get q51_self_medication() { return this.misuseMedicationsForm.get('q51_self_medication'); }
-  get q52_inappropriate_medication() { return this.misuseMedicationsForm.get('q52_inappropriate_medication'); }
-  get q53_risk_adverse_reaction() { return this.misuseMedicationsForm.get('q53_risk_adverse_reaction'); }
-  get need_investigation_misuse() { return this.misuseMedicationsForm.get('need_investigation_misuse'); }
+  private problemas = [
+    {letra: 'a',  questao: ' Dor de cabeça? ',  campo:  'q43_health_problems_a'},
+    {letra: 'b',  questao: ' Dor nas costas ou em outra parte do corpo?',  campo:  'q43_health_problems_b'},
+    {letra: 'c',  questao: ' Alergia? ',  campo:  'q43_health_problems_c'},
+    {letra: 'd',  questao: ' Problema emocional? ',  campo:  'q43_health_problems_d'},
+    {letra: 'e',  questao: ' Tontura? ',  campo:  'q43_health_problems_e'},
+    {letra: 'f',  questao: ' Dificuldades para dormir? ',  campo:  'q43_health_problems_f'},
+    {letra: 'g',  questao: ' Incontinência urinária/perda de urina ',  campo:  'q43_health_problems_g'},
+  ];
+    
+  
+  
+  
+  // variáveis booleans que controlam as mensagens de certo e errado no final do form
+  private errado: boolean = false;
+  private branco: boolean = true;
 
-  constructor(private fb: FormBuilder, private dao: DAOService) { }
+  //dominio e dimensão
+  private dimensao: string = 'misuseMedicationsForm';
+  private dominio: string = 'biologicalAspectsForm'; 
+  
+  //Pontuação máxima
+  private max_score : number = 9;
+  //Pontos da dimensão
+  private score : number = 0;
+  //Campos que são válidos para contar o número de acertos
+  vetConta: string[] = ['q46_medicines_increase','q47_know_medicines','q48_medications_prescribed',
+                        'q49_medicine_medical_advice','q50_already_stopped_medicines', 'q51_self_medication',
+                        'q52_inappropriate_medication','q53_risk_adverse_reaction','q45_medicines']
 
-  ngOnInit() {
-    if (this.misuseMedicationsInput) this.misuseMedicationsForm = this.fb.group({
-      q42_diseases_last_5_years_a: [this.misuseMedicationsInput.getQ42A(), [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_b: [this.misuseMedicationsInput.getQ42B(), [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_c: [this.misuseMedicationsInput.getQ42C(), [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_d: [this.misuseMedicationsInput.getQ42D(), [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_e: [this.misuseMedicationsInput.getQ42E(), [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_f: [this.misuseMedicationsInput.getQ42F(), [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_g: [this.misuseMedicationsInput.getQ42G(), [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_h: [this.misuseMedicationsInput.getQ42H(), [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_i: [this.misuseMedicationsInput.getQ42I(), [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_j: [this.misuseMedicationsInput.getQ42J(), [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_k: [this.misuseMedicationsInput.getQ42K(), [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_l: [this.misuseMedicationsInput.getQ42L(), [Validators.maxLength(30)]],
-      q43_health_problems_a: [this.misuseMedicationsInput.getQ43A(), [Validators.required, Validators.maxLength(1)]],
-      q43_health_problems_b: [this.misuseMedicationsInput.getQ43B(), [Validators.required, Validators.maxLength(1)]],
-      q43_health_problems_c: [this.misuseMedicationsInput.getQ43C(), [Validators.required, Validators.maxLength(1)]],
-      q43_health_problems_d: [this.misuseMedicationsInput.getQ43D(), [Validators.required, Validators.maxLength(1)]],
-      q43_health_problems_e: [this.misuseMedicationsInput.getQ43E(), [Validators.required, Validators.maxLength(1)]],
-      q43_health_problems_f: [this.misuseMedicationsInput.getQ43F(), [Validators.required, Validators.maxLength(1)]],
-      q43_health_problems_g: [this.misuseMedicationsInput.getQ43G(), [Validators.required, Validators.maxLength(1)]],
-      q43_health_problems_h: [this.misuseMedicationsInput.getQ43H(), [Validators.maxLength(30)]],
-      q44_amount_diagnostics: [this.misuseMedicationsInput.getQ44(), [Validators.required]],
-      q45_medicines: [this.misuseMedicationsInput.getQ45()],
-      q46_medicines_increase: [this.misuseMedicationsInput.getQ46(), [Validators.required, Validators.maxLength(1)]],
-      q47_know_medicines: [this.misuseMedicationsInput.getQ47(), [Validators.required, Validators.maxLength(1)]],
-      q48_medications_prescribed: [this.misuseMedicationsInput.getQ48(), [Validators.required, Validators.maxLength(1)]],
-      q49_medicine_medical_advice: [this.misuseMedicationsInput.getQ49(), [Validators.required, Validators.maxLength(1)]],
-      q50_already_stopped_medicines: [this.misuseMedicationsInput.getQ50(), [Validators.required, Validators.maxLength(1)]],
-      q51_self_medication: [this.misuseMedicationsInput.getQ51(), [Validators.required, Validators.maxLength(1)]],
-      q52_inappropriate_medication: [this.misuseMedicationsInput.getQ52(), [Validators.required, Validators.maxLength(1)]],
-      q53_risk_adverse_reaction: [this.misuseMedicationsInput.getQ53(), [Validators.required, Validators.maxLength(1)]],
-      need_investigation_misuse: [this.misuseMedicationsInput.getNeedInvestigation(), [Validators.required, Validators.maxLength(1)]],
-    });
-    else this.misuseMedicationsForm = this.fb.group({
-      q42_diseases_last_5_years_a: ['', [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_b: ['', [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_c: ['', [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_d: ['', [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_e: ['', [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_f: ['', [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_g: ['', [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_h: ['', [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_i: ['', [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_j: ['', [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_k: ['', [Validators.required, Validators.maxLength(1)]],
-      q42_diseases_last_5_years_l: ['', [Validators.maxLength(30)]],
-      q43_health_problems_a: ['', [Validators.required, Validators.maxLength(1)]],
-      q43_health_problems_b: ['', [Validators.required, Validators.maxLength(1)]],
-      q43_health_problems_c: ['', [Validators.required, Validators.maxLength(1)]],
-      q43_health_problems_d: ['', [Validators.required, Validators.maxLength(1)]],
-      q43_health_problems_e: ['', [Validators.required, Validators.maxLength(1)]],
-      q43_health_problems_f: ['', [Validators.required, Validators.maxLength(1)]],
-      q43_health_problems_g: ['', [Validators.required, Validators.maxLength(1)]],
-      q43_health_problems_h: ['', [Validators.maxLength(30)]],
-      q44_amount_diagnostics: ['', [Validators.required]],
-      q45_medicines: [''],
-      q46_medicines_increase: ['', [Validators.required, Validators.maxLength(1)]],
-      q47_know_medicines: ['', [Validators.required, Validators.maxLength(1)]],
-      q48_medications_prescribed: ['', [Validators.required, Validators.maxLength(1)]],
-      q49_medicine_medical_advice: ['', [Validators.required, Validators.maxLength(1)]],
-      q50_already_stopped_medicines: ['', [Validators.required, Validators.maxLength(1)]],
-      q51_self_medication: ['', [Validators.required, Validators.maxLength(1)]],
-      q52_inappropriate_medication: ['', [Validators.required, Validators.maxLength(1)]],
-      q53_risk_adverse_reaction: ['', [Validators.required, Validators.maxLength(1)]],
-      need_investigation_misuse: ['', [Validators.required, Validators.maxLength(1)]],
-    });
+  vetGabarito: string[] = ['N','S','S','S','N','N','N','N','N'];
+  
+  //O serviço checa campo retorna as imanges de verificação dos campos 
+  constructor(private checaCampo : ChecaCampo) { }
+  
+  //contagem dos campos que combinam para calcular o score
+  conta_certo(): number{
+    this.score = 0;
+    for (let i=0;  i < this.max_score; i++){
+      if (this.vetGabarito[i] == this.pageForm.get(this.dominio).get(this.dimensao).get(this.vetConta[i]).value){
+        this.score++;
+      }
+    }
+    this.pageForm.get(this.dominio).get(this.dimensao).get('score').setValue(this.score);
+    return this.score;
   }
+  
+    ngOnInit():void {}
+  
+    // método que verifica a situação dos campos do form
+    mudou(campo: string): string{ 
+      var volta: string = this.checaCampo.inicio();
+      if(!this.pageForm.get(this.dominio).get(this.dimensao).get(campo).pristine){
+        volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid);
+      }
+      return volta;
+    }
 
-  submit() {
-    if (this.misuseMedicationsForm.valid)
-      if (this.misuseMedicationsInput) {
-        const dirtyProps = { id: this.misuseMedicationsInput.getId() };
-        let hasDirtyProps = false;
 
-        for (const prop in this.misuseMedicationsForm.controls) {
-          const propFormControl = this.misuseMedicationsForm.get(prop);
-          if (propFormControl.dirty) {
-            dirtyProps[prop] = propFormControl.value;
-            hasDirtyProps = true;
-            propFormControl.markAsPristine();
+    // método que verifica se o form está válido
+    formValido(): Boolean{
+      this.branco = false;
+      this.errado = false;
+      for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+        if(!this.pageForm.get(this.dominio).get(this.dimensao).get(caca).valid){
+          if(this.pageForm.get(this.dominio).get(this.dimensao).get(caca).pristine){
+            this.branco = true;
+          } else {
+            this.errado = true;
           }
         }
+      }
+      return this.pageForm.get(this.dominio).get(this.dimensao).valid;
+    } 
 
-        if (hasDirtyProps) this.dao.patchObject(REST_URL_MISUSE_MEDICATION, dirtyProps).subscribe(data => {
-          this.misuseMedicationsInput = new MisuseMedications(data);
-          this.misuseMedicationsOutput.emit(this.misuseMedicationsInput);
-        });
-
-      } else this.dao.postObject(REST_URL_MISUSE_MEDICATION, this.misuseMedicationsForm.getRawValue()).subscribe(data => {
-        this.misuseMedicationsInput = new MisuseMedications(data);
-        this.misuseMedicationsOutput.emit(this.misuseMedicationsInput);
-      });
-    this.misuseMedicationsForm.markAllAsTouched();
+  submit() {
+    for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+      this.pageForm.get(this.dominio).get(this.dimensao).get(caca).markAsTouched;
+      this.pageForm.get(this.dominio).get(this.dimensao).get(caca).updateValueAndValidity;
+    }
   }
 }

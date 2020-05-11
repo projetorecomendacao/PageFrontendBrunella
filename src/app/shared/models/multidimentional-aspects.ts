@@ -18,6 +18,7 @@ export class Falls {
     private q100_prior_ave: string;
     private q101_psychotropic_medications_use: string;
     private q102_has_diseases: string;
+    private score: number;
     private need_investigation_falls: string;
 
     constructor(data: any = {}) {
@@ -40,6 +41,7 @@ export class Falls {
       this.q100_prior_ave = data.q100_prior_ave;
       this.q101_psychotropic_medications_use = data.q101_psychotropic_medications_use;
       this.q102_has_diseases = data.q102_has_diseases;
+      this.score = data.score;
       this.need_investigation_falls = data.need_investigation_falls;
     }
 
@@ -62,6 +64,7 @@ export class Falls {
     getQ100() { return this.q100_prior_ave; }
     getQ101() { return this.q101_psychotropic_medications_use; }
     getQ102() { return this.q102_has_diseases; }
+    getScore() {return this.score;}
     getNeedInvestigation() { return this.need_investigation_falls; }
 }
 

@@ -1,8 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DAOService } from '../../../../../shared/dao.service';
-import { REST_URL_SENSORY_DEFICIT } from '../../../../../shared/REST_API_URLs';
-import { SensoryDeficit } from '../../../../../shared/models/biological-aspects.model';
+import { Component, Input, OnInit} from '@angular/core';
+import { FormGroup} from '@angular/forms';
+import { ChecaCampo } from 'src/app/shared/checa-campo';
 
 @Component({
   selector: 'app-sensory-deficit',
@@ -10,63 +8,72 @@ import { SensoryDeficit } from '../../../../../shared/models/biological-aspects.
 })
 export class SensoryDeficitComponent implements OnInit {
 
-  @Input('sensoryDeficit') sensoryDeficitInput: SensoryDeficit;
-  @Output('sensoryDeficit') sensoryDeficitOutput = new EventEmitter<SensoryDeficit>();
+  @Input() pageForm: FormGroup;
 
-  private sensoryDeficitForm: FormGroup;
+  // variáveis booleans que controlam as mensagens de certo e errado no final do form
+  private errado: boolean = false;
+  private branco: boolean = true;
 
-  get q15_vision_problems() { return this.sensoryDeficitForm.get('q15_vision_problems'); }
-  get q16_hearing_problems() { return this.sensoryDeficitForm.get('q16_hearing_problems'); }
-  get q17_taste_problems() { return this.sensoryDeficitForm.get('q17_taste_problems'); }
-  get q18_senses_problems() { return this.sensoryDeficitForm.get('q18_senses_problems'); }
-  get q19_interaction_problems() { return this.sensoryDeficitForm.get('q19_interaction_problems'); }
-  get need_investigation_sensory() { return this.sensoryDeficitForm.get('need_investigation_sensory'); }
-
-  constructor(private fb: FormBuilder, private dao: DAOService) { }
-
-  ngOnInit() {
-    if (this.sensoryDeficitInput) this.sensoryDeficitForm = this.fb.group({
-      q15_vision_problems: [this.sensoryDeficitInput.getQ15(), [Validators.required, Validators.maxLength(1)]],
-      q16_hearing_problems: [this.sensoryDeficitInput.getQ16(), [Validators.required, Validators.maxLength(1)]],
-      q17_taste_problems: [this.sensoryDeficitInput.getQ17(), [Validators.required, Validators.maxLength(1)]],
-      q18_senses_problems: [this.sensoryDeficitInput.getQ18(), [Validators.required, Validators.maxLength(1)]],
-      q19_interaction_problems: [this.sensoryDeficitInput.getQ19(), [Validators.required, Validators.maxLength(1)]],
-      need_investigation_sensory: [this.sensoryDeficitInput.getNeedInvestigation(), [Validators.required, Validators.maxLength(1)]],
-    });
-    else this.sensoryDeficitForm = this.fb.group({
-      q15_vision_problems: ['', [Validators.required, Validators.maxLength(1)]],
-      q16_hearing_problems: ['', [Validators.required, Validators.maxLength(1)]],
-      q17_taste_problems: ['', [Validators.required, Validators.maxLength(1)]],
-      q18_senses_problems: ['', [Validators.required, Validators.maxLength(1)]],
-      q19_interaction_problems: ['', [Validators.required, Validators.maxLength(1)]],
-      need_investigation_sensory: ['', [Validators.required, Validators.maxLength(1)]],
-    });
+  //dominio e dimensão
+  private dimensao: string = 'sensoryDeficitForm';
+  private dominio: string = 'biologicalAspectsForm'; 
+  
+  //Pontuação máxima
+  private max_score : number = 5;
+  //Pontos da dimensão
+  private score : number = 0;
+  //Campos que são válidos para contar o número de acertos
+  vetConta: string[] = ['q15_vision_problems','q16_hearing_problems','q17_taste_problems',
+                        'q18_senses_problems','q19_interaction_problems'];
+  //vetor com os gabaritos dos acertos
+  vetGabarito: string[] = ['N','N','N','N','N'];
+  
+  //O serviço checa campo retorna as imanges de verificação dos campos 
+  constructor(private checaCampo : ChecaCampo) { }
+  
+  //contagem dos campos que combinam para calcular o score
+  conta_certo(): number{
+    this.score = 0;
+    for (let i=0;  i < this.max_score; i++){
+      if (this.vetGabarito[i] == this.pageForm.get(this.dominio).get(this.dimensao).get(this.vetConta[i]).value){
+        this.score++;
+      }
+    }
+    this.pageForm.get(this.dominio).get(this.dimensao).get('score').setValue(this.score);
+    return this.score;
   }
+  
+    ngOnInit():void {}
+  
+    // método que verifica a situação dos campos do form
+    mudou(campo: string): string{ 
+      var volta: string = this.checaCampo.inicio();
+      if(!this.pageForm.get(this.dominio).get(this.dimensao).get(campo).pristine){
+        volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid);
+      }
+      return volta;
+    }
 
-  submit() {
-    if (this.sensoryDeficitForm.valid)
-      if (this.sensoryDeficitInput) {
-        const dirtyProps = { id: this.sensoryDeficitInput.getId() };
-        let hasDirtyProps = false;
-
-        for (const prop in this.sensoryDeficitForm.controls) {
-          const propFormControl = this.sensoryDeficitForm.get(prop);
-          if (propFormControl.dirty) {
-            dirtyProps[prop] = propFormControl.value;
-            hasDirtyProps = true;
-            propFormControl.markAsPristine();
+    // método que verifica se o form está válido
+    formValido(): Boolean{
+      this.branco = false;
+      this.errado = false;
+      for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+        if(!this.pageForm.get(this.dominio).get(this.dimensao).get(caca).valid){
+          if(this.pageForm.get(this.dominio).get(this.dimensao).get(caca).pristine){
+            this.branco = true;
+          } else {
+            this.errado = true;
           }
         }
+      }
+      return this.pageForm.get(this.dominio).get(this.dimensao).valid;
+    } 
 
-        if (hasDirtyProps) this.dao.patchObject(REST_URL_SENSORY_DEFICIT, dirtyProps).subscribe(data => {
-          this.sensoryDeficitInput = new SensoryDeficit(data);
-          this.sensoryDeficitOutput.emit(this.sensoryDeficitInput);
-        });
-
-      } else this.dao.postObject(REST_URL_SENSORY_DEFICIT, this.sensoryDeficitForm.getRawValue()).subscribe(data => {
-        this.sensoryDeficitInput = new SensoryDeficit(data);
-        this.sensoryDeficitOutput.emit(this.sensoryDeficitInput);
-      });
-    this.sensoryDeficitForm.markAllAsTouched();
+  submit() {
+    for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+      this.pageForm.get(this.dominio).get(this.dimensao).get(caca).markAsTouched;
+      this.pageForm.get(this.dominio).get(this.dimensao).get(caca).updateValueAndValidity;
+    }
   }
 }

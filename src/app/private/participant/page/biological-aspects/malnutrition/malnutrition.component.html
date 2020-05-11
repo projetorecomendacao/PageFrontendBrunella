@@ -2,138 +2,262 @@
 <h2 class="text-center mt-5"><span class="bg-success rounded-pill rounded-bottom-0 text-white px-5 py-2">Desnutrição</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="malnutritionForm">
-  <!--Perguntas-->
-  <div class="p-3">
-    <!--Pergunta1-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">26.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) que está desnutrido?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="d26_yourself_malnourished" [class.is-invalid]="d26_yourself_malnourished.invalid && d26_yourself_malnourished.touched">
-            <option value="" selected disabled>Selecione</option>
+
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="pageForm">
+  <div class="form-group p-3" formGroupName="biologicalAspectsForm">
+    <div class="form-group p-3" formGroupName="malnutritionForm">
+      <app-base>
+        <!-- Lado Esquerdo-->
+        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: lightgrey;">
+          <b>DESNUTRIÇÃO</b>
+        </div>
+
+        <!-- Centro -->
+        <span class="col-12 col-md-9">
+          <!--Pergunta1-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">26.</b>O(A) senhor(a) acha que está desnutrido(a)?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q26_yourself_malnourished">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q26_yourself_malnourished')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!------------->
+          <!--Pergunta2-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">27.</b>O(A) senhor(a) tem lesões na região bucal ou algum outro
+                problema que provoque dificuldades de mastigação?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q27_chewing_mouth_problems">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q27_chewing_mouth_problems')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!------------->
+          <!--Pergunta3-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">28.</b>O(A) senhor(a) faz menos de três refeições por dia?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q28_less3_meal_daily">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q28_less3_meal_daily')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+
+          <!------------->
+          <!--Pergunta4-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">29.</b>Nos últimos 3 meses, o(a) senhor(a) diminuiu sua ingesta alimentar sem
+                motivo?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q29_decreases_amount_food">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q29_decreases_amount_food')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!------------->
+          <!--Pergunta5-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">30.</b>Nos últimos 3 meses, o(a) senhor(a) o(a) senhor(a) perdeu peso sem motivo aparente?
+              </div>
+              <div class="caixa-100">
+                <div class="caixa-60">
+                  Quantos quilos? 
+                </div>
+                <div class="caixa-30">
+                  <select class="w-100 form-control fu" formControlName="q30_lost_weight_no_reason_amount">
+                    <option value="nda" selected>nda</option>
+                    <option value="Mais de 3 KG">Mais de 3 KG</option>
+                    <option value="De 1 a 3 KG">De 1 a 3 KG</option>
+                    <option value="Não sabe Informar">Não sabe Informar</option>
+                  </select> 
+                </div>
+                <div class="caixa-10">
+                  <img style="margin-left: 10px;" [src]="mudou('q30_lost_weight_no_reason_amount')" width="15px" height="15px">
+                </div>
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q30_lost_weight_no_reason">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q30_lost_weight_no_reason')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!--Pergunta6-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">31.</b>Nos últimos 3 meses passou por:
+              </div>
+              
+              <div class="caixa-100">
+                <div class="caixa-40 t10">Algum estresse psicológico </div>
+                <div class="caixa-30"> 
+                  <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q31_stress">
+                    <option value="" selected disabled>Selecione</option>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                  </select>
+                </div>
+                <div class="caixa-15"> 
+                  <img [src]="mudou('q31_stress')" width="15px" height="15px" style="margin-top: 20px;">
+                </div>
+                <div class="caixa-15"></div>
+              </div>
+              
+              <div class="caixa-100">
+                <div class="caixa-40 t10" >Doença aguda</div>
+                <div class="caixa-30">
+                  <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q31_illnes">
+                    <option value="" selected disabled>Selecione</option>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                  </select>
+                </div>
+                <div class="caixa-15">
+                  <img [src]="mudou('q31_illnes')" width="15px" height="15px" style="margin-top: 20px;">
+                </div>
+                <div class="caixa-15"></div>
+              </div>              
+              
+              <div class="caixa-100">
+                <div class="caixa-40 t10">Internações </div>
+                <div class="caixa-30"> 
+                  <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q31_hospital">
+                    <option value="" selected disabled>Selecione</option>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                  </select>
+                </div>
+                <div class="caixa-15"> 
+                  <img [src]="mudou('q31_hospital')" width="15px" height="15px" style="margin-top: 20px;">
+                </div>
+                <div class="caixa-15"></div>
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: white;" class="w-100 form-control" formControlName="q31_stress_illness_hospitalization" disabled>
+                  <option value="" selected disabled></option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+                <div class="caixa-100">
+                  <br>
+                  <i>A questão será respondida automaticamente com base nas respostas das opções ao lado.</i>
+                </div>
+              </div>
+              <div class="caixa-15">
+                
+              </div>
+            </span>
+          </app-base>
+
+          <!--Pergunta7-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">32.</b>Índice de Massa Corporal igual ou menor que 22 kg/m2?  
+              </div>
+              <div class="caixa-100">
+               IMC do paciente: {{calculaIMC()}}  
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: white;" class="w-100 form-control" formControlName="q32_bmi_less22">
+                  <option value="" selected disabled></option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                
+              </div>
+            </span>
+          </app-base>
+
+
+        </span>
+        <!-- Lado Direito-->  
+        <span class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color:#90EE90 ;">
+          <!--Pontuation-->
+          Pontuação: (<b>{{conta_certo()}}</b>) - máximo: ({{max_score}})
+        </span>
+        <span class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: #90EE90 ;">
+           <!--Intervenção-->
+          Necessita de investigação?                      
+          <select style="margin-top:40px; background-color: whitesmoke; width: 100%; transform: rotate(90deg);" class="form-control"  formControlName="need_investigation_malnutrition">
+            <option value="" selected disabled></option>
             <option value="S">Sim</option>
             <option value="N">Não</option>
           </select>
-        </div>
-      </div>
+          <img [src]="mudou('need_investigation_malnutrition')" width="15px" height="15px" style="margin-top: 20px;">
+        </span>          
+        
+        <div class="caixa-100">
+          <app-status [valido]="formValido()" [branco]="branco" [errado]="errado"></app-status>
+        </div> 
+      </app-base>
     </div>
-    <!------------->
-    <!--Pergunta2-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">27.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) tem lesões na região bucal ou algum outro problema que provoque dificuldades de mastigação?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="d27_chewing_mouth_problems" [class.is-invalid]="d27_chewing_mouth_problems.invalid && d27_chewing_mouth_problems.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta3-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">28.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) faz menos de três refeições por dia?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="d28_less3_meal_daily" [class.is-invalid]="d28_less3_meal_daily.invalid && d28_less3_meal_daily.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta4-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">29.</div>
-        <span class="col-12 col-md-9">Nos últimos 3 meses, o(a) senhor(a) Diminuiu sua ingesta alimentar sem motivo?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="d29_decreases_amount_food" [class.is-invalid]="d29_decreases_amount_food.invalid && d29_decreases_amount_food.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta5-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">30.</div>
-        <span class="col-12 col-md-9">Nos últimos 3 meses, o(a) senhor(a) Perdeu peso sem motivo aparente?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="d30_lost_weight_no_reason" [class.is-invalid]="d30_lost_weight_no_reason.invalid && d30_lost_weight_no_reason.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="Não">Não</option>
-            <option value="Não sabe">Não sabe</option>
-            <option value="Entre 1 e 3 KG">Entre 1 e 3 KG</option>
-            <option value="Mais de 3 KG">Mais de 3 Kg</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta6-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">31.</div>
-        <span class="col-12 col-md-9">Passou por algum estresse psicológico, doença aguda ou internações?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="d31_stress_illness_hospitalization" [class.is-invalid]="d31_stress_illness_hospitalization.invalid && d31_stress_illness_hospitalization.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta6-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">32.</div>
-        <span class="col-12 col-md-9">Índice de Massa Corporal (peso[kg]/ estatura[m2]) = kg/m2) igual ou menor que 22 kg/m2?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q32_bmi_less22" [class.is-invalid]="q32_bmi_less22.invalid && q32_bmi_less22.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
   </div>
-  <!------------->
-  <!--Pontuation-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <span class="text-success font-weight-bold h4 mr-3">Pontuação:</span>
-    <span class="h5">7 pontos</span>
-  </div>
-  <!------------->
-  <!--Intervenção-->
-  <div class="d-flex flex-wrap w-25 mx-auto justify-content-center align-items-center p-3">
-    <label class="text-center mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
-    <select class="w-100 form-control" id="depression-intervention" formControlName="need_investigation_malnutrition" [class.is-invalid]="need_investigation_malnutrition.invalid && need_investigation_malnutrition.touched">
-      <option value="" selected disabled>Selecione</option>
-      <option value="S">Sim</option>
-      <option value="N">Não</option>
-    </select>
-  </div>
-  <!--------------->
-  <!--Continue-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <button class="btn btn-success" (click)="submit()">Salvar</button>
-  </div>
-  <!------------>
 </div>
-<!----------->

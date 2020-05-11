@@ -1,8 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Violence } from '../../../../../shared/models/social-aspects.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DAOService } from '../../../../../shared/dao.service';
-import { REST_URL_VIOLENCE } from '../../../../../shared/REST_API_URLs';
+import { Component, Input, OnInit} from '@angular/core';
+import { FormGroup} from '@angular/forms';
+import { ChecaCampo } from 'src/app/shared/checa-campo';
 
 @Component({
   selector: 'app-violence',
@@ -10,72 +8,75 @@ import { REST_URL_VIOLENCE } from '../../../../../shared/REST_API_URLs';
 })
 export class ViolenceComponent implements OnInit {
 
-  @Input('violence') violenceInput: Violence;
-  @Output('violence') violenceOutput = new EventEmitter<Violence>();
+  @Input() pageForm: FormGroup;
 
-  private violenceForm: FormGroup;
+ // variáveis booleans que controlam as mensagens de certo e errado no final do form
+ private errado: boolean = false;
+ private branco: boolean = true;
 
-  get q79_afraid_close_person() { return this.violenceForm.get('q79_afraid_close_person'); }
-  get q80_feels_abandoned() { return this.violenceForm.get('q80_feels_abandoned'); }
-  get q81_forced() { return this.violenceForm.get('q81_forced'); }
-  get q82_assauteld() { return this.violenceForm.get('q82_assauteld'); }
-  get q83_in_need() { return this.violenceForm.get('q83_in_need'); }
-  get q84_someone_used_money() { return this.violenceForm.get('q84_someone_used_money'); }
-  get q85_touched_without_permission() { return this.violenceForm.get('q85_touched_without_permission'); }
-  get q86_dont_take_care_health() { return this.violenceForm.get('q86_dont_take_care_health'); }
-  get need_investigation_violence() { return this.violenceForm.get('need_investigation_violence'); }
+ //dominio e dimensão
+ private dimensao: string = 'violenceForm';
+ private dominio: string = 'socialAspectsForm'; 
+ 
+ //Pontuação máxima
+ private max_score : number = 8;
+ //Pontos da dimensão
+ private score : number = 0;
+ //Campos que são válidos para contar o número de acertos
+ vetConta: string[] = [ 'q79_afraid_close_person','q80_feels_abandoned','q81_forced',
+                        'q82_assauteld','q83_in_need','q84_someone_used_money',
+                        'q85_touched_without_permission','q86_dont_take_care_health']
 
-  constructor(private fb: FormBuilder, private dao: DAOService) { }
+ vetGabarito: string[] = ['N','N','N','N','N','N','N','N'];
+ 
+ //O serviço checa campo retorna as imanges de verificação dos campos 
+ constructor(private checaCampo : ChecaCampo) { }
+ 
+ //contagem dos campos que combinam para calcular o score
+ conta_certo(): number{
+   this.score = 0;
+   for (let i=0;  i < this.max_score; i++){
+     if (this.vetGabarito[i] == this.pageForm.get(this.dominio).get(this.dimensao).get(this.vetConta[i]).value){
+       this.score++;
+     }
+   }
+   this.pageForm.get(this.dominio).get(this.dimensao).get('score').setValue(this.score);
+   return this.score;
+ }
+ 
+   ngOnInit():void {}
+ 
+   // método que verifica a situação dos campos do form
+   mudou(campo: string): string{ 
+     var volta: string = this.checaCampo.inicio();
+     if(!this.pageForm.get(this.dominio).get(this.dimensao).get(campo).pristine){
+       volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid);
+     }
+     return volta;
+   }
 
-  ngOnInit() {
-    if (this.violenceInput) this.violenceForm = this.fb.group({
-      q79_afraid_close_person: [this.violenceInput.getQ79(), [Validators.required, Validators.maxLength(1)]],
-      q80_feels_abandoned: [this.violenceInput.getQ80(), [Validators.required, Validators.maxLength(1)]],
-      q81_forced: [this.violenceInput.getQ81(), [Validators.required, Validators.maxLength(1)]],
-      q82_assauteld: [this.violenceInput.getQ82(), [Validators.required, Validators.maxLength(1)]],
-      q83_in_need: [this.violenceInput.getQ83(), [Validators.required, Validators.maxLength(1)]],
-      q84_someone_used_money: [this.violenceInput.getQ84(), [Validators.required, Validators.maxLength(1)]],
-      q85_touched_without_permission: [this.violenceInput.getQ85(), [Validators.required, Validators.maxLength(1)]],
-      q86_dont_take_care_health: [this.violenceInput.getQ86(), [Validators.required, Validators.maxLength(1)]],
-      need_investigation_violence: [this.violenceInput.getNeedInvestigation(), [Validators.required, Validators.maxLength(1)]],
-    });
-    else this.violenceForm = this.fb.group({
-      q79_afraid_close_person: ['', [Validators.required, Validators.maxLength(1)]],
-      q80_feels_abandoned: ['', [Validators.required, Validators.maxLength(1)]],
-      q81_forced: ['', [Validators.required, Validators.maxLength(1)]],
-      q82_assauteld: ['', [Validators.required, Validators.maxLength(1)]],
-      q83_in_need: ['', [Validators.required, Validators.maxLength(1)]],
-      q84_someone_used_money: ['', [Validators.required, Validators.maxLength(1)]],
-      q85_touched_without_permission: ['', [Validators.required, Validators.maxLength(1)]],
-      q86_dont_take_care_health: ['', [Validators.required, Validators.maxLength(1)]],
-      need_investigation_violence: ['', [Validators.required, Validators.maxLength(1)]],
-    });
-  }
+   // método que verifica se o form está válido
+   formValido(): Boolean{
+     this.branco = false;
+     this.errado = false;
+     for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+       if(!this.pageForm.get(this.dominio).get(this.dimensao).get(caca).valid){
+         if(this.pageForm.get(this.dominio).get(this.dimensao).get(caca).pristine){
+           this.branco = true;
+         } else {
+           this.errado = true;
+         }
+       }
+     }
+     return this.pageForm.get(this.dominio).get(this.dimensao).valid;
+   } 
 
-  submit() {
-    if (this.violenceForm.valid)
-      if (this.violenceInput) {
-        const dirtyProps = { id: this.violenceInput.getId() };
-        let hasDirtyProps = false;
-
-        for (const prop in this.violenceForm.controls) {
-          const propFormControl = this.violenceForm.get(prop);
-          if (propFormControl.dirty) {
-            dirtyProps[prop] = propFormControl.value;
-            hasDirtyProps = true;
-            propFormControl.markAsPristine();
-          }
-        }
-
-        if (hasDirtyProps) this.dao.patchObject(REST_URL_VIOLENCE, dirtyProps).subscribe(data => {
-          this.violenceInput = new Violence(data);
-          this.violenceOutput.emit(this.violenceInput);
-        });
-
-      } else this.dao.postObject(REST_URL_VIOLENCE, this.violenceForm.getRawValue()).subscribe(data => {
-        this.violenceInput = new Violence(data);
-        this.violenceOutput.emit(this.violenceInput);
-      });
-    this.violenceForm.markAllAsTouched();
-  }
+ submit() {
+   for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+     this.pageForm.get(this.dominio).get(this.dimensao).get(caca).markAsTouched;
+     this.pageForm.get(this.dominio).get(this.dimensao).get(caca).updateValueAndValidity;
+   }
+ }
 }
+
+

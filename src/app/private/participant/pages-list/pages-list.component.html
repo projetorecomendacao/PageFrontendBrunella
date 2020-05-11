@@ -2,6 +2,15 @@
   <button (click)="goTo()" class="btn btn-primary">Novo Page</button>
 </div>
 
+
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg mt-4">
+  <BR>
+  <center>
+    <b>As funções de visualizar, apagar e alterar Page foram desabilitadas</b>  
+  </center>
+  <BR>
+</div>
+
 <!--Content 1-->
 <div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg mt-4" *ngFor="let page of pages">
   <!--Pages-->
@@ -30,8 +39,8 @@
       <!--------------->
       <!-- Options -->
       <div class="col-6 col-lg-4 d-flex flex-column justify-content-around mx-auto mt-5 mt-lg-0">
-        <button class="btn btn-primary mb-2" (click)="goTo(page)" type="button">Visualizar ou editar</button>
-        <button class="btn btn-danger" (click)="delete(page.getId())" type="button">Deletar</button>
+        <button disabled class="btn btn-primary mb-2" (click)="goTo(page)" type="button">Visualizar ou editar</button>
+        <button disabled class="btn btn-danger" (click)="delete(page.getId())" type="button">Deletar</button>
       </div>
       <!----------->
     </div>
@@ -39,3 +48,5 @@
   <!----------------->
 </div>
 <!------------->
+
+

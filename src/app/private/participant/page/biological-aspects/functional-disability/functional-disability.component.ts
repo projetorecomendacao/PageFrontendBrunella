@@ -1,8 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FunctionalDisability } from '../../../../../shared/models/biological-aspects.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DAOService } from '../../../../../shared/dao.service';
-import { REST_URL_FUNCTIONAL_DISABILITY } from '../../../../../shared/REST_API_URLs';
+import { Component, Input, OnInit} from '@angular/core';
+import { FormGroup} from '@angular/forms';
+import { ChecaCampo } from 'src/app/shared/checa-campo';
 
 @Component({
   selector: 'app-functional-disability',
@@ -10,66 +8,72 @@ import { REST_URL_FUNCTIONAL_DISABILITY } from '../../../../../shared/REST_API_U
 })
 export class FunctionalDisabilityComponent implements OnInit {
 
-  @Input('functionalDisability') functionalDisabilityInput: FunctionalDisability;
-  @Output('functionalDisability') functionalDisabilityOutput = new EventEmitter<FunctionalDisability>();
+  @Input() pageForm: FormGroup;
 
-  private functionalDisabilityForm: FormGroup;
+  // variáveis booleans que controlam as mensagens de certo e errado no final do form
+  private errado: boolean = false;
+  private branco: boolean = true;
 
-  get q20_to_shop() { return this.functionalDisabilityForm.get('q20_to_shop'); }
-  get q21_use_transport() { return this.functionalDisabilityForm.get('q21_use_transport'); }
-  get q22_to_cook() { return this.functionalDisabilityForm.get('q22_to_cook'); }
-  get q23UseTelephone() { return this.functionalDisabilityForm.get('q23UseTelephone'); }
-  get q24_dress_up() { return this.functionalDisabilityForm.get('q24_dress_up'); }
-  get q25TakeShower() { return this.functionalDisabilityForm.get('q25TakeShower'); }
-  get need_investigation_functional() { return this.functionalDisabilityForm.get('need_investigation_functional'); }
+  //dominio e dimensão
+  private dimensao: string = 'functionalDisabilityForm';
+  private dominio: string = 'biologicalAspectsForm'; 
+  
+  //Pontuação máxima
+  private max_score : number = 6;
+  //Pontos da dimensão
+  private score : number = 0;
+  //Campos que são válidos para contar o número de acertos
+  vetConta: string[] = ['q20_to_shop','q21_use_transport','q22_to_cook',
+                        'q23UseTelephone','q24_dress_up', 'q25TakeShower']
 
-  constructor(private fb: FormBuilder, private dao: DAOService) { }
-
-  ngOnInit() {
-    if (this.functionalDisabilityInput) this.functionalDisabilityForm = this.fb.group({
-      q20_to_shop: [this.functionalDisabilityInput.getQ20(), [Validators.required, Validators.maxLength(1)]],
-      q21_use_transport: [this.functionalDisabilityInput.getQ21(), [Validators.required, Validators.maxLength(1)]],
-      q22_to_cook: [this.functionalDisabilityInput.getQ22(), [Validators.required, Validators.maxLength(1)]],
-      q23UseTelephone: [this.functionalDisabilityInput.getQ23(), [Validators.required, Validators.maxLength(1)]],
-      q24_dress_up: [this.functionalDisabilityInput.getQ24(), [Validators.required, Validators.maxLength(1)]],
-      q25TakeShower: [this.functionalDisabilityInput.getQ25(), [Validators.required, Validators.maxLength(1)]],
-      need_investigation_functional: [this.functionalDisabilityInput.getNeedInvestigation(), [Validators.required, Validators.maxLength(1)]],
-    });
-    else this.functionalDisabilityForm = this.fb.group({
-      q20_to_shop: ['', [Validators.required, Validators.maxLength(1)]],
-      q21_use_transport: ['', [Validators.required, Validators.maxLength(1)]],
-      q22_to_cook: ['', [Validators.required, Validators.maxLength(1)]],
-      q23UseTelephone: ['', [Validators.required, Validators.maxLength(1)]],
-      q24_dress_up: ['', [Validators.required, Validators.maxLength(1)]],
-      q25TakeShower: ['', [Validators.required, Validators.maxLength(1)]],
-      need_investigation_functional: ['', [Validators.required, Validators.maxLength(1)]],
-    });
+  vetGabarito: string[] = ['N','N','N','N','N','N'];
+  
+  //O serviço checa campo retorna as imanges de verificação dos campos 
+  constructor(private checaCampo : ChecaCampo) { }
+  
+  //contagem dos campos que combinam para calcular o score
+  conta_certo(): number{
+    this.score = 0;
+    for (let i=0;  i < this.max_score; i++){
+      if (this.vetGabarito[i] == this.pageForm.get(this.dominio).get(this.dimensao).get(this.vetConta[i]).value){
+        this.score++;
+      }
+    }
+    this.pageForm.get(this.dominio).get(this.dimensao).get('score').setValue(this.score);
+    return this.score;
   }
+  
+    ngOnInit():void {}
+  
+    // método que verifica a situação dos campos do form
+    mudou(campo: string): string{ 
+      var volta: string = this.checaCampo.inicio();
+      if(!this.pageForm.get(this.dominio).get(this.dimensao).get(campo).pristine){
+        volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid);
+      }
+      return volta;
+    }
 
-  submit() {
-    if (this.functionalDisabilityForm.valid)
-      if (this.functionalDisabilityInput) {
-        const dirtyProps = { id: this.functionalDisabilityInput.getId() };
-        let hasDirtyProps = false;
-
-        for (const prop in this.functionalDisabilityForm.controls) {
-          const propFormControl = this.functionalDisabilityForm.get(prop);
-          if (propFormControl.dirty) {
-            dirtyProps[prop] = propFormControl.value;
-            hasDirtyProps = true;
-            propFormControl.markAsPristine();
+    // método que verifica se o form está válido
+    formValido(): Boolean{
+      this.branco = false;
+      this.errado = false;
+      for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+        if(!this.pageForm.get(this.dominio).get(this.dimensao).get(caca).valid){
+          if(this.pageForm.get(this.dominio).get(this.dimensao).get(caca).pristine){
+            this.branco = true;
+          } else {
+            this.errado = true;
           }
         }
+      }
+      return this.pageForm.get(this.dominio).get(this.dimensao).valid;
+    } 
 
-        if (hasDirtyProps) this.dao.patchObject(REST_URL_FUNCTIONAL_DISABILITY, dirtyProps).subscribe(data => {
-          this.functionalDisabilityInput = new FunctionalDisability(data);
-          this.functionalDisabilityOutput.emit(this.functionalDisabilityInput);
-        });
-
-      } else this.dao.postObject(REST_URL_FUNCTIONAL_DISABILITY, this.functionalDisabilityForm.getRawValue()).subscribe(data => {
-        this.functionalDisabilityInput = new FunctionalDisability(data);
-        this.functionalDisabilityOutput.emit(this.functionalDisabilityInput);
-      });
-    this.functionalDisabilityForm.markAllAsTouched();
+  submit() {
+    for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+      this.pageForm.get(this.dominio).get(this.dimensao).get(caca).markAsTouched;
+      this.pageForm.get(this.dominio).get(this.dimensao).get(caca).updateValueAndValidity;
+    }
   }
 }

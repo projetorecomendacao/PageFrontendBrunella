@@ -2,105 +2,122 @@
 <h2 class="text-center mt-5"><span class="bg-primary rounded-pill rounded-bottom-0 text-white px-5 py-2">Atitude negativa em relação ao processo de envelhecimento</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" *ngIf="negativeAttitudesAgingForm" [formGroup]="negativeAttitudesAgingForm">
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="pageForm">
   <!--Perguntas-->
-  <div class="p-3">
-    <!--Pergunta1-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">7.</div>
-        <span class="col-12 col-md-8">Que idade o(a) senhor(a) sente ter?:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100 form-control" type="number" formControlName="q7_age_self_perception" [class.is-invalid]="q7_age_self_perception.invalid && q7_age_self_perception.touched">
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta1 - Por quê-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold"></div>
-        <span class="col-12 col-md-8">Por quê?:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <textarea class="w-100 form-control" formControlName="q7_age_self_perception_why" [class.is-invalid]="q7_age_self_perception_why.invalid && q7_age_self_perception_why.touched"></textarea>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta2-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold"></div>
-        <span class="col-12 col-md-8">O(a) idoso(a) sente-se mais velho do que realmente é?:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q7_age_self_perception_analyze" [class.is-invalid]="q7_age_self_perception_analyze.invalid && q7_age_self_perception_analyze.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta3-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">8.</div>
-        <span class="col-12 col-md-8">Aspectos Positivo do Envelhecimento:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <textarea class="w-100 form-control" formControlName="q8_aging_positive_points" [class.is-invalid]="q8_aging_positive_points.invalid && q8_aging_positive_points.touched"></textarea>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta4-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold"></div>
-        <span class="col-12 col-md-8">Aspectos Negativos do Envelhecimento:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <textarea class="w-100 form-control" formControlName="q8_aging_negative_points" [class.is-invalid]="q8_aging_negative_points.invalid && q8_aging_negative_points.touched"></textarea>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta5-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold"></div>
-        <span class="col-12 col-md-8">É perceptível uma visão mais negativa da velhice?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q8_aging_analyse" [class.is-invalid]="q8_aging_analyse.invalid && q8_aging_analyse.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
+  <div class="form-group p-3" formGroupName="psychologicalAspectsForm">
+    <div class="form-group p-3" formGroupName="negativeAttitudesAgingForm">
+      <app-base>
+          <!-- Lado Esquerdo-->
+          <div class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: lightgrey;">
+            <b>ATITUDES NEGATIVAS EM RELAÇÃO AO ENVELHECIMENTO</b>
+          </div>
+          
+          <!-- Centro -->
+          <span class="col-12 col-md-9">
+
+            <!--Pergunta7-->
+            <app-base>
+              <span class="col-12 col-md-9 borda-lado">
+                <p><b class="azul">7. </b>Registrar ao lado se o(a) idoso(a) sente-se mais velho do que
+                realmente é:</p>
+                <div class="caixa-70">
+                  Que idade o(a) senhor(a) sente ter?
+                </div>
+                <div class="caixa-20">
+                  <input class="w-100 form-control" type="number" formControlName="q7_age_self_perception" style="background-color: whitesmoke;">
+                </div>
+                <div class="caixa-10">
+                  <img [src]="mudou('q7_age_self_perception')" width="15px" height="15px">
+                </div>
+                <div class="caixa-100">
+                  Por Quê?
+                </div>
+                <div class="caixa-90">
+                   <textarea class="w-100 form-control" formControlName="q7_age_self_perception_why" style="background-color: whitesmoke;"></textarea>
+                </div>
+                <div class="caixa-10">
+                  <img [src]="mudou('q7_age_self_perception_why')" width="15px" height="15px">
+                </div>  
+              </span>
+              <span class="col-12 col-md-3">
+                <div class="caixa-85">
+                  <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q7_age_self_perception_analyze">
+                    <option value="" selected disabled>Selecione</option>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                  </select>
+                </div>
+                <div class="caixa-15">
+                  <img [src]="mudou('q7_age_self_perception_analyze')" width="15px" height="15px">
+                </div>
+              </span>
+            </app-base>
+
+            <!------------->
+            <!--Pergunta8-->
+            <app-base>
+              <span class="col-12 col-md-9 borda-lado">
+                <p><b class="azul">8. </b>Registrar ao lado se é perceptível uma visão mais negativa da
+                  velhice:</p> 
+
+                <span class="caixa-100">Aspectos Positivo do Envelhecimento:</span>
+                <div class="caixa-90">
+                  <textarea class="w-100 form-control" formControlName="q8_aging_positive_points" style="background-color: whitesmoke;"></textarea>
+                </div>
+                <span class="caixa-10">
+                  <img [src]="mudou('q8_aging_positive_points')" width="15px" height="15px">
+                </span>
+                <span class="caixa-100">
+                  <br>
+                </span>
+                <span class="caixa-100"> Aspectos Negativos do Envelhecimento:</span>
+                <div class="caixa-90">
+                  <textarea class="w-100 form-control" formControlName="q8_aging_negative_points" style="background-color: whitesmoke;"></textarea>
+                </div>
+                <span class="caixa-10">
+                  <img [src]="mudou('q8_aging_negative_points')" width="15px" height="15px">
+                </span>
+              </span>
+              <span class="col-12 col-md-3">
+                <div class="caixa-85">
+                  <select class="w-100 form-control" formControlName="q8_aging_analyse" style="background-color: whitesmoke;">
+                    <option value="" selected disabled>Selecione</option>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                  </select>
+                </div>
+                <div class="caixa-15">
+                  <img [src]="mudou('q8_aging_analyse')" width="15px" height="15px">
+                </div>
+              </span>
+            </app-base>
+            <!------Perguntas------->
+          </span> <!--centro --> 
+
+
+
+          <!-- Lado Direito-->  
+          <span class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color:lightskyblue ;">
+            <!------------->
+            <!--Pontuation-->
+            Pontuação: (<b>{{conta_certo()}}</b>) - máximo: ({{max_score}})
+          </span>
+          <span class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color:lightskyblue ;">
+              <!--Intervenção-->
+            Necessita de investigação?                      
+            <select style="margin-top:40px; background-color: whitesmoke; width: 100%; transform: rotate(90deg);" class="form-control"  formControlName="need_investigation_negative">
+              <option value="" selected disabled></option>
+              <option value="S">Sim</option>
+              <option value="N">Não</option>
+            </select>
+            <img [src]="mudou('need_investigation_negative')" width="15px" height="15px" style="margin-top: 20px;">
+          </span>          
+         
+          <div class="caixa-100">
+            <app-status [valido]="formValido()" [branco]="branco" [errado]="errado"></app-status>
+          </div> 
+
+      </app-base>
   </div>
-  <!------------->
-  <!--Pontuation-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <span class="text-primary font-weight-bold h4 mr-3">Pontuação:</span>
-    <span class="h5">6 pontos</span>
-  </div>
-  <!------------->
-  <!--Intervenção-->
-  <div class="d-flex flex-wrap w-25 mx-auto justify-content-center align-items-center p-3">
-    <label class="text-center mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
-    <select class="w-100 form-control" id="depression-intervention" formControlName="need_investigation_negative" [class.is-invalid]="need_investigation_negative.invalid && need_investigation_negative.touched">
-      <option value="" selected disabled>Selecione</option>
-      <option value="S">Sim</option>
-      <option value="N">Não</option>
-    </select>
-  </div>
-  <!--------------->
-  <!--Continue-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <button class="btn btn-primary" (click)="submit()">Salvar</button>
-  </div>
-  <!------------>
 </div>
 <!----------->

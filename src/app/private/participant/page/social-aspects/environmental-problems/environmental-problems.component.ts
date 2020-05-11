@@ -1,8 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DAOService } from '../../../../../shared/dao.service';
-import { EnvironmentalProblems } from '../../../../../shared/models/social-aspects.model';
-import { REST_URL_ENVIRONMENTAL_PROBLEMS } from '../../../../../shared/REST_API_URLs';
+import { Component, Input, OnInit} from '@angular/core';
+import { FormGroup} from '@angular/forms';
+import { ChecaCampo } from 'src/app/shared/checa-campo';
 
 @Component({
   selector: 'app-environmental-problems',
@@ -10,96 +8,95 @@ import { REST_URL_ENVIRONMENTAL_PROBLEMS } from '../../../../../shared/REST_API_
 })
 export class EnvironmentalProblemsComponent implements OnInit {
 
-  @Input('environmentalProblems') environmentalProblemsInput: EnvironmentalProblems;
-  @Output('environmentalProblems') environmentalProblemsOutput = new EventEmitter<EnvironmentalProblems>();
+  @Input() pageForm: FormGroup;
 
-  private environmentalProblemsForm: FormGroup;
+   // variáveis booleans que controlam as mensagens de certo e errado no final do form
+   private errado: boolean = false;
+   private branco: boolean = true;
+ 
+   //dominio e dimensão
+   private dimensao: string = 'environmentalProblemsForm';
+   private dominio: string = 'socialAspectsForm'; 
+   
+   //Pontuação máxima
+   private max_score : number = 16;
+   //Pontos da dimensão
+   private score : number = 0;
 
-  get q63_estable_furniture() { return this.environmentalProblemsForm.get('q63_estable_furniture'); }
-  get q64_loose_objects_carpets() { return this.environmentalProblemsForm.get('q64_loose_objects_carpets'); }
-  get q65_slippery_floor() { return this.environmentalProblemsForm.get('q65_slippery_floor'); }
-  get q66_handrail_on_stairs() { return this.environmentalProblemsForm.get('q66_handrail_on_stairs'); }
-  get q67_lighted_stairs() { return this.environmentalProblemsForm.get('q67_lighted_stairs'); }
-  get q68_suitable_stairs_steps() { return this.environmentalProblemsForm.get('q68_suitable_stairs_steps'); }
-  get q69_non_slippery_carpet() { return this.environmentalProblemsForm.get('q69_non_slippery_carpet'); }
-  get q70_get_on_stool() { return this.environmentalProblemsForm.get('q70_get_on_stool'); }
-  get q71_turn_lights_off() { return this.environmentalProblemsForm.get('q71_turn_lights_off'); }
-  get q72_safe_shoes() { return this.environmentalProblemsForm.get('q72_safe_shoes'); }
-  get q73_manicure_sidewalks() { return this.environmentalProblemsForm.get('q73_manicure_sidewalks'); }
-  get q74_public_transport_access() { return this.environmentalProblemsForm.get('q74_public_transport_access'); }
-  get q75_commerce_access() { return this.environmentalProblemsForm.get('q75_commerce_access'); }
-  get q76_ease_plasewalking() { return this.environmentalProblemsForm.get('q76_ease_plasewalking'); }
-  get q77_fun_access() { return this.environmentalProblemsForm.get('q77_fun_access'); }
-  get q78_safety() { return this.environmentalProblemsForm.get('q78_safety'); }
-  get need_investigation_env() { return this.environmentalProblemsForm.get('need_investigation_env'); }
-
-  constructor(private fb: FormBuilder, private dao: DAOService) { }
-
-  ngOnInit() {
-    if (this.environmentalProblemsInput) this.environmentalProblemsForm = this.fb.group({
-      q63_estable_furniture: [this.environmentalProblemsInput.getQ63(), [Validators.required, Validators.maxLength(1)]],
-      q64_loose_objects_carpets: [this.environmentalProblemsInput.getQ64(), [Validators.required, Validators.maxLength(1)]],
-      q65_slippery_floor: [this.environmentalProblemsInput.getQ65(), [Validators.required, Validators.maxLength(1)]],
-      q66_handrail_on_stairs: [this.environmentalProblemsInput.getQ66(), [Validators.required, Validators.maxLength(1)]],
-      q67_lighted_stairs: [this.environmentalProblemsInput.getQ67(), [Validators.required, Validators.maxLength(1)]],
-      q68_suitable_stairs_steps: [this.environmentalProblemsInput.getQ68(), [Validators.required, Validators.maxLength(1)]],
-      q69_non_slippery_carpet: [this.environmentalProblemsInput.getQ69(), [Validators.required, Validators.maxLength(1)]],
-      q70_get_on_stool: [this.environmentalProblemsInput.getQ70(), [Validators.required, Validators.maxLength(1)]],
-      q71_turn_lights_off: [this.environmentalProblemsInput.getQ71(), [Validators.required, Validators.maxLength(1)]],
-      q72_safe_shoes: [this.environmentalProblemsInput.getQ72(), [Validators.required, Validators.maxLength(1)]],
-      q73_manicure_sidewalks: [this.environmentalProblemsInput.getQ73(), [Validators.required, Validators.maxLength(1)]],
-      q74_public_transport_access: [this.environmentalProblemsInput.getQ74(), [Validators.required, Validators.maxLength(1)]],
-      q75_commerce_access: [this.environmentalProblemsInput.getQ75(), [Validators.required, Validators.maxLength(1)]],
-      q76_ease_plasewalking: [this.environmentalProblemsInput.getQ76(), [Validators.required, Validators.maxLength(1)]],
-      q77_fun_access: [this.environmentalProblemsInput.getQ77(), [Validators.required, Validators.maxLength(1)]],
-      q78_safety: [this.environmentalProblemsInput.getQ78(), [Validators.required, Validators.maxLength(1)]],
-      need_investigation_env: [this.environmentalProblemsInput.getQ78(), [Validators.required, Validators.maxLength(1)]],
-    });
-    else this.environmentalProblemsForm = this.fb.group({
-      q63_estable_furniture: ['', [Validators.required, Validators.maxLength(1)]],
-      q64_loose_objects_carpets: ['', [Validators.required, Validators.maxLength(1)]],
-      q65_slippery_floor: ['', [Validators.required, Validators.maxLength(1)]],
-      q66_handrail_on_stairs: ['', [Validators.required, Validators.maxLength(1)]],
-      q67_lighted_stairs: ['', [Validators.required, Validators.maxLength(1)]],
-      q68_suitable_stairs_steps: ['', [Validators.required, Validators.maxLength(1)]],
-      q69_non_slippery_carpet: ['', [Validators.required, Validators.maxLength(1)]],
-      q70_get_on_stool: ['', [Validators.required, Validators.maxLength(1)]],
-      q71_turn_lights_off: ['', [Validators.required, Validators.maxLength(1)]],
-      q72_safe_shoes: ['', [Validators.required, Validators.maxLength(1)]],
-      q73_manicure_sidewalks: ['', [Validators.required, Validators.maxLength(1)]],
-      q74_public_transport_access: ['', [Validators.required, Validators.maxLength(1)]],
-      q75_commerce_access: ['', [Validators.required, Validators.maxLength(1)]],
-      q76_ease_plasewalking: ['', [Validators.required, Validators.maxLength(1)]],
-      q77_fun_access: ['', [Validators.required, Validators.maxLength(1)]],
-      q78_safety: ['', [Validators.required, Validators.maxLength(1)]],
-      need_investigation_env: ['', [Validators.required, Validators.maxLength(1)]],
-    });
-  }
-
-  submit() {
-    if (this.environmentalProblemsForm.valid)
-      if (this.environmentalProblemsInput) {
-        const dirtyProps = { id: this.environmentalProblemsInput.getId()};
-        let hasDirtyProps = false;
-
-        for (const prop in this.environmentalProblemsForm.controls) {
-          const propFormControl = this.environmentalProblemsForm.get(prop);
-          if (propFormControl.dirty) {
-            dirtyProps[prop] = propFormControl.value;
-            hasDirtyProps = true;
-            propFormControl.markAsPristine();
-          }
-        }
-
-        if (hasDirtyProps) this.dao.patchObject(REST_URL_ENVIRONMENTAL_PROBLEMS, dirtyProps).subscribe(data => {
-          this.environmentalProblemsInput = new EnvironmentalProblems(data);
-          this.environmentalProblemsOutput.emit(this.environmentalProblemsInput);
-        });
-
-      } else this.dao.postObject(REST_URL_ENVIRONMENTAL_PROBLEMS, this.environmentalProblemsForm.getRawValue()).subscribe(data => {
-        this.environmentalProblemsInput = new EnvironmentalProblems(data);
-        this.environmentalProblemsOutput.emit(this.environmentalProblemsInput);
-      });
-    this.environmentalProblemsForm.markAllAsTouched();
-  }
-}
+   //variáveis de cada ambiente
+   private ambExt : number = 0;
+   private ambInt : number = 0;
+   private comRis : number = 0;
+   //Campos que são válidos para contar o número de acertos
+   vetConta: string[] = ['q63_estable_furniture', 'q64_loose_objects_carpets',  'q65_slippery_floor',
+   'q66_handrail_on_stairs',  'q67_lighted_stairs',  'q68_suitable_stairs_steps',
+   'q69_non_slippery_carpet',
+   'q70_get_on_stool', 'q71_turn_lights_off', 'q72_safe_shoes',
+  'q73_manicure_sidewalks', 'q74_public_transport_access', 'q75_commerce_access',
+  'q76_ease_plasewalking', 'q77_fun_access', 'q78_safety']
+ 
+   vetGabarito: string[] = ['S','N','N','S','S','S','S','N','N','S','S','S','S','S','S','S'];
+   
+   //O serviço checa campo retorna as imanges de verificação dos campos 
+   constructor(private checaCampo : ChecaCampo) { }
+   
+   //contagem dos campos que combinam para calcular o score
+   conta_certo(): number{
+     this.score = 0;
+     this.ambExt = 0; 
+     this.ambInt = 0;
+     this.comRis = 0;
+     for (let i=0;  i < this.max_score; i++){
+       if (this.vetGabarito[i] == this.pageForm.get(this.dominio).get(this.dimensao).get(this.vetConta[i]).value){
+         this.score++;
+         if(i > 9){
+           this.ambExt ++;
+         } else {
+           if(i > 6) {
+             this.comRis++;
+           } else {
+             this.ambInt++;
+           }
+         }
+       }
+     }
+     this.pageForm.get(this.dominio).get(this.dimensao).get('behaviorRisk').setValue(this.comRis);
+     this.pageForm.get(this.dominio).get(this.dimensao).get('domesticRisk').setValue(this.ambInt);
+     this.pageForm.get(this.dominio).get(this.dimensao).get('score').setValue(this.score);
+     return this.score;
+   }
+   
+     ngOnInit():void {}
+   
+     // método que verifica a situação dos campos do form
+     mudou(campo: string): string{ 
+       var volta: string = this.checaCampo.inicio();
+       if(!this.pageForm.get(this.dominio).get(this.dimensao).get(campo).pristine){
+         volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid);
+       }
+       return volta;
+     }
+ 
+     // método que verifica se o form está válido
+     formValido(): Boolean{
+       this.branco = false;
+       this.errado = false;
+       for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+         if(!this.pageForm.get(this.dominio).get(this.dimensao).get(caca).valid){
+           if(this.pageForm.get(this.dominio).get(this.dimensao).get(caca).pristine){
+             this.branco = true;
+           } else {
+             this.errado = true;
+           }
+         }
+       }
+       return this.pageForm.get(this.dominio).get(this.dimensao).valid;
+     } 
+ 
+   submit() {
+     for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+       this.pageForm.get(this.dominio).get(this.dimensao).get(caca).markAsTouched;
+       this.pageForm.get(this.dominio).get(this.dimensao).get(caca).updateValueAndValidity;
+     }
+   }
+ }

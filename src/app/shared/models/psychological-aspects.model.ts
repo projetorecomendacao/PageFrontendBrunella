@@ -2,33 +2,60 @@ export class CognitionDeficit {
   private id: number;
   private q1_memory_good_like_before: string;
   private q2_memory_test: string;
+  private q2_memory_test_score: number;
   private q3_language_function_attention: string;
+  private q3_language_function_attention_score: number;
+  private q3_language_function_attention_15: string;
+  private q3_language_function_attention_30: string;
+  private q3_language_function_attention_45: string;
+  private q3_language_function_attention_60: string;
   private q4_visospatial_ability: string;
   private q4_visospatial_ability_score: number;
   private q5_praxia: string;
+  private q5_praxia_score : number;
   private q6_memory_test: string;
+  private q6_memory_test_score: string;
+  private score_cognition : number;
   private need_investigation_cognition: string;
 
   constructor(data: any = {}) {
     this.id = data.id;
     this.q1_memory_good_like_before = data.q1_memory_good_like_before;
     this.q2_memory_test = data.q2_memory_test;
+    this.q2_memory_test_score = data.q2_memory_test_score;
     this.q3_language_function_attention = data.q3_language_function_attention;
+    this.q3_language_function_attention_score = data.q3_language_function_attention_score;
+    this.q3_language_function_attention_15 = data.q3_language_function_attention_15;
+    this.q3_language_function_attention_30 = data.q3_language_function_attention_30;
+    this.q3_language_function_attention_45 = data.q3_language_function_attention_45;
+    this.q3_language_function_attention_60 = data.q3_language_function_attention_60;
     this.q4_visospatial_ability = data.q4_visospatial_ability;
     this.q4_visospatial_ability_score = data.q4_visospatial_ability_score;
     this.q5_praxia = data.q5_praxia;
+    this.q5_praxia_score = data.q5_praxia_score;
     this.q6_memory_test = data.q6_memory_test;
+    this.q6_memory_test_score = data.q6_memory_test_score;
+    this.score_cognition = data.score_cognition;
     this.need_investigation_cognition = data.need_investigation_cognition;
   }
 
   public getId() { return this.id; }
   public getQ1() { return this.q1_memory_good_like_before; }
-  public getQ2() { return this.q2_memory_test; }
-  public getQ3() { return this.q3_language_function_attention; }
+  public getQ2A() { return this.q2_memory_test; }
+  public getQ2B() { return this.q2_memory_test_score; }
+  public getQ3A() { return this.q3_language_function_attention; }
+  public getQ3B() { return this.q3_language_function_attention_score; }
+  public getQ3_15() { return this.q3_language_function_attention_15; }
+  public getQ3_30() { return this.q3_language_function_attention_30; }
+  public getQ3_45() { return this.q3_language_function_attention_45; }
+  public getQ3_60() { return this.q3_language_function_attention_60; }
   public getQ4A() { return this.q4_visospatial_ability; }
   public getQ4B() { return this.q4_visospatial_ability_score; }
-  public getQ5() { return this.q5_praxia; }
-  public getQ6() { return this.q6_memory_test; }
+  public getQ5A() { return this.q5_praxia; }
+  public getQ5B() { return this.q5_praxia_score; }
+  public getQ6A() { return this.q6_memory_test; }
+  public getQ6B() { return this.q6_memory_test_score; }
+  public getScoreCognition() {return this.score_cognition;}
   public getNeedInvestigation() { return this.need_investigation_cognition; }
 }
 
@@ -41,6 +68,7 @@ export class NegativeAttitudesAging {
   private q8_aging_negative_points: number;
   private q8_aging_analyse: string;
   private need_investigation_negative: string;
+  private score : number;
 
   constructor(data: any = {}) {
     this.id = data.id;
@@ -51,6 +79,7 @@ export class NegativeAttitudesAging {
     this.q8_aging_negative_points = data.q8_aging_negative_points;
     this.q8_aging_analyse = data.q8_aging_analyse;
     this.need_investigation_negative = data.need_investigation_negative;
+    this.score = data.score;
   }
 
   public getId() { return this.id; }
@@ -60,6 +89,7 @@ export class NegativeAttitudesAging {
   public getQ8A() { return this.q8_aging_positive_points; }
   public getQ8B() { return this.q8_aging_negative_points; }
   public getQ8C() { return this.q8_aging_analyse; }
+  public getScore() {return this.score;}
   public getNeedInvestigation() { return this.need_investigation_negative; }
 }
 
@@ -72,6 +102,7 @@ export class Depression {
   private q13_impatient_disquiet: number;
   private q14_concentration_problem: string;
   private need_investigation_depression: string;
+  private score : number;
 
   constructor(data: any = {}) {
     this.id = data.id;
@@ -81,6 +112,7 @@ export class Depression {
     this.q12_fear_bad_things_happen = data.q12_fear_bad_things_happen;
     this.q13_impatient_disquiet = data.q13_impatient_disquiet;
     this.q14_concentration_problem = data.q14_concentration_problem;
+    this.score = data.score;
     this.need_investigation_depression = data.need_investigation_depression;
   }
 
@@ -92,6 +124,7 @@ export class Depression {
   public getQ13() { return this.q13_impatient_disquiet; }
   public getQ14() { return this.q14_concentration_problem; }
   public getNeedInvestigation() { return this.need_investigation_depression; }
+  public getScore() {return this.score;}
 }
 
 export class PsychologicalAspects {

@@ -1,0 +1,50 @@
+<h2 class="text-center mt-5">
+    <span class="rounded-pill rounded-bottom-0 text-white px-5 py-2" style="font-size: 16px; background-color:gray; font-weight: bold ;">
+        Escores     
+    </span>
+</h2>
+
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="pageForm">
+    <table border="2" width="100%">
+        <tr>
+            <td  bgcolor="lightsalmon" align="center" valign="middle" rowspan="5">PONTUAÇÃO POR DIMENSÃO</td>
+            <td  bgcolor="LightSkyBlue" align="center" valign="middle" colspan="2"> <b>ASPECTOS PSICOLÓGICOS: {{psi_asp}} </b> (MÁXIMA = 14 PONTOS)</td>
+        </tr>
+        <tr>
+            <td  bgcolor="lightgreen" align="center" valign="middle" colspan="2"><b>ASPECTOS BIOLÓGICOS: {{bio_asp}} </b> (MÁXIMA = 36 PONTOS)</td>
+        </tr>
+        <tr>
+            <td  bgcolor="lightyellow" align="center" valign="middle" colspan="2"><b>ASPECTOS SOCIAIS: {{soc_asp}} </b> (MÁXIMA = 32 PONTOS)</td>
+        </tr>
+        <tr>
+            <td  bgcolor="lightpink" align="center" valign="middle" colspan="2"><b>QUEDAS: {{mul_asp}} </b>  (MÁXIMA = 16 PONTOS)</td>
+        </tr>
+        <tr>
+            <td  bgcolor="lightgrey" align="center" colspan="2"><b>PONTUAÇÃO TOTAL: {{total}}  (MÁXIMA = 98 PONTOS)</b></td>
+        </tr>
+
+        <tr>
+            <td  bgcolor="lightsalmon" align="center" colspan="3"><b>CLASSIFICAÇÃO DE RISCO DE VULNERABILIDADE BIOPSICOSSOCIAL</b></td>
+        </tr>
+        <tr *ngIf="bom">
+            <td  bgcolor="lightgreen" align="center" width="34%"> MAIOR QUE 70 PONTOS = RISCO BAIXO<br> </td>
+            <td  bgcolor="silver" align="center" width="33%"> 69 A 40 PONTOS = RISCO MODERADO<br> </td>
+            <td  bgcolor="silver" align="center" width="33%"> MENOR 40 PONTOS = RISCO ALTO<br> </td>
+        </tr>
+        <tr *ngIf="medio">
+            <td  bgcolor="silver" align="center" width="34%"><br> MAIOR QUE 70 PONTOS = RISCO BAIXO<br></td>
+            <td  bgcolor="khaki" align="center" width="33%"><br> 69 A 40 PONTOS = RISCO MODERADO<br> </td>
+            <td  bgcolor="silver" align="center" width="33%"><br> MENOR 39 PONTOS = RISCO ALTO<br> </td>
+        </tr>
+        <tr *ngIf="ruim">
+            <td  bgcolor="silver" align="center" width="34%"><br> MAIOR QUE 70 PONTOS = RISCO BAIXO<br></td>
+            <td  bgcolor="silver" align="center" width="33%"><br> 69 A 40 PONTOS = RISCO MODERADO<br></td>
+            <td  bgcolor="red" align="center" width="33%"><br> MENOR 39 PONTOS = RISCO ALTO<br></td>
+        </tr>
+    </table>
+    <!--
+    <div class="caixa-100 d-flex justify-content-center align-items-center">
+        <button type="button" [click]="calcula()" class="btn btn-secondary">Atualiza</button>
+    </div>
+    -->
+</div>

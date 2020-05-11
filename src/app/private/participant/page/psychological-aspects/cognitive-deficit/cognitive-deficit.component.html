@@ -2,132 +2,347 @@
 <h2 class="text-center mt-5"><span class="bg-primary rounded-pill rounded-bottom-0 text-white px-5 py-2">Déficit cognitivo</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" *ngIf="cognitiveDeficitForm" [formGroup]="cognitiveDeficitForm">
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="pageForm">
   <!--Perguntas-->
-  <div class="p-3">
-    <!--Pergunta1-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">1.</div>
-        <span class="col-12 col-md-8">O(A) senhor(a) considera que sua memória é tão boa quanto antes?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q1_memory_good_like_before" [class.is-invalid]="q1_memory_good_like_before.invalid && q1_memory_good_like_before.touched">
-            <option value="" selected disabled>Selecione</option>
+  <div class="form-group p-3" formGroupName="psychologicalAspectsForm">
+    <div class="form-group p-3" formGroupName="cognitiveDeficitForm">
+      <app-base>
+        <!-- Lado Esquerdo-->
+        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: lightgrey;">
+          <b>DÉFICIT COGNITIVO</b>
+        </div>
+        
+        <!-- Centro -->
+        <span class="col-12 col-md-9">
+          
+          <!--Pergunta1-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="azul">1.</b> O(A) senhor(a) considera que sua memória é tão boa quanto antes?
+              </div>
+            </span>
+            <span class="col-12 col-md-3">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q1_memory_good_like_before">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                    <img style="margin-left: 10px;" [src]="mudou('q1_memory_good_like_before')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!--Pergunta2-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="azul">2.</b><b> Memória:</b>
+                Eu vou lhe dar um nome e um endereço e eu gostaria  
+                que você os repetisse depois de mim. Nós vamos fazer isso três
+                vezes, assim você terá a possibilidade de aprendê-los. Eu vou lhe
+                perguntar mais tarde. ( Pontuar apenas a terceira tentativa ).<br><br>
+                <center><b>
+                  Renato Moreira<br>
+                  Rua Bela Vista, 73<br>
+                  Santarém<br>
+                  Pará
+                </b></center>
+              </div>
+              <div class="caixa-100">
+                <div class="caixa-70">
+                  Memória - Pontuação: (0 a 7)
+                </div>
+                <div class="caixa-20">
+                  <input style="background-color: whitesmoke;" class="w-100 form-control" type="number" formControlName="q2_memory_test_score">
+                </div>
+                <div class="caixa-10">
+                  <img [src]="mudou('q2_memory_test_score')" width="15px" height="15px">
+                </div>
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q2_memory_test">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q2_memory_test')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+
+          <!------------->
+          <!--Pergunta3-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="azul">3. </b><b>Linguagem, função executiva e atenção:</b>
+                “O(a) senhor(a) deve falar todos os nomes de animais de que se lembrar, o mais
+                rápido possível. Quantos mais falar, melhor. Pode começar”.
+                Anote os nomes de animais falados pelo(a) idoso(a) a cada 15
+                segundos. <b>Pontuação de acordo com escolaridade: 1)
+                analfabetos = 9 animais; 2) 1-7 anos = 12 animais e 3) 8 anos
+                ou mais = 13 animais</b>.
+              </div>
+
+              <div class="caixa-100">
+                <div class="caixa-20">
+                  <img src="assets/q3b1.png" width="100px" height="100px">
+                </div>
+                <div class="caixa-70">
+                  <textarea style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q3_language_function_attention_15">
+                  </textarea> 
+                </div>
+                <div class="caixa-10">
+                  <img [src]="mudou('q3_language_function_attention_15')" width="15px" height="15px">
+                </div>
+              </div>
+
+              <div class="caixa-100">
+                <div class="caixa-20">
+                  <img src="assets/q3b2.png"  width="100px" height="100px">
+                </div>
+                <div class="caixa-70">
+                  <textarea style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q3_language_function_attention_30">
+                  </textarea> 
+                </div>
+                <div class="caixa-10">
+                  <img [src]="mudou('q3_language_function_attention_30')" width="15px" height="15px">
+                </div>
+              </div>
+
+              <div class="caixa-100">
+                <div class="caixa-20">
+                  <img src="assets/q3b3.png"  width="100px" height="100px">
+                </div>
+                <div class="caixa-70">
+                  <textarea style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q3_language_function_attention_45">
+                  </textarea> 
+                </div>
+                <div class="caixa-10">
+                  <img [src]="mudou('q3_language_function_attention_45')" width="15px" height="15px">
+                </div>
+              </div>
+              
+              <div class="caixa-100">
+                <div class="caixa-20">
+                  <img src="assets/q3b4.png"  width="100px" height="100px">
+                </div>
+                <div class="caixa-70">
+                  <textarea style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q3_language_function_attention_60">
+                  </textarea> 
+                </div>
+                <div class="caixa-10">
+                  <img [src]="mudou('q3_language_function_attention_60')" width="15px" height="15px">
+                </div>
+              </div> 
+
+
+              <div class="caixa-100">
+                <div class="caixa-70">
+                  Linguagem, função executiva e atenção - Pontuação: (0 a 100) 
+                </div>
+                <div class="caixa-20">
+                  <input style="background-color: whitesmoke;" class="w-100 form-control" type="number" formControlName="q3_language_function_attention_score">
+                </div>
+                <div class="caixa-10">
+                  <img [src]="mudou('q3_language_function_attention_score')" width="15px" height="15px">
+                </div>
+              </div>
+
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q3_language_function_attention">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q3_language_function_attention')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!------------->
+          <!--Pergunta4-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="azul">4. </b><b>Habilidade visuoespacial:</b>
+              </div>
+
+              <div class="caixa-100">
+                <span class="caixa-70">
+                  Peça ao indivíduo para contar os pontos sem apontá-los - Pontuação: (0 a 4) 
+                </span>
+                <div class="caixa-20">
+                  <input style="background-color: whitesmoke;" class="w-100 form-control" type="number" formControlName="q4_visospatial_ability_score">
+                </div>
+                <span class="caixa-10">
+                  <img [src]="mudou('q4_visospatial_ability_score')" width="15px" height="15px">
+                </span>
+              </div>
+              
+              <div class="caixa-100">
+                <span class="caixa-30">
+                  <img src="assets/q4q1.png" width="150px" height="150px">              
+                </span>
+                <div class="caixa-10">
+                  <input type="text" style="background-color: whitesmoke;" class="w-100 form-control">
+                </div>
+
+                <div class="caixa-10"></div>
+                
+                <span class="caixa-30">
+                  <img src="assets/q4q2.png" width="150px" height="150px">            
+                </span>
+                <div class="caixa-10">
+                  <input type="text" style="background-color: whitesmoke;" class="w-100 form-control">
+                </div> 
+              </div>
+
+      
+              <div class="caixa-100">
+                <span class="caixa-30">
+                  <img src="assets/q4q3.png" width="150px" height="150px"><br>              
+                </span>
+                <div class="caixa-10">
+                  <input type="text" style="background-color: whitesmoke;" class="w-100 form-control">
+                </div>
+
+                <div class="caixa-10"></div> 
+
+                <span class="caixa-30">
+                  <img src="assets/q4q4.png" width="150px" height="150px"><br>              
+                </span>
+                <div class="caixa-10">
+                  <input type="text" style="background-color: whitesmoke;" class="w-100 form-control">
+                </div> 
+              </div>
+            </span>
+
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q4_visospatial_ability">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q4_visospatial_ability')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+          <!------------->
+
+          <!--Pergunta5-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="azul">5. </b>Praxia: (Esteja com uma folha em mãos) “Pegue este papel
+                com a mão direita. Dobre-o ao meio e coloque-o sobre a mesa”
+                (Falar todos os comandos de uma só vez).
+              </div>
+            
+              <div class="caixa-100">
+                <span class="caixa-70">Praxia - Pontuação: (0 a 3) </span>
+                <div class="caixa-20">
+                  <input style="background-color: whitesmoke;" class="w-100 form-control" type="number" formControlName="q5_praxia_score">
+                </div>
+                <span class="caixa-10">
+                  <img [src]="mudou('q5_praxia_score')" width="15px" height="15px">
+                </span>
+              </div>             
+            </span>
+
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q5_praxia">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q5_praxia')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+          <!------------->
+
+          <!--Pergunta6-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="azul">6. </b>Memória: Agora você vai me dizer o que você se lembra
+                daquele nome e endereço que nós repetimos no começo.<br><br>
+                <center><b>
+                  Renato Moreira<br>
+                  Rua Bela Vista, 73<br>
+                  Santarém<br>
+                  Pará
+                </b></center>
+              </div>
+              <div class="caixa-100">
+                <span class="caixa-70">Memória - Pontuação: (0 a 5) </span>
+                <div class="caixa-20">
+                  <input style="background-color: whitesmoke;" class="w-100 form-control" type="number" formControlName="q6_memory_test_score">
+                </div>
+                <span class="caixa-10">
+                  <img [src]="mudou('q6_memory_test_score')" width="15px" height="15px">
+                </span>
+              </div>
+            </span>
+
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q6_memory_test">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q6_memory_test')" width="15px" height="15px">
+              </div>                  
+            </span>
+          </app-base>          
+        </span> 
+        <!-- final das perguntas -->
+
+        <!-- Lado Direito-->  
+        <span class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color:lightskyblue ;">
+          <!--Pontuation-->
+          Pontuação: (<b>{{conta_certo()}}</b>) - máximo: ({{max_score}})
+        </span>
+        <span class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color:lightskyblue ;">
+            <!--Intervenção-->
+          Necessita de investigação?                      
+          <select style="margin-top:40px; background-color: whitesmoke; width: 100%; transform: rotate(90deg);" class="form-control"  formControlName="need_investigation_cognition">
+            <option value="" selected disabled></option>
             <option value="S">Sim</option>
             <option value="N">Não</option>
           </select>
-        </div>
-      </div>
+          <img [src]="mudou('need_investigation_cognition')" width="15px" height="15px" style="margin-top: 20px;">
+        </span>          
+        
+        <div class="caixa-100">
+          <app-status [valido]="formValido()" [branco]="branco" [errado]="errado"></app-status>
+        </div> 
+        
+      </app-base>
     </div>
-    <!------------->
-    <!--Pergunta2-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">2.</div>
-        <span class="col-12 col-md-8">Memória:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q2_memory_test" [class.is-invalid]="q2_memory_test.invalid && q2_memory_test.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta3-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">3.</div>
-        <span class="col-12 col-md-8">Linguagem, função executiva e atenção:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q3_language_function_attention" [class.is-invalid]="q3_language_function_attention.invalid && q3_language_function_attention.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta4-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">4.</div>
-        <span class="col-12 col-md-8">Habilidade visuoespacial:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q4_visospatial_ability" [class.is-invalid]="q4_visospatial_ability.invalid && q4_visospatial_ability.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta4A-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1"></div>
-        <span class="col-12 col-md-8">Habilidade visuoespacial - Pontuação:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100 form-control" type="number" formControlName="q4_visospatial_ability_score" [class.is-invalid]="q4_visospatial_ability_score.invalid && q4_visospatial_ability_score.touched">
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta5-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">5.</div>
-        <span class="col-12 col-md-8">Praxia:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q5_praxia" [class.is-invalid]="q5_praxia.invalid && q5_praxia.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta6-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">6.</div>
-        <span class="col-12 col-md-8">Memória:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q6_memory_test" [class.is-invalid]="q6_memory_test.invalid && q6_memory_test.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
   </div>
-  <!------------->
-  <!--Pontuation-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <span class="text-primary font-weight-bold h4 mr-3">Pontuação:</span>
-    <span class="h5">6 pontos</span>
-  </div>
-  <!------------->
-  <!--Intervenção-->
-  <div class="d-flex flex-wrap w-25 mx-auto justify-content-center align-items-center p-3">
-    <label class="text-center mb-0 ml-2" for="depression-intervention" style="flex-basis: 100%">Necessita intervenção?</label>
-    <select class="w-100 form-control" id="depression-intervention" formControlName="need_investigation_cognition" [class.is-invalid]="need_investigation_cognition.invalid && need_investigation_cognition.touched">
-      <option value="" selected disabled>Selecione</option>
-      <option value="S">Sim</option>
-      <option value="N">Não</option>
-    </select>
-  </div>
-  <!--------------->
-  <!--Continue-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <button class="btn btn-primary" (click)="submit()">Salvar</button>
-  </div>
-  <!------------>
 </div>
 <!----------->

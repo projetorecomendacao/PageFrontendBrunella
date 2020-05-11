@@ -221,3 +221,315 @@ input.form-control {
     width: 100% !important;
   }
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+
+* {
+  font-family: "Roboto", sans-serif;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: 22px;
+}
+
+.ast{
+  font-size: xx-large;
+  color: red; 
+}
+
+.ok{
+  font-size: xx-large;
+  color:green; 
+}
+
+.borda-lado{
+  border-right-color: lightgray;
+  border-right-style: solid;
+  border-right-width: 2px;
+}
+
+.border-bottom-form{
+  border-bottom-color: lightgray ;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+}
+
+.azul{
+  color: #0062cc;
+}
+
+.green{
+  color: mediumseagreen ;
+}
+
+.gold{
+  color: #ffc107 ;
+}
+
+.fuch{
+  color: fuchsia ;
+}
+
+
+.example.Text3 span, .example.Text3 {
+  writing-mode: vertical-lr;
+  -webkit-writing-mode: vertical-lr;
+  -ms-writing-mode: vertical-lr;
+}
+
+.caixa-70{
+  width: 70%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.caixa-75{
+  width: 75%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.caixa-75p{
+  width: 75%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.caixa-20{
+  width: 20%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.caixa-10{
+  width: 10%;
+  float: left;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.caixa-100{
+  width: 100%; 
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.caixa-90{
+  width: 90%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;  
+}
+
+.caixa-95{
+  width: 96%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;  
+}
+
+.caixa-955{
+  width: 95%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;  
+}
+
+.caixa-85{
+  width: 85%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;  
+}
+
+.caixa-25{
+  width: 25%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;  
+}
+
+.caixa-5{
+  width: 5%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px; 
+  padding-left: 10px; 
+}
+
+.caixa-4{
+  width: 4%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px; 
+  padding-left: 10px; 
+}
+
+.caixa-15{
+  width: 15%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px; 
+  padding-left: 10px;
+}
+
+.caixa-15r{
+  width: 15%;
+  float: right;
+  margin-top: 5px;
+  margin-bottom: 5px; 
+  padding-left: 10px;
+}
+
+.caixa-30{
+  width: 30%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.caixa-40{
+  width: 40%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.caixa-45{
+  width: 45%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.caixa-35{
+  width: 35%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.caixa-50{
+  width: 50%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.caixa-60{
+  width: 60%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.caixa-80{
+  width: 80%;
+  float: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+
+.fu{
+  background-color: whitesmoke;
+}
+
+.fu-not{
+  background-color: white;
+}
+
+.mage {
+  background-color: magenta;
+}
+
+.gray {
+  background-color: gray;
+}
+
+.lg{
+  padding-top: 20px;
+}
+
+.lg-10{
+  padding-top: 10px;
+}
+
+.t10{
+  padding-top: 10px;  
+}
+
+.mtb{
+  margin-bottom: 15px;
+  margin-top: 15px;
+  border-bottom-color: lightgray ;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-top-color: lightgray ;
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+
+.centro {
+  background-color: lemonchiffon;
+  text-align: center;
+  border-bottom-color: lightgray ;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-top-color: lightgray ;
+  border-top-style: solid;
+  border-top-width: 2px;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+ 
+}
+
+.centro2 {
+  background-color: lightgray;
+  text-align: center;
+  border-bottom-color: lightgray ;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-top-color: lightgray ;
+  border-top-style: solid;
+  border-top-width: 2px;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+ 
+}
+
+.centro-multi {
+  background-color: violet;
+  text-align: center;
+  border-bottom-color: lightgray ;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-top-color: lightgray ;
+  border-top-style: solid;
+  border-top-width: 2px;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
+}
+
+.bordaInst {
+  background-color: white;
+  text-align: justify;
+  border-color: lightgray ;
+  border-style: solid;
+  border-width: 3px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

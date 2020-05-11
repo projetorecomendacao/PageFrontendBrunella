@@ -1,10 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DAOService } from '../../../../shared/dao.service';
-import { REST_URL_PARTICIPANT_SITUATION } from '../../../../shared/REST_API_URLs';
-import { ParticipantSituation } from '../../../../shared/models/participant.model';
-import { PageService } from '../page.service';
-import {Router} from '@angular/router';
+import { Component, Input, OnInit} from '@angular/core';
+import { FormGroup} from '@angular/forms';
+import { ChecaCampo } from 'src/app/shared/checa-campo';
+import { Participant } from 'src/app/shared/models/participant.model';
+
 
 @Component({
   selector: 'app-participant-form',
@@ -12,101 +10,73 @@ import {Router} from '@angular/router';
 })
 export class ParticipantFormComponent implements OnInit {
 
-  private participantSituation: ParticipantSituation;
+  @Input() pageForm: FormGroup;
+  @Input() participant: Participant;
 
-  private participantSituationForm: FormGroup;
+  // variáveis booleans que controlam as mensagens de certo e errado no final do form
+  private errado: boolean = false;
+  private branco: boolean = true;
 
-  get p07_marital_status() { return this.participantSituationForm.get('p07_marital_status'); }
-  get p08_schooling() { return this.participantSituationForm.get('p08_schooling'); }
-  get p09_study_time() { return this.participantSituationForm.get('p09_study_time'); }
-  get p10_is_retired() { return this.participantSituationForm.get('p10_is_retired'); }
-  get p10_actual_profession() { return this.participantSituationForm.get('p10_actual_profession'); }
-  get p12_is_working_professionals_activities() { return this.participantSituationForm.get('p12_is_working_professionals_activities'); }
-  get p13_income_I() { return this.participantSituationForm.get('p13_income_I'); }
-  get p13_income_F() { return this.participantSituationForm.get('p13_income_F'); }
-  get p15_has_religion() { return this.participantSituationForm.get('p15_has_religion'); }
-  get p16_health_self_report() { return this.participantSituationForm.get('p16_health_self_report'); }
-  get p20_weight() { return this.participantSituationForm.get('p20_weight'); }
-  get p20_height() { return this.participantSituationForm.get('p20_height'); }
-  get p20_IMC() { return this.participantSituationForm.get('p20_IMC'); }
 
-  constructor(private fb: FormBuilder, private dao: DAOService, private pageService: PageService, private route: Router) {
-    // DEBUG
-    // route.navigate([route.url + '/multidisciplinary-domain']);
+  //dominio e dimensão
+  private dimensao: string = '';
+  private dominio: string = 'participantFormForm'; 
+
+  // método que verifica a situação dos campos do form
+  mudou(campo: string): string{ 
+    var volta: string = this.checaCampo.inicio();
+    if(this.pageForm.get(this.dominio).get(campo).valid){
+      volta=this.checaCampo.checa(true);
+    } else {
+      if(!this.pageForm.get(this.dominio).get(campo).pristine){
+        volta = this.checaCampo.checa(false);
+      }
+    }
+    return volta;
   }
 
-  ngOnInit() {
-    if (this.pageService.page.getParticipant_situationId())
-      this.dao.getObject(REST_URL_PARTICIPANT_SITUATION, this.pageService.page.getParticipant_situationId().toString()).subscribe(response => {
-        this.pageService.page.setParticipant_situation(new ParticipantSituation(response));
-        this.participantSituation = this.pageService.participantSituation;
-        this.participantSituationForm = this.fb.group({
-          p07_marital_status: [this.participantSituation.getQ7(), [Validators.required, Validators.maxLength(30)]],
-          p08_schooling: [this.participantSituation.getQ8(), [Validators.required, Validators.maxLength(35)]],
-          p09_study_time: [this.participantSituation.getQ9(), Validators.required],
-          p10_is_retired: [this.participantSituation.getQ10A(), [Validators.required, Validators.maxLength(1)]],
-          p10_retired_profession: [this.participantSituation.getQ10B(), Validators.maxLength(30)],
-          p10_actual_profession: [this.participantSituation.getQ10C(), [Validators.required, Validators.maxLength(30)]],
-          p11_retire_more_time_activity: [this.participantSituation.getQ11(), Validators.maxLength(30)],
-          p12_is_working_professionals_activities: [this.participantSituation.getQ12A(), [Validators.required, Validators.maxLength(1)]],
-          p12_professional_activities: [this.participantSituation.getQ12B(), Validators.maxLength(30)],
-          p13_income_I: [this.participantSituation.getQ13A(), [Validators.required, Validators.maxLength(70)]],
-          p13_income_F: [this.participantSituation.getQ13B(), [Validators.required, Validators.maxLength(70)]],
-          p14_lives_with: [this.participantSituation.getQ14()],
-          p15_has_religion: [this.participantSituation.getQ15A(), [Validators.required, Validators.maxLength(1)]],
-          p15_religion: [this.participantSituation.getQ15B(), Validators.maxLength(30)],
-          p16_health_self_report: [this.participantSituation.getQ16(), Validators.required],
-          p20_weight: [this.participantSituation.getQ20A(), Validators.required],
-          p20_height: [this.participantSituation.getQ20B(), Validators.required],
-          p20_IMC: [this.participantSituation.getQ20C(), Validators.required]
-        });
-      });
-    else
-      this.participantSituationForm = this.fb.group({
-        p07_marital_status: ['', [Validators.required, Validators.maxLength(30)]],
-        p08_schooling: ['', [Validators.required, Validators.maxLength(35)]],
-        p09_study_time: ['', Validators.required],
-        p10_is_retired: ['', [Validators.required, Validators.maxLength(1)]],
-        p10_retired_profession: ['', Validators.maxLength(30)],
-        p10_actual_profession: ['', [Validators.required, Validators.maxLength(30)]],
-        p11_retire_more_time_activity: ['', Validators.maxLength(30)],
-        p12_is_working_professionals_activities: ['', [Validators.required, Validators.maxLength(1)]],
-        p12_professional_activities: ['', Validators.maxLength(30)],
-        p13_income_I: ['', [Validators.required, Validators.maxLength(70)]],
-        p13_income_F: ['', [Validators.required, Validators.maxLength(70)]],
-        p14_lives_with: [''],
-        p15_has_religion: ['', [Validators.required, Validators.maxLength(1)]],
-        p15_religion: ['', Validators.maxLength(30)],
-        p16_health_self_report: ['', Validators.required],
-        p20_weight: ['', Validators.required],
-        p20_height: ['', Validators.required],
-        p20_IMC: ['', Validators.required]
-      });
-  }
-
-  submit() {
-    if (this.participantSituationForm.valid)
-      if (this.participantSituation) {
-        const dirtyProps = { id: this.participantSituation.getId() };
-        let hasDirtyProps = false;
-
-        for (const prop in this.participantSituationForm.controls) {
-          const propFormControl = this.participantSituationForm.get(prop);
-          if (propFormControl.dirty) {
-            dirtyProps[prop] = propFormControl.value;
-            hasDirtyProps = true;
-          }
+  // método que verifica se o form está válido
+  formValido(): Boolean{
+    this.branco = false;
+    this.errado = false;
+    for (var caca in this.pageForm.get(this.dominio).value){
+      if(!this.pageForm.get(this.dominio).get(caca).valid){
+        if(this.pageForm.get(this.dominio).get(caca).pristine){
+          this.branco = true;
+        } else {
+          this.errado = true;
         }
+      }
+    }
+    return this.pageForm.get(this.dominio).valid;
+  }
 
-        if (hasDirtyProps) this.dao.patchObject(REST_URL_PARTICIPANT_SITUATION, dirtyProps).subscribe(data => {
-          this.participantSituation = new ParticipantSituation(data);
-          this.pageService.setParticipantSituation(this.participantSituation);
-        });
+  calculaIMC(){
+    let peso: number=1;
+    let altura: number=1;
+    if (this.pageForm.get(this.dominio).get('p20_weight').valid){
+      peso = this.pageForm.get(this.dominio).get('p20_weight').value;
+    }
+    if (this.pageForm.get(this.dominio).get('p20_height').valid){
+      altura = this.pageForm.get(this.dominio).get('p20_height').value;
+    }
+    let IMC = peso / (altura * altura);
+    this.pageForm.get(this.dominio).get('p20_IMC').setValue(IMC);
+  }
 
-      } else this.dao.postObject(REST_URL_PARTICIPANT_SITUATION, this.participantSituationForm.getRawValue()).subscribe(data => {
-        this.participantSituation = new ParticipantSituation(data);
-        this.pageService.setParticipantSituation(this.participantSituation);
-      });
-    this.participantSituationForm.markAllAsTouched();
+  constructor(private checaCampo: ChecaCampo){
+    
+  }
+
+  ngOnInit() { 
+    this.pageForm.get(this.dominio).get('p03_communication').setValue(this.participant.getCommunication());
+    this.pageForm.get(this.dominio).get('p02_address').setValue(this.participant.getAddress());
+  }
+
+  submit() { 
+    for (var caca in this.pageForm.get('cabecaPageForm').value){
+      this.pageForm.get('cabecaPageForm').get(caca).markAsTouched;
+      this.pageForm.get('cabecaPageForm').get(caca).updateValueAndValidity;
+    }
   }
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IndexComponent } from './index.component';
 import {SecurityModule} from '../security/security.module';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -9,7 +10,8 @@ import {SecurityModule} from '../security/security.module';
   declarations: [IndexComponent],
   imports: [
     CommonModule,
-    SecurityModule
+    SecurityModule,
+    MatTabsModule
   ]
 })
 export class IndexModule { }

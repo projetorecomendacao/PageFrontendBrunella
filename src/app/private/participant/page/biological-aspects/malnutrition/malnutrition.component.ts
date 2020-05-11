@@ -1,78 +1,144 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Malnutrition } from '../../../../../shared/models/biological-aspects.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DAOService } from '../../../../../shared/dao.service';
-import { REST_URL_MALNUTRITION } from '../../../../../shared/REST_API_URLs';
+import { Component, Input, OnInit} from '@angular/core';
+import { FormGroup} from '@angular/forms';
+import { ChecaCampo } from 'src/app/shared/checa-campo';
+
 
 @Component({
   selector: 'app-malnutrition',
   templateUrl: './malnutrition.component.html'
 })
+
 export class MalnutritionComponent implements OnInit {
 
-  @Input('malnutrition') malnutritionInput: Malnutrition;
-  @Output('malnutrition') malnutritionOutput = new EventEmitter<Malnutrition>();
+  @Input() pageForm: FormGroup;
+  
+  //variável que verifica se houver perda de peso
+  private perdeuPeso : boolean;
 
-  private malnutritionForm: FormGroup;
+  // variáveis booleans que controlam as mensagens de certo e errado no final do form
+  private errado: boolean = false;
+  private branco: boolean = true;
 
-  get d26_yourself_malnourished() { return this.malnutritionForm.get('d26_yourself_malnourished'); }
-  get d27_chewing_mouth_problems() { return this.malnutritionForm.get('d27_chewing_mouth_problems'); }
-  get d28_less3_meal_daily() { return this.malnutritionForm.get('d28_less3_meal_daily'); }
-  get d29_decreases_amount_food() { return this.malnutritionForm.get('d29_decreases_amount_food'); }
-  get d30_lost_weight_no_reason() { return this.malnutritionForm.get('d30_lost_weight_no_reason'); }
-  get d31_stress_illness_hospitalization() { return this.malnutritionForm.get('d31_stress_illness_hospitalization'); }
-  get q32_bmi_less22() { return this.malnutritionForm.get('q32_bmi_less22'); }
-  get need_investigation_malnutrition() { return this.malnutritionForm.get('need_investigation_malnutrition'); }
+  //dominio e dimensão
+  private dimensao: string = 'malnutritionForm';
+  private dominio: string = 'biologicalAspectsForm'; 
+  
+  //Pontuação máxima
+  private max_score : number = 7;
+  //Pontos da dimensão
+  private score : number = 0;
+  //Campos que são válidos para contar o número de acertos
+  vetConta: string[] = ['q26_yourself_malnourished','q27_chewing_mouth_problems','q28_less3_meal_daily',
+                        'q29_decreases_amount_food','q30_lost_weight_no_reason', 'q31_stress_illness_hospitalization',
+                        'q32_bmi_less22']
 
-  constructor(private fb: FormBuilder, private dao: DAOService) { }
+  vetGabarito: string[] = ['N','N','N','N','N','N','N'];
+  
+  //O serviço checa campo retorna as imanges de verificação dos campos 
+  constructor(private checaCampo : ChecaCampo) { 
+    
+  }
+  
+  //contagem dos campos que combinam para calcular o score
+  conta_certo(): number{
+    //Verifica se houve stress, internação ou doença nos últimos 3 meses
+    var a = this.pageForm.get(this.dominio).get(this.dimensao).get('q31_stress').value;
+    var b = this.pageForm.get(this.dominio).get(this.dimensao).get('q31_illnes').value;
+    var c = this.pageForm.get(this.dominio).get(this.dimensao).get('q31_hospital').value;
+    if( a=='S' || b== 'S' || c == 'S'){
+      this.pageForm.get(this.dominio).get(this.dimensao).get('q31_stress_illness_hospitalization').setValue('S');
+    } else {
+      this.pageForm.get(this.dominio).get(this.dimensao).get('q31_stress_illness_hospitalization').setValue('N');
+    }
 
-  ngOnInit() {
-    if (this.malnutritionInput) this.malnutritionForm = this.fb.group({
-      d26_yourself_malnourished: [this.malnutritionInput.getQ26(), [Validators.required, Validators.maxLength(1)]],
-      d27_chewing_mouth_problems: [this.malnutritionInput.getQ27(), [Validators.required, Validators.maxLength(1)]],
-      d28_less3_meal_daily: [this.malnutritionInput.getQ28(), [Validators.required, Validators.maxLength(1)]],
-      d29_decreases_amount_food: [this.malnutritionInput.getQ29(), [Validators.required, Validators.maxLength(1)]],
-      d30_lost_weight_no_reason: [this.malnutritionInput.getQ30(), [Validators.required, Validators.maxLength(15)]],
-      d31_stress_illness_hospitalization: [this.malnutritionInput.getQ31(), [Validators.required, Validators.maxLength(1)]],
-      q32_bmi_less22: [this.malnutritionInput.getQ32(), [Validators.required, Validators.maxLength(1)]],
-      need_investigation_malnutrition: [this.malnutritionInput.getNeedInvestigation(), [Validators.required, Validators.maxLength(1)]],
-    });
-    else this.malnutritionForm = this.fb.group({
-      d26_yourself_malnourished: ['', [Validators.required, Validators.maxLength(1)]],
-      d27_chewing_mouth_problems: ['', [Validators.required, Validators.maxLength(1)]],
-      d28_less3_meal_daily: ['', [Validators.required, Validators.maxLength(1)]],
-      d29_decreases_amount_food: ['', [Validators.required, Validators.maxLength(1)]],
-      d30_lost_weight_no_reason: ['', [Validators.required, Validators.maxLength(15)]],
-      d31_stress_illness_hospitalization: ['', [Validators.required, Validators.maxLength(1)]],
-      q32_bmi_less22: ['', [Validators.required, Validators.maxLength(1)]],
-      need_investigation_malnutrition: ['', [Validators.required, Validators.maxLength(1)]],
-    });
+    //Verifica se houve perda de peso
+    if(this.pageForm.get(this.dominio).get(this.dimensao).get('q30_lost_weight_no_reason').value == 'N'){
+      this.pageForm.get(this.dominio).get(this.dimensao).get('q30_lost_weight_no_reason_amount').setValue('nda');  
+      this.perdeuPeso = false;      
+    } else {
+      this.perdeuPeso = true;
+    }
+
+
+    this.score = 0;
+    for (let i=0;  i < this.max_score; i++){
+      if (this.vetGabarito[i] == this.pageForm.get(this.dominio).get(this.dimensao).get(this.vetConta[i]).value){
+        this.score++;
+      }
+    }
+    this.pageForm.get(this.dominio).get(this.dimensao).get('score').setValue(this.score);
+    return this.score;
+  }
+  
+
+
+  ngOnInit():void {
+  }
+  
+  // método que verifica a situação dos campos do form
+  mudou(campo: string): string{ 
+    var volta: string = this.checaCampo.inicio();
+    if(!this.pageForm.get(this.dominio).get(this.dimensao).get(campo).pristine){
+      volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid);
+    }
+    
+    if (campo == 'q30_lost_weight_no_reason_amount'){
+      volta = this.checaCampo.checa(this.checaPeso());
+    }
+    return volta;
   }
 
-  submit() {
-    if (this.malnutritionForm.valid)
-      if (this.malnutritionInput) {
-        const dirtyProps = { id: this.malnutritionInput.getId() };
-        let hasDirtyProps = false;
+ //verifica se o peso e a quantidade de peso perdido são correspondentes
+  checaPeso():boolean {     
+    return !(this.pageForm.get(this.dominio).get(this.dimensao).get('q30_lost_weight_no_reason').value == 'S' &&
+    this.pageForm.get(this.dominio).get(this.dimensao).get('q30_lost_weight_no_reason_amount').value == 'nda');
+  }
 
-        for (const prop in this.malnutritionForm.controls) {
-          const propFormControl = this.malnutritionForm.get(prop);
-          if (propFormControl.dirty) {
-            dirtyProps[prop] = propFormControl.value;
-            hasDirtyProps = true;
-            propFormControl.markAsPristine();
-          }
+  // método que verifica se o form está válido
+  formValido(): Boolean{
+    this.branco = false;
+    this.errado = false;
+    for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+      if(!this.pageForm.get(this.dominio).get(this.dimensao).get(caca).valid){
+        if(this.pageForm.get(this.dominio).get(this.dimensao).get(caca).pristine){
+          this.branco = true;
+        } else {
+          this.errado = true;
         }
+      }
+    }
+  
+    //verifica se houver perda de peso e o amount é diferente de nada
+    if (! this.checaPeso()){
+      this.errado=true;
+      return false;
+    }
 
-        if (hasDirtyProps) this.dao.patchObject(REST_URL_MALNUTRITION, dirtyProps).subscribe(data => {
-          this.malnutritionInput = new Malnutrition(data);
-          this.malnutritionOutput.emit(this.malnutritionInput);
-        });
+    return this.pageForm.get(this.dominio).get(this.dimensao).valid;
+  }
 
-      } else this.dao.postObject(REST_URL_MALNUTRITION, this.malnutritionForm.getRawValue()).subscribe(data => {
-        this.malnutritionInput = new Malnutrition(data);
-        this.malnutritionOutput.emit(this.malnutritionInput);
-      });
-    this.malnutritionForm.markAllAsTouched();
+  fperdeuPeso():Boolean{
+    return this.perdeuPeso;
+  }
+
+
+  //Calcula o IMC
+  calculaIMC():number{
+    var peso =  this.pageForm.get('participantFormForm').get('p20_weight').value;
+    var altura = this.pageForm.get('participantFormForm').get('p20_height').value;
+    var imc = peso / (altura*altura);
+    if (imc < 22) {
+      this.pageForm.get(this.dominio).get(this.dimensao).get('q32_bmi_less22').setValue('S');
+    } else {
+      this.pageForm.get(this.dominio).get(this.dimensao).get('q32_bmi_less22').setValue('N');
+    }
+    return imc;
+  }  
+
+  submit() {
+    for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+      this.pageForm.get(this.dominio).get(this.dimensao).get(caca).markAsTouched;
+      this.pageForm.get(this.dominio).get(this.dimensao).get(caca).updateValueAndValidity;
+    }
   }
 }

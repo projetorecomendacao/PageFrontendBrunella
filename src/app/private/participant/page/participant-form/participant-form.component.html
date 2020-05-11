@@ -1,274 +1,444 @@
 <!--Title-->
-<h2 class="text-center mt-5"><span class="bg-secondary rounded-pill rounded-bottom-0 text-white px-5 py-2">Dados gerais</span></h2>
-<!--------->
-<!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
-  <!--Perguntas-->
-  <div class="p-3" *ngIf="participantSituationForm" [formGroup]="participantSituationForm">
-    <!--Pergunta1-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">1.</div>
-        <span class="col-12 col-md-8">Estado civil:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="p07_marital_status" [class.is-invalid]="p07_marital_status.invalid && p07_marital_status.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="Solteiro(a)">Solteiro(a)</option>
-            <option value="Casado(a)/União Estável">Casado(a)/União Estável</option>
-            <option value="Separado(a)/Divorciado(a)">Separado(a)/Divorciado(a)</option>
-            <option value="Viúvo(a)">Viúvo(a)</option>
-          </select>
-        </div>
+<h2 class="text-center mt-5"><span class="gray rounded-pill rounded-bottom-0 text-white px-5 py-2">Dados de Identificação</span></h2>
+
+
+<div class="w-xl-75 w-d-flex align-items-center-75 mx-auto border bg-white shadow-d-flex align-items-center" [formGroup]="pageForm">
+    <!--Perguntas-->
+  <div class="form-group p-3" formGroupName="participantFormForm">
+    <app-base>
+      <!-- Lado Esquerdo-->
+      <div class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: lightgrey;">
+        <b>DADOS DE IDENTIFICAÇÃO</b>
       </div>
-    </div>
-    <!------------->
-    <!--Pergunta2-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">2.</div>
-        <span class="col-12 col-md-8">Escolaridade:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="p08_schooling" [class.is-invalid]="p08_schooling.invalid && p08_schooling.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="analfabeto">analfabeto</option>
-            <option value="ensino fundamental (incompleto)">ensino fundamental (incompleto)</option>
-            <option value="ensino fundamental (completo)">ensino fundamental (completo)</option>
-            <option value="ensino médio (incompleto)">ensino médio (incompleto)</option>
-            <option value="ensino médio (completo)">ensino médio (completo)</option>
-            <option value="ensino superior (incompleto)">ensino superior (incompleto)</option>
-            <option value="ensino superior (completo)">ensino superior (completo)</option>
-            <option value="ensino supeiror (com pós-graduação)">ensino supeiror (com pós-graduação)</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta3-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">3.</div>
-        <span class="col-12 col-md-8">Tempo de estudo:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100 form-control" type="number" formControlName="p09_study_time" [class.is-invalid]="p09_study_time.invalid && p09_study_time.touched">
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta4-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">4.</div>
-        <span class="col-12 col-md-8">É Aposentado ou pensionista?:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="p10_is_retired" [class.is-invalid]="p10_is_retired.invalid && p10_is_retired.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta5-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">5.</div>
-        <span class="col-12 col-md-8">Aposentado por qual profissao:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100 form-control" type="text" formControlName="p10_retired_profession">
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta6-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">6.</div>
-        <span class="col-12 col-md-8">Profissão atual:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100 form-control" type="text" formControlName="p10_actual_profession" [class.is-invalid]="p10_actual_profession.invalid && p10_actual_profession.touched">
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta7-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">7.</div>
-        <span class="col-12 col-md-8">Se aposentado, qual profissão exerceu por mais tempo:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100 form-control" type="text" formControlName="p11_retire_more_time_activity">
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta8-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">8.</div>
-        <span class="col-12 col-md-8">Exerce atividade remunerada?:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="p12_is_working_professionals_activities" [class.is-invalid]="p12_is_working_professionals_activities.invalid && p12_is_working_professionals_activities.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta9-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">9.</div>
-        <span class="col-12 col-md-8">Atividade Remunerada exercida:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100 form-control" type="text" formControlName="p12_professional_activities">
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta10-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">10.</div>
-        <span class="col-12 col-md-8">Rendimento Mensal Individual:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="p13_income_I" [class.is-invalid]="p13_income_I.invalid && p13_income_I.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="BPC">BPC</option>
-            <option value="Até um salário mínimo">Até um salário mínimo</option>
-            <option value="Entre 1 e 2 salários mínimos">Entre 1 e 2 salários mínimos</option>
-            <option value="Entre 2 e 3 salários mínimos">Entre 1 e 2 salários mínimos</option>
-            <option value="Entre 3 e 4 salários mínimos">Entre 1 e 2 salários mínimos</option>
-            <option value="Entre 4 e 5 salários mínimos">Entre 1 e 2 salários mínimos</option>
-            <option value="Entre 5 e 10 salários mínimos">Entre 1 e 2 salários mínimos</option>
-            <option value="mais de 10 salários mínimos">Mais de 10 salários mínimos</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!-------------->
-    <!--Pergunta11-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">11.</div>
-        <span class="col-12 col-md-8">Rendimento Mensal Familiar:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="p13_income_F" [class.is-invalid]="p13_income_F.invalid && p13_income_F.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="BPC">BPC</option>
-            <option value="Até um salário mínimo">Até um salário mínimo</option>
-            <option value="Entre 1 e 2 salários mínimos">Entre 1 e 2 salários mínimos</option>
-            <option value="Entre 2 e 3 salários mínimos">Entre 1 e 2 salários mínimos</option>
-            <option value="Entre 3 e 4 salários mínimos">Entre 1 e 2 salários mínimos</option>
-            <option value="Entre 4 e 5 salários mínimos">Entre 1 e 2 salários mínimos</option>
-            <option value="Entre 5 e 10 salários mínimos">Entre 1 e 2 salários mínimos</option>
-            <option value="mais de 10 salários mínimos">Mais de 10 salários mínimos</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!-------------->
-    <!--Pergunta12-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">12.</div>
-        <span class="col-12 col-md-8">Mora com:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <textarea class="w-100 form-control" formControlName="p14_lives_with"></textarea>
-        </div>
-      </div>
-    </div>
-    <!-------------->
-    <!--Pergunta13-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">13.</div>
-        <span class="col-12 col-md-8">Possui religião?:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="p15_has_religion" [class.is-invalid]="p15_has_religion.invalid && p15_has_religion.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!-------------->
-    <!--Pergunta14-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">14.</div>
-        <span class="col-12 col-md-8">Religião:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100 form-control" type="text" formControlName="p15_religion">
-        </div>
-      </div>
-    </div>
-    <!-------------->
-    <!--Pergunta15-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">15.</div>
-        <span class="col-12 col-md-8">Autorelato de saúde:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <textarea class="w-100 form-control" formControlName="p16_health_self_report" [class.is-invalid]="p16_health_self_report.invalid && p16_health_self_report.touched"></textarea>
-        </div>
-      </div>
-    </div>
-    <!-------------->
-    <!--Pergunta16-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">16.</div>
-        <span class="col-12 col-md-8">Peso:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100 form-control" type="number" formControlName="p20_weight" [class.is-invalid]="p20_weight.invalid && p20_weight.touched">
-        </div>
-      </div>
-    </div>
-    <!-------------->
-    <!--Pergunta17-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">17.</div>
-        <span class="col-12 col-md-8">Altura:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100 form-control" type="number" formControlName="p20_height" [class.is-invalid]="p20_height.invalid && p20_height.touched">
-        </div>
-      </div>
-    </div>
-    <!-------------->
-    <!--Pergunta18-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">18.</div>
-        <span class="col-12 col-md-8">IMC:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100 form-control" type="number" formControlName="p20_IMC" [class.is-invalid]="p20_IMC.invalid && p20_IMC.touched">
-        </div>
-      </div>
-    </div>
-    <!-------------->
-    <!--Pergunta19-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-secondary font-weight-bold">19.</div>
-        <span class="col-12 col-md-8">Observações:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <textarea class="w-100 form-control" disabled></textarea>
-        </div>
-      </div>
-    </div>
-    <!-------------->
+
+      <!-- Centro -->
+      <span class="col-12 col-md-11">
+
+        <!-- Nome -->
+        <app-base>
+          <div class="caixa-100">
+            <div class="caixa-15 d-flex align-items-center">
+              <b>1. </b>Nome:           
+            </div>
+            <div class="caixa-80">
+              <div class="caixa-100">
+                <input class="w-100 fu-not" type="text" [value]="participant.getName()" disabled > 
+              </div>
+            </div>
+            <div class="caixa-5"></div>
+          </div>
+          <div class="caixa-100">
+            <div class="caixa-15"> </div>
+            <div class="caixa-85">
+              <i>*Este campo só pode ser alterado no cadastro de participantes</i>
+            </div>
+          </div>  
+        </app-base>
+
+        <!--Endereço-->
+        <app-base>
+          <div class="caixa-15 d-flex align-items-center">
+            <b>2. </b>Endereço: 
+          </div>
+          <div class="caixa-80">
+            <input class="w-100 form-control fu" type="text" formControlName="p02_address" >  
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p02_address')" width="15px" height="15px">
+          </div>
+        </app-base>
+
+        <!--Telefones-->
+        <app-base>
+          <div class="caixa-15 d-flex align-items-center">
+            <b>3. </b>Telefones: 
+          </div>
+          <div class="caixa-80">
+            <input class="w-100 form-control fu" type="text" formControlName="p03_communication" >  
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p03_communication')" width="15px" height="15px">
+          </div>
+        </app-base>
+
+        <!-- data de Nascimento / Idade / gênero -->
+        <app-base>
+          <div class="caixa-100">
+            <div class="caixa-25 d-flex align-items-center">
+              <b>4. </b>Data de nascimento:
+            </div>
+            <div class="caixa-15">
+              <input class="w-100 fu-not" type="text" [value]="participant.getBirth_date()" disabled>  
+            </div>
+            <div class="caixa-5">
+              
+            </div>          
+            <div class="caixa-10 d-flex align-items-center">
+              <b>5. </b>Idade:
+            </div>
+            <div class="caixa-10">
+              <input class="w-100 fu-not" type="text" [value]="participant.getAge()" disabled>  
+            </div> 
+            <div class="caixa-5">
+              
+            </div>                     
+            <div class="caixa-10 d-flex align-items-center">
+              <b>6. </b>Gênero:
+            </div>
+            <div class="caixa-15">
+              <input class="w-100 fu-not" type="text" [value]="participant.getGender()" disabled>  
+            </div>           
+            <div class="caixa-5">
+              
+            </div>
+          </div>
+          <div class="caixa-100">
+            <div class="caixa-25"> </div>
+            <div class="caixa-75">
+              <i>*Estes campos só podem ser alterados no cadastro de participantes</i>
+            </div>
+          </div>  
+        </app-base>
+
+        <!--Estado Civil e Escolaridade -->
+        <app-base>
+          <div class="caixa-20 d-flex align-items-center">
+            <b>7. </b>Estado Civil
+          </div>
+          <div class="caixa-20">
+            <select class="w-100 form-control fu" formControlName="p07_marital_status" >
+              <option value="" selected disabled>Selecione</option>
+              <option value="Solteiro(a)">Solteiro(a)</option>
+              <option value="Casado(a)/União Estável">Casado(a)/União Estável</option>
+              <option value="Separado(a)/Divorciado(a)">Separado(a)/Divorciado(a)</option>
+              <option value="Viúvo(a)">Viúvo(a)</option>
+            </select>
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p07_marital_status')" width="15px" height="15px">
+          </div>
+
+          <div class="caixa-10"> </div>
+
+          <div class="caixa-20 d-flex align-items-center">
+            <b>8. </b>Escolaridade
+          </div>
+          <div class="caixa-20">
+            <select class="w-100 form-control fu" formControlName="p08_schooling">
+              <option value="" selected disabled>Selecione</option>
+              <option value="analfabeto">analfabeto</option>
+              <option value="ensino fundamental (incompleto)">ensino fundamental (incompleto)</option>
+              <option value="ensino fundamental (completo)">ensino fundamental (completo)</option>
+              <option value="ensino médio (incompleto)">ensino médio (incompleto)</option>
+              <option value="ensino médio (completo)">ensino médio (completo)</option>
+              <option value="ensino superior (incompleto)">ensino superior (incompleto)</option>
+              <option value="ensino superior (completo)">ensino superior (completo)</option>
+              <option value="ensino supeiror (com pós-graduação)">ensino supeiror (com pós-graduação)</option>
+            </select>
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p08_schooling')" width="15px" height="15px">
+          </div>
+        </app-base>
+
+        <!-- Tempo de estudo -->
+        <app-base>
+          <div class="caixa-80 d-flex align-items-center">
+            <b>9. </b>De acordo com sua escolaridade, o(a) senhor(a) estudou, formalmente, durante quantos anos?.
+          </div>
+          <div class="caixa-15">
+            <input class="w-100 form-control fu" type="number" formControlName="p09_study_time">
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p09_study_time')" width="15px" height="15px">
+          </div>
+        </app-base>   
+
+        <!-- Aposentado -->
+        <app-base>
+          <div class="caixa-30 d-flex align-items-center">
+            <b>10. </b>O senhor é aposentado ou pensionista?
+          </div>
+          <div class="caixa-15">
+            <select class="w-100 form-control fu" formControlName="p10_is_retired">
+              <option value="" selected disabled>Selecione</option>
+              <option value="S">Sim</option>
+              <option value="N">Não</option>
+            </select>            
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p10_is_retired')" width="15px" height="15px">
+          </div>
+          <div class="caixa-15">
+            Qual sua profissão atual?
+          </div>
+          <div class="caixa-30">
+            <input class="w-100 form-control fu" type="text" formControlName="p10_actual_profession">
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p10_actual_profession')" width="15px" height="15px">
+          </div>
+        </app-base>
+
+        <!-- Profissão que exerceu por mais tempo -->
+        <app-base>
+          <div class="caixa-50 d-flex align-items-center">
+            <b>11. </b>Caso seja aposentado ou pensionista, qual a profissão que 
+            exerceu por mais tempo?
+          </div>
+          <div class="caixa-45">
+            <input class="w-100 form-control fu" type="text" formControlName="p11_retire_more_time_activity">          
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p11_retire_more_time_activity')" width="15px" height="15px">
+          </div>
+        </app-base>  
+
+        <!-- Trabalho que exerce atualmente-->
+        <app-base>
+          <div class="caixa-30 d-flex align-items-center">
+            <b>12. </b>Exerce atualmente algum tipo de trabalho remunerado?
+          </div>
+          <div class="caixa-15">
+            <select class="w-100 form-control fu" formControlName="p12_is_working_professionals_activities" ID="p12_is_working_professionals_activities.invalid && p12_is_working_professionals_activities.touched">
+              <option value="" selected disabled>Selecione</option>
+              <option value="S">Sim</option>
+              <option value="N">Não</option>
+            </select>
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p12_is_working_professionals_activities')" width="15px" height="15px">
+          </div>
+          <div class="caixa-10 d-flex align-items-center">
+            Qual?
+          </div>
+          <div class="caixa-35">
+            <input class="w-100 form-control fu" type="text" formControlName="p12_professional_activities">
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p12_professional_activities')" width="15px" height="15px">
+          </div>          
+        </app-base>          
+        
+        <!-- Redimento mensal -->
+        <app-base>
+          <div class="caixa-20 d-flex align-items-center">
+            <b>13. </b>Rendimento Individual mensal
+          </div>
+          <div class="caixa-25">
+            <select class="w-100 form-control fu" formControlName="p13_income_I" ID="p13_income_I.invalid && p13_income_I.touched">
+              <option value="" selected disabled>Selecione</option>
+              <option value="BPC">BPC</option>
+              <option value="Até um salário mínimo">Até um salário mínimo</option>
+              <option value="Entre 1 e 2 salários mínimos">Entre 1 e 2 salários mínimos</option>
+              <option value="Entre 2 e 3 salários mínimos">Entre 1 e 2 salários mínimos</option>
+              <option value="Entre 3 e 4 salários mínimos">Entre 1 e 2 salários mínimos</option>
+              <option value="Entre 4 e 5 salários mínimos">Entre 1 e 2 salários mínimos</option>
+              <option value="Entre 5 e 10 salários mínimos">Entre 1 e 2 salários mínimos</option>
+              <option value="mais de 10 salários mínimos">Mais de 10 salários mínimos</option>
+            </select>
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p13_income_I')" width="15px" height="15px">
+          </div>
+          <div class="caixa-20 d-flex align-items-center">
+            Rendimento familiar mensal
+          </div>
+          <div class="caixa-25">
+            <select class="w-100 form-control fu" formControlName="p13_income_F">
+              <option value="" selected disabled>Selecione</option>
+              <option value="BPC">BPC</option>
+              <option value="Até um salário mínimo">Até um salário mínimo</option>
+              <option value="Entre 1 e 2 salários mínimos">Entre 1 e 2 salários mínimos</option>
+              <option value="Entre 2 e 3 salários mínimos">Entre 1 e 2 salários mínimos</option>
+              <option value="Entre 3 e 4 salários mínimos">Entre 1 e 2 salários mínimos</option>
+              <option value="Entre 4 e 5 salários mínimos">Entre 1 e 2 salários mínimos</option>
+              <option value="Entre 5 e 10 salários mínimos">Entre 1 e 2 salários mínimos</option>
+              <option value="mais de 10 salários mínimos">Mais de 10 salários mínimos</option>
+            </select> 
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p13_income_F')" width="15px" height="15px">
+          </div>
+        </app-base>  
+        
+        <!-- Mora com quem? -->
+        <app-base>
+          <div class="caixa-15 d-flex align-items-center">
+            <b>14. </b>Com quem você mora?
+          </div>
+          <div class="caixa-80">
+            <textarea class="w-100 form-control fu" formControlName="p14_lives_with"></textarea>
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p14_lives_with')" width="15px" height="15px">
+          </div>
+        </app-base> 
+
+        <!-- Religião-->
+        <app-base>
+          <div class="caixa-15 d-flex align-items-center">
+            <b>15. </b>Possui religião?
+          </div>
+          <div class="caixa-20">
+            <select class="w-100 form-control fu" formControlName="p15_has_religion" ID="p15_has_religion.invalid && p15_has_religion.touched">
+              <option value="" selected disabled>Selecione</option>
+              <option value="S">Sim</option>
+              <option value="N">Não</option>
+            </select>
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p15_has_religion')" width="15px" height="15px">
+          </div>
+          <div class="caixa-10 d-flex align-items-center">
+            Qual?
+          </div>
+          <div class="caixa-45">
+            <input class="w-100 form-control fu" type="text" formControlName="p15_religion">
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p15_religion')" width="15px" height="15px">
+          </div>          
+        </app-base> 
+        
+        
+        
+        <div class="caixa-100 centro2">AUTO RELATO DE SAÚDE</div>
+        <app-base>
+          <div class="caixa-10 d-flex align-items-center">
+            Auto relato de saúde:
+          </div>
+          <div class="caixa-85">
+            <textarea class="w-100 form-control fu" formControlName="p16_health_self_report" ></textarea>
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p16_health_self_report')" width="15px" height="15px">
+          </div>          
+        </app-base>
+        <!-- peso e altura originalmente estava na questão 32 -->
+        <app-base>
+          <div class="caixa-20 d-flex align-items-center">
+            Qual o seu peso?
+          </div>
+          <div class="caixa-15">
+            <input class="w-100 form-control fu" type="number" formControlName="p20_weight" [change]="calculaIMC()">
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p20_weight')" width="15px" height="15px" >
+          </div>
+          <div class="caixa-20 d-flex align-items-center">
+            Qual sua altura?
+          </div>
+          <div class="caixa-15">
+            <input class="w-100 form-control fu" type="number" formControlName="p20_height" [change]="calculaIMC()">
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p20_height')" width="15px" height="15px">
+          </div> 
+          <div class="caixa-5 d-flex align-items-center">
+            IMC:
+          </div>
+          <div class="caixa-15">
+            <input class="w-100 form-control" style="background-color: white;" type="number" formControlName="p20_IMC" disabled>
+          </div>
+
+        </app-base>
+        <!-- final questões originais page -->
+
+        <div class="caixa-100 centro2">INFORMAÇÕES SOBRE TRANSPORTE</div> 
+        <app-base>
+          <div class="caixa-25 d-flex align-items-center">
+            Possui Carro e o dirige?
+          </div>
+          <div class="caixa-20">
+            <select class="w-100 form-control fu" formControlName="p30_car" ID="p15_has_religion.invalid && p15_has_religion.touched">
+              <option value="" selected disabled>Selecione</option>
+              <option value="S">Sim</option>
+              <option value="N">Não</option>
+            </select>
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p30_car')" width="15px" height="15px">
+          </div>
+          <div class="caixa-25 d-flex align-items-center">
+            Utiliza tranporte público coletivo?
+          </div>
+          <div class="caixa-20">
+            <select class="w-100 form-control fu" formControlName="p30_bus" ID="p15_has_religion.invalid && p15_has_religion.touched">
+              <option value="" selected disabled>Selecione</option>
+              <option value="S">Sim</option>
+              <option value="N">Não</option>
+            </select>
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p30_bus')" width="15px" height="15px">
+          </div> 
+        </app-base>
+        
+        <app-base>
+          <div class="caixa-25 d-flex align-items-center">
+            Utiliza transporte por aplicativo ou taxi?
+          </div>
+          <div class="caixa-20">
+            <select class="w-100 form-control fu" formControlName="p30_uber" ID="p15_has_religion.invalid && p15_has_religion.touched">
+              <option value="" selected disabled>Selecione</option>
+              <option value="S">Sim</option>
+              <option value="N">Não</option>
+            </select>
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p30_uber')" width="15px" height="15px">
+          </div>
+          <div class="caixa-25">
+            Possui pessoas que te dão carona ou te levam nos lugares que precisa ir?
+          </div>
+          <div class="caixa-20">
+            <select class="w-100 form-control fu" formControlName="p30_ride" ID="p15_has_religion.invalid && p15_has_religion.touched">
+              <option value="" selected disabled>Selecione</option>
+              <option value="S">Sim</option>
+              <option value="N">Não</option>
+            </select>
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p30_ride')" width="15px" height="15px">
+          </div> 
+        </app-base> 
+
+        <app-base>
+          <div class="caixa-25 d-flex align-items-center">
+            Descreva as pessoas que te dão carona ou te levam nos lugares que precisa ou deseja ir.
+          </div>
+          <div class="caixa-70">
+            <textarea class="w-100 form-control fu" formControlName="p30_ride_with"></textarea>
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p30_ride_with')" width="15px" height="15px">
+          </div>
+        </app-base>        
+
+        <div class="caixa-100 centro2">OBSERVAÇÕES SOBRE AS INFORMAÇÕES PESSOAIS</div> 
+        <app-base>
+          <div class="caixa-25 d-flex align-items-center">
+            informações adicionais e observações sobre as informações pessoais do paciente
+          </div>
+          <div class="caixa-70">
+            <textarea class="w-100 form-control fu" formControlName="p31_comments"></textarea>
+          </div>
+          <div class="caixa-5">
+            <img [src]="mudou('p31_comments')" width="15px" height="15px">
+          </div>
+        </app-base>                 
+      </span>
+
+      <div class="caixa-100">
+        <app-status [valido]="formValido()" [branco]="branco" [errado]="errado"></app-status>
+      </div>  
+
+    </app-base>
   </div>
-  <!------------->
-  <!--Continue-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <button *ngIf="participantSituationForm && participantSituationForm.valid" class="btn btn-secondary" (click)="submit()" [routerLink]="['psychological-aspect']">Salvar e continuar</button>
-    <button *ngIf="participantSituationForm && !participantSituationForm.valid" class="btn btn-secondary" (click)="submit()">Salvar e continuar</button>
-  </div>
-  <!------------>
 </div>
-<!----------->
+
+<app-botoes [valido]="formValido()"></app-botoes>
+
+<app-instrucoes></app-instrucoes>
+

@@ -3,6 +3,7 @@ import { PsychologicalAspects } from './psychological-aspects.model';
 import { BiologicalAspects } from './biological-aspects.model';
 import { SocialAspects } from './social-aspects.model';
 import { MultidisciplinaryDomain } from './multidimentional-aspects';
+import { FinalAnalise } from './final-analise';
 
 export class Page {
   private id: number;
@@ -27,6 +28,7 @@ export class Page {
   private biologicalAspects: BiologicalAspects;
   private socialAspects: SocialAspects;
   private multidisciplinaryDomain: MultidisciplinaryDomain;
+  private finalAnalise : FinalAnalise;
 
   constructor(data: any = {}, participant?: Participant, participant_situation?: ParticipantSituation, psychologicalAspects?: PsychologicalAspects, biologicalAspects?: BiologicalAspects, socialAspects?: SocialAspects, multidisciplinaryDomain?: MultidisciplinaryDomain) {
     this.id = data.id || -1;
@@ -92,6 +94,7 @@ export class Page {
   getBiologicalAspects() { return this.biologicalAspects; }
   getSocialAspects() { return this.socialAspects; }
   getMultidisciplinaryDomain() { return this.multidisciplinaryDomain; }
+  getFinalAnalise () {return this.finalAnalise;}
   getRawValues() {
     const obj: any = {};
     if (this.service)
@@ -133,4 +136,5 @@ export class Page {
   setBiologicalAspects(biologicalAspects: BiologicalAspects) { this.biologicalAspects = biologicalAspects; }
   setSocialAspects(socialAspects: SocialAspects) { this.socialAspects = socialAspects; }
   setMultidisciplinaryDomain(multidisciplinaryDomain: MultidisciplinaryDomain) { this.multidisciplinaryDomain = multidisciplinaryDomain; }
+  setFinalAnalise (finalAnalise : FinalAnalise) { this.finalAnalise = finalAnalise;}
 }

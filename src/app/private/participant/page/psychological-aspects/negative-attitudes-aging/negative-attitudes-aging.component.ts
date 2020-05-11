@@ -1,8 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DAOService } from '../../../../../shared/dao.service';
-import {REST_URL_COGNITION_DEFICIT, REST_URL_NEGATIVE_ATTITUDE_AGING} from '../../../../../shared/REST_API_URLs';
-import {CognitionDeficit, NegativeAttitudesAging} from '../../../../../shared/models/psychological-aspects.model';
+import { Component,  Input, OnInit} from '@angular/core';
+import {FormGroup} from '@angular/forms';
+import { ChecaCampo } from 'src/app/shared/checa-campo';
 
 @Component({
   selector: 'app-negative-attitudes-aging',
@@ -10,66 +8,74 @@ import {CognitionDeficit, NegativeAttitudesAging} from '../../../../../shared/mo
 })
 export class NegativeAttitudesAgingComponent implements OnInit {
 
-  @Input('negativeAttitudesAging') negativeAttitudesAgingInput: number;
-  @Output('negativeAttitudesAging') negativeAttitudesAgingOutput = new EventEmitter<NegativeAttitudesAging>();
+  @Input() pageForm: FormGroup;
 
-  private negativeAttitudesAgingForm: FormGroup;
+  // variáveis booleans que controlam as mensagens de certo e errado no final do form
+  private errado: boolean = false;
+  private branco: boolean = true;
 
-  get q7_age_self_perception() { return this.negativeAttitudesAgingForm.get('q7_age_self_perception'); }
-  get q7_age_self_perception_why() { return this.negativeAttitudesAgingForm.get('q7_age_self_perception_why'); }
-  get q7_age_self_perception_analyze() { return this.negativeAttitudesAgingForm.get('q7_age_self_perception_analyze'); }
-  get q8_aging_positive_points() { return this.negativeAttitudesAgingForm.get('q8_aging_positive_points'); }
-  get q8_aging_negative_points() { return this.negativeAttitudesAgingForm.get('q8_aging_negative_points'); }
-  get q8_aging_analyse() { return this.negativeAttitudesAgingForm.get('q8_aging_analyse'); }
-  get need_investigation_negative() { return this.negativeAttitudesAgingForm.get('need_investigation_negative'); }
 
-  constructor(private fb: FormBuilder, private dao: DAOService) { }
-
-  ngOnInit() {
-    if (this.negativeAttitudesAgingInput)
-      this.dao.getObject(REST_URL_NEGATIVE_ATTITUDE_AGING, this.negativeAttitudesAgingInput.toString()).subscribe(response => {
-        const tmpNegativeAttitudesAgingInput = new NegativeAttitudesAging(response);
-        this.negativeAttitudesAgingForm = this.fb.group({
-          q7_age_self_perception: [tmpNegativeAttitudesAgingInput.getQ7A(), Validators.required],
-          q7_age_self_perception_why: [tmpNegativeAttitudesAgingInput.getQ7B(), Validators.required],
-          q7_age_self_perception_analyze: [tmpNegativeAttitudesAgingInput.getQ7C(), [Validators.required, Validators.maxLength(1)]],
-          q8_aging_positive_points: [tmpNegativeAttitudesAgingInput.getQ8A(), Validators.required],
-          q8_aging_negative_points: [tmpNegativeAttitudesAgingInput.getQ8B(), Validators.required],
-          q8_aging_analyse: [tmpNegativeAttitudesAgingInput.getQ8C(), [Validators.required, Validators.maxLength(1)]],
-          need_investigation_negative: [tmpNegativeAttitudesAgingInput.getNeedInvestigation(), [Validators.required, Validators.maxLength(1)]]
-        });
-      });
-    else
-      this.negativeAttitudesAgingForm = this.fb.group({
-        q7_age_self_perception: ['', Validators.required],
-        q7_age_self_perception_why: ['', Validators.required],
-        q7_age_self_perception_analyze: ['', [Validators.required, Validators.maxLength(1)]],
-        q8_aging_positive_points: ['', Validators.required],
-        q8_aging_negative_points: ['', Validators.required],
-        q8_aging_analyse: ['', [Validators.required, Validators.maxLength(1)]],
-        need_investigation_negative: ['', [Validators.required, Validators.maxLength(1)]]
-      });
+  //dominio e dimensão
+  private dimensao: string = 'negativeAttitudesAgingForm';
+  private dominio: string = 'psychologicalAspectsForm'; 
+  
+  //Pontuação máxima
+  private max_score : number = 2;
+  //Pontos da dimensão
+  private score : number = 0;
+  //Campos que são válidos para contar o número de acertos
+  vetConta: string[] = ['q7_age_self_perception_analyze', 'q8_aging_analyse'];
+  //vetor com os gabaritos dos acertos
+  vetGabarito: string[] = ['N','N'];
+  
+  //O serviço checa campo retorna as imanges de verificação dos campos 
+  constructor(private checaCampo : ChecaCampo) { }
+  
+  //contagem dos campos que combinam para calcular o score
+  conta_certo(): number{
+    this.score = 0;
+    for (let i=0;  i < this.max_score; i++){
+      if (this.vetGabarito[i] == this.pageForm.get(this.dominio).get(this.dimensao).get(this.vetConta[i]).value){
+        this.score++;
+      }
+    }
+    this.pageForm.get(this.dominio).get(this.dimensao).get('score').setValue(this.score);
+    return this.score;
   }
+  
+    ngOnInit():void {}
+  
+    // método que verifica a situação dos campos do form
+    mudou(campo: string): string{ 
+      var volta: string = this.checaCampo.inicio();
+      if(!this.pageForm.get(this.dominio).get(this.dimensao).get(campo).pristine){
+        volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid);
+      }
+      return volta;
+    }
 
-  submit() {
-    if (this.negativeAttitudesAgingForm.valid)
-      if (this.negativeAttitudesAgingInput) {
-        const dirtyProps = { id: this.negativeAttitudesAgingInput };
-        let hasDirtyProps = false;
-
-        for (const prop in this.negativeAttitudesAgingForm.controls) {
-          const propFormControl = this.negativeAttitudesAgingForm.get(prop);
-          if (propFormControl.dirty) {
-            dirtyProps[prop] = propFormControl.value;
-            hasDirtyProps = true;
-            propFormControl.markAsPristine();
+    // método que verifica se o form está válido
+    formValido(): Boolean{
+      this.branco = false;
+      this.errado = false;
+      for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+        if(!this.pageForm.get(this.dominio).get(this.dimensao).get(caca).valid){
+          if(this.pageForm.get(this.dominio).get(this.dimensao).get(caca).pristine){
+            this.branco = true;
+          } else {
+            this.errado = true;
           }
         }
+      }
+      return this.pageForm.get(this.dominio).get(this.dimensao).valid;
+    } 
 
-        if (hasDirtyProps) this.dao.patchObject(REST_URL_NEGATIVE_ATTITUDE_AGING, dirtyProps).subscribe(data => this.negativeAttitudesAgingOutput.emit(new NegativeAttitudesAging(data)));
-
-      } else this.dao.postObject(REST_URL_NEGATIVE_ATTITUDE_AGING, this.negativeAttitudesAgingForm.getRawValue()).subscribe(data => this.negativeAttitudesAgingOutput.emit(new NegativeAttitudesAging(data)));
-    this.negativeAttitudesAgingForm.markAllAsTouched();
+  submit() {
+    for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+      this.pageForm.get(this.dominio).get(this.dimensao).get(caca).markAsTouched;
+      this.pageForm.get(this.dominio).get(this.dimensao).get(caca).updateValueAndValidity;
+    }
   }
-
 }
+
+

@@ -2,282 +2,388 @@
 <h2 class="text-center mt-5"><span class="bg-warning rounded-pill rounded-bottom-0 text-white px-5 py-2">Problemas Ambientais</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="environmentalProblemsForm">
-  <!--Perguntas-->
-  <div class="p-3">
-    <!--Ambiente interno-->
-    <h3 class="text-warning text-center font-weight-bold">Ambiente interno</h3>
-    <!-------------------->
-    <!--Pergunta1-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">63.</div>
-        <span class="col-12 col-md-9">Na casa do(a) senhor(a):[Ambiente interno] Os móveis são estáveis?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q63_estable_furniture" [class.is-invalid]="q63_estable_furniture.invalid && q63_estable_furniture.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta2-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">64.</div>
-        <span class="col-12 col-md-9">Na casa do(a) senhor(a): Há objetos e/ou tapetes soltos nas áreas de circulação?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q64_loose_objects_carpets" [class.is-invalid]="q64_loose_objects_carpets.invalid && q64_loose_objects_carpets.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta3-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">65.</div>
-        <span class="col-12 col-md-9">Na casa do(a) senhor(a): O piso é escorregadio (ex. encerado, molhado)?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q65_slippery_floor" [class.is-invalid]="q65_slippery_floor.invalid && q65_slippery_floor.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta4-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">66.</div>
-        <span class="col-12 col-md-9">Na casa do(a) senhor(a): As escadas possuem corrimão em ambos os lados?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q66_handrail_on_stairs" [class.is-invalid]="q66_handrail_on_stairs.invalid && q66_handrail_on_stairs.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta5-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">67.</div>
-        <span class="col-12 col-md-9">Na casa do(a) senhor(a): As escadas/ degraus são iluminados adequadamente:</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q67_lighted_stairs" [class.is-invalid]="q67_lighted_stairs.invalid && q67_lighted_stairs.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta6-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">68.</div>
-        <span class="col-12 col-md-9">Na casa do(a) senhor(a): Os degraus são adequados (tamanho, rebordos, largura e padronagem, etc)?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q68_suitable_stairs_steps" [class.is-invalid]="q68_suitable_stairs_steps.invalid && q68_suitable_stairs_steps.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta7-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">69.</div>
-        <span class="col-12 col-md-9">Na casa do(a) senhor(a): Há tapetes antiderrapantes (fora e dentro box)?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q69_non_slippery_carpet" [class.is-invalid]="q69_non_slippery_carpet.invalid && q69_non_slippery_carpet.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="pageForm">
+  <div class="form-group p-3" formGroupName="socialAspectsForm">
+    <div class="form-group p-3" formGroupName="environmentalProblemsForm">
+      <app-base>
 
-    <!--Comportamento de Risco-->
-    <h3 class="text-warning text-center font-weight-bold mt-3">Comportamento de risco</h3>
-    <!-------------------------->
-    <!--Pergunta8-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">70.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) costuma: Subir em banquetas ou cadeiras para alcançar objetos altos?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q70_get_on_stool" [class.is-invalid]="q70_get_on_stool.invalid && q70_get_on_stool.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
+        <!-- Lado Esquerdo-->
+        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: lightgrey;">
+          <b>PROBLEMAS AMBIENTAIS</b>
         </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta9-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">71.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) costuma: Deixa as luzes apagadas quando se levanta à noite:</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q71_turn_lights_off" [class.is-invalid]="q71_turn_lights_off.invalid && q71_turn_lights_off.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta10-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">72.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) costuma: Utiliza calçados seguros e adequados (solado antiderrapante, bem ajustados e firmes no pé, sem saltos, etc)?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q72_safe_shoes" [class.is-invalid]="q72_safe_shoes.invalid && q72_safe_shoes.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
 
-    <!--Ambiente externo-->
-    <h3 class="text-warning text-center font-weight-bold mt-3">Ambiente externo</h3>
-    <!-------------------->
-    <!--Pergunta11-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">73.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) está satisfeito com As calçadas do seu bairro são bem cuidadas (pavimentadas, lisas e sem buracos)?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q73_manicure_sidewalks" [class.is-invalid]="q73_manicure_sidewalks.invalid && q73_manicure_sidewalks.touched">
-            <option value="" selected disabled>Selecione</option>
+
+        <!-- Centro -->
+        <span class="col-12 col-md-9">
+          <!-------Ambiente Interno ------>
+          <div class="caixa-100 centro">AMBIENTE INTERNO</div>
+          <!--Pergunta 1 -->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">63. </b> Na casa do(a) senhor(a): Os móveis são estáveis?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q63_estable_furniture">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q63_estable_furniture')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!--Pergunta 2 -->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">64. </b> Na casa do(a) senhor(a): Há objetos e/ou tapetes soltos nas áreas de circulação?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q64_loose_objects_carpets">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q64_loose_objects_carpets')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!--Pergunta 3 -->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">65. </b> Na casa do(a) senhor(a): O piso é escorregadio (ex. encerado, molhado)?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q65_slippery_floor">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q65_slippery_floor')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>          
+          
+          <!--Pergunta 4 -->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">66. </b> Na casa do(a) senhor(a): As escadas possuem corrimão em ambos os lados?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q66_handrail_on_stairs">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q66_handrail_on_stairs')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>    
+          
+          <!--Pergunta 5 -->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">67. </b> Na casa do(a) senhor(a): As escadas/ degraus são iluminados adequadamente:
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q67_lighted_stairs">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q67_lighted_stairs')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>           
+          
+          <!--Pergunta 6 -->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">68. </b> Na casa do(a) senhor(a): Os degraus são adequados (tamanho, rebordos, largura e padronagem, etc)?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q68_suitable_stairs_steps">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q68_suitable_stairs_steps')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>            
+          
+          <!--Pergunta 7 -->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">69. </b> Na casa do(a) senhor(a): Há tapetes antiderrapantes (fora e dentro box)?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q69_non_slippery_carpet">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q69_non_slippery_carpet')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>            
+          
+          <!-- comportamento de Risco-->
+          <div class="caixa-100 centro">COMPORTAMENTO DE RISCO</div>
+          <!------------->
+          <!--Pergunta 1 -->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">70. </b> O(A) senhor(a) costuma: Subir em banquetas ou cadeiras para alcançar objetos altos?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q70_get_on_stool">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q70_get_on_stool')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!--Pergunta 2 -->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">71. </b> O(A) senhor(a) costuma: Deixa as luzes apagadas quando se levanta à noite:
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q71_turn_lights_off">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q71_turn_lights_off')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!--Pergunta 3 -->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">72. </b> O(A) senhor(a) costuma: Utiliza calçados seguros e adequados 
+                (solado antiderrapante, bem ajustados e firmes no pé, sem saltos, etc)?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q72_safe_shoes">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q72_safe_shoes')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>          
+          
+          <!-------Ambiente Externo ------>
+          <div class="caixa-100 centro">AMBIENTE EXTERNO</div>
+          <!--Pergunta 1 -->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">73. </b> O(A) senhor(a) está satisfeito com As calçadas do seu bairro são bem cuidadas (pavimentadas, lisas e sem buracos)?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q73_manicure_sidewalks">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q73_manicure_sidewalks')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!--Pergunta 2 -->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">74. </b> O(A) senhor(a) está satisfeito com o acesso ao transporte público no seu bairro?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q74_public_transport_access">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q74_public_transport_access')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!--Pergunta 3 -->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">75. </b> O(A) senhor(a) está satisfeito com o acesso ao comércio no seu bairro?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q75_commerce_access">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q75_commerce_access')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>          
+          
+          <!--Pergunta 4 -->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">76. </b> O(A) senhor(a) está satisfeito com a facilidade e prazer em andar (a pé/ com cadeira de rodas/bengala/andador) no seu bairro?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q76_ease_plasewalking">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q76_ease_plasewalking')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>    
+          
+          <!--Pergunta 5 -->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">77. </b> O(A) senhor(a) está satisfeito com o acesso à diversão no seu bairro (restaurantes, cinema, clubes, etc.)?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q77_fun_access">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q77_fun_access')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>           
+          
+          <!--Pergunta 6 -->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="gold">78. </b> O(A) senhor(a) está satisfeito com a segurança quanto à ameaça da criminalidade no seu bairro?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q78_safety">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q78_safety')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>          
+                    
+        </span>
+
+        <!-- Lado Direito-->  
+        <span class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: khaki ;">
+          <!--Pontuation-->
+          Pontuação: (<b>{{conta_certo()}}</b>) - máximo: ({{max_score}})  (Ambiente Interno: {{ambInt}}  - Comportamento de Risco: {{comRis}}  - Ambiente Externo: {{ambExt}})
+        </span>
+        <span class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: khaki ;">
+           <!--Intervenção-->
+          Necessita de investigação?                      
+          <select style="margin-top:40px; background-color: whitesmoke; width: 100%; transform: rotate(90deg);" class="form-control"  formControlName="need_investigation_env">
+            <option value="" selected disabled></option>
             <option value="S">Sim</option>
             <option value="N">Não</option>
           </select>
-        </div>
-      </div>
+          <img [src]="mudou('need_investigation_env')" width="15px" height="15px" style="margin-top: 20px;">
+        </span>          
+        
+        <div class="caixa-100">
+          <app-status [valido]="formValido()" [branco]="branco" [errado]="errado"></app-status>
+        </div> 
+
+      </app-base>
     </div>
-    <!------------->
-    <!--Pergunta12-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">74.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) está satisfeito com o acesso ao transporte público no seu bairro?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q74_public_transport_access" [class.is-invalid]="q74_public_transport_access.invalid && q74_public_transport_access.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta13-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">75.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) está satisfeito com o acesso ao comércio no seu bairro?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q75_commerce_access" [class.is-invalid]="q75_commerce_access.invalid && q75_commerce_access.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta14-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">76.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) está satisfeito com a facilidade e prazer em andar (a pé/ com cadeira de rodas/bengala/andador) no seu bairro?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q76_ease_plasewalking" [class.is-invalid]="q76_ease_plasewalking.invalid && q76_ease_plasewalking.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta15-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">77.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) está satisfeito com o acesso à diversão no seu bairro (restaurantes, cinema, clubes, etc.)?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q77_fun_access" [class.is-invalid]="q77_fun_access.invalid && q77_fun_access.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta16-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-warning font-weight-bold">78.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) está satisfeito com a segurança quanto à ameaça da criminalidade no seu bairro?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q78_safety" [class.is-invalid]="q78_safety.invalid && q78_safety.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
   </div>
-  <!------------->
-  <!--Pontuation-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <span class="text-warning font-weight-bold h4 mr-3">Pontuação:</span>
-    <span class="h5">6 pontos</span>
-  </div>
-  <!------------->
-  <!--Intervenção-->
-  <div class="d-flex flex-wrap w-25 mx-auto justify-content-center align-items-center p-3">
-    <label class="text-center mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
-    <select class="w-100 form-control" id="depression-intervention" formControlName="need_investigation_env" [class.is-invalid]="need_investigation_env.invalid && need_investigation_env.touched">
-      <option value="" selected disabled>Selecione</option>
-      <option value="S">Sim</option>
-      <option value="N">Não</option>
-    </select>
-  </div>
-  <!--------------->
-  <!--Continue-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <button class="btn btn-warning text-white" (click)="submit()">Salvar</button>
-  </div>
-  <!------------>
 </div>
-<!----------->
+
+

@@ -1,0 +1,103 @@
+<!--Title
+<h2 class="text-center mt-5">
+  <span class="rounded-pill rounded-bottom-0 text-white px-5 py-2" style="font-size: 16px; background-color: blueviolet; font-weight: bold ;">
+    Cabeçalho
+  </span>
+</h2>
+-->
+
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="pageForm">
+  <div class="form-group p-3" formGroupName="cabecaPageForm">
+    <app-base>
+      <!-- Lado Esquerdo-->
+      <div class="col-12 col-md-1 d-flex justify-content-center align-items-center" >
+        <img src="assets/page.png">
+      </div>
+      <!-- Centro -->
+
+      <span class="col-12 col-md-11">
+        <app-base>
+          <div class="caixa-100">
+            <div class="caixa-20 lg">
+              Serviço/Instituição:
+            </div>
+            <div class="caixa-75">
+              <input class="w-100 form-control fu" id="service" type="text" formControlName="service" #service>  
+            </div>
+            <div class="caixa-5">
+              <img [src]="mudou('service')" width="15px" height="15px">
+            </div>
+          </div>
+
+          <div class="caixa-100">
+            <div class="caixa-20 lg">
+              Entrada no Serviço:
+            </div>
+            <div class="caixa-25">
+              <input class="w-100 form-control fu"  id="entrance" type="date" formControlName="entrance" #entrance>
+            </div>
+            <div class="caixa-5">
+              <img [src]="mudou('entrance')" width="15px" height="15px">
+            </div>
+            <div class="caixa-20 lg">
+              Entrevistado:
+            </div>
+            <div class="caixa-25">
+              <select class="w-100 form-control fu" id="interviewed" formControlName="interviewed" #interviewed>
+                <option value="" selected disabled>Selecione</option>
+                <option value="Participante">Participante</option>
+                <option value="Cuidador Formal">Cuidador Formal</option>
+                <option value="Familiar">Familiar</option>
+              </select>
+            </div>
+            <div class="caixa-5">
+              <img [src]="mudou('interviewed')" width="15px" height="15px">
+            </div>            
+          </div>
+
+          <div class="caixa-100">
+            <div class="caixa-20 lg" >
+                Entrevistador:
+            </div>
+            <div class="caixa-25">
+              <input class="w-100 form-control fu" id="service" type="text" formControlName="interviewer">  
+            </div>
+            <div class="caixa-5">
+              <img [src]="mudou('interviewer')" width="15px" height="15px">
+            </div>
+            <div class="caixa-20 lg">
+              Data da avaliação
+            </div>
+            <div class="caixa-25">
+              <input class="w-100 form-control fu" id="entrance" type="date" formControlName="avaliation_date">
+            </div>
+            <div class="caixa-5">
+              <img [src]="mudou('avaliation_date')" width="15px" height="15px">
+            </div>            
+          </div>
+        </app-base>
+      </span>
+      <div class="caixa-100">
+        <app-status [valido]="formValido()" [branco]="branco" [errado]="errado"></app-status>
+      </div>  
+  </app-base>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center align-items-center">
+  <div *ngIf='!formValido()' class="caixa-15r d-flex justify-content-center" >
+    <button type="button" class="btn btn-secondary" disabled >
+      Próximo>> 
+    </button>
+  </div>
+
+  <div *ngIf='formValido()' class="caixa-15r d-flex justify-content-center" >
+    <button type="button" class="btn btn-success" name="bc2" matStepperNext >
+      Próximo>> 
+    </button>
+  </div>
+</div>
+
+
+
+<app-instrucoes></app-instrucoes>

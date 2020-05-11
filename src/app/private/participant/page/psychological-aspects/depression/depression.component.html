@@ -2,121 +2,174 @@
 <h2 class="text-center mt-5"><span class="bg-primary rounded-pill rounded-bottom-0 text-white px-5 py-2">Depressão</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" *ngIf="depressionForm" [formGroup]="depressionForm">
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="pageForm">
   <!--Perguntas-->
-  <div class="p-3">
-    <!--Pergunta1-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">9.</div>
-        <span class="col-12 col-md-9">De modo geral o(a) senhor(a) está satisfeito com a vida?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q9_satisfied_with_life" [class.is-invalid]="q9_satisfied_with_life.invalid && q9_satisfied_with_life.touched">
-            <option value="" selected disabled>Selecione</option>
+  <div class="form-group p-3" formGroupName="psychologicalAspectsForm">
+    <div class="form-group p-3" formGroupName="depressionForm">
+      <app-base>
+        <!-- Lado Esquerdo-->
+        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: lightgrey;">
+          <b>DEPRESSÃO</b>
+        </div>
+        
+        <!-- Centro -->
+        <span class="col-12 col-md-9">
+        
+          <!--Pergunta1-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="azul">9. </b>De modo geral o(a) senhor(a) está satisfeito com a vida?
+              </div>
+            </span>
+            <span class="col-12 col-md-3">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q9_satisfied_with_life">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                    <img style="margin-left: 10px;" [src]="mudou('q9_satisfied_with_life')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!------------->
+          <!--Pergunta2-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">          
+              <div class="caixa-100">  
+                <b class="azul">10. </b>O(a) senhor(a) se sente triste com frequência?
+              </div>
+            </span>
+            <span class="col-12 col-md-3">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q10_frequently_sad">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                    <img style="margin-left: 10px;" [src]="mudou('q10_frequently_sad')" width="15px" height="15px">
+              </div>
+            </span>            
+          </app-base>
+          <!------------->
+          <!--Pergunta3-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado"> 
+              <div class="caixa-100">
+                <b class="azul">11. </b> O(a) senhor(a) abandonou muitas das coisas que fazia ou gostava de fazer?
+              </div>
+            </span>
+            <span class="col-12 col-md-3">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q11_stopped_doing_things">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                    <img style="margin-left: 10px;" [src]="mudou('q11_stopped_doing_things')" width="15px" height="15px">
+              </div>
+            </span> 
+          </app-base>
+          <!------------->
+          <!--Pergunta4-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado"> 
+              <div class="caixa-100">
+                <b class="azul">12. </b> O(a) senhor tem medo de que algum mal vá lhe acontecer?
+              </div>
+            </span>
+            <span class="col-12 col-md-3">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q12_fear_bad_things_happen">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                    <img style="margin-left: 10px;" [src]="mudou('q12_fear_bad_things_happen')" width="15px" height="15px">
+              </div>
+            </span> 
+          </app-base>
+          <!------------->
+          <!--Pergunta5-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="azul">13. </b> O(a) Sr.(a) se sente impaciente e agitado(a) com frequência?
+              </div>
+            </span>
+            <span class="col-12 col-md-3">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q13_impatient_disquiet">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                    <img style="margin-left: 10px;" [src]="mudou('q13_impatient_disquiet')" width="15px" height="15px">
+              </div>
+            </span> 
+          </app-base>            
+
+          <!------------->
+          <!--Pergunta6-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="azul">14. </b>O(a) Sr.(a) tem dificuldades em concentrar-se?
+              </div>
+            </span>
+            <span class="col-12 col-md-3">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q14_concentration_problem">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                    <img style="margin-left: 10px;" [src]="mudou('q14_concentration_problem')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+        </span>
+        <!----- Perguntas -------->
+        <!-- Lado Direito-->  
+        <span class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color:lightskyblue ;">
+          <!--Pontuation-->
+          Pontuação: (<b>{{conta_certo()}}</b>) - máximo: ({{max_score}})
+        </span>
+        <span class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color:lightskyblue ;">
+            <!--Intervenção-->
+          Necessita de investigação?                      
+          <select style="margin-top:40px; background-color: whitesmoke; width: 100%; transform: rotate(90deg);" class="form-control"  formControlName="need_investigation_depression">
+            <option value="" selected disabled></option>
             <option value="S">Sim</option>
             <option value="N">Não</option>
           </select>
-        </div>
-      </div>
+          <img [src]="mudou('need_investigation_depression')" width="15px" height="15px" style="margin-top: 20px;">
+        </span>          
+        
+        <div class="caixa-100">
+          <app-status [valido]="formValido()" [branco]="branco" [errado]="errado"></app-status>
+        </div> 
+
+      </app-base>
     </div>
-    <!------------->
-    <!--Pergunta2-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">10.</div>
-        <span class="col-12 col-md-9">O(a) senhor(a) se sente triste com frequência?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q10_frequently_sad" [class.is-invalid]="q10_frequently_sad.invalid && q10_frequently_sad.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta3-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">11.</div>
-        <span class="col-12 col-md-9">O(a) senhor(a) abandonou muitas das coisas que fazia ou gostava de fazer?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q11_stopped_doing_things" [class.is-invalid]="q11_stopped_doing_things.invalid && q11_stopped_doing_things.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta4-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">12.</div>
-        <span class="col-12 col-md-9">O(a) senhor tem medo de que algum mal vá lhe acontecer?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q12_fear_bad_things_happen" [class.is-invalid]="q12_fear_bad_things_happen.invalid && q12_fear_bad_things_happen.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta5-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">13.</div>
-        <span class="col-12 col-md-9">O(a) Sr.(a) se sente impaciente e agitado(a) com frequência?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q13_impatient_disquiet" [class.is-invalid]="q13_impatient_disquiet.invalid && q13_impatient_disquiet.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta6-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-primary font-weight-bold">14.</div>
-        <span class="col-12 col-md-9">O(a) Sr.(a) tem dificuldades em concentrar-se?</span>
-        <div class="col-12 col-md-2 d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q14_concentration_problem" [class.is-invalid]="q14_concentration_problem.invalid && q14_concentration_problem.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
   </div>
-  <!------------->
-  <!--Pontuation-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <span class="text-primary font-weight-bold h4 mr-3">Pontuação:</span>
-    <span class="h5">6 pontos</span>
-  </div>
-  <!------------->
-  <!--Intervenção-->
-  <div class="d-flex flex-wrap w-25 mx-auto justify-content-center align-items-center p-3">
-    <label class="text-center mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
-    <select class="w-100 form-control" id="depression-intervention" formControlName="need_investigation_depression" [class.is-invalid]="need_investigation_depression.invalid && need_investigation_depression.touched">
-      <option value="" selected disabled>Selecione</option>
-      <option value="S">Sim</option>
-      <option value="N">Não</option>
-    </select>
-  </div>
-  <!--------------->
-  <!--Continue-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <button class="btn btn-primary" (click)="submit()">Salvar</button>
-  </div>
-  <!------------>
 </div>
+
+
+
+
 <!----------->

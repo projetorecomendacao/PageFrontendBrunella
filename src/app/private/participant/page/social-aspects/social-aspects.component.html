@@ -1,12 +1,8 @@
-<app-low-social-support [lowSocialSupport]="lowSocialSupport" (lowSocialSupport)="setLowSocialSupport($event)"></app-low-social-support>
-<app-environmental-problems [environmentalProblems]="environmentalProblems" (environmentalProblems)="setEnvironmentalProblems($event)"></app-environmental-problems>
-<app-violence [violence]="violence" (violence)="setViolence($event)"></app-violence>
-<app-observations-social [comments]="comments_social" (comments)="setComments($event)"></app-observations-social>
+<app-low-social-support [pageForm]="pageForm"></app-low-social-support>
+<app-environmental-problems [pageForm]="pageForm"></app-environmental-problems>
+<app-violence [pageForm]="pageForm"></app-violence>
+<app-observations-social [pageForm]="pageForm"></app-observations-social>
 
-<!--Continue-->
-<div class="d-flex align-items-center justify-content-around p-3 mt-4">
-  <button class="btn btn-warning text-white" [routerLink]="['../biological-aspect']">Voltar</button>
-  <button *ngIf="!isComplete" class="btn btn-warning text-white" (click)="submit()">Salvar e continuar</button>
-  <button *ngIf="isComplete" class="btn btn-warning text-white" (click)="submit()" [routerLink]="['../multidisciplinary-domain']">Salvar e continuar</button>
-</div>
-<!------------>
+<app-botoes [valido]="formValido()"></app-botoes>
+
+<app-instrucoes></app-instrucoes>

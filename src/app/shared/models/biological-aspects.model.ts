@@ -7,6 +7,9 @@ export class SensoryDeficit {
   private q19_interaction_problems: string;
   private need_investigation_sensory: string;
   private max_score_sensory: number;
+  private score: number;
+    
+  
 
   constructor(data: any = {}) {
     this.id = data.id;
@@ -15,6 +18,7 @@ export class SensoryDeficit {
     this.q17_taste_problems = data.q17_taste_problems;
     this.q18_senses_problems = data.q18_senses_problems;
     this.q19_interaction_problems = data.q19_interaction_problems;
+    this.score = data.score;
     this.need_investigation_sensory = data.need_investigation_sensory;
   }
 
@@ -24,6 +28,7 @@ export class SensoryDeficit {
   getQ17() { return this.q17_taste_problems; }
   getQ18() { return this.q18_senses_problems; }
   getQ19() { return this.q19_interaction_problems; }
+  getScore() {return this.score;}
   getNeedInvestigation() { return this.need_investigation_sensory; }
 }
 
@@ -37,6 +42,7 @@ export class FunctionalDisability {
   private q24_dress_up: string;
   private q25TakeShower: string;
   private need_investigation_functional: string;
+  private score: number;
   private max_score_functional: number;
 
   constructor(data: any = {}) {
@@ -47,6 +53,7 @@ export class FunctionalDisability {
     this.q23UseTelephone = data.q23UseTelephone;
     this.q24_dress_up = data.q24_dress_up;
     this.q25TakeShower = data.q25TakeShower;
+    this.score = data.score;
     this.need_investigation_functional = data.need_investigation_functional;
   }
 
@@ -57,42 +64,58 @@ export class FunctionalDisability {
   getQ23() { return this.q23UseTelephone; }
   getQ24() { return this.q24_dress_up; }
   getQ25() { return this.q25TakeShower; }
+  getScore() {return this.score;}
   getNeedInvestigation() { return this.need_investigation_functional; }
 }
 
 
 export class Malnutrition {
   private id: number;
-  private d26_yourself_malnourished: string;
-  private d27_chewing_mouth_problems: string;
-  private d28_less3_meal_daily: string;
-  private d29_decreases_amount_food: string;
-  private d30_lost_weight_no_reason: string;
-  private d31_stress_illness_hospitalization: string;
+  private q26_yourself_malnourished: string;
+  private q27_chewing_mouth_problems: string;
+  private q28_less3_meal_daily: string;
+  private q29_decreases_amount_food: string;
+  private q30_lost_weight_no_reason: string;
+  private q31_stress_illness_hospitalization: string;
   private q32_bmi_less22: string;
   private need_investigation_malnutrition: string;
+  private score: number;
+  private q30_lost_weight_no_reason_amount : string 
+  private q31_stress : string
+  private q31_illnes : string
+  private q31_hospital : string
   private max_score_malnutrition: number;
 
   constructor(data: any = {}) {
     this.id = data.id;
-    this.d26_yourself_malnourished = data.d26_yourself_malnourished;
-    this.d27_chewing_mouth_problems = data.d27_chewing_mouth_problems;
-    this.d28_less3_meal_daily = data.d28_less3_meal_daily;
-    this.d29_decreases_amount_food = data.d29_decreases_amount_food;
-    this.d30_lost_weight_no_reason = data.d30_lost_weight_no_reason;
-    this.d31_stress_illness_hospitalization = data.d31_stress_illness_hospitalization;
+    this.q26_yourself_malnourished = data.q26_yourself_malnourished;
+    this.q27_chewing_mouth_problems = data.q27_chewing_mouth_problems;
+    this.q28_less3_meal_daily = data.q28_less3_meal_daily;
+    this.q29_decreases_amount_food = data.q29_decreases_amount_food;
+    this.q30_lost_weight_no_reason = data.q30_lost_weight_no_reason;
+    this.q31_stress_illness_hospitalization = data.q31_stress_illness_hospitalization;
     this.q32_bmi_less22 = data.q32_bmi_less22;
     this.need_investigation_malnutrition = data.need_investigation_malnutrition;
+    this.q30_lost_weight_no_reason_amount = data.q30_lost_weight_no_reason_amount;
+    this.q31_stress = data.q31_stress;
+    this.q31_illnes = data.q31_illnes;
+    this.q31_hospital = data.q31_hospital;    
+    this.score = data.score;
   }
 
   getId() { return this.id; }
-  getQ26() { return this.d26_yourself_malnourished; }
-  getQ27() { return this.d27_chewing_mouth_problems; }
-  getQ28() { return this.d28_less3_meal_daily; }
-  getQ29() { return this.d29_decreases_amount_food; }
-  getQ30() { return this.d30_lost_weight_no_reason; }
-  getQ31() { return this.d31_stress_illness_hospitalization; }
+  getQ26() { return this.q26_yourself_malnourished; }
+  getQ27() { return this.q27_chewing_mouth_problems; }
+  getQ28() { return this.q28_less3_meal_daily; }
+  getQ29() { return this.q29_decreases_amount_food; }
+  getQ30() { return this.q30_lost_weight_no_reason; }
+  getQ31() { return this.q31_stress_illness_hospitalization; }
   getQ32() { return this.q32_bmi_less22; }
+  getQ31b() {return this.q31_stress;}
+  getQ31c() {return this.q31_illnes;}
+  getQ31d() {return this.q31_hospital;}
+  getQ30b() {return this.q30_lost_weight_no_reason_amount;}
+  getScore() {return this.score};
   getNeedInvestigation() { return this.need_investigation_malnutrition; }
 }
 
@@ -113,6 +136,7 @@ export class CardiovascularFactors {
   private q40_alcohol_Ingested_last_week_amount: string;
   private q41_bmi_obesity: string;
   private need_investigation_cardio: string;
+  private score: number;
   private max_score_cardio: number;
 
   constructor(data: any = {}) {
@@ -130,6 +154,7 @@ export class CardiovascularFactors {
     this.q40_alcohol_Ingested_last_week = data.q40_alcohol_Ingested_last_week;
     this.q40_alcohol_Ingested_last_week_amount = data.q40_alcohol_Ingested_last_week_amount;
     this.q41_bmi_obesity = data.q41_bmi_obesity;
+    this.score = data.score;
     this.need_investigation_cardio = data.need_investigation_cardio;
   }
 
@@ -148,6 +173,7 @@ export class CardiovascularFactors {
   getQ40B() { return this.q40_alcohol_Ingested_last_week_amount; }
   getQ41() { return this.q41_bmi_obesity; }
   getNeedInvestigation() { return this.need_investigation_cardio; }
+  getScore() {return this.score;}
 }
 
 
@@ -184,6 +210,7 @@ export class MisuseMedications {
   private q52_inappropriate_medication: string;
   private q53_risk_adverse_reaction: string;
   private need_investigation_misuse: string;
+  private score: number;
   private max_score_misuse: number;
 
   constructor(data: any = {}) {
@@ -219,6 +246,7 @@ export class MisuseMedications {
     this.q52_inappropriate_medication = data.q52_inappropriate_medication;
     this.q53_risk_adverse_reaction = data.q53_risk_adverse_reaction;
     this.need_investigation_misuse = data.need_investigation_misuse;
+    this.score = data.score;
   }
 
   getId() { return this.id; }
@@ -252,6 +280,7 @@ export class MisuseMedications {
   getQ51() { return this.q51_self_medication; }
   getQ52() { return this.q52_inappropriate_medication; }
   getQ53() { return this.q53_risk_adverse_reaction; }
+  getScore() {return this.score;}
   getNeedInvestigation() { return this.need_investigation_misuse; }
 }
 

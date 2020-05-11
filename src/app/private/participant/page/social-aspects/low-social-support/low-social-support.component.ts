@@ -1,8 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DAOService } from '../../../../../shared/dao.service';
-import { LowSocialSupport } from '../../../../../shared/models/social-aspects.model';
-import { REST_URL_LOW_SOCIAL_SUPPORT } from '../../../../../shared/REST_API_URLs';
+import { Component, Input, OnInit} from '@angular/core';
+import { FormGroup} from '@angular/forms';
+import { ChecaCampo } from 'src/app/shared/checa-campo';
 
 @Component({
   selector: 'app-low-social-support',
@@ -10,90 +8,73 @@ import { REST_URL_LOW_SOCIAL_SUPPORT } from '../../../../../shared/REST_API_URLs
 })
 export class LowSocialSupportComponent implements OnInit {
 
-  @Input('lowSocialSupport') lowSocialSupportInput: LowSocialSupport;
-  @Output('lowSocialSupport') lowSocialSupportOutput = new EventEmitter<LowSocialSupport>();
+  @Input() pageForm: FormGroup;
 
-  private lowSocialSupportForm: FormGroup;
+  // variáveis booleans que controlam as mensagens de certo e errado no final do form
+  private errado: boolean = false;
+  private branco: boolean = true;
 
-  get q54_spouse() { return this.lowSocialSupportForm.get('q54_spouse'); }
-  get q54_mother() { return this.lowSocialSupportForm.get('q54_mother'); }
-  get q54_father() { return this.lowSocialSupportForm.get('q54_father'); }
-  get q54_brothers() { return this.lowSocialSupportForm.get('q54_brothers'); }
-  get q54_children() { return this.lowSocialSupportForm.get('q54_children'); }
-  get q54_gran_children() { return this.lowSocialSupportForm.get('q54_gran_children'); }
-  get q55_meet_family_friends() { return this.lowSocialSupportForm.get('q55_meet_family_friends'); }
-  get q56_participate_family_decisions() { return this.lowSocialSupportForm.get('q56_participate_family_decisions'); }
-  get q57_satisfied_family_relationship() { return this.lowSocialSupportForm.get('q57_satisfied_family_relationship'); }
-  get q58_helped_if_need_money() { return this.lowSocialSupportForm.get('q58_helped_if_need_money'); }
-  get q59_someone_helps_if_need() { return this.lowSocialSupportForm.get('q59_someone_helps_if_need'); }
-  get q60_someone_to_have_fun() { return this.lowSocialSupportForm.get('q60_someone_to_have_fun'); }
-  get q61_participate_social_events() { return this.lowSocialSupportForm.get('q61_participate_social_events'); }
-  get q62_regulary_healt_services() { return this.lowSocialSupportForm.get('q62_regulary_healt_services'); }
-  get need_investigation_low() { return this.lowSocialSupportForm.get('need_investigation_low'); }
+  //dominio e dimensão
+  private dimensao: string = 'lowSocialSupportForm';
+  private dominio: string = 'socialAspectsForm'; 
+  
+  //Pontuação máxima
+  private max_score : number = 8;
+  //Pontos da dimensão
+  private score : number = 0;
+  //Campos que são válidos para contar o número de acertos
+  vetConta: string[] = ['q55_meet_family_friends','q56_participate_family_decisions','q57_satisfied_family_relationship',
+                        'q58_helped_if_need_money','q59_someone_helps_if_need', 'q60_someone_to_have_fun',
+                        'q61_participate_social_events','q62_regulary_healt_services']
 
-  constructor(private fb: FormBuilder, private dao: DAOService) { }
-
-  ngOnInit() {
-    if (this.lowSocialSupportInput) this.lowSocialSupportForm = this.fb.group({
-      q54_spouse: [this.lowSocialSupportInput.getQ54A(), [Validators.required, Validators.maxLength(1)]],
-      q54_mother: [this.lowSocialSupportInput.getQ54B(), [Validators.required, Validators.maxLength(1)]],
-      q54_father: [this.lowSocialSupportInput.getQ54C(), [Validators.required, Validators.maxLength(1)]],
-      q54_brothers: [this.lowSocialSupportInput.getQ54D(), [Validators.required]],
-      q54_children: [this.lowSocialSupportInput.getQ54E(), [Validators.required]],
-      q54_gran_children: [this.lowSocialSupportInput.getQ54F(), [Validators.required]],
-      q55_meet_family_friends: [this.lowSocialSupportInput.getQ55(), [Validators.required, Validators.maxLength(1)]],
-      q56_participate_family_decisions: [this.lowSocialSupportInput.getQ56(), [Validators.required, Validators.maxLength(1)]],
-      q57_satisfied_family_relationship: [this.lowSocialSupportInput.getQ57(), [Validators.required, Validators.maxLength(1)]],
-      q58_helped_if_need_money: [this.lowSocialSupportInput.getQ58(), [Validators.required, Validators.maxLength(1)]],
-      q59_someone_helps_if_need: [this.lowSocialSupportInput.getQ59(), [Validators.required, Validators.maxLength(1)]],
-      q60_someone_to_have_fun: [this.lowSocialSupportInput.getQ60(), [Validators.required, Validators.maxLength(1)]],
-      q61_participate_social_events: [this.lowSocialSupportInput.getQ61(), [Validators.required, Validators.maxLength(1)]],
-      q62_regulary_healt_services: [this.lowSocialSupportInput.getQ62(), [Validators.required, Validators.maxLength(1)]],
-      need_investigation_low: [this.lowSocialSupportInput.getNeedInvestigation(), [Validators.required, Validators.maxLength(1)]],
-    });
-    else this.lowSocialSupportForm = this.fb.group({
-      q54_spouse: ['', [Validators.required, Validators.maxLength(1)]],
-      q54_mother: ['', [Validators.required, Validators.maxLength(1)]],
-      q54_father: ['', [Validators.required, Validators.maxLength(1)]],
-      q54_brothers: ['', [Validators.required]],
-      q54_children: ['', [Validators.required]],
-      q54_gran_children: ['', [Validators.required]],
-      q55_meet_family_friends: ['', [Validators.required, Validators.maxLength(1)]],
-      q56_participate_family_decisions: ['', [Validators.required, Validators.maxLength(1)]],
-      q57_satisfied_family_relationship: ['', [Validators.required, Validators.maxLength(1)]],
-      q58_helped_if_need_money: ['', [Validators.required, Validators.maxLength(1)]],
-      q59_someone_helps_if_need: ['', [Validators.required, Validators.maxLength(1)]],
-      q60_someone_to_have_fun: ['', [Validators.required, Validators.maxLength(1)]],
-      q61_participate_social_events: ['', [Validators.required, Validators.maxLength(1)]],
-      q62_regulary_healt_services: ['', [Validators.required, Validators.maxLength(1)]],
-      need_investigation_low: ['', [Validators.required, Validators.maxLength(1)]],
-    });
+  vetGabarito: string[] = ['S','S','S','S','S','S','S','S'];
+  
+  //O serviço checa campo retorna as imanges de verificação dos campos 
+  constructor(private checaCampo : ChecaCampo) { }
+  
+  //contagem dos campos que combinam para calcular o score
+  conta_certo(): number{
+    this.score = 0;
+    for (let i=0;  i < this.max_score; i++){
+      if (this.vetGabarito[i] == this.pageForm.get(this.dominio).get(this.dimensao).get(this.vetConta[i]).value){
+        this.score++;
+      }
+    }
+    this.pageForm.get(this.dominio).get(this.dimensao).get('score').setValue(this.score);
+    return this.score;
   }
+  
+    ngOnInit():void {}
+  
+    // método que verifica a situação dos campos do form
+    mudou(campo: string): string{ 
+      var volta: string = this.checaCampo.inicio();
+      if(!this.pageForm.get(this.dominio).get(this.dimensao).get(campo).pristine){
+        volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid);
+      }
+      return volta;
+    }
 
-  submit() {
-    if (this.lowSocialSupportForm.valid)
-      if (this.lowSocialSupportInput) {
-        const dirtyProps = { id: this.lowSocialSupportInput.getId() };
-        let hasDirtyProps = false;
-
-        for (const prop in this.lowSocialSupportForm.controls) {
-          const propFormControl = this.lowSocialSupportForm.get(prop);
-          if (propFormControl.dirty) {
-            dirtyProps[prop] = propFormControl.value;
-            hasDirtyProps = true;
-            propFormControl.markAsPristine();
+    // método que verifica se o form está válido
+    formValido(): Boolean{
+      this.branco = false;
+      this.errado = false;
+      for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+        if(!this.pageForm.get(this.dominio).get(this.dimensao).get(caca).valid){
+          if(this.pageForm.get(this.dominio).get(this.dimensao).get(caca).pristine){
+            this.branco = true;
+          } else {
+            this.errado = true;
           }
         }
+      }
+      return this.pageForm.get(this.dominio).get(this.dimensao).valid;
+    } 
 
-        if (hasDirtyProps) this.dao.patchObject(REST_URL_LOW_SOCIAL_SUPPORT, dirtyProps).subscribe(data => {
-          this.lowSocialSupportInput = new LowSocialSupport(data);
-          this.lowSocialSupportOutput.emit(this.lowSocialSupportInput);
-        });
-
-      } else this.dao.postObject(REST_URL_LOW_SOCIAL_SUPPORT, this.lowSocialSupportForm.getRawValue()).subscribe(data => {
-        this.lowSocialSupportInput = new LowSocialSupport(data);
-        this.lowSocialSupportOutput.emit(this.lowSocialSupportInput);
-      });
-    this.lowSocialSupportForm.markAllAsTouched();
+  submit() {
+    for (var caca in this.pageForm.get(this.dominio).get(this.dimensao).value){
+      this.pageForm.get(this.dominio).get(this.dimensao).get(caca).markAsTouched;
+      this.pageForm.get(this.dominio).get(this.dimensao).get(caca).updateValueAndValidity;
+    }
   }
 }

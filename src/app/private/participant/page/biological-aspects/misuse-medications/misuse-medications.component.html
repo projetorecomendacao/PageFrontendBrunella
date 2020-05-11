@@ -2,516 +2,352 @@
 <h2 class="text-center mt-5"><span class="bg-success rounded-pill rounded-bottom-0 text-white px-5 py-2">Uso inadequado de medicamentos</span></h2>
 <!--------->
 <!--Content-->
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="misuseMedicationsForm">
-  <!--Perguntas-->
-  <div class="p-3">
-    <!--Pergunta1-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">42.</div>
-        <span class="col">Nos últimos 5 anos, algum médico ou outro profissional de saúde já disse que o(a) senhor(a) tem:</span>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta1.A-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">A.</div>
-        <span class="col-12 col-md-8">Doença do coração (angina, infarto ou ataque cardíaco)?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_a" [class.is-invalid]="q42_diseases_last_5_years_a.invalid && q42_diseases_last_5_years_a.touched">
-            <option value="" selected disabled>Selecione</option>
+
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="pageForm">
+  <div class="form-group p-3" formGroupName="biologicalAspectsForm">
+    <div class="form-group p-3" formGroupName="misuseMedicationsForm">
+      <app-base>
+        <!-- Lado Esquerdo-->
+        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: lightgrey;">
+          <b>USO INADEQUADO DE MEDICAMENTOS</b>
+        </div>
+
+
+        <!-- Centro -->
+        <span class="col-12 col-md-9">
+
+          <app-base>
+            <div class="caixa-100">
+              <div class="caixa-100">
+                <b class="green">42.</b>Nos últimos 5 anos, algum médico ou outro profissional de saúde já disse que o(a)
+                senhor(a) tem:<br><br>
+              </div>
+              <!-- Lista de Doenças -->
+              <div *ngFor="let doenca of doencas">
+                <app-doencas letra="{{doenca.letra}}" campo="{{doenca.campo}}"   questao="{{doenca.questao}}"  
+                  [pageForm]="pageForm" dominio="biologicalAspectsForm"  dimensao="misuseMedicationsForm">
+                </app-doencas>
+              </div>
+
+              <!--Pergunta1.L-->
+              
+              <div class="row mtb">
+                <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">l.</div>
+                <span class="col-12 col-md-2 d-flex align-items-center">Outra?</span>
+                <div class="col-12 col-md-8 d-flex justify-content-around flex-wrap">
+                  <input style="background-color : whitesmoke" class="w-100 form-control" formControlName="q42_diseases_last_5_years_l" type="text">
+                </div>
+                <div class="col-12 col-md-1 d-flex justify-content-around flex-wrap">
+                  <img style="margin-left: 10px;" [src]="mudou('q42_diseases_last_5_years_l')" width="15px" height="15px">
+                </div>
+              </div>             
+            </div>
+          </app-base>
+
+          <!------------->
+          <!--Pergunta2-->
+          <app-base>
+            <div class="caixa-100">
+              <div class="caixa-100">
+                <b class="green">43.</b>O(A) senhor(a) tem algum dos seguintes problemas de saúde:
+              </div>
+              <div *ngFor="let doenca of problemas">
+                <app-doencas letra="{{doenca.letra}}" campo="{{doenca.campo}}"   questao="{{doenca.questao}}"  
+                  [pageForm]="pageForm" dominio="biologicalAspectsForm"  dimensao="misuseMedicationsForm">
+                </app-doencas>
+              </div>
+
+              <!------------->
+              <!--Pergunta2.H-->
+              <div class="row mtb">
+                <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">h.</div>
+                <span class="col-12 col-md-2 d-flex align-items-center">Outra?</span>
+                <div class="col-12 col-md-8 d-flex justify-content-around flex-wrap">
+                  <input style="background-color : whitesmoke" class="w-100 form-control" formControlName="q43_health_problems_h" id="q43_health_problems_h.invalid && q43_health_problems_h.touched" type="text">
+                </div>
+                <div class="col-12 col-md-1 d-flex justify-content-around flex-wrap">
+                  <img style="margin-left: 10px;" [src]="mudou('q43_health_problems_h')" width="15px" height="15px">
+                </div>
+              </div>
+            </div>
+          </app-base>
+
+          <!------------->
+          <!--Pergunta3-->
+          <app-base>
+            <div class="row mtb">
+              <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">44. </div>
+              <span class="col-12 col-md-7 d-flex align-items-center">Quantidade de diagnósticos (doenças):</span>
+              <div class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+                <input style="background-color : whitesmoke" class="w-100 form-control" formControlName="q44_amount_diagnostics" type="number">
+              </div>
+              <div class="col-12 col-md-1 d-flex justify-content-around flex-wrap">
+                <img style="margin-left: 10px;" [src]="mudou('q44_amount_diagnostics')" width="15px" height="15px">
+              </div>
+            </div>
+          </app-base>
+
+
+          <!------------->
+          <!--Pergunta4-->
+
+          <app-base>
+            <div class="caixa-100">
+              <div class="caixa-90">
+                <b class="green">45. </b> Solicitar as bulas dos medicamentos utilizados pelo(a) senhor(a) e fazer 
+                registro legível dos respectivos nomes e classes terapêuticas:
+              </div>
+              <div class="caixa-10"></div>
+            </div>
+            <div class="caixa-100">
+              <div class="caixa-90"> 
+                <textarea style="background-color : whitesmoke" class="w-100 form-control" formControlName="q45_medicines"></textarea>
+              </div>
+              <div class="caixa-10">
+                <img style="margin-left: 10px;" [src]="mudou('q45_medicines')" width="15px" height="15px">
+              </div>
+            </div>            
+          </app-base>
+
+          <!------------->
+          <!--Pergunta5-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">46.</b>Nos últimos 6 meses, a quantidade de medicamentos que
+                o(a) senhor(a) toma aumentou muito?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q46_medicines_increase">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q46_medicines_increase')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!--Pergunta6-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">47.</b>O(A) senhor(a) sabe para que serve todos os seus
+                medicamentos?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q47_know_medicines">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q47_know_medicines')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+          
+          <!--Pergunta7-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">48.</b>Os medicamentos que o(a) senhor(a) faz uso foram
+                prescritos por médicos diferentes?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q48_medications_prescribed">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q48_medications_prescribed')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+          
+          <!--Pergunta8-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">49.</b>O(A) senhor(a) toma os medicamentos de acordo com as
+                orientações médicas? 
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q49_medicine_medical_advice">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q49_medicine_medical_advice')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>          
+
+          <!--Pergunta9-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">50.</b>O(A) senhor(a) alguma vez já deixou de tomar os
+                medicamentos?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q50_already_stopped_medicines">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q50_already_stopped_medicines')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+          
+          <!--Pergunta10-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">51.</b>O(A) senhor(a) tem o costume de tomar remédios por
+                conta própria?
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q51_self_medication">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q51_self_medication')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>  
+          
+          <!--Pergunta11-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">52. </b>Verificar na lista de medicamentos potencialmente
+                inapropriados para idosos brasileiros (anexada ao PAGe) se
+                o(a) idoso(a) toma algum dos medicamentos citados na
+                mesma. <strong>Caso sim, pontue ao lado e os deixe destacados na lista</strong>
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q52_inappropriate_medication">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q52_inappropriate_medication')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+
+          <!--Pergunta12-->
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <b class="green">53.</b>Cálculo do risco para reações adversas. <strong> Verifique as
+                respostas das questões 30 e 38. Circule e cruze as informações na
+                tabela abaixo. Em seguida, verifique os registros da questão 31 e
+                assinale ao lado se o(a) idoso(a) utiliza uma quantidade de
+                medicamentos superior ao valor indicado na tabela</strong> 
+              </div>
+            </span>
+            <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
+              <div class="caixa-85">
+                <select style="background-color: whitesmoke;" class="w-100 form-control" formControlName="q53_risk_adverse_reaction">
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="caixa-15">
+                <img style="margin-left: 10px;" [src]="mudou('q53_risk_adverse_reaction')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base> 
+          <app-base>
+            <table class="mx-auto mt-3" border="1">
+              <tbody>
+                <tr>
+                  <td bgcolor="silver" align="center" rowspan="2">No. Diagnósticos</td>
+                  <td bgcolor="silver" colspan="2" align="center"> Uso de medicamento inapropriado </td>
+                </tr>
+                <tr>
+                  <td align="center" bgcolor="silver">sim</td>
+                  <td align="center" bgcolor="silver">Não</td>
+                </tr>
+                <tr><td align="center" bgcolor="silver">1</td>
+                  <td align="center">9</td>
+                  <td align="center">18</td>
+                </tr>
+                <tr>
+                  <td align="center" bgcolor="silver">2</td>
+                  <td align="center">6</td>
+                  <td align="center">15</td>
+                </tr><tr>
+                  <td align="center" bgcolor="silver">3</td>
+                  <td align="center">2</td>
+                  <td align="center">11</td>
+                </tr>
+                <tr>
+                  <td align="center" bgcolor="silver">4</td>
+                  <td align="center">0</td>
+                  <td align="center">7</td>
+                </tr>
+                <tr>
+                  <td align="center" bgcolor="silver">5</td>
+                  <td align="center">0</td>
+                  <td align="center">4</td>
+                </tr>
+              </tbody>
+            </table>
+          </app-base>         
+        </span>
+        <!-- Lado Direito-->  
+        <span class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color:#90EE90 ;">
+          <!--Pontuation-->
+          Pontuação: (<b>{{conta_certo()}}</b>) - máximo: ({{max_score}})
+        </span>
+        <span class="col-12 col-md-1 d-flex justify-content-center align-items-center example Text3" style="background-color: #90EE90 ;">
+           <!--Intervenção-->
+          Necessita de investigação?                      
+          <select style="margin-top:40px; background-color: whitesmoke; width: 100%; transform: rotate(90deg);" class="form-control"  formControlName="need_investigation_misuse">
+            <option value="" selected disabled></option>
             <option value="S">Sim</option>
             <option value="N">Não</option>
           </select>
-        </div>
-      </div>
+          <img [src]="mudou('need_investigation_misuse')" width="15px" height="15px" style="margin-top: 20px;">
+        </span>          
+        
+        <div class="caixa-100">
+          <app-status [valido]="formValido()" [branco]="branco" [errado]="errado"></app-status>
+        </div> 
+      </app-base>
     </div>
-    <!------------->
-    <!--Pergunta1.B-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">B.</div>
-        <span class="col-12 col-md-8">Pressão alta/ hipertensão?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_b" [class.is-invalid]="q42_diseases_last_5_years_b.invalid && q42_diseases_last_5_years_b.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta1.C-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">C.</div>
-        <span class="col-12 col-md-8">Derrame/AVC/Isquemia?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_c" [class.is-invalid]="q42_diseases_last_5_years_c.invalid && q42_diseases_last_5_years_c.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta1.D-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">D.</div>
-        <span class="col-12 col-md-8">Diabetes Mellitus?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_d" [class.is-invalid]="q42_diseases_last_5_years_d.invalid && q42_diseases_last_5_years_d.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta1.E-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">E.</div>
-        <span class="col-12 col-md-8">Tumor maligno/ Câncer?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_e" [class.is-invalid]="q42_diseases_last_5_years_e.invalid && q42_diseases_last_5_years_e.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta1.F-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">F.</div>
-        <span class="col-12 col-md-8">Asma/Bronquite/Enfisema?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_f" [class.is-invalid]="q42_diseases_last_5_years_f.invalid && q42_diseases_last_5_years_f.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta1.G-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">G.</div>
-        <span class="col-12 col-md-8">Osteoporose?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_g" [class.is-invalid]="q42_diseases_last_5_years_g.invalid && q42_diseases_last_5_years_g.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta1.H-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">H.</div>
-        <span class="col-12 col-md-8">Reumatismo?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_h" [class.is-invalid]="q42_diseases_last_5_years_h.invalid && q42_diseases_last_5_years_h.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta1.I-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">I.</div>
-        <span class="col-12 col-md-8">Tendinite?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_i" [class.is-invalid]="q42_diseases_last_5_years_i.invalid && q42_diseases_last_5_years_i.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta1.J-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">J.</div>
-        <span class="col-12 col-md-8">Problemas de circulação?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_j" [class.is-invalid]="q42_diseases_last_5_years_j.invalid && q42_diseases_last_5_years_j.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta1.K-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">J.</div>
-        <span class="col-12 col-md-8">Depressão?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q42_diseases_last_5_years_k" [class.is-invalid]="q42_diseases_last_5_years_k.invalid && q42_diseases_last_5_years_k.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta1.L-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">L.</div>
-        <span class="col-12 col-md-7">Outra?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100 form-control" formControlName="q42_diseases_last_5_years_l" [class.is-invalid]="q42_diseases_last_5_years_l.invalid && q42_diseases_last_5_years_l.touched" type="text">
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta2-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">42.</div>
-        <span class="col">O(A) senhor(a) tem algum dos seguintes problemas de saúde:</span>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta2.A-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">A.</div>
-        <span class="col-12 col-md-8">Dor de cabeça?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q43_health_problems_a" [class.is-invalid]="q43_health_problems_a.invalid && q43_health_problems_a.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta2.B-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">B.</div>
-        <span class="col-12 col-md-8">Dor nas costas ou em outra parte do corpo?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q43_health_problems_b" [class.is-invalid]="q43_health_problems_b.invalid && q43_health_problems_b.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta2.C-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">C.</div>
-        <span class="col-12 col-md-8">Alergia?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q43_health_problems_c" [class.is-invalid]="q43_health_problems_c.invalid && q43_health_problems_c.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta2.D-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">D.</div>
-        <span class="col-12 col-md-8">Problema emocional?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q43_health_problems_d" [class.is-invalid]="q43_health_problems_d.invalid && q43_health_problems_d.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta2.E-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">E.</div>
-        <span class="col-12 col-md-8">Tontura?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q43_health_problems_e" [class.is-invalid]="q43_health_problems_e.invalid && q43_health_problems_e.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta2.F-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">F.</div>
-        <span class="col-12 col-md-8">Dificuldades para dormir?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q43_health_problems_f" [class.is-invalid]="q43_health_problems_f.invalid && q43_health_problems_f.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta2.G-->
-    <div class="container-flex escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">G.</div>
-        <span class="col-12 col-md-8">Incontinência urinária/perda de urina:?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q43_health_problems_g" [class.is-invalid]="q43_health_problems_g.invalid && q43_health_problems_g.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta2.H-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center align-items-center text-success font-weight-bold">H.</div>
-        <span class="col-12 col-md-7">Outra?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100 form-control" formControlName="q43_health_problems_h" [class.is-invalid]="q43_health_problems_h.invalid && q43_health_problems_h.touched" type="text">
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta3-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">44.</div>
-        <span class="col-12 col-md-8">Quantidade de diagnósticos (doenças):</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <input class="w-100 form-control" formControlName="q44_amount_diagnostics" [class.is-invalid]="q44_amount_diagnostics.invalid && q44_amount_diagnostics.touched" type="number">
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta4-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">45.</div>
-        <span class="col-12 col-md-8">[Solicitar as bulas dos medicamentos utilizados pelo(a) senhor(a) e fazer registro legível dos respectivos nomes e classes terapêuticas]:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <textarea class="w-100 form-control" formControlName="q45_medicines" [class.is-invalid]="q45_medicines.invalid && q45_medicines.touched"></textarea>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta5-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">46.</div>
-        <span class="col-12 col-md-9">Nos últimos 6 meses, a quantidade de medicamentos que o(a) senhor(a) toma aumentou muito?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q46_medicines_increase" [class.is-invalid]="q46_medicines_increase.invalid && q46_medicines_increase.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta6-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">47.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) sabe para que serve todos os seus medicamentos?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q47_know_medicines" [class.is-invalid]="q47_know_medicines.invalid && q47_know_medicines.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta7-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">48.</div>
-        <span class="col-12 col-md-9">Os medicamentos que o(a) senhor(a) faz uso foram prescritos por médicos diferentes?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q48_medications_prescribed" [class.is-invalid]="q48_medications_prescribed.invalid && q48_medications_prescribed.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta8-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">49.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) toma os medicamentos de acordo com as orientações médicas?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q49_medicine_medical_advice" [class.is-invalid]="q49_medicine_medical_advice.invalid && q49_medicine_medical_advice.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta9-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">50.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) alguma vez já deixou de tomar os medicamentos?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q50_already_stopped_medicines" [class.is-invalid]="q50_already_stopped_medicines.invalid && q50_already_stopped_medicines.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta10-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">51.</div>
-        <span class="col-12 col-md-9">O(A) senhor(a) tem o costume de tomar remédios por conta própria?</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q51_self_medication" [class.is-invalid]="q51_self_medication.invalid && q51_self_medication.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta11-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">52.</div>
-        <span class="col-12 col-md-9">Verificar na lista de medicamentos potencialmente inapropriados para idosos brasileiros (anexada ao PAGe) se o(a) idoso(a) toma algum dos medicamentos citados na mesma. [Caso sim, pontue ao lado e os deixe destacados na lista]:</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q52_inappropriate_medication" [class.is-invalid]="q52_inappropriate_medication.invalid && q52_inappropriate_medication.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!------------->
-    <!--Pergunta12-->
-    <div class="container-flex border-bottom escuro p-4">
-      <div class="row">
-        <div class="col-12 col-md-1 d-flex justify-content-center align-items-center text-success font-weight-bold">53.</div>
-        <span class="col-12 col-md-9">Cálculo do risco para reações adversas. [Verifique as respostas das questões 30 e 38. Circule e cruze as informações na tabela abaixo. Em seguida, verifique os registros da questão 31 e assinale ao lado se o(a) idoso(a) utiliza uma quantidade de medicamentos superior ao valor indicado na tabela] :</span>
-        <div class="col-12 col-md d-flex justify-content-around flex-wrap">
-          <select class="w-100 form-control" formControlName="q53_risk_adverse_reaction" [class.is-invalid]="q53_risk_adverse_reaction.invalid && q53_risk_adverse_reaction.touched">
-            <option value="" selected disabled>Selecione</option>
-            <option value="S">Sim</option>
-            <option value="N">Não</option>
-          </select>
-        </div>
-      </div>
-      <table class="mx-auto mt-3" border="1">
-        <tbody>
-          <tr>
-            <td bgcolor="silver" align="center" rowspan="2">No. Diagnósticos</td>
-            <td bgcolor="silver" colspan="2" align="center"> Uso de medicamento inapropriado </td>
-          </tr>
-          <tr>
-            <td align="center" bgcolor="silver">sim</td>
-            <td align="center" bgcolor="silver">Não</td>
-          </tr>
-          <tr><td align="center" bgcolor="silver">1</td>
-            <td align="center">9</td>
-            <td align="center">18</td>
-          </tr>
-          <tr>
-            <td align="center" bgcolor="silver">2</td>
-            <td align="center">6</td>
-            <td align="center">15</td>
-          </tr><tr>
-            <td align="center" bgcolor="silver">3</td>
-            <td align="center">2</td>
-            <td align="center">11</td>
-          </tr>
-          <tr>
-            <td align="center" bgcolor="silver">4</td>
-            <td align="center">0</td>
-            <td align="center">7</td>
-          </tr>
-          <tr>
-            <td align="center" bgcolor="silver">5</td>
-            <td align="center">0</td>
-            <td align="center">4</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <!------------->
   </div>
-  <!------------->
-  <!--Pontuation-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <span class="text-success font-weight-bold h4 mr-3">Pontuação:</span>
-    <span class="h5">9 pontos</span>
-  </div>
-  <!------------->
-  <!--Intervenção-->
-  <div class="d-flex flex-wrap w-25 mx-auto justify-content-center align-items-center p-3">
-    <label class="text-center mb-0 ml-2" for="depression-intervention">Necessita intervenção?</label>
-    <select class="w-100 form-control" id="depression-intervention" formControlName="need_investigation_misuse" [class.is-invalid]="need_investigation_misuse.invalid && need_investigation_misuse.touched">
-      <option value="" selected disabled>Selecione</option>
-      <option value="S">Sim</option>
-      <option value="N">Não</option>
-    </select>
-  </div>
-  <!--------------->
-  <!--Continue-->
-  <div class="d-flex align-items-center justify-content-center p-3 mt-3">
-    <button class="btn btn-success" (click)="submit()">Salvar</button>
-  </div>
-  <!------------>
 </div>
-<!----------->

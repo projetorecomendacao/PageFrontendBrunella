@@ -1,14 +1,12 @@
-<app-sensory-deficit [sensoryDeficit]="sensoryDeficit" (sensoryDeficit)="setSensoryDeficit($event)"></app-sensory-deficit>
-<app-functional-disability [functionalDisability]="functionalDisability" (functionalDisability)="setFunctionalDisability($event)"></app-functional-disability>
-<app-malnutrition [malnutrition]="malnutrition" (malnutrition)="setMalnutrition($event)"></app-malnutrition>
-<app-cardiovascular-factors [cardiovascularFactors]="cardiovascularFactors" (cardiovascularFactors)="setCardiovascularFactors($event)"></app-cardiovascular-factors>
-<app-misuse-medications [misuseMedications]="misuseMedications" (misuseMedications)="setMisuseMedications($event)"></app-misuse-medications>
-<app-observations-biological [comments]="comments_bio" (comments)="setComments($event)"></app-observations-biological>
+<app-sensory-deficit [pageForm]="pageForm"></app-sensory-deficit>
+<app-functional-disability [pageForm]="pageForm"></app-functional-disability>
+<app-malnutrition [pageForm]="pageForm"></app-malnutrition>
+<app-cardiovascular-factors [pageForm]="pageForm"></app-cardiovascular-factors>
+<app-misuse-medications [pageForm]="pageForm"></app-misuse-medications>
+<app-observations-biological [pageForm]="pageForm"></app-observations-biological>
 
-<!--Continue-->
-<div class="d-flex align-items-center justify-content-around p-3 mt-4">
-  <button class="btn btn-success" [routerLink]="['../psychological-aspect']">Voltar</button>
-  <button *ngIf="!isComplete" class="btn btn-success" (click)="submit()">Salvar e continuar</button>
-  <button *ngIf="isComplete" class="btn btn-success" (click)="submit()" [routerLink]="['../social-aspect']">Salvar e continuar</button>
-</div>
-<!------------>
+
+<app-botoes [valido]="formValido()"></app-botoes>
+
+<app-instrucoes></app-instrucoes>
+
