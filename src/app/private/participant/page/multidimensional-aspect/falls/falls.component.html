@@ -23,18 +23,7 @@
                 <b class="fuch">87. </b> O(A) senhor(a) sofreu alguma queda nos últimos 12 meses?
               </div>
               <div class="caixa-100">
-                <div class="caixa-60">
-                  Quantas quedas nos últimos 12 meses? 
-                </div>
-                <div class="caixa-30">
-                  <input style="background-color: whitesmoke;" class="w-100 form-control" type="number" formControlName="q87_amount_falls_last_year">
-                </div>
-                <div class="caixa-10">
-                  <img style="margin-left: 10px;" [src]="mudou('q87_amount_falls_last_year')" width="15px" height="15px">
-                </div>
-                <div class="caixa-100">
-                  <b>[Se a resposta for não, será pontuado não nas questões 87 e 88, a questão 89 receberá nda, vá direto para a questão 90]</b> 
-                </div>
+                 <b>[Se a resposta for não, será pontuado não nas questões 87 e 88, a questão 89 receberá nda, vá direto para a questão 90]</b> 
               </div>
             </span>
             <span class="col-12 col-md-3 d-flex justify-content-around flex-wrap">
@@ -47,6 +36,21 @@
               </div>
               <div class="caixa-15">
                 <img style="margin-left: 10px;" [src]="mudou('q87_falls_last_year')" width="15px" height="15px">
+              </div>
+            </span>
+          </app-base>
+          <app-base>
+            <span class="col-12 col-md-9 borda-lado">
+              <div class="caixa-100">
+                <div class="caixa-60">
+                  Quantas quedas nos últimos 12 meses? 
+                </div>
+                <div class="caixa-30">
+                  <input style="background-color: whitesmoke;" class="w-100 form-control" type="number" formControlName="q87_amount_falls_last_year">
+                </div>
+                <div class="caixa-10">
+                  <img style="margin-left: 10px;" [src]="mudou('q87_amount_falls_last_year')" width="15px" height="15px">
+                </div>
               </div>
             </span>
           </app-base>

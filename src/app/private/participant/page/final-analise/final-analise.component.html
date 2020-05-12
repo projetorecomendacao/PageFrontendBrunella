@@ -1,11 +1,6 @@
-
-
 <div *ngIf="graficos()" class="caixa-100">
   <app-escores [pageForm]="pageForm"></app-escores>
 </div>
-
-
-
 
 <h2 class="text-center mt-5">
   <span class="rounded-pill rounded-bottom-0 text-white px-5 py-2" style="font-size: 16px; background-color:gray; font-weight: bold ;">
@@ -13,13 +8,17 @@
   </span>
 </h2>
 
+<div *ngIf="graficos()" class="d-flex justify-content-center align-items-center w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
+  <div class="graficos">
+    <app-grafico-dominios [pageForm]="pageForm"></app-grafico-dominios>
+  </div>
+</div>
 
 <div *ngIf="graficos()" class="d-flex justify-content-center align-items-center w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
-    <app-grafico-dominios [pageForm]="pageForm"></app-grafico-dominios>
+  <div class="graficos">
     <app-grafico-dimesoes [pageForm]="pageForm"></app-grafico-dimesoes>
+  </div>
 </div> 
-
-
 
 <div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="pageForm">
   <div class="form-group p-3" formGroupName="finalAnaliseForm">

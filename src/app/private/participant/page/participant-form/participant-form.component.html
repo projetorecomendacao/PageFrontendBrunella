@@ -231,10 +231,10 @@
               <option value="BPC">BPC</option>
               <option value="Até um salário mínimo">Até um salário mínimo</option>
               <option value="Entre 1 e 2 salários mínimos">Entre 1 e 2 salários mínimos</option>
-              <option value="Entre 2 e 3 salários mínimos">Entre 1 e 2 salários mínimos</option>
-              <option value="Entre 3 e 4 salários mínimos">Entre 1 e 2 salários mínimos</option>
-              <option value="Entre 4 e 5 salários mínimos">Entre 1 e 2 salários mínimos</option>
-              <option value="Entre 5 e 10 salários mínimos">Entre 1 e 2 salários mínimos</option>
+              <option value="Entre 2 e 3 salários mínimos">Entre 2 e 3 salários mínimos</option>
+              <option value="Entre 3 e 4 salários mínimos">Entre 3 e 4 salários mínimos</option>
+              <option value="Entre 4 e 5 salários mínimos">Entre 4 e 5 salários mínimos</option>
+              <option value="Entre 5 e 10 salários mínimos">Entre 5 e 10 salários mínimos</option>
               <option value="mais de 10 salários mínimos">Mais de 10 salários mínimos</option>
             </select>
           </div>
@@ -250,10 +250,10 @@
               <option value="BPC">BPC</option>
               <option value="Até um salário mínimo">Até um salário mínimo</option>
               <option value="Entre 1 e 2 salários mínimos">Entre 1 e 2 salários mínimos</option>
-              <option value="Entre 2 e 3 salários mínimos">Entre 1 e 2 salários mínimos</option>
-              <option value="Entre 3 e 4 salários mínimos">Entre 1 e 2 salários mínimos</option>
-              <option value="Entre 4 e 5 salários mínimos">Entre 1 e 2 salários mínimos</option>
-              <option value="Entre 5 e 10 salários mínimos">Entre 1 e 2 salários mínimos</option>
+              <option value="Entre 2 e 3 salários mínimos">Entre 2 e 3 salários mínimos</option>
+              <option value="Entre 3 e 4 salários mínimos">Entre 3 e 4 salários mínimos</option>
+              <option value="Entre 4 e 5 salários mínimos">Entre 4 e 5 salários mínimos</option>
+              <option value="Entre 5 e 10 salários mínimos">Entre 5 e 10 salários mínimos</option>
               <option value="mais de 10 salários mínimos">Mais de 10 salários mínimos</option>
             </select> 
           </div>
@@ -321,7 +321,7 @@
             Qual o seu peso?
           </div>
           <div class="caixa-15">
-            <input class="w-100 form-control fu" type="number" formControlName="p20_weight">
+            <input class="w-100 form-control fu" type="number" formControlName="p20_weight" (change)='calculaIMC()'>
           </div>
           <div class="caixa-5">
             <img [src]="mudou('p20_weight')" width="15px" height="15px" >
@@ -330,7 +330,7 @@
             Qual sua altura?
           </div>
           <div class="caixa-15">
-            <input class="w-100 form-control fu" type="number" formControlName="p20_height" >
+            <input class="w-100 form-control fu" type="number" formControlName="p20_height" (change)='calculaIMC()' >
           </div>
           <div class="caixa-5">
             <img [src]="mudou('p20_height')" width="15px" height="15px">
@@ -406,7 +406,7 @@
 
         <app-base>
           <div class="caixa-25 d-flex align-items-center">
-            Descreva as pessoas que te dão carona ou te levam nos lugares que precisa ou deseja ir.
+            Quem são as pessoas que te dão carona ou te levam nos lugares que precisa ou deseja ir?
           </div>
           <div class="caixa-70">
             <textarea class="w-100 form-control fu" formControlName="p30_ride_with"></textarea>
