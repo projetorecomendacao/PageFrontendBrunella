@@ -14,11 +14,9 @@
 </h2>
 
 
-<div *ngIf="graficos()" class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
-  <center>
+<div *ngIf="graficos()" class="d-flex justify-content-center align-items-center w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg">
     <app-grafico-dominios [pageForm]="pageForm"></app-grafico-dominios>
     <app-grafico-dimesoes [pageForm]="pageForm"></app-grafico-dimesoes>
-  </center>
 </div> 
 
 
