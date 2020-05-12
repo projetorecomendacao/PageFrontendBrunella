@@ -21,7 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider('693202023661-6bahsc7d6bm8p6rm2squgka93fsmsf94.apps.googleusercontent.com')
+    provider: new GoogleLoginProvider('828775864880-255hvrrt48he9re9td2372a7h1eg5h6o.apps.googleusercontent.com')
   }
 ]);
 
