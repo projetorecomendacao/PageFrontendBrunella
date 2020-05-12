@@ -19,9 +19,9 @@ export class FunctionalDisabilityComponent implements OnInit {
   private dominio: string = 'biologicalAspectsForm'; 
   
   //Pontuação máxima
-  private max_score : number = 6;
+  public max_score : number = 6;
   //Pontos da dimensão
-  private score : number = 0;
+  public score : number = 0;
   //Campos que são válidos para contar o número de acertos
   vetConta: string[] = ['q20_to_shop','q21_use_transport','q22_to_cook',
                         'q23UseTelephone','q24_dress_up', 'q25TakeShower']

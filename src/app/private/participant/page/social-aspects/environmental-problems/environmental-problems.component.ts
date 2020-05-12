@@ -24,9 +24,9 @@ export class EnvironmentalProblemsComponent implements OnInit {
    public score : number = 0;
 
    //variáveis de cada ambiente
-   private ambExt : number = 0;
-   private ambInt : number = 0;
-   private comRis : number = 0;
+   public ambExt : number = 0;
+   public ambInt : number = 0;
+   public comRis : number = 0;
    //Campos que são válidos para contar o número de acertos
    vetConta: string[] = ['q63_estable_furniture', 'q64_loose_objects_carpets',  'q65_slippery_floor',
    'q66_handrail_on_stairs',  'q67_lighted_stairs',  'q68_suitable_stairs_steps',
