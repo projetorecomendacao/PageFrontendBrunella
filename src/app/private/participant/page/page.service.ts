@@ -13,22 +13,28 @@ import { UserService } from '../../../security/user.service';
   providedIn: 'root'
 })
 export class PageService {
-
+  //participante
   private _participant: Participant;
+
+  //page
   private _page = new Page();
 
   get page() { return this._page; }
+
   set page(page: Page) { this._page = page; }
 
   get participant() { return this._participant; }
+  
   set participant(p: Participant) { this._participant = p; }
 
+  //elementos do PAGe
   get participantSituation() { return this.page.getParticipant_situation(); }
   get psychologicalAspects() { return this.page.getPsychologicalAspects(); }
   get biologicalAspects() { return this.page.getBiologicalAspects(); }
   get socialAspects() { return this.page.getSocialAspects(); }
   get multidisciplinaryDomain() { return this.page.getMultidisciplinaryDomain(); }
 
+  
   get hasService() { return !!this.page.getService(); }
   get hasEntrance() { return !!this.page.getEntrance(); }
 

@@ -22,7 +22,11 @@ export class Falls {
     private need_investigation_falls: string;
 
     constructor(data: any = {}) {
-      this.id = data.id;
+      if(data.id){
+        this.id = data.id;
+      } else {
+        this.id = -1;
+      }
       this.q87_falls_last_year = data.q87_falls_last_year;
       this.q87_amount_falls_last_year = data.q87_amount_falls_last_year;
       this.q88_fractures_due_to_falls = data.q88_fractures_due_to_falls;
@@ -78,7 +82,11 @@ export class MultidisciplinaryDomain {
     private comments_multi: string;
 
     constructor(data: any = {}, falls_instance?: Falls) {
-      this.id = data.id;
+      if(data.id){
+        this.id = data.id;
+      } else {
+        this.id = -1;
+      }
 
       this.falls = data.falls;
 

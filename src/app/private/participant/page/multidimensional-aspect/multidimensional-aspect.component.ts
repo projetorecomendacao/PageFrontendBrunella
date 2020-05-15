@@ -17,8 +17,7 @@ export class MultidimensionalAspectComponent implements OnInit {
 
   constructor(){}
 
-  submit(){
-    
+  submit(){  
   }
 
   // método que verifica se o form está válido

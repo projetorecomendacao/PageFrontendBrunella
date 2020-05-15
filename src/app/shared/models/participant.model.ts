@@ -64,8 +64,8 @@ export class ParticipantSituation {
 
 
 
-  constructor(data) {
-    this.id = data.id;
+  constructor(data: any) {
+    this.id = data.id || -1;
     this.p02_address = data.p02_address;
     this.p03_communication = data.p03_communication;
     this.p07_marital_status = data.p07_marital_status;

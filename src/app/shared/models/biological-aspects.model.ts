@@ -12,7 +12,11 @@ export class SensoryDeficit {
   
 
   constructor(data: any = {}) {
-    this.id = data.id;
+    if(data.id){
+      this.id = data.id;
+    } else {
+      this.id = -1;
+    }
     this.q15_vision_problems = data.q15_vision_problems;
     this.q16_hearing_problems = data.q16_hearing_problems;
     this.q17_taste_problems = data.q17_taste_problems;
@@ -46,7 +50,11 @@ export class FunctionalDisability {
   private max_score_functional: number;
 
   constructor(data: any = {}) {
-    this.id = data.id;
+    if(data.id){
+      this.id = data.id;
+    } else {
+      this.id = -1;
+    }
     this.q20_to_shop = data.q20_to_shop;
     this.q21_use_transport = data.q21_use_transport;
     this.q22_to_cook = data.q22_to_cook;
@@ -87,7 +95,11 @@ export class Malnutrition {
   private max_score_malnutrition: number;
 
   constructor(data: any = {}) {
-    this.id = data.id;
+    if(data.id){
+      this.id = data.id;
+    } else {
+      this.id = -1;
+    }
     this.q26_yourself_malnourished = data.q26_yourself_malnourished;
     this.q27_chewing_mouth_problems = data.q27_chewing_mouth_problems;
     this.q28_less3_meal_daily = data.q28_less3_meal_daily;
@@ -140,7 +152,11 @@ export class CardiovascularFactors {
   private max_score_cardio: number;
 
   constructor(data: any = {}) {
-    this.id = data.id;
+    if(data.id){
+      this.id = data.id;
+    } else {
+      this.id = -1;
+    }
     this.q33_dcv_familiar_history = data.q33_dcv_familiar_history;
     this.q34_hypertension = data.q34_hypertension;
     this.q34_hypertension_unknow = data.q34_hypertension_unknow;
@@ -214,7 +230,11 @@ export class MisuseMedications {
   private max_score_misuse: number;
 
   constructor(data: any = {}) {
-    this.id = data.id;
+    if(data.id){
+      this.id = data.id;
+    } else {
+      this.id = -1;
+    }
     this.q42_diseases_last_5_years_a = data.q42_diseases_last_5_years_a;
     this.q42_diseases_last_5_years_b = data.q42_diseases_last_5_years_b;
     this.q42_diseases_last_5_years_c = data.q42_diseases_last_5_years_c;
@@ -304,7 +324,11 @@ export class BiologicalAspects {
   private max_score_bio: number;
 
   constructor(data: any = {}, sensoryDeficit_instance?: SensoryDeficit, functionalDisability_instance?: FunctionalDisability, malNutrition_instance?: Malnutrition, cardiovascularFactors_instance?: CardiovascularFactors, misuseMedications_instance?: MisuseMedications) {
-    this.id = data.id;
+    if(data.id){
+      this.id = data.id;
+    } else {
+      this.id = -1;
+    }
 
     this.sensoryDeficit = data.sensoryDeficit;
     this.functionalDisability = data.functionalDisability;

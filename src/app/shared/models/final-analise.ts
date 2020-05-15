@@ -9,7 +9,11 @@ export class FinalAnalise {
     private actions_organization : string;
 
     constructor (data: any = {}){
-        this.id = data.id;
+        if(data.id){
+            this.id = data.id;
+          } else {
+            this.id = -1;
+          }
         this.created_at = data.created_at; 
         this.updated_at = data.updated_at; 
         this.dm3_unmet_demands = data.dm3_unmet_demands;  

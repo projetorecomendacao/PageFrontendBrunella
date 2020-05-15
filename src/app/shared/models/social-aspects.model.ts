@@ -18,7 +18,7 @@ export class LowSocialSupport {
     private score : number;
 
     constructor(data: any = {}) {
-        this.id = data.id;
+        this.id = data.id || -1;
         this.q54_spouse = data.q54_spouse;
         this.q54_mother = data.q54_mother;
         this.q54_father = data.q54_father;
@@ -83,7 +83,7 @@ export class EnvironmentalProblems {
     private need_investigation_env: string
 
     constructor(data: any = {}) {
-        this.id = data.id;
+        this.id = data.id || -1;
 
         this.q63_estable_furniture = data.q63_estable_furniture;
         this.q64_loose_objects_carpets = data.q64_loose_objects_carpets;
@@ -146,7 +146,7 @@ export class Violence {
     private score: number;
 
     constructor(data: any = {}) {
-        this.id = data.id;
+        this.id = data.id || -1;
         this.q79_afraid_close_person = data.q79_afraid_close_person;
         this.q80_feels_abandoned = data.q80_feels_abandoned;
         this.q81_forced = data.q81_forced;
@@ -186,7 +186,7 @@ export class SocialAspects {
 
 
     constructor(data: any = {}, lowSocialSupport_instance?: LowSocialSupport, environmentalProblems_instance?: EnvironmentalProblems, violence_instance?: Violence) {
-        this.id = data.id;
+        this.id = data.id || -1;
 
         this.lowSocialSupport = data.lowSocialSupport;
         this.environmentalProblems = data.environmentalProblems;

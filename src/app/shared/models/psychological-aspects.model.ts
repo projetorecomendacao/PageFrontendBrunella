@@ -19,7 +19,7 @@ export class CognitionDeficit {
   private need_investigation_cognition: string;
 
   constructor(data: any = {}) {
-    this.id = data.id;
+    this.id = data.id || -1;
     this.q1_memory_good_like_before = data.q1_memory_good_like_before;
     this.q2_memory_test = data.q2_memory_test;
     this.q2_memory_test_score = data.q2_memory_test_score;
@@ -71,7 +71,7 @@ export class NegativeAttitudesAging {
   private score : number;
 
   constructor(data: any = {}) {
-    this.id = data.id;
+    this.id = data.id || -1;
     this.q7_age_self_perception = data.q7_age_self_perception;
     this.q7_age_self_perception_why = data.q7_age_self_perception_why;
     this.q7_age_self_perception_analyze = data.q7_age_self_perception_analyze;
@@ -105,7 +105,7 @@ export class Depression {
   private score : number;
 
   constructor(data: any = {}) {
-    this.id = data.id;
+    this.id = data.id || -1;
     this.q9_satisfied_with_life = data.q9_satisfied_with_life;
     this.q10_frequently_sad = data.q10_frequently_sad;
     this.q11_stopped_doing_things = data.q11_stopped_doing_things;
