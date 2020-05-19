@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ChecaCampo } from 'src/app/shared/checa-campo';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-final-analise',
@@ -12,7 +13,7 @@ export class FinalAnaliseComponent implements OnInit {
 
   conta:number=0;
   
-  constructor(private checaCampo: ChecaCampo) { }
+  constructor(private checaCampo: ChecaCampo, private router: Router) { }
 
   ngOnInit() { }
 
@@ -37,10 +38,12 @@ export class FinalAnaliseComponent implements OnInit {
   } 
 
   submit() { 
-    for (var caca in this.pageForm.get('finalAnaliseForm').value){
-      console.log(caca);
-      this.pageForm.get('finalAnaliseForm').get(caca).markAsTouched;
-      this.pageForm.get('finalAnaliseForm').get(caca).updateValueAndValidity;
-    }
+    alert('PAGe salvo com sucesso!!');
+    this.router.navigate(['private/']).then();
+    //for (var caca in this.pageForm.get('finalAnaliseForm').value){
+    //  console.log(caca);
+    //  this.pageForm.get('finalAnaliseForm').get(caca).markAsTouched;
+    //  this.pageForm.get('finalAnaliseForm').get(caca).updateValueAndValidity;
+    //}
   }
 }

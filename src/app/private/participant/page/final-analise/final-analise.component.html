@@ -1,3 +1,9 @@
+<div class="d-flex justify-content-center align-items-center">
+  <div class="caixa-75p bordaInst">
+    <b>Observação: </b> Os campos das seções anteriores foram desabilitados para edição e não podem mais serem modificados.
+  </div>
+</div>
+
 <div *ngIf="graficos()" class="caixa-100">
   <app-escores [pageForm]="pageForm"></app-escores>
 </div>
@@ -139,7 +145,7 @@
     </div>
  
     <div *ngIf='formValido()' class="caixa-15r d-flex justify-content-center" >
-      <button type="button" class="btn btn-success" name="bc2" matStepperNext >
+      <button type="button" class="btn btn-success" name="bc2" (click)="submit()">
         Salvar
       </button>
     </div>

@@ -39,6 +39,45 @@ export class EscoresComponent implements OnInit {
 
   ngOnInit(): void {
     this.calcula();
+
+    /*
+    this.desliga('multidimensionalAspectsForm','fallsForm');
+    this.desliga('multidimensionalAspectsForm','commentsForm');
+
+    this.desliga('biologicalAspectsForm','cardiovascularFactorsForm');
+    this.desliga('biologicalAspectsForm','functionalDisabilityForm');
+    this.desliga('biologicalAspectsForm','malnutritionForm');
+    this.desliga('biologicalAspectsForm','misuseMedicationsForm');
+    this.desliga('biologicalAspectsForm','sensoryDeficitForm');
+    this.desliga('biologicalAspectsForm','commentsForm');
+
+    this.desliga('psychologicalAspectsForm','cognitiveDeficitForm');
+    this.desliga('psychologicalAspectsForm','depressionForm');
+    this.desliga('psychologicalAspectsForm','negativeAttitudesAgingForm');
+    this.desliga('psychologicalAspectsForm','commentsForm');
+
+
+    this.desliga('socialAspectsForm','environmentalProblemsForm');
+    this.desliga('socialAspectsForm','lowSocialSupportForm');
+    this.desliga('socialAspectsForm','violenceForm');
+    this.desliga('socialAspectsForm','commentsForm');
+
+    this.desliga('cabecaPageForm');
+    this.desliga('participantFormForm');
+    */
+
+  }
+
+  desliga(dimensao: string, dominio?:string):void {
+    if(dominio){
+      for (var caca in this.pageForm.get(dimensao).get(dominio).value){
+        this.pageForm.get(dimensao).get(dominio).get(caca).disable;
+      }
+    } else {
+      for (var caca in this.pageForm.get(dimensao).value){
+        this.pageForm.get(dimensao).get(caca).disable;
+      }
+    }
   }
 
   calcula(): void {
