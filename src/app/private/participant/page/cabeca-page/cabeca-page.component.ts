@@ -43,10 +43,6 @@ export class CabecaPageComponent implements OnInit {
     return this.pageForm.get(this.dominio).valid;
   }
 
-  
-
-
-
   constructor(private checaCampo: ChecaCampo){}
 
   ngOnInit() { }

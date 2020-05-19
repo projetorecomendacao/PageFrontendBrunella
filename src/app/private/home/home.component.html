@@ -6,66 +6,119 @@
   <!-------------------------->
   <!--Menu Adicionar Participante-->
   <form class="d-flex flex-wrap w-50 mx-auto bg-white shadow px-4 py-4 mt-5 collapse" id="addParticipant" [formGroup]="addParticipantForm">
-    <h3 class="font-weight-bold mb-4 text-primary w-100">Dados</h3>
-    <div class="d-flex flex-column w-50 px-3">
-      <!--Email-->
-      <div class="d-flex flex-column my-2">
-        <label class="mb-0" for="email">Email:</label>
-        <input style="background-color: whitesmoke;" type="email" id="email" formControlName="p00_email">
+    <h1 class="font-weight-bold mb-4 text-primary w-100">Dados do novo participante</h1>
+    <!--Email-->
+    <div class="caixa-100 d-flex align-items-center">
+      <div class="caixa-20">
+        Email:
       </div>
-      <!--------->
-      <!--Name-->
-      <div class="d-flex flex-column">
-        <label class="mb-0" for="name">Nome:</label>
-        <input style="background-color: whitesmoke;" type="text" id="name" formControlName="p01_name">
+      <div class="caixa-70">
+        <input class="w-100 form-control fu" type="email" id="email" formControlName="p00_email">
       </div>
-      <!-------->
-      <!--Address-->
-      <div class="d-flex flex-column my-2">
-        <label class="mb-0" for="address">Endereço:</label>
-        <input style="background-color: whitesmoke;" type="text" id="address" formControlName="p02_address">
+      <div class="caixa-10">
+        <img [src]="mudou('p00_email')" width="15px" height="15px">
       </div>
-      <!----------->
-      <!--Communication-->
-      <div class="d-flex flex-column my-2">
-        <label class="mb-0" for="communication">Comunicação:</label>
-        <input style="background-color: whitesmoke;" type="text" id="communication" formControlName="p03_communication">
-      </div>
-      <!----------------->
     </div>
-    <div class="d-flex flex-column w-50 px-3">
-      <!--Birth Date-->
-      <div class="d-flex flex-column my-2">
-        <label class="mb-0" for="birth_date">Data de nascimento (yyyy-mm-dd):</label>
-        <input style="background-color: whitesmoke;" type="text" id="birth_date" formControlName="p04_birth_date">
+    <!--------->
+    <!--Name-->
+    <div class="caixa-100 d-flex align-items-center">
+      <div class="caixa-20">
+        Nome:
       </div>
-      <!-------------->
-      <!--Age-->
-      <div class="d-flex flex-column my-2">
-        <label class="mb-0" for="age">Idade:</label>
-        <input style="background-color: whitesmoke;" type="number" id="age" formControlName="p05_age">
+      <div class="caixa-70">
+        <input class="w-100 form-control fu" type="text" id="email" formControlName="p01_name">
       </div>
-      <!--------->
-      <!--Gender-->
-      <div class="d-flex flex-column my-2">
-        <label class="mb-0" for="gender">Gênero:</label>
-        <select style="background-color: whitesmoke;" id="gender" formControlName="p06_gender">
+      <div class="caixa-10">
+        <img [src]="mudou('p01_name')" width="15px" height="15px">
+      </div>
+    </div>
+    <!-------->
+    <!--Address-->
+    <div class="caixa-100 d-flex align-items-center">
+      <div class="caixa-20">
+        Endereço:
+      </div>
+      <div class="caixa-70">
+        <input class="w-100 form-control fu" type="text" id="email" formControlName="p02_address">
+      </div>
+      <div class="caixa-10">
+        <img [src]="mudou('p02_address')" width="15px" height="15px">
+      </div>
+    </div>
+    <!----------->
+    <!--Communication-->
+    <div class="caixa-100 d-flex align-items-center">
+      <div class="caixa-20">
+        Telefones:
+      </div>
+      <div class="caixa-70">
+        <input class="w-100 form-control fu" type="text" id="email" formControlName="p03_communication">
+      </div>
+      <div class="caixa-10">
+        <img [src]="mudou('p03_communication')" width="15px" height="15px">
+      </div>
+    </div>
+
+
+    <!--Birth Date-->
+    <div class="caixa-100 d-flex align-items-center">
+      <div class="caixa-20">
+        Data de nascimento:
+      </div>
+      <div class="caixa-30">
+        <input class="w-100 form-control fu" (change)="calculaIdade()"  type="date" id="birth_date" formControlName="p04_birth_date">
+      </div>
+      <div class="caixa-10">
+        <img [src]="mudou('p04_birth_date')" width="15px" height="15px">
+      </div>
+      <div class="caixa-10 d-flex align-items-center">
+        Idade:
+      </div>
+      <div class="caixa-20">
+        <input class="w-100 form-control" disabled  type="number" id="age" formControlName="p05_age">
+      </div> 
+    </div>
+    <div class="caixa-100" *ngIf="checaIdade()">
+      <div class="caixa-20"></div>
+      <div class="caixa-80">
+        <i><font color="red">O participante deve ter entre 18 e 120 anos.</font></i>
+      </div>
+    </div>
+
+    <!--Gender-->
+    <div class="caixa-100 d-flex align-items-center">
+      <div class="caixa-20">
+        Gênero:
+      </div>
+      <div class="caixa-30">
+        <select class="w-100 form-control fu"  id="gender" formControlName="p06_gender">
           <option value="O">Outros</option>
           <option value="M">Masculino</option>
           <option value="F">Feminino</option>
         </select>
       </div>
-      <!---------->
-      <!--Image
-      <div class="d-flex flex-column my-2">
-        <label class="mb-0" for="profile_photo_URL">Imagem de perfil:</label>
-        <input type="file" id="profile_photo_URL" accept="image/*" formControlName="p20_profile_photo_URL">
-      </div>
-      ------->
+      <div class="caixa-10">
+        <img [src]="mudou('p06_gender')" width="15px" height="15px">
+      </div>        
     </div>
-    <div class="d-flex justify-content-between mt-4 w-100">
-      <button class="btn btn-danger" (click)="addParticipantForm.reset()" type="button" data-toggle="collapse" data-target="#addParticipant">Cancelar</button>
-      <button class="btn btn-primary" (click)="addParticipant()" type="button" data-toggle="collapse" data-target="#addParticipant">Adicionar participante</button>
+    <!---------->
+    <!--Image
+    <div class="d-flex flex-column my-2">
+      <label class="mb-0" for="profile_photo_URL">Imagem de perfil:</label>
+      <input type="file" id="profile_photo_URL" accept="image/*" formControlName="p20_profile_photo_URL">
+    </div>
+      ------->
+    <div class="caixa-100">
+      <div class="caixa-20 d-flex align-items-center">
+        <button class="btn btn-danger" (click)="addParticipantForm.reset()" type="button" data-toggle="collapse" data-target="#addParticipant">Cancelar</button>
+      </div>
+      <div class="caixa-60"></div>
+      <div *ngIf="formValido()" class="caixa-20 d-flex align-items-center">      
+        <button class="btn btn-primary" (click)="addParticipant()" type="button" data-toggle="collapse" data-target="#addParticipant">Salvar</button>
+      </div>
+      <div *ngIf="!formValido()" class="caixa-20 d-flex align-items-center">      
+        <button class="btn btn-secondary" disabled >Salvar</button>
+      </div>
     </div>
   </form>
   <!------------------------------->
