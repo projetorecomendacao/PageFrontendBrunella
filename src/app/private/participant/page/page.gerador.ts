@@ -290,7 +290,7 @@ export class PageGerador{
     });
 
     pegaPage(participant: Participant): Page{
-        var page = new Page({}, this.cabecaPage,participant,this.participantSituation,this.psi,this.bio, this.soc, this.mul);
+        var page = new Page(this.cabecaPage,participant,this.participantSituation,this.psi,this.bio, this.soc, this.mul);
         return page;
     }
      
