@@ -26,7 +26,7 @@ export class PageForm implements CriaForm{
     geraFormGroup(data?: Page): FormGroup {
         if (data){
             this.pageForm = new FormGroup({
-                'cabecaPageForm' : this.cabecaPageForm.geraFormGroup(data),
+                'cabecaPageForm' : this.cabecaPageForm.geraFormGroup(data.getCabecaPage()),
                 'biologicalAspectsForm': this.biologicalAspectsForm.geraFormGroup(data.getBiologicalAspects()),
                 'psychologicalAspectsForm': this.psychologicalAspectsForm.geraFormGroup(data.getPsychologicalAspects()),
                 'socialAspectsForm': this.socialAspectsForm.geraFormGroup(data.getSocialAspects()),

@@ -2,6 +2,7 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {CriaForm} from '../../../../shared/cria-forms';
 import { Injectable } from '@angular/core';
 import { Page } from 'src/app/shared/models/page.model';
+import { CabecaPage } from 'src/app/shared/models/cabecaPage';
 
 @Injectable()
 export class CabecaPageForm implements CriaForm {
@@ -10,7 +11,7 @@ export class CabecaPageForm implements CriaForm {
   
   constructor(private fb: FormBuilder) { }
   
-  geraFormGroup(data?: Page): FormGroup {
+  geraFormGroup(data?: CabecaPage): FormGroup {
     if (data){
       this.cabecaPageForm = this.fb.group({
             service: [data.getService, [Validators.required, Validators.maxLength(60)]],

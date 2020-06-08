@@ -88,7 +88,7 @@ export class MultidisciplinaryDomain {
         this.id = -1;
       }
 
-      this.falls = data.falls;
+      //this.falls = data.falls;
 
       this.falls_instance = falls_instance;
 

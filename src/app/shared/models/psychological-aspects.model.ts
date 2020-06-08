@@ -145,9 +145,9 @@ export class PsychologicalAspects {
   constructor(data: any = {}, cognition_deficitInstance?: CognitionDeficit, negative_attitudes_agingInstance?: NegativeAttitudesAging, depressionInstance?: Depression) {
     this.id = data.id || -1;
 
-    this.cognition_deficit = data.cognition_deficit;
-    this.negative_attitudes_aging = data.negative_attitudes_aging;
-    this.depression = data.depression;
+    //this.cognition_deficit = data.cognition_deficit;
+    //this.negative_attitudes_aging = data.negative_attitudes_aging;
+    //this.depression = data.depression;
 
     this.cognition_deficit_instance = cognition_deficitInstance;
     this.negative_attitudes_aging_instance = negative_attitudes_agingInstance;

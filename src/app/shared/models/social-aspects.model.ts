@@ -188,9 +188,9 @@ export class SocialAspects {
     constructor(data: any = {}, lowSocialSupport_instance?: LowSocialSupport, environmentalProblems_instance?: EnvironmentalProblems, violence_instance?: Violence) {
         this.id = data.id || -1;
 
-        this.lowSocialSupport = data.lowSocialSupport;
-        this.environmentalProblems = data.environmentalProblems;
-        this.violence = data.violence;
+        //this.lowSocialSupport = data.lowSocialSupport;
+        //this.environmentalProblems = data.environmentalProblems;
+        //this.violence = data.violence;
 
         this.lowSocialSupport_instance = lowSocialSupport_instance;
         this.environmentalProblems_instance = environmentalProblems_instance;

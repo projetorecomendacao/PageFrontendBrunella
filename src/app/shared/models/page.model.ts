@@ -4,6 +4,7 @@ import { BiologicalAspects } from './biological-aspects.model';
 import { SocialAspects } from './social-aspects.model';
 import { MultidisciplinaryDomain } from './multidimentional-aspects';
 import { FinalAnalise } from './final-analise';
+import { CabecaPage } from './cabecaPage';
 
 export class Page {
   private id: number;
@@ -22,6 +23,7 @@ export class Page {
   private socialAspects_id: number;
   private multidisciplinaryDomain_id: number;
 
+  private cabeca_page : CabecaPage;
   private participant: Participant;
   private participant_situation: ParticipantSituation;
   private psychologicalAspects: PsychologicalAspects;
@@ -30,9 +32,10 @@ export class Page {
   private multidisciplinaryDomain: MultidisciplinaryDomain;
   private finalAnalise : FinalAnalise;
 
-  constructor(data: any = {}, participant?: Participant, participant_situation?: ParticipantSituation, psychologicalAspects?: PsychologicalAspects, biologicalAspects?: BiologicalAspects, socialAspects?: SocialAspects, multidisciplinaryDomain?: MultidisciplinaryDomain) {
+  constructor(data: any = {},cabeca_page?: CabecaPage, participant?: Participant, participant_situation?: ParticipantSituation, psychologicalAspects?: PsychologicalAspects, biologicalAspects?: BiologicalAspects, socialAspects?: SocialAspects, multidisciplinaryDomain?: MultidisciplinaryDomain) {
     this.id = data.id || -1;
-    this.service = data.service;
+
+    /*this.service = data.service;
 
     if (data.entrance && !(data.entrance instanceof Date))
       this.entrance = new Date(data.entrance);
@@ -63,8 +66,9 @@ export class Page {
     this.psychologicalAspects_id = data.psychologicalAspects;
     this.biologicalAspects_id = data.biologicalAspects;
     this.socialAspects_id = data.socialAspects;
-    this.multidisciplinaryDomain_id = data.multidisciplinaryDomain;
+    this.multidisciplinaryDomain_id = data.multidisciplinaryDomain; */
 
+    this.cabeca_page = cabeca_page;
     this.participant = participant;
     this.participant_situation = participant_situation;
     this.psychologicalAspects = psychologicalAspects;
@@ -88,6 +92,7 @@ export class Page {
   getSocialAspectsId() { return this.socialAspects_id; }
   getMultidisciplinaryDomainId() { return this.multidisciplinaryDomain_id; }
 
+  getCabecaPage() { return this.cabeca_page; }
   getParticipant() { return this.participant; }
   getParticipant_situation() { return this.participant_situation; }
   getPsychologicalAspects() { return this.psychologicalAspects; }

@@ -330,11 +330,11 @@ export class BiologicalAspects {
       this.id = -1;
     }
 
-    this.sensoryDeficit = data.sensoryDeficit;
-    this.functionalDisability = data.functionalDisability;
-    this.malNutrition = data.malNutrition;
-    this.cardiovascularFactors = data.cardiovascularFactors;
-    this.misuseMedications = data.misuseMedications;
+    //this.sensoryDeficit = data.sensoryDeficit;
+    //this.functionalDisability = data.functionalDisability;
+    //this.malNutrition = data.malNutrition;
+    //this.cardiovascularFactors = data.cardiovascularFactors;
+    //this.misuseMedications = data.misuseMedications;
 
     this.sensoryDeficit_instance = sensoryDeficit_instance;
     this.functionalDisability_instance = functionalDisability_instance;

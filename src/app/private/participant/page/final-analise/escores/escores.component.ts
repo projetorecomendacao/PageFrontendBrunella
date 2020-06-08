@@ -61,7 +61,7 @@ export class EscoresComponent implements OnInit {
     this.desliga('socialAspectsForm','lowSocialSupportForm');
     this.desliga('socialAspectsForm','violenceForm');
     this.desliga('socialAspectsForm','commentsForm');
-
+    
     this.desliga('cabecaPageForm');
     this.desliga('participantFormForm');
     */

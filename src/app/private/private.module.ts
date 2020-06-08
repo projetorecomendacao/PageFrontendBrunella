@@ -86,7 +86,7 @@ import { InstrucoesComponent } from './participant/page/visual_components/instru
 import { BotoesComponent } from './participant/page/visual_components/botoes/botoes.component';
 import { StatusComponent } from './participant/page/visual_components/status/status.component';
 import { DoencasComponent } from './participant/page/visual_components/doencas/doencas.component';
-
+import {PageGerador} from './participant/page/page.gerador'
 
 @NgModule({
   declarations: [
@@ -170,7 +170,8 @@ import { DoencasComponent } from './participant/page/visual_components/doencas/d
     ObservationsPsychologicalForm,
     CabecaPageForm,
     FinalAnaliseForm,
-    ChecaCampo
+    ChecaCampo,
+    PageGerador
   ]
 })
 export class PrivateModule { }
