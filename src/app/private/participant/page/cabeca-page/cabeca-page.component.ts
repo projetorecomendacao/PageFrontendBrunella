@@ -20,9 +20,15 @@ export class CabecaPageComponent implements OnInit {
 
   // método que verifica a situação dos campos do form
   mudou(campo: string): string{ 
-    var volta: string = this.checaCampo.inicio();
-    if(!this.pageForm.get(this.dominio).get(campo).pristine){
+    var volta: string;
+    if(this.pageForm.get(this.dominio).get(campo).valid){
       volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(campo).valid);
+    } else {
+      if(!this.pageForm.get(this.dominio).get(campo).pristine){
+        volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(campo).valid);
+      } else {
+        volta = this.checaCampo.inicio();
+      }
     }
     return volta;
   }
@@ -45,7 +51,9 @@ export class CabecaPageComponent implements OnInit {
 
   constructor(private checaCampo: ChecaCampo){}
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.formValido();
+  }
 
   submit() { 
     //for (var caca in this.pageForm.get('cabecaPageForm').value){

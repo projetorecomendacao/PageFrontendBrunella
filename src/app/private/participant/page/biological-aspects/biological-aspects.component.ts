@@ -11,7 +11,9 @@ export class BiologicalAspectsComponent implements OnInit {
 
   private dominio: string = 'biologicalAspectsForm';
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.formValido();
+  }
 
   constructor(){}
 

@@ -13,7 +13,9 @@ export class MultidimensionalAspectComponent implements OnInit {
 
   private dominio: string = 'multidimensionalAspectsForm';
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.formValido();
+   }
 
   constructor(){}
 

@@ -21,7 +21,14 @@ export class PageComponent implements OnInit {
   participant : Participant;
 
   ngOnInit(): void {
-    this.participant = this.pageService.participant;
-    this.pageForm = this.pf.geraFormGroup();
+   this.participant = this.pageService.participant;
+   console.log(this.pageService.page);
+   if (this.pageService.page.getId() == -1){
+      this.pageForm = this.pf.geraFormGroup();
+      console.log("vazio");
+   } else {
+    this.pageForm = this.pf.geraFormGroup(this.pageService.page);
+    console.log("cheio");
+   }
   }
 }

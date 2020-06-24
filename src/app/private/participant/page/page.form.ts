@@ -24,6 +24,7 @@ export class PageForm implements CriaForm{
 
 
     geraFormGroup(data?: Page): FormGroup {
+        console.log(data);
         if (data){
             this.pageForm = new FormGroup({
                 'cabecaPageForm' : this.cabecaPageForm.geraFormGroup(data.getCabecaPage()),

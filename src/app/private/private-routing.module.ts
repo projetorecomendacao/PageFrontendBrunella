@@ -11,6 +11,8 @@ import { PrivateComponent } from './private.component';
 import {PagesListComponent} from './participant/pages-list/pages-list.component';
 import {PageComponent} from './participant/page/page.component';
 import {ActivityComponent} from './activity/activity.component';
+import { FinalAnaliseComponent } from './participant/page/final-analise/final-analise.component';
+
 
 
 const routes: Routes = [
@@ -25,7 +27,8 @@ const routes: Routes = [
         component: ParticipantComponent,
         children: [
           { path: '', component: PagesListComponent },
-          { path: 'page/:id',component: PageComponent}
+          { path: 'page/:id',component: PageComponent},
+          { path: 'final', component: FinalAnaliseComponent}
         ]
       }
     ]

@@ -14,11 +14,11 @@ export class CabecaPageForm implements CriaForm {
   geraFormGroup(data?: CabecaPage): FormGroup {
     if (data){
       this.cabecaPageForm = this.fb.group({
-            service: [data.getService, [Validators.required, Validators.maxLength(60)]],
-            entrance: [data.getEntrance, [Validators.required]],
-            interviewed: [data.getInterviewed, Validators.required],
-            interviewer: [data.getInterviewer, [Validators.required, Validators.maxLength(30)]],
-            avaliation_date: [data.getAvaliation_date, Validators.required]
+            service: [data.getService(), [Validators.required, Validators.maxLength(60)]],
+            entrance: [data.getEntrance(), [Validators.required]],
+            interviewed: [data.getInterviewed(), Validators.required],
+            interviewer: [data.getInterviewer(), [Validators.required, Validators.maxLength(30)]],
+            avaliation_date: [data.getAvaliation_date(), Validators.required]
        });
     }
     else 

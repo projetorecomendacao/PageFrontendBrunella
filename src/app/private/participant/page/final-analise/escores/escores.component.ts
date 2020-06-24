@@ -8,6 +8,8 @@ import { FormGroup } from '@angular/forms';
 export class EscoresComponent implements OnInit {
   @Input() pageForm : FormGroup;
 
+  investiga : any[];
+
   psi_co :number = 0;
   psi_de :number = 0;
   psi_ne :number = 0;
@@ -81,25 +83,38 @@ export class EscoresComponent implements OnInit {
   }
 
   calcula(): void {
+    this.investiga = [];
     this.psi_co  = this.pageForm.get('psychologicalAspectsForm').get('cognitiveDeficitForm').get('score').value;
     this.psi_de  = this.pageForm.get('psychologicalAspectsForm').get('depressionForm').get('score').value;
     this.psi_ne  = this.pageForm.get('psychologicalAspectsForm').get('negativeAttitudesAgingForm').get('score').value;
     this.psi_asp  = (this.psi_co + this.psi_de + this.psi_ne);
-  
+    this.investiga.push({dimensao : 'Déficit Cognitivo', investigar : this.pageForm.get('psychologicalAspectsForm').get('cognitiveDeficitForm').get('need_investigation_cognition').value});
+    this.investiga.push({dimensao : 'Atitude Negativa em Relação ao Processo de Envelhecimento', investigar : this.pageForm.get('psychologicalAspectsForm').get('negativeAttitudesAgingForm').get('need_investigation_negative').value});    
+    this.investiga.push({dimensao : 'Depressão', investigar : this.pageForm.get('psychologicalAspectsForm').get('depressionForm').get('need_investigation_depression').value});
+    
     this.bio_ca = this.pageForm.get('biologicalAspectsForm').get('cardiovascularFactorsForm').get('score').value;
     this.bio_fu = this.pageForm.get('biologicalAspectsForm').get('functionalDisabilityForm').get('score').value;
     this.bio_ma = this.pageForm.get('biologicalAspectsForm').get('malnutritionForm').get('score').value;
     this.bio_mi = this.pageForm.get('biologicalAspectsForm').get('misuseMedicationsForm').get('score').value;
     this.bio_se = this.pageForm.get('biologicalAspectsForm').get('sensoryDeficitForm').get('score').value;
     this.bio_asp = (this.bio_ca + this.bio_fu + this.bio_ma + this.bio_mi + this.bio_se);
+    this.investiga.push({dimensao : 'Déficit Sensorial', investigar : this.pageForm.get('biologicalAspectsForm').get('sensoryDeficitForm').get('need_investigation_sensory').value});
+    this.investiga.push({dimensao : 'Incapacidade Funcional', investigar : this.pageForm.get('biologicalAspectsForm').get('functionalDisabilityForm').get('need_investigation_functional').value});
+    this.investiga.push({dimensao : 'Desnutrição', investigar : this.pageForm.get('biologicalAspectsForm').get('malnutritionForm').get('need_investigation_malnutrition').value});
+    this.investiga.push({dimensao : 'Doenças Cardiovasculares (DCV)', investigar : this.pageForm.get('biologicalAspectsForm').get('cardiovascularFactorsForm').get('need_investigation_cardio').value});
+    this.investiga.push({dimensao : 'Uso Inadequado de medicamentos', investigar : this.pageForm.get('biologicalAspectsForm').get('misuseMedicationsForm').get('need_investigation_misuse').value});
 
     this.soc_en = this.pageForm.get('socialAspectsForm').get('environmentalProblemsForm').get('score').value;
     this.soc_lo = this.pageForm.get('socialAspectsForm').get('lowSocialSupportForm').get('score').value;
     this.soc_vi = this.pageForm.get('socialAspectsForm').get('violenceForm').get('score').value;
     this.soc_asp = (this.soc_en + this.soc_lo + this.soc_vi);
-  
+    this.investiga.push({dimensao : 'Suporte Social', investigar : this.pageForm.get('socialAspectsForm').get('lowSocialSupportForm').get('need_investigation_low').value});
+    this.investiga.push({dimensao : 'Problemas Ambientais', investigar : this.pageForm.get('socialAspectsForm').get('environmentalProblemsForm').get('need_investigation_env').value});
+    this.investiga.push({dimensao : 'Violência', investigar : this.pageForm.get('socialAspectsForm').get('violenceForm').get('need_investigation_violence').value});
+
     this.mul_fa = this.pageForm.get('multidimensionalAspectsForm').get('fallsForm').get('score').value;
     this.mul_asp = (this.mul_fa);
+    this.investiga.push({dimensao : 'Suporte Social', investigar : this.pageForm.get('multidimensionalAspectsForm').get('fallsForm').get('need_investigation_falls').value});
   
     this.total = (this.psi_asp + this.bio_asp + this.soc_asp + this.mul_asp);
   

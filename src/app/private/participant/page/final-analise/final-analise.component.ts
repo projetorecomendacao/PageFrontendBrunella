@@ -32,8 +32,8 @@ export class FinalAnaliseComponent implements OnInit {
 
   // método que verifica se o form está válido
   formValido(): Boolean{
-    this.conta++;
-    console.log("graficos: " + this.conta);
+    //this.conta++;
+    //console.log("graficos: " + this.conta);
     return this.pageForm.get('finalAnaliseForm').valid;
   } 
 

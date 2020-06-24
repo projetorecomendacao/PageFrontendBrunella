@@ -7,6 +7,8 @@ import { LowSocialSupport, EnvironmentalProblems, Violence, SocialAspects } from
 import { Falls, MultidisciplinaryDomain } from 'src/app/shared/models/multidimentional-aspects';
 import { CabecaPage } from 'src/app/shared/models/cabecaPage';
 
+//Utilizado para Gerar o page quando necessário
+
 
 @Injectable()
 export class PageGerador{
@@ -14,8 +16,8 @@ export class PageGerador{
         id: 3,
         p02_address: 'N',
         p03_communication: 'N',
-        p07_marital_status: 'N',
-        p08_schooling: 'N',
+        p07_marital_status: 'Solteiro(a)',
+        p08_schooling: 'ensino médio (completo)',
         p09_study_time: 3,
         p10_is_retired: 'N',
         p10_retired_profession: 'N',
@@ -23,20 +25,20 @@ export class PageGerador{
         p11_retire_more_time_activity: 'N',
         p12_is_working_professionals_activities: 'N',
         p12_professional_activities: 'N',
-        p13_income_I: 'N',
-        p13_income_F: 'N',
+        p13_income_I: 'Entre 2 e 3 salários mínimos',
+        p13_income_F: 'Entre 2 e 3 salários mínimos',
         p14_lives_with: 'N',
         p15_has_religion: 'N',
         p15_religion: 'N',
         p16_health_self_report: 'N',
-        p20_weight: 3,
-        p20_height: 3,
+        p20_weight: 85,
+        p20_height: 1.80,
         p20_IMC: 3,
-        p3_car: 'N',
-        p3_bus: 'N',
-        p3_uber: 'N',
-        p3_ride: 'N',
-        p3_ride_with: 'N',
+        p30_car: 'N',
+        p30_bus: 'N',
+        p30_uber: 'N',
+        p30_ride: 'N',
+        p30_ride_with: 'N',
         p31_comments: 'N' 
     });
 
@@ -57,18 +59,18 @@ export class PageGerador{
         q5_praxia: 'N',
         q5_praxia_score : 1,
         q6_memory_test: 'N',
-        q6_memory_test_score: 'N',
+        q6_memory_test_score: 2,
         score_cognition : 1,
         need_investigation_cognition: 'N'
     });
      
     private negativeAttitudesAging = new NegativeAttitudesAging ({
         id: 1,
-        q7_age_self_perception: 'N',
+        q7_age_self_perception: 60,
         q7_age_self_perception_why: 'N',
         q7_age_self_perception_analyze: 'N',
         q8_aging_positive_points: 'N',
-        q8_aging_negative_points: 1,
+        q8_aging_negative_points: 'N',
         q8_aging_analyse: 'N',
         need_investigation_negative: 'N',
         score : 1
@@ -80,9 +82,9 @@ export class PageGerador{
         q10_frequently_sad: 'N',
         q11_stopped_doing_things: 'N',
         q12_fear_bad_things_happen: 'N',
-        q13_impatient_disquiet: 1,
+        q13_impatient_disquiet: 'N',
         q14_concentration_problem: 'N',
-        need_investigation_depression: 'N',
+        need_investigation_depression: 'S',
         score : 1
     });
 
@@ -146,7 +148,7 @@ export class PageGerador{
         q40_alcohol_Ingested_last_week: 'N',
         q40_alcohol_Ingested_last_week_amount: 'N',
         q41_bmi_obesity: 'N',
-        need_investigation_cardio: 'N',
+        need_investigation_cardio: 'S',
         score: 1,
         max_score_cardio: 1
     });
@@ -278,14 +280,14 @@ export class PageGerador{
     private mul = new MultidisciplinaryDomain({id:1, comments_multi : 'Opa'},this.falls);
 
     private cabecaPage = new CabecaPage ({
-        id: 1,
-        service: 'Usp',
-        entrance: new Date(),
+        id: -99,
+        service: 'USP',
+        entrance: '',
         interviewed: 'Participante',
         interviewer: 'Teste',
-        avaliation_date: new Date(),
-        created_at: new Date(),
-        updated_at: new Date(),
+        avaliation_date: '',
+        created_at: '',
+        updated_at: '',
         gerontologist: 1 
     });
 

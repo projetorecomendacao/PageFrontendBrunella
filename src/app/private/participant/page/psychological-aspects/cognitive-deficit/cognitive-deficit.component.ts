@@ -48,13 +48,20 @@ export class CognitiveDeficitComponent implements OnInit {
     return this.score;
   }
   
-    ngOnInit():void {}
+    ngOnInit():void {
+      this.formValido();
+      this.conta_certo();
+    }
   
     // o método mudou verifica se um campo foi atualizado
     mudou(campo: string){ 
       var volta: string = this.checaCampo.inicio();
-      if(!this.pageForm.get(this.dominio).get(this.dimensao).get(campo).pristine){
+      if (this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid){
         volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid);
+      } else {
+        if(!this.pageForm.get(this.dominio).get(this.dimensao).get(campo).pristine){
+          volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid);
+        }
       }
       return volta;
     }

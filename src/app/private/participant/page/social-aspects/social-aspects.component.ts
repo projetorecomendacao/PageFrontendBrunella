@@ -12,7 +12,9 @@ export class SocialAspectsComponent implements OnInit {
 
   private dominio: string = 'socialAspectsForm';
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.formValido();
+  }
 
   constructor(){}
 

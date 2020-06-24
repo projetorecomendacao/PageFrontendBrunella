@@ -22,12 +22,17 @@ export class DoencasComponent implements OnInit {
 
   }
 
-  mudou(): string{ 
-    var volta: string = this.checaCampo.inicio();
-    if(!this.pageForm.get(this.dominio).get(this.dimensao).get(this.campo).pristine){
-      volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(this.campo).valid);
+    // o método mudou verifica se um campo foi atualizado
+    mudou(){ 
+      var volta: string = this.checaCampo.inicio();
+      if (this.pageForm.get(this.dominio).get(this.dimensao).get(this.campo).valid){
+        volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(this.campo).valid);
+      } else {
+        if(!this.pageForm.get(this.dominio).get(this.dimensao).get(this.campo).pristine){
+          volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(this.campo).valid);
+        }
+      }
+      return volta;
     }
-    return volta;
-  }
 
 }

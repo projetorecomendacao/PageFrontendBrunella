@@ -11,7 +11,7 @@
       <mat-step formGroupName="participantFormForm" 
         [stepControl]="pageForm.get('participantFormForm')">
         <ng-template matStepLabel>Dados Pessoais</ng-template>
-        <app-participant-form [pageForm]="pageForm" [participant]="participant"></app-participant-form>
+        <app-participant-form [pageForm]="pageForm"></app-participant-form>
       </mat-step>
 
       <mat-step formGroupName="psychologicalAspectsForm"
@@ -38,12 +38,13 @@
         <app-multidimensional-aspect  [pageForm]="pageForm" [participant]="participant"></app-multidimensional-aspect>
       </mat-step>
 
+  
       <mat-step formGroupName="finalAnaliseForm"
         [stepControl]="pageForm.get('finalAnaliseForm')">
         <ng-template matStepLabel>Análise Final</ng-template>
         <app-final-analise  [pageForm]="pageForm"></app-final-analise>
       </mat-step>
-
+ 
     </mat-horizontal-stepper>
   </form>
 </div>

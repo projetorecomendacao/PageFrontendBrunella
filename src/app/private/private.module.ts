@@ -87,6 +87,9 @@ import { BotoesComponent } from './participant/page/visual_components/botoes/bot
 import { StatusComponent } from './participant/page/visual_components/status/status.component';
 import { DoencasComponent } from './participant/page/visual_components/doencas/doencas.component';
 import {PageGerador} from './participant/page/page.gerador'
+import { AtividadesRec } from '../shared/models/atividades-service';
+import { RecomendacaoComponent } from './participant/page/final-analise/recomendacao/recomendacao.component';
+import { AtividadesRecomendadasComponent } from './participant/page/final-analise/recomendacao/atividades-recomendadas/atividades-recomendadas.component';
 
 @NgModule({
   declarations: [
@@ -133,6 +136,8 @@ import {PageGerador} from './participant/page/page.gerador'
     BotoesComponent,
     StatusComponent,
     DoencasComponent,
+    RecomendacaoComponent,
+    AtividadesRecomendadasComponent,
   ],
   imports: [
     CommonModule,
@@ -171,7 +176,8 @@ import {PageGerador} from './participant/page/page.gerador'
     CabecaPageForm,
     FinalAnaliseForm,
     ChecaCampo,
-    PageGerador
+    PageGerador,
+    AtividadesRec
   ]
 })
 export class PrivateModule { }

@@ -30,9 +30,10 @@ export class PageService {
   //elementos do PAGe
   get participantSituation() { return this.page.getParticipant_situation(); }
   get psychologicalAspects() { return this.page.getPsychologicalAspects(); }
-  get biologicalAspects() { return this.page.getBiologicalAspects(); }
-  get socialAspects() { return this.page.getSocialAspects(); }
+  get biologicalAspects()    { return this.page.getBiologicalAspects(); }
+  get socialAspects()        { return this.page.getSocialAspects(); }
   get multidisciplinaryDomain() { return this.page.getMultidisciplinaryDomain(); }
+  
 
   
   get hasService() { return !!this.page.getService(); }

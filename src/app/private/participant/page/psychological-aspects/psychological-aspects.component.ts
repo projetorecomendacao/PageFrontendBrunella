@@ -12,7 +12,9 @@ export class PsychologicalAspectsComponent implements OnInit {
 
   private dominio: string = 'psychologicalAspectsForm';
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.formValido();
+   }
 
   constructor(){}
 

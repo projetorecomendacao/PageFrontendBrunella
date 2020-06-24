@@ -2,6 +2,7 @@ import { Component, Input, OnInit} from '@angular/core';
 import { FormGroup} from '@angular/forms';
 import { ChecaCampo } from 'src/app/shared/checa-campo';
 import { Participant } from 'src/app/shared/models/participant.model';
+import { PageService } from '../page.service';
 
 
 @Component({
@@ -11,7 +12,8 @@ import { Participant } from 'src/app/shared/models/participant.model';
 export class ParticipantFormComponent implements OnInit {
 
   @Input() pageForm: FormGroup;
-  @Input() participant: Participant;
+  participant: Participant;
+
 
   // variáveis booleans que controlam as mensagens de certo e errado no final do form
   public errado: boolean = false;
@@ -64,13 +66,17 @@ export class ParticipantFormComponent implements OnInit {
     this.pageForm.get(this.dominio).get('p20_IMC').setValue(IMC);
   }
 
-  constructor(private checaCampo: ChecaCampo){
+  constructor(private checaCampo: ChecaCampo, private pageService : PageService){
     
   }
 
   ngOnInit() { 
+    this.participant = this.pageService.participant;
     this.pageForm.get(this.dominio).get('p03_communication').setValue(this.participant.getCommunication());
     this.pageForm.get(this.dominio).get('p02_address').setValue(this.participant.getAddress());
+    this.formValido();
+    this.calculaIMC();
+    console.log(this.pageForm.get(this.dominio).value);
   }
 
   submit() { 

@@ -50,8 +50,11 @@ export class FallsComponent implements OnInit {
     return this.score;
   }
   
-    ngOnInit():void{
-    }
+  ngOnInit():void {
+    this.formValido();
+    this.conta_certo();
+  }
+
 
     enche(): void
     {

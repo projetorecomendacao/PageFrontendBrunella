@@ -4,45 +4,74 @@
     </span>
 </h2>
 
-<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="pageForm">
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="pageForm" style="margin-bottom: 60px;" >
     <table border="2" width="100%">
         <tr>
-            <td  bgcolor="lightsalmon" align="center" valign="middle" colspan="3"><b>ESCORES</b></td>
+            <td height="50" bgcolor="lightsalmon" align="center" valign="middle" colspan="3">ESCORES</td>
         </tr>
         <tr>
-            <td  bgcolor="lightsalmon" align="center" valign="middle" rowspan="4">PONTUAÇÃO POR DIMENSÃO</td>
-            <td  bgcolor="LightSkyBlue" align="center" valign="middle" colspan="2"> <b>ASPECTOS PSICOLÓGICOS: {{psi_asp}} </b> (MÁXIMA = 14 PONTOS)</td>
+            <td height="50"  bgcolor="lightsalmon" align="center" valign="middle" rowspan="4">PONTUAÇÃO POR DIMENSÃO</td>
+            <td height="50"  bgcolor="LightSkyBlue" align="center" valign="middle" colspan="2"> ASPECTOS PSICOLÓGICOS (MÁXIMA = 14 PONTOS): {{psi_asp}}</td>
         </tr>
         <tr>
-            <td  bgcolor="lightgreen" align="center" valign="middle" colspan="2"><b>ASPECTOS BIOLÓGICOS: {{bio_asp}} </b> (MÁXIMA = 36 PONTOS)</td>
+            <td height="50"  bgcolor="lightgreen" align="center" valign="middle" colspan="2">ASPECTOS BIOLÓGICOS (MÁXIMA = 36 PONTOS): {{bio_asp}}</td>
         </tr>
         <tr>
-            <td  bgcolor="yellow" align="center" valign="middle" colspan="2"><b>ASPECTOS SOCIAIS: {{soc_asp}} </b> (MÁXIMA = 32 PONTOS)</td>
+            <td height="50"  bgcolor="yellow" align="center" valign="middle" colspan="2">ASPECTOS SOCIAIS (MÁXIMA = 32 PONTOS): {{soc_asp}} </td>
         </tr>
         <tr>
-            <td  bgcolor="magenta" align="center" valign="middle" colspan="2"><b>QUEDAS: {{mul_asp}} </b>  (MÁXIMA = 16 PONTOS)</td>
+            <td height="50"  bgcolor="magenta" align="center" valign="middle" colspan="2">QUEDAS (MÁXIMA = 16 PONTOS): {{mul_asp}}  </td>
         </tr>
         <tr>
-            <td  bgcolor="lightgrey" align="center" colspan="3"><b>PONTUAÇÃO TOTAL: {{total}}  (MÁXIMA = 98 PONTOS)</b></td>
+            <td height="50"  bgcolor="lightgrey" align="center" colspan="3">PONTUAÇÃO TOTAL (MÁXIMA = 98 PONTOS): {{total}} </td>
         </tr>
 
         <tr>
-            <td  bgcolor="lightsalmon" align="center" colspan="3"><b>CLASSIFICAÇÃO DE RISCO DE VULNERABILIDADE BIOPSICOSSOCIAL</b></td>
+            <td height="50"  bgcolor="lightsalmon" align="center" colspan="3">CLASSIFICAÇÃO DE RISCO DE VULNERABILIDADE BIOPSICOSSOCIAL</td>
         </tr>
         <tr *ngIf="bom">
-            <td  bgcolor="green" align="center" width="34%"><b>MAIOR QUE 70 PONTOS = RISCO BAIXO</b></td>
-            <td  bgcolor="silver" align="center" width="33%"> 69 A 40 PONTOS = RISCO MODERADO</td>
-            <td  bgcolor="silver" align="center" width="33%"> MENOR 40 PONTOS = RISCO ALTO</td>
+            <td height="50"  bgcolor="green" align="center" width="34%">MAIOR QUE 70 PONTOS = RISCO BAIXO</td>
+            <td height="50"  bgcolor="silver" align="center" width="33%"> 69 A 40 PONTOS = RISCO MODERADO</td>
+            <td height="50"  bgcolor="silver" align="center" width="33%"> MENOR 40 PONTOS = RISCO ALTO</td>
         </tr>
         <tr *ngIf="medio">
-            <td  bgcolor="silver" align="center" width="34%"> MAIOR QUE 70 PONTOS = RISCO BAIXO</td>
-            <td  bgcolor="yellow" align="center" width="33%"><b>69 A 40 PONTOS = RISCO MODERADO</b></td>
-            <td  bgcolor="silver" align="center" width="33%">MENOR 39 PONTOS = RISCO ALTO</td>
+            <td height="50"  bgcolor="silver" align="center" width="34%"> MAIOR QUE 70 PONTOS = RISCO BAIXO</td>
+            <td height="50"  bgcolor="yellow" align="center" width="33%">69 A 40 PONTOS = RISCO MODERADO</td>
+            <td height="50"  bgcolor="silver" align="center" width="33%">MENOR 39 PONTOS = RISCO ALTO</td>
         </tr>
         <tr *ngIf="ruim">
-            <td  bgcolor="silver" align="center" width="34%">MAIOR QUE 70 PONTOS = RISCO BAIXO</td>
-            <td  bgcolor="silver" align="center" width="33%">69 A 40 PONTOS = RISCO MODERADO</td>
-            <td  bgcolor="red" align="center" width="33%"><b> MENOR 39 PONTOS = RISCO ALTO </b></td>
+            <td height="50"  bgcolor="silver" align="center" width="34%">MAIOR QUE 70 PONTOS = RISCO BAIXO</td>
+            <td height="50"  bgcolor="silver" align="center" width="33%">69 A 40 PONTOS = RISCO MODERADO</td>
+            <td height="50"  bgcolor="red" align="center" width="33%">MENOR 39 PONTOS = RISCO ALTO </td>
+        </tr>
+    </table>
+    <!--
+    <div class="caixa-100 d-flex justify-content-center align-items-center">
+        <button type="button" [click]="calcula()" class="btn btn-secondary">Atualiza</button>
+    </div>
+    -->
+</div>
+
+
+
+<h2 class="text-center mt-5">
+    <span class="rounded-pill rounded-bottom-0 text-white px-5 py-2" style="font-size: 16px; background-color:gray; font-weight: bold ;">
+        Investigação    
+    </span>
+</h2>
+<div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg d-flex justify-content-center align-items-center" [formGroup]="pageForm" style="margin-bottom: 60px;">
+    <table border="2" width="50%">
+        <tr>
+            <td align="center" valign="middle" colspan="2" bgcolor="Wheat"><b>Necessidade de Investigação por Domínio</b></td>
+         </tr>
+        <tr>
+            <td width="80%" bgcolor="Wheat" align="center"><b>Domínio</b></td>
+            <td width="20%" bgcolor="Wheat" align="center"><b>Investigar?</b></td>
+        </tr>
+        <tr *ngFor="let i of investiga">
+            <td>{{i.dimensao}}</td>
+            <td *ngIf="i.investigar=='N'"><font color="green">Não</font></td>
+            <td *ngIf="i.investigar=='S'"><font color="red">Sim</font></td>
         </tr>
     </table>
     <!--

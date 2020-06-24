@@ -34,6 +34,7 @@ export class Participant {
 
 export class ParticipantSituation {
   private id: number;
+  private p01_name: string;
   private p02_address: string;
   private p03_communication: string;
   private p07_marital_status: string;

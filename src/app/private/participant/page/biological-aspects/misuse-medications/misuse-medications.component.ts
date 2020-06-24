@@ -73,16 +73,27 @@ export class MisuseMedicationsComponent implements OnInit {
     return this.score;
   }
   
-    ngOnInit():void {}
-  
-    // método que verifica a situação dos campos do form
-    mudou(campo: string): string{ 
-      var volta: string = this.checaCampo.inicio();
+  ngOnInit():void {
+    this.pageForm.get(this.dominio).get(this.dimensao).get('q42_diseases_last_5_years_b').setValue( this.pageForm.get(this.dominio).get('cardiovascularFactorsForm').get('q34_hypertension').value);
+    this.pageForm.get(this.dominio).get(this.dimensao).get('q42_diseases_last_5_years_b').disable; 
+    this.pageForm.get(this.dominio).get(this.dimensao).get('q42_diseases_last_5_years_d').setValue( this.pageForm.get(this.dominio).get('cardiovascularFactorsForm').get('q35_uncontrolled_diabetes').value);
+    this.pageForm.get(this.dominio).get(this.dimensao).get('q42_diseases_last_5_years_d').disable; 
+    this.formValido();
+    this.conta_certo();
+  }
+
+  // o método mudou verifica se um campo foi atualizado
+  mudou(campo: string){ 
+    var volta: string = this.checaCampo.inicio();
+    if (this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid){
+      volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid);
+    } else {
       if(!this.pageForm.get(this.dominio).get(this.dimensao).get(campo).pristine){
         volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid);
       }
-      return volta;
     }
+    return volta;
+  }
 
 
     // método que verifica se o form está válido

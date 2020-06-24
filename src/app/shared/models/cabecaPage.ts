@@ -10,6 +10,7 @@ export class CabecaPage {
     private gerontologist: number;
 
     constructor (data: any = {}){
+        this.id = data.id;
         this.service = data.service;
         this.entrance = data.entrance;
         this.interviewed = data.interviewed; 

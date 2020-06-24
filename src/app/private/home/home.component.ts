@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
         this.p = this.participants[i];
       }
     }
-    console.log(this.p);
+    //console.log(this.p);
     this.pageService.participant = this.p;
     this.router.navigate(['private/participant']).then();
   }
@@ -90,13 +90,13 @@ export class HomeComponent implements OnInit {
       const past = new Date(this.addParticipantForm.get('p04_birth_date').value); // Outra data no passado
       const diff = Math.abs(now.getTime() - past.getTime()); // Subtrai uma data pela outra
       const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25)); // Divide o total pelo total de milisegundos correspondentes a 1 dia. (1000 milisegundos = 1 segundo).
-      console.log('anos ' + years + '  dif: '  + diff  + 'Hoje: ' + now.getTime()  + '  Niver: ' + past.getTime());
+      //console.log('anos ' + years + '  dif: '  + diff  + 'Hoje: ' + now.getTime()  + '  Niver: ' + past.getTime());
       this.addParticipantForm.get('p05_age').setValue(years);
     }
 
     //Verifica se a idade do participante é compatível
     checaIdade(){
-      console.log(this.addParticipantForm.get('p05_age').valid)
+      //console.log(this.addParticipantForm.get('p05_age').valid)
       if (!this.addParticipantForm.get('p04_birth_date').pristine && !this.addParticipantForm.get('p05_age').valid){
         return true;
       }

@@ -1,5 +1,9 @@
-<div class="text-white text-center my-4">
-  <button (click)="goTo()" class="btn btn-primary">Novo Page</button>
+<div *ngIf="!desenvolvedor()" class="text-white text-center my-4">
+  <button (click)="goTo(0)" class="btn btn-primary">Novo Page</button>
+</div>
+<div *ngIf="desenvolvedor()" class="text-white text-center my-4">
+  <button (click)="goTo(0)" class="btn btn-primary" style="margin-right: 10px;">Novo Page</button>
+  <button (click)="goTo(1)" class="btn btn-primary" style="margin-left: 10px;">Novo Page Preenchido</button>
 </div>
 
 

@@ -446,6 +446,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
 
 .fu-not{
   background-color: white;
+  color: blue;
+  border-bottom-style: solid;
+  border-bottom-color: black;
+  border-bottom-width: 1px;
 }
 
 .mage {
@@ -537,4 +541,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
 .graficos {
   width: 100%;
   height: 700px;
+}
+
+.bd-g {
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+
+.bd-f {
+  border-style: solid;
+  border-width: 1px;
+  border-color: gray;
+  height: 100%;
+}
+
+.mg-b {
+  margin-bottom: 10px;
 }

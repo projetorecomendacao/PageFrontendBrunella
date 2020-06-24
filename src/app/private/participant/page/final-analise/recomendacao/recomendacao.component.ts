@@ -1,45 +1,39 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ChartDataSets, ChartType, RadialChartOptions } from 'chart.js';
-import { Label } from 'ng2-charts';
+import { AtividadesRec } from 'src/app/shared/models/atividades-service';
 
 @Component({
-  selector: 'app-grafico-dominios',
-  templateUrl: './grafico-dominios.component.html'
+  selector: 'app-recomendacao',
+  templateUrl: './recomendacao.component.html'
 })
-export class GraficoDominiosComponent implements OnInit {
+export class RecomendacaoComponent implements OnInit {
   @Input() pageForm : FormGroup;
   
   psi_co :number;
   psi_de :number;
   psi_ne :number;
-  psi_asp : number;
 
   bio_ca:number;
   bio_fu:number;
   bio_ma:number;
   bio_mi:number;
   bio_se:number;
-  bio_asp: number;
 
   soc_en:number;
   soc_lo:number;
   soc_vi:number;
-  soc_asp: number;
 
   mul_fa:number;
-  mul_asp: number;
 
-  total: number;
+  paciente:any;
 
-  bom: boolean;
-  medio: boolean;
-  ruim: boolean;
+  lista_atividades:any[];
 
-  constructor() { }
+  constructor(private atividadeRec : AtividadesRec) { }
 
   ngOnInit(): void {
     this.calcula();
+    this.lista_atividades = this.atividadeRec.getLista();
   }
 
   calcula():void {
@@ -66,26 +60,23 @@ export class GraficoDominiosComponent implements OnInit {
     //Violência
     this.soc_vi = this.pageForm.get('socialAspectsForm').get('violenceForm').get('score').value * (100/8);
     //Quedas
-    this.mul_fa = this.pageForm.get('multidimensionalAspectsForm').get('fallsForm').get('score').value * (100/15);
-
-    this.radarChartData = [
-      { data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: '0%', backgroundColor: 'red'},
-      { data: [this.psi_co, this.psi_ne,this.psi_de, this.bio_se, this.bio_fu, this.bio_ma, this.bio_ca, this.bio_mi, this.soc_lo, this.soc_en,this.soc_vi, this.mul_fa], label: 'Resultado do Paciente'},
-      { data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100], label: '100%'},
-    ];
+    this.mul_fa = this.pageForm.get('multidimensionalAspectsForm').get('fallsForm').get('score').value * (100/15);  
+    this.paciente = {
+      'psi_co' : this.psi_co,
+      'psi_de' : this.psi_de,
+      'psi_ne' : this.psi_ne,
+    
+      'bio_ca' : this.bio_ca,
+      'bio_fu' : this.bio_fu,
+      'bio_ma' : this.bio_ma,
+      'bio_mi' : this.bio_mi,
+      'bio_se' : this.bio_se,
+    
+      'soc_en' : this.soc_en,
+      'soc_lo' : this.soc_lo,
+      'soc_vi' : this.soc_vi,
+    
+      'mul_fa' : this.mul_fa
+    }
   }
-
-  
-  public radarChartOptions: RadialChartOptions = {
-    responsive: true,
-  };
-
-  public radarChartLabels: Label[] = ['Déficit Cognitivo', 'Atitude Envelhecimento', 'Depressão',
-    'Déficit Sensorial', 'Incapacidade Funcional', 'Desnutrição', 'DCV', 'Medicamentos','Suporte Social','Ambiente',
-    'Violência', 'Quedas'];
-
-  public radarChartData: ChartDataSets[]; 
-
-  public radarChartType: ChartType = 'radar';
-
 }

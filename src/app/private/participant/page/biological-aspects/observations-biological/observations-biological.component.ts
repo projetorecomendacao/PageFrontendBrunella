@@ -23,17 +23,24 @@ export class ObservationsBiologicalComponent implements OnInit {
   //O serviço checa campo retorna as imanges de verificação dos campos 
   constructor(private checaCampo : ChecaCampo) {  }
   
-  ngOnInit():void {}
+  ngOnInit():void {
+    this.formValido();
+  }
   
     // o método mudou verifica se um campo foi atualizado
     // método que verifica a situação dos campos do form
-    mudou(campo: string): string{ 
-      var volta: string = this.checaCampo.inicio();
+  // o método mudou verifica se um campo foi atualizado
+  mudou(campo: string){ 
+    var volta: string = this.checaCampo.inicio();
+    if (this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid){
+      volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid);
+    } else {
       if(!this.pageForm.get(this.dominio).get(this.dimensao).get(campo).pristine){
         volta = this.checaCampo.checa(this.pageForm.get(this.dominio).get(this.dimensao).get(campo).valid);
       }
-      return volta;
     }
+    return volta;
+  }
 
 
     // método que verifica se o form está válido

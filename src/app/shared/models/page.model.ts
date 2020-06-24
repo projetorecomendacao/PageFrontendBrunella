@@ -137,6 +137,7 @@ export class Page {
     return obj;
   }
 
+  
   setService(service: string) { this.service = service; }
   setEntrance(entrance: Date) { this.entrance = entrance; }
   setInterviewed(interviewed: string) { this.interviewed = interviewed; }

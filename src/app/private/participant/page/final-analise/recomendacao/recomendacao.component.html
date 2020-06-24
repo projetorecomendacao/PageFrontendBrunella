@@ -1,0 +1,87 @@
+<div *ngFor="let ativ of lista_atividades">
+    <div class="caixa-100 bd-g">
+       <div class="caixa-100 mg-b d-flex justify-content-center align-items-center"> 
+          <b> Atividade: {{ ativ.Desc }} - Score: {{ ativ.Scor }} </b>
+       </div>
+       <div class="caixa-100">
+            <div class="caixa-50">
+                <div class="bd-fcaixa-100 mg-b bd-f">
+                    <b>Benefícios:</b> {{ ativ.Bene }}
+                </div>
+                <div class="caixa-100 mg-b bd-f">
+                    <b>Restrições:</b> {{ ativ.Rest }}
+                </div>
+                <div class="bd-f caixa-100">
+                    <b>Voltada ao Envelhecimento ativo?</b> {{ ativ.Acti }}
+                </div>
+                <div class="bd-f caixa-100">
+                    <b>Tipo de atividade:</b> {{ ativ.Type }}
+                </div>
+                <div class="bd-f caixa-100">
+                    <b>Horários:</b> {{ ativ.Sche }}
+                </div>
+                <div class="bd-f caixa-100">
+                    <b>Duração:</b> {{ ativ.Time }}
+                </div>
+                <div class="bd-f caixa-100">
+                    <b>Grupo ou individual?</b> {{ ativ.Grou }} 
+                </div>
+                <div class="bd-f caixa-100">
+                    <b>Custo:</b> {{ ativ.Cost }}
+                </div>
+                <div class="bd-f caixa-100">
+                    <b>Baixa Renda:</b> {{ ativ.LowP }}
+                </div>
+                <div class="bd-f caixa-100">
+                    <b>Parceria:</b> {{ ativ.Part }}
+                </div>
+                <div class="bd-f caixa-100">
+                    <b>Local:</b> {{ ativ.Loca }}
+                </div>
+                <div class="bd-f caixa-100">
+                    <b>Ambiente Interno ou Externo?</b> {{ ativ.Enve }}
+                </div>
+            </div>
+            <div class="caixa-45 d-flex justify-content-center align-items-center" style="margin-left: 10px;">
+                <app-atividades-recomendadas [_paciente]="paciente" [_atividade]="ativ.dominios"></app-atividades-recomendadas>
+            </div>
+        </div> 
+        <div class="caixa-100">
+            <div class="caixa-100 mg-b">
+                <div class="bd-f caixa-50">
+                    <b>Distância:</b> {{ ativ.Dist }}
+                </div>
+                <div class="bd-f caixa-50">
+                    <b>Tempo deslocamento tranporte público:</b> {{ ativ.PuTr }} 
+                </div>
+            </div>
+            <div class="caixa-100 mg-b">
+                <div class="bd-f caixa-50">
+                    <b>O paciente deve fazer esta atividade?</b> <select name="aceita" >
+                                                                <option value="" selected="true" disabled></option>
+                                                                <option value="S">Sim</option>
+                                                                <option value="N">Não</option>
+                                                             </select> 
+                </div>
+                <div class="bd-f caixa-50">
+                    <b>Com relação ao paciente a atividade é:</b> <select name="nota" >
+                                                            <option value="" selected="true" disabled></option>
+                                                            <option value="1">ruim</option>
+                                                            <option value="2">regular</option>
+                                                            <option value="3">boa</option>
+                                                            <option value="4">ótima</option>
+                                                            <option value="5">excelente</option>
+                                                        </select> 
+                </div>
+            </div>
+            <div class="caixa-100">
+                <div class="caixa-100 mg-b d-flex justify-content-center align-items-center">
+                    <b>Análise especialista</b>
+                </div> 
+                <div class="caixa-100 mg-b d-flex justify-content-center align-items-center">
+                    <textarea rows=4 cols=100></textarea>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
