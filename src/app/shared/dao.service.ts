@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class DAOService {
@@ -15,6 +16,7 @@ export class DAOService {
     }
 
     postObject(urlObject: string, object: any) {
+      console.log(object);
       return this.http.post(urlObject, object);
     }
 

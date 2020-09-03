@@ -38,6 +38,7 @@ export class FinalAnaliseComponent implements OnInit {
   } 
 
   submit() { 
+    
     alert('PAGe salvo com sucesso!!');
     this.router.navigate(['private/']).then();
     //for (var caca in this.pageForm.get('finalAnaliseForm').value){

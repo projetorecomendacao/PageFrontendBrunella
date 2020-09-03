@@ -26,7 +26,7 @@ export class PagesListComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.daoService.getObjects(REST_URL_PAGE).subscribe((response: any) => {
+    this.daoService.getObjects(REST_URL_PAGE).subscribe( (response: any) => {
       for (const page of response) 
         this.pages.push(new Page(page));
     });
