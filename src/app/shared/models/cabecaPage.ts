@@ -8,6 +8,7 @@ export class CabecaPage {
     private created_at: Date;
     private updated_at: Date;
     private gerontologist: number;
+    private participant : number;
 
     constructor (data: any = {}){
         this.id = data.id;
@@ -19,6 +20,9 @@ export class CabecaPage {
         this.created_at = data.created_at; 
         this.updated_at = data.updated_at; 
         this.gerontologist = data.gerontologist;
+        this.participant = data.participant;
+        console.log(`data: ${data.participant}`)
+        console.log(`participante: ${this.participant}`)
     }
 
     getId(){ return this.id;}
@@ -30,6 +34,7 @@ export class CabecaPage {
     getCreated_at(){ return this.created_at};
     getUpdate_at(){ return this.updated_at};
     getGerontologist(){ return this.gerontologist};
+    getParticipant(){return this.participant};
 
     setId(data: number){ this.id=data; } 
     setService(data: string){ this.service=data; }
@@ -40,4 +45,5 @@ export class CabecaPage {
     setCreated_at(data: Date){ this.created_at=data; }
     setUpdate_at(data: Date){ this.updated_at=data; }
     setGerontologist(data: number){ this.gerontologist=data; }
+    setParticipant(data: number){this.participant= data;}
 }

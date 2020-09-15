@@ -3,7 +3,7 @@
 </div>
 <div *ngIf="desenvolvedor()" class="text-white text-center my-4">
   <button (click)="goTo(0)" class="btn btn-primary" style="margin-right: 10px;">Novo Page</button>
-  <button (click)="goTo(1)" class="btn btn-primary" style="margin-left: 10px;">Novo Page Preenchido</button>
+  <button (click)="goTo(-1)" class="btn btn-primary" style="margin-left: 10px;">Novo Page Preenchido</button>
 </div>
 
 
@@ -35,8 +35,8 @@
       <!--------------->
       <!-- Options -->
       <div class="col-6 col-lg-4 d-flex flex-column justify-content-around mx-auto mt-5 mt-lg-0">
-        <button disabled class="btn btn-primary mb-2" (click)="goTo(page)" type="button">Visualizar ou editar</button>
-        <button disabled class="btn btn-danger" (click)="delete(page.getId())" type="button">Deletar</button>
+        <button class="btn btn-primary mb-2" (click)="goTo(page.getId())" type="button">Visualizar ou editar</button>
+        <button class="btn btn-danger" (click)="delete(page.getId())" type="button">Deletar</button>
       </div>
       <!----------->
     </div>

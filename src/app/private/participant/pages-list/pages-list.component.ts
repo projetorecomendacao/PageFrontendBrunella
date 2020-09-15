@@ -27,19 +27,26 @@ export class PagesListComponent implements OnInit {
 
   ngOnInit() {
     this.daoService.getObjects(REST_URL_PAGE).subscribe( (response: any) => {
-      for (const page of response) 
-        this.pages.push(new Page(page));
+      for (const page of response) {
+        if (page.participant == this.pageService.participant.getId()){
+          this.pages.push(new Page(page));
+          console.log(page);
+        }
+      }
     });
   }
 
   // Sets the page and redirects
   goTo(page: number) {
-    if (page == 0) {
-      this.pageService.reset();
-      this.pageService.setParticipant();
-    } else {
-      this.pageService.page = this.pageGerador.pegaPage(this.pageService.participant);
+    //Inicializa o PAGe no page service
+    this.pageService.reset();
+    console.log(page);
+    if (page != 0) {
+        //se -1 será gerado um novo page preenchido outro valor alteração de um page 
+        this.pageService.page = this.pageGerador.pegaPage(page,this.pageService.participant);
     }
+    
+    console.log(this.pageService.page);
     this.router.navigate(['private/participant/page/' + page.toString()]).then();
   }
 

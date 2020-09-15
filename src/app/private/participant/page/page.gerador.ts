@@ -6,14 +6,21 @@ import { SensoryDeficit, FunctionalDisability, Malnutrition, CardiovascularFacto
 import { LowSocialSupport, EnvironmentalProblems, Violence, SocialAspects } from 'src/app/shared/models/social-aspects.model';
 import { Falls, MultidisciplinaryDomain } from 'src/app/shared/models/multidimentional-aspects';
 import { CabecaPage } from 'src/app/shared/models/cabecaPage';
+import { UserService } from 'src/app/security/user.service';
+import { PageService } from './page.service';
 
 //Utilizado para Gerar o page quando necessário
 
 
 @Injectable()
 export class PageGerador{
+    constructor(private userService: UserService, private pageService: PageService){
+        console.log(`User: ${this.userService.getId()}`);
+        console.log(`Participante ${pageService.participant.getId()}`)
+    }
+
     private participantSituation = new ParticipantSituation({   
-        id: 3,
+        id: -1,
         p02_address: 'N',
         p03_communication: 'N',
         p07_marital_status: 'Solteiro(a)',
@@ -44,7 +51,7 @@ export class PageGerador{
 
 
     private cognitionDeficit = new CognitionDeficit({
-        id: 1,
+        id: -1,
         q1_memory_good_like_before: 'N',
         q2_memory_test: 'N',
         q2_memory_test_score: 1,
@@ -65,7 +72,7 @@ export class PageGerador{
     });
      
     private negativeAttitudesAging = new NegativeAttitudesAging ({
-        id: 1,
+        id: -1,
         q7_age_self_perception: 60,
         q7_age_self_perception_why: 'N',
         q7_age_self_perception_analyze: 'N',
@@ -77,7 +84,7 @@ export class PageGerador{
     });
      
     private depression = new Depression ({
-        id: 1,
+        id: -1,
         q9_satisfied_with_life: 'N',
         q10_frequently_sad: 'N',
         q11_stopped_doing_things: 'N',
@@ -88,10 +95,10 @@ export class PageGerador{
         score : 1
     });
 
-    private psi = new PsychologicalAspects({id:1, comments_psico : 'Opa'},this.cognitionDeficit,this.negativeAttitudesAging,this.depression)
+    private psi = new PsychologicalAspects({id:-1, comments_psico : 'Opa'},this.cognitionDeficit,this.negativeAttitudesAging,this.depression)
      
     private sensoryDeficit = new SensoryDeficit ({
-        id: 1,
+        id: -1,
         q15_vision_problems: 'N',
         q16_hearing_problems: 'N',
         q17_taste_problems: 'N',
@@ -103,7 +110,7 @@ export class PageGerador{
     });
      
     private functionalDisability = new FunctionalDisability ({
-        id: 1,
+        id: -1,
         q20_to_shop: 'N',
         q21_use_transport: 'N',
         q22_to_cook: 'N',
@@ -116,7 +123,7 @@ export class PageGerador{
     });
      
     private malnutrition = new Malnutrition ({
-        id: 1,
+        id: -1,
         q26_yourself_malnourished: 'N',
         q27_chewing_mouth_problems: 'N',
         q28_less3_meal_daily: 'N',
@@ -134,7 +141,7 @@ export class PageGerador{
     });
      
     private cardiovascularFactors = new CardiovascularFactors ({
-        id: 1,
+        id: -1,
         q33_dcv_familiar_history: 'N',
         q34_hypertension: 'N',
         q34_hypertension_unknow: 'N',
@@ -154,7 +161,7 @@ export class PageGerador{
     });
      
     private misuseMedications = new MisuseMedications ({
-        id: 1,
+        id: -1,
         q42_diseases_last_5_years_a: 'N',
         q42_diseases_last_5_years_b: 'N',
         q42_diseases_last_5_years_c: 'N',
@@ -190,11 +197,11 @@ export class PageGerador{
         max_score_misuse: 1
     });
      
-    private bio = new BiologicalAspects({id:1, comments_bio : 'Opa'},this.sensoryDeficit, this.functionalDisability, this.malnutrition, this.cardiovascularFactors, 
+    private bio = new BiologicalAspects({id:-1, comments_bio : 'Opa'},this.sensoryDeficit, this.functionalDisability, this.malnutrition, this.cardiovascularFactors, 
                                        this.misuseMedications)
      
     lowSocialSupport = new LowSocialSupport ({
-        id: 1,
+        id: -1,
         q54_spouse: 'N',
         q54_mother: 'N',
         q54_father: 'N',
@@ -215,7 +222,7 @@ export class PageGerador{
      
      
     private environmentalProblems = new EnvironmentalProblems ({
-        id: 1,
+        id: -1,
         q63_estable_furniture: 'N',
         q64_loose_objects_carpets: 'N',
         q65_slippery_floor: 'N',
@@ -238,7 +245,7 @@ export class PageGerador{
      
      
     private violence = new Violence ({
-        id: 1,
+        id: -1,
         q79_afraid_close_person: 'N',
         q80_feels_abandoned: 'N',
         q81_forced: 'N',
@@ -251,10 +258,10 @@ export class PageGerador{
         score: 1
     });
      
-    private soc = new SocialAspects({id:1, comments_social : 'Opa'}, this.lowSocialSupport, this.environmentalProblems, this.violence);
+    private soc = new SocialAspects({id:-1, comments_social : 'Opa'}, this.lowSocialSupport, this.environmentalProblems, this.violence);
 
     falls = new Falls ({
-        id: 1,
+        id: -1,
         q87_falls_last_year: 'N',
         q87_amount_falls_last_year: 1,
         q88_fractures_due_to_falls: 'N',
@@ -277,10 +284,10 @@ export class PageGerador{
         need_investigation_falls: 'N'
     });
 
-    private mul = new MultidisciplinaryDomain({id:1, comments_multi : 'Opa'},this.falls);
+    private mul = new MultidisciplinaryDomain({id:-1, comments_multi : 'Opa'},this.falls);
 
     private cabecaPage = new CabecaPage ({
-        id: -99,
+        id: 0,
         service: 'USP',
         entrance: '',
         interviewed: 'Participante',
@@ -288,11 +295,20 @@ export class PageGerador{
         avaliation_date: '',
         created_at: '',
         updated_at: '',
-        gerontologist: 1 
+        gerontologist: this.userService.getId(),
+        participant: this.pageService.participant.getId()
     });
 
-    pegaPage(participant: Participant): Page{
-        var page = new Page(this.cabecaPage,participant,this.participantSituation,this.psi,this.bio, this.soc, this.mul);
+    pegaPage(pid:number,participant: Participant): Page{
+        var page : Page;
+        console.log(pid)
+        if (pid == -1) {
+            page = new Page(this.cabecaPage,participant,this.participantSituation,this.psi,this.bio, this.soc, this.mul);
+            page.setId(0);
+        } else {
+
+        }
+        console.log(page);
         return page;
     }
      

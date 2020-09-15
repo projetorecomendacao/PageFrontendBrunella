@@ -1,4 +1,4 @@
-export class FinalAnalise {
+export class DemandMap {
     private id : number;
     private created_at : Date; 
     private updated_at : Date;

@@ -74,7 +74,7 @@ import { ObservationsPsychologicalForm } from './participant/page/psychological-
 import { MatStepperModule} from '@angular/material/stepper'
 import { CabecaPageForm } from './participant/page/cabeca-page/cabeca-page.form';
 import { FinalAnaliseComponent } from './participant/page/final-analise/final-analise.component';
-import { FinalAnaliseForm } from './participant/page/final-analise/final-analise.form';
+import { DemandMapForm } from './participant/page/final-analise/demandMapForm';
 import { EscoresComponent } from './participant/page/final-analise/escores/escores.component';
 import { GraficoDominiosComponent } from './participant/page/final-analise/grafico-dominios/grafico-dominios.component';
 import { GraficoDimesoesComponent } from './participant/page/final-analise/grafico-dimesoes/grafico-dimesoes.component';
@@ -174,7 +174,7 @@ import { AtividadesRecomendadasComponent } from './participant/page/final-analis
     ObservationsSocialForm,
     ObservationsPsychologicalForm,
     CabecaPageForm,
-    FinalAnaliseForm,
+    DemandMapForm,
     ChecaCampo,
     PageGerador,
     AtividadesRec

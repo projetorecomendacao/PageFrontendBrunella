@@ -3,7 +3,7 @@ import { PsychologicalAspects } from './psychological-aspects.model';
 import { BiologicalAspects } from './biological-aspects.model';
 import { SocialAspects } from './social-aspects.model';
 import { MultidisciplinaryDomain } from './multidimentional-aspects';
-import { FinalAnalise } from './final-analise';
+import { DemandMap } from './demand-map';
 import { CabecaPage } from './cabecaPage';
 
 export class Page {
@@ -30,7 +30,7 @@ export class Page {
   private biologicalAspects: BiologicalAspects;
   private socialAspects: SocialAspects;
   private multidisciplinaryDomain: MultidisciplinaryDomain;
-  private finalAnalise : FinalAnalise;
+  private demandMap : DemandMap;
 
   constructor(data: any = {},participant?: Participant, participant_situation?: ParticipantSituation, psychologicalAspects?: PsychologicalAspects, biologicalAspects?: BiologicalAspects, socialAspects?: SocialAspects, multidisciplinaryDomain?: MultidisciplinaryDomain) {
     this.id = data.id || -1;
@@ -100,6 +100,7 @@ export class Page {
     created_at: this.created_at,
     updated_at: this.updated_at,
     gerontologist: this.gerontologist,
+    participant : this.participant_id
   });}
   getParticipant() { return this.participant; }
   getParticipant_situation() { return this.participant_situation; }
@@ -107,7 +108,7 @@ export class Page {
   getBiologicalAspects() { return this.biologicalAspects; }
   getSocialAspects() { return this.socialAspects; }
   getMultidisciplinaryDomain() { return this.multidisciplinaryDomain; }
-  getFinalAnalise () {return this.finalAnalise;}
+  getDemandMap () {return this.demandMap;}
   getRawValues() {
     const obj: any = {};
     if (this.service)
@@ -134,10 +135,12 @@ export class Page {
       obj.socialAspects = this.socialAspects.getId();
     if (this.multidisciplinaryDomain)
       obj.multidisciplinaryDomain = this.multidisciplinaryDomain.getId();
+    if (this.demandMap)
+      obj.demandMap = this.demandMap.getId();
     return obj;
   }
 
-  
+  setId(id: number){this.id = id;}
   setService(service: string) { this.service = service; }
   setEntrance(entrance: Date) { this.entrance = entrance; }
   setInterviewed(interviewed: string) { this.interviewed = interviewed; }
@@ -150,5 +153,5 @@ export class Page {
   setBiologicalAspects(biologicalAspects: BiologicalAspects) { this.biologicalAspects = biologicalAspects; }
   setSocialAspects(socialAspects: SocialAspects) { this.socialAspects = socialAspects; }
   setMultidisciplinaryDomain(multidisciplinaryDomain: MultidisciplinaryDomain) { this.multidisciplinaryDomain = multidisciplinaryDomain; }
-  setFinalAnalise (finalAnalise : FinalAnalise) { this.finalAnalise = finalAnalise;}
+  setDemandMap (demandMap : DemandMap) { this.demandMap = demandMap;}
 }

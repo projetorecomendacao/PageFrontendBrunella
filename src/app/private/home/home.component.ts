@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     public errado: boolean = false;
     public branco: boolean = true;
   
-
+  //Pega a lista de participantes no banco de dados
   constructor(private dao: DAOService, private form: FormBuilder, private pageService: PageService, private router: Router, private checaCampo: ChecaCampo) {
     dao.getObjects(REST_URL_PARTICIPANTS).subscribe((data: any) => {
       for (const participant of data)
@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  //Salva o participante no banco de dados e atualiza a lista
   addParticipant() {
     this.dao.postObject(REST_URL_PARTICIPANTS, this.addParticipantForm.getRawValue()).subscribe((data: any) => {
       this.participants.push(new Participant(data));
@@ -47,6 +48,7 @@ export class HomeComponent implements OnInit {
     this.addParticipantForm.reset();
   }
 
+  //Vai para os pages do participante selecionado..
   goToParticipant(id: number) {
     this.pageService.reset();
     for(var i=0; i< this.participants.length; i++){
@@ -56,7 +58,7 @@ export class HomeComponent implements OnInit {
     }
     //console.log(this.p);
     this.pageService.participant = this.p;
-    this.router.navigate(['private/participant']).then();
+    this.router.navigate(['private/participant/']).then();
   }
 
     // método que verifica a situação dos campos do form

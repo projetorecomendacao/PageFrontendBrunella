@@ -25,7 +25,7 @@ export class CardiovascularFactorsForm implements CriaForm {
           q39_healthy_eating: [data.getQ39(), [Validators.required, Validators.maxLength(1)]],
           q40_alcohol_Ingested_last_week: [data.getQ40A(), [Validators.required, Validators.maxLength(1)]],
           q40_alcohol_Ingested_last_week_amount: [data.getQ40B(), [Validators.required, Validators.maxLength(1)]],
-          q41_bmi_obesity: [{value:data.getQ41(),disabled:true}, [Validators.required, Validators.maxLength(1)]],
+          q41_bmi_obesity: [data.getQ41(), [Validators.required, Validators.maxLength(1)]],
           score: [data.getScore, [Validators.required]],
           need_investigation_cardio: [data.getNeedInvestigation(), [Validators.required, Validators.maxLength(1)]]
         });
@@ -45,7 +45,7 @@ export class CardiovascularFactorsForm implements CriaForm {
           q39_healthy_eating: ['', [Validators.required, Validators.maxLength(1)]],
           q40_alcohol_Ingested_last_week: ['', [Validators.required, Validators.maxLength(1)]],
           q40_alcohol_Ingested_last_week_amount: ['', [Validators.required]],
-          q41_bmi_obesity: [{value:'', disabled:true}, [Validators.required, Validators.maxLength(1)]],
+          q41_bmi_obesity: ['', [Validators.required, Validators.maxLength(1)]],
           score: ['', [Validators.required]],
           need_investigation_cardio: ['', [Validators.required, Validators.maxLength(1)]]
         });

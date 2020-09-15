@@ -8,7 +8,8 @@ import { MultidimensionalAspectForm } from './multidimensional-aspect/multidimen
 import { ParticipantFormForm } from './participant-form/participant-form.form';
 import { Page } from 'src/app/shared/models/page.model';
 import { CabecaPageForm } from './cabeca-page/cabeca-page.form';
-import { FinalAnaliseForm } from './final-analise/final-analise.form';
+import { DemandMapForm } from './final-analise/demandMapForm';
+
 
 @Injectable()
 export class PageForm implements CriaForm{
@@ -20,7 +21,8 @@ export class PageForm implements CriaForm{
                 private multidimensionalAspectsForm: MultidimensionalAspectForm,
                 private participantFormForm: ParticipantFormForm,
                 private cabecaPageForm : CabecaPageForm,
-                private finalAnaliseForm: FinalAnaliseForm){ }
+                private demandMapForm: DemandMapForm
+                ){ }
 
 
     geraFormGroup(data?: Page): FormGroup {
@@ -33,7 +35,7 @@ export class PageForm implements CriaForm{
                 'socialAspectsForm': this.socialAspectsForm.geraFormGroup(data.getSocialAspects()),
                 'multidimensionalAspectsForm': this.multidimensionalAspectsForm.geraFormGroup(data.getMultidisciplinaryDomain()),
                 'participantFormForm': this.participantFormForm.geraFormGroup(data.getParticipant_situation()),
-                'finalAnaliseForm' : this.finalAnaliseForm.geraFormGroup(data.getFinalAnalise())
+                'demandMapForm' : this.demandMapForm.geraFormGroup(data.getDemandMap())
             })
         }
         else 
@@ -45,7 +47,7 @@ export class PageForm implements CriaForm{
                 'socialAspectsForm': this.socialAspectsForm.geraFormGroup(),
                 'multidimensionalAspectsForm': this.multidimensionalAspectsForm.geraFormGroup(),
                 'participantFormForm': this.participantFormForm.geraFormGroup(),
-                'finalAnaliseForm' : this.finalAnaliseForm.geraFormGroup()
+                'demandMapForm' : this.demandMapForm.geraFormGroup()
             })
         }
         return this.pageForm;

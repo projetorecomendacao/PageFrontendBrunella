@@ -1,19 +1,19 @@
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {CriaForm} from '../../../../shared/cria-forms';
 import { Injectable } from '@angular/core';
-import { FinalAnalise } from 'src/app/shared/models/final-analise';
+import { DemandMap } from 'src/app/shared/models/demand-map';
 
 
 @Injectable()
-export class FinalAnaliseForm implements CriaForm {
+export class DemandMapForm implements CriaForm {
 
-  private finalAnaliseForm: FormGroup;
+  private demandMapForm: FormGroup;
   
   constructor(private fb: FormBuilder) { }
   
-  geraFormGroup(data?: FinalAnalise): FormGroup {
+  geraFormGroup(data?: DemandMap): FormGroup {
     if (data){
-        this.finalAnaliseForm = this.fb.group({
+        this.demandMapForm = this.fb.group({
             dm3_unmet_demands: [data.getDm3_unmet_demands(), [Validators.required]],
             gerontologist_assessment: [data.getGerontologist_assessment(),[Validators.required]],
             demands_problems: [data.getDemands_problems(), [Validators.required]],
@@ -23,7 +23,7 @@ export class FinalAnaliseForm implements CriaForm {
     }
     else 
     {
-        this.finalAnaliseForm = this.fb.group({
+        this.demandMapForm = this.fb.group({
             dm3_unmet_demands: ['', [Validators.required]],
             gerontologist_assessment: ['',[Validators.required]],
             demands_problems: ['', [Validators.required]],
@@ -31,6 +31,6 @@ export class FinalAnaliseForm implements CriaForm {
             actions_organization: ['', [Validators.required]],
         });
     }
-    return this.finalAnaliseForm;
+    return this.demandMapForm;
   }
 }
