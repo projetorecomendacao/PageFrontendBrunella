@@ -14,6 +14,8 @@ import { UserService } from 'src/app/security/user.service';
 export class PagesListComponent implements OnInit {
 
   participantName : string;
+  participantIdade : number;
+  participantSexo : string;
   participantID : number;
 
   public pages: Page[] = new Array<Page>();
@@ -31,6 +33,9 @@ export class PagesListComponent implements OnInit {
   ngOnInit() {
     this.participantID = this.pageService.participant.getId();
     this.participantName = this.pageService.participant.getName();
+    this.participantIdade = this.pageService.participant.getAge();
+    this.participantSexo = this.pageService.participant.getGender();
+
     this.daoService.getObjects(REST_URL_PAGE).subscribe( (response: any) => {
       for (const page of response) {
         if (page.participant == this.pageService.participant.getId()){
@@ -48,11 +53,24 @@ export class PagesListComponent implements OnInit {
     console.log(page);
     if (page != 0) {
         //se -1 será gerado um novo page preenchido outro valor alteração de um page 
-        this.pageService.page = this.pageGerador.pegaPage(page,this.pageService.participant);
+        if (page == -1) {
+          this.pageService.page = this.pageGerador.pegaPage(page,this.pageService.participant);
+        } else {
+          this.daoService.getObject(REST_URL_PAGE,page.toString()).subscribe(response =>{
+            console.log(response);
+          },error => {
+            alert('Page não encontrado..');  
+          });
+          let lo_page = new Page ();
+          this.pageService.page = lo_page;
+        }
     }
-    
     console.log(this.pageService.page);
     this.router.navigate(['private/participant/page/' + page.toString()]).then();
+  }
+
+  voltar(){
+    this.router.navigate(['private/']).then();  
   }
 
   // TODO - If the user clicks twice on the delete button, it returns deletes and returns error. It is interesting to disable the button while waiting for the response

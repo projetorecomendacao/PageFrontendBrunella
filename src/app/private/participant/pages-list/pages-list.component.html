@@ -1,5 +1,5 @@
 <div class="text-center my-4">
-  <b>ID:</b> {{participantID}}    <b>Nome:</b> {{participantName}} 
+  <b>Nome:</b> {{participantName}}  <b>Idade:</b> {{participantIdade}} <b>Gênero:</b> {{participantSexo}}
 </div>
 
 
@@ -7,6 +7,7 @@
   <button (click)="goTo(0)" class="btn btn-primary">Novo Page</button>
 </div>
 <div *ngIf="desenvolvedor()" class="text-white text-center my-4">
+  <button (click)="voltar()" class="btn btn-primary" style="margin-right: 10px;">Voltar</button>
   <button (click)="goTo(0)" class="btn btn-primary" style="margin-right: 10px;">Novo Page</button>
   <button (click)="goTo(-1)" class="btn btn-primary" style="margin-left: 10px;">Novo Page Preenchido</button>
 </div>
