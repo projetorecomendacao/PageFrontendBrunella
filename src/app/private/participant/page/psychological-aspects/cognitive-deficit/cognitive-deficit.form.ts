@@ -27,7 +27,7 @@ export class CognitiveDeficitForm implements CriaForm {
             q5_praxia: [data.getQ5A(), [Validators.required, Validators.maxLength(1)]],
             q5_praxia_score: [data.getQ5B(), [Validators.required,Validators.min(0), Validators.max(3)]],
             q6_memory_test: [data.getQ6A(), [Validators.required, Validators.maxLength(1)]],
-            q6_memory_test_score: [data.getQ6B(), [Validators.required,Validators.min(0), Validators.max(5)]],
+            q6_memory_test_score: [data.getQ6B(), [Validators.required,Validators.min(0), Validators.max(7)]],
             score :  [data.getScoreCognition(),[Validators.required]],
             need_investigation_cognition: [data.getNeedInvestigation(), [Validators.required]]
           });
@@ -49,7 +49,7 @@ export class CognitiveDeficitForm implements CriaForm {
             q5_praxia: ['', [Validators.required, Validators.maxLength(1)]],
             q5_praxia_score: ['', [Validators.required,Validators.min(0), Validators.max(3)]],
             q6_memory_test: ['', [Validators.required, Validators.maxLength(1)]],
-            q6_memory_test_score: ['', [Validators.required, Validators.min(0), Validators.max(5)]],
+            q6_memory_test_score: ['', [Validators.required, Validators.min(0), Validators.max(7)]],
             score :  ['',[Validators.required]],
             need_investigation_cognition: ['', [Validators.required]]
           });

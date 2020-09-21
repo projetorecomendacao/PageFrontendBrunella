@@ -13,12 +13,15 @@ import { UserService } from 'src/app/security/user.service';
 })
 export class PagesListComponent implements OnInit {
 
+  participantName : string;
+  participantID : number;
+
   public pages: Page[] = new Array<Page>();
 
   constructor(private router: Router, private pageService: PageService, 
               private daoService: DAOService, private pageGerador : PageGerador, private userService: UserService) {
-    console.log (pageService.participant);
-    console.log (userService.getId());
+    //console.log (pageService.participant);
+    //console.log (userService.getId());
    }
 
    public desenvolvedor(): boolean {
@@ -26,6 +29,8 @@ export class PagesListComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.participantID = this.pageService.participant.getId();
+    this.participantName = this.pageService.participant.getName();
     this.daoService.getObjects(REST_URL_PAGE).subscribe( (response: any) => {
       for (const page of response) {
         if (page.participant == this.pageService.participant.getId()){

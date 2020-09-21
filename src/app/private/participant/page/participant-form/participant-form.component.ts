@@ -66,6 +66,12 @@ export class ParticipantFormComponent implements OnInit {
     this.pageForm.get(this.dominio).get('p20_IMC').setValue(IMC);
   }
 
+  setaProfissao(){
+    if (this.pageForm.get(this.dominio).get('p10_is_retired').value == 'S'){
+      this.pageForm.get(this.dominio).get('p10_actual_profession').setValue('nda');
+    }
+  }
+
   constructor(private checaCampo: ChecaCampo, private pageService : PageService){
     
   }

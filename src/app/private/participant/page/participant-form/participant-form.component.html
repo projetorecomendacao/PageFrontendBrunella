@@ -162,14 +162,14 @@
             <b>10. </b>O senhor é aposentado ou pensionista?
           </div>
           <div class="caixa-15">
-            <select class="w-100 form-control fu" formControlName="p10_is_retired">
+            <select class="w-100 form-control fu" (change)="setaProfissao()" formControlName="p10_is_retired">
               <option value="" selected disabled>Selecione</option>
               <option value="S">Sim</option>
               <option value="N">Não</option>
             </select>            
           </div>
           <div class="caixa-5">
-            <img [src]="mudou('p10_is_retired')" width="15px" height="15px">
+            <img [src]="mudou('p10_is_retired')"  width="15px" height="15px">
           </div>
           <div class="caixa-15">
             Qual sua profissão atual?
