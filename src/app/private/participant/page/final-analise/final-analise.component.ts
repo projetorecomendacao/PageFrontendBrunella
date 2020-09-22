@@ -16,6 +16,7 @@ export class FinalAnaliseComponent implements OnInit {
   @Input() pageForm: FormGroup;
 
   nome : string;
+  hoje : Date;
 
   conta:number=0;
   
@@ -23,6 +24,7 @@ export class FinalAnaliseComponent implements OnInit {
 
   ngOnInit() { 
     this.nome = this.pageService.participant.getName();
+    this.hoje = new Date ();
   }
 
   // método que verifica a situação dos campos do form
