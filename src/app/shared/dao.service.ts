@@ -16,7 +16,6 @@ export class DAOService {
     }
 
     postObject(urlObject: string, object: any) {
-      console.log(object);
       return this.http.post(urlObject, object);
     }
 
@@ -25,8 +24,8 @@ export class DAOService {
       return this.http.patch(urlObject + `${object.id}/`,  object);
     }
 
-    putObject(urlObject: string, object: any) {
-        return this.http.put(urlObject + `${object.id}/`, object);
+    putObject(urlObject: string, object: any, id : string) {
+        return this.http.put(urlObject + `${id}/`, object);
     }
 
     deleteObject(urlObject: string, id: string) {

@@ -48,6 +48,25 @@
     </mat-horizontal-stepper>
   </form>
 </div>
-
-
-
+<div class="d-flex justify-content-center align-items-center">
+  <div class="caixa-75p">
+    <div class="caixa-15 d-flex justify-content-center">
+      <button type="button" (click)="cancelar()" class="btn btn-danger" name="bc1"> 
+        Cancelar PAGe 
+      </button>
+    </div>
+    
+    <div *ngIf="!pageForm.valid" class="caixa-15r d-flex justify-content-center" >
+      <button type="button" disabled class="btn btn-secondary" name="bc2">
+        Salvar PAGe
+      </button>
+    </div>
+ 
+    <div *ngIf="pageForm.valid" class="caixa-15r d-flex justify-content-center" >
+      <button type="button" (click)="salvar()" class="btn btn-success" name="bc2">
+        Salvar PAGe
+      </button>
+    </div>
+ 
+  </div>
+</div>

@@ -21,8 +21,6 @@ export class CabecaPage {
         this.updated_at = data.updated_at; 
         this.gerontologist = data.gerontologist;
         this.participant = data.participant;
-        console.log(`data: ${data.participant}`)
-        console.log(`participante: ${this.participant}`)
     }
 
     getId(){ return this.id;}

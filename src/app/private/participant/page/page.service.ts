@@ -49,27 +49,11 @@ export class PageService {
   
   //Método que é utilizado para gravar o page
   submit(pageForm: FormGroup) {
-    pageForm.get('biologicalAspectsForm').get('malnutritionForm').get('q31_stress_illness_hospitalization').enable;
-    pageForm.get('biologicalAspectsForm').get('malnutritionForm').get('q32_bmi_less22').enable;
-    
-    pageForm.get('biologicalAspectsForm').get('cardiovascularFactorsForm').get('q41_bmi_obesity').enable;
-    
-    pageForm.get('multidimensionalAspectsForm').get('fallsForm').get('q87_falls_last_year').enable;
-    pageForm.get('multidimensionalAspectsForm').get('fallsForm').get('q88_fractures_due_to_falls').enable;
-    pageForm.get('multidimensionalAspectsForm').get('fallsForm').get('q92_older_than75').enable;
-    pageForm.get('multidimensionalAspectsForm').get('fallsForm').get('q93_female').enable;
-    pageForm.get('multidimensionalAspectsForm').get('fallsForm').get('q95_av_ds_commitment').enable;
-    pageForm.get('multidimensionalAspectsForm').get('fallsForm').get('q96_visual_deficit').enable;
-    pageForm.get('multidimensionalAspectsForm').get('fallsForm').get('q97_domestic_risks').enable;
-    pageForm.get('multidimensionalAspectsForm').get('fallsForm').get('q98_behavior_risk').enable;
-    pageForm.get('multidimensionalAspectsForm').get('fallsForm').get('q99_inactivity').enable;
-    pageForm.get('multidimensionalAspectsForm').get('fallsForm').get('q100_prior_ave').enable;
-
-    
-
     //Quando o page tem o ID maior que zero é um update, caso contrário é um novo page
     if (this.page.getId() > 0){
-      
+      this.dao.putObject(REST_URL_PAGE,pageForm.value, this.page.getId().toString()).subscribe((data:any)=>{
+        console.log(data);
+      });      
     } else {
       console.log('passou')
       console.log(pageForm.value);

@@ -22,10 +22,10 @@ export class CabecaPageForm implements CriaForm {
       console.log(`Geronto: ${data.getGerontologist()}`)
       this.cabecaPageForm = this.fb.group({
             service: [data.getService(), [Validators.required, Validators.maxLength(60)]],
-            entrance: [data.getEntrance(), [Validators.required]],
+            entrance: [data.getEntrance().toISOString().substring(0, 10), [Validators.required]],
             interviewed: [data.getInterviewed(), Validators.required],
             interviewer: [data.getInterviewer(), [Validators.required, Validators.maxLength(30)]],
-            avaliation_date: [data.getAvaliation_date(), Validators.required],
+            avaliation_date: [data.getAvaliation_date().toISOString().substring(0, 10), Validators.required],
             participant_id : [data.getParticipant(), Validators.required],
             geronto_id : [data.getGerontologist(), Validators.required]
        });

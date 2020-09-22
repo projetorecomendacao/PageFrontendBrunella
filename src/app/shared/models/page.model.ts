@@ -16,12 +16,7 @@ export class Page {
   private created_at: Date;
   private updated_at: Date;
   private gerontologist: number;
-  private participant_id: number;
-  private participant_situation_id: number;
-  private psychologicalAspects_id: number;
-  private biologicalAspects_id: number;
-  private socialAspects_id: number;
-  private multidisciplinaryDomain_id: number;
+
 
   //private cabeca_page : CabecaPage;
   private participant: Participant;
@@ -32,7 +27,7 @@ export class Page {
   private multidisciplinaryDomain: MultidisciplinaryDomain;
   private demandMap : DemandMap;
 
-  constructor(data: any = {},participant?: Participant, participant_situation?: ParticipantSituation, psychologicalAspects?: PsychologicalAspects, biologicalAspects?: BiologicalAspects, socialAspects?: SocialAspects, multidisciplinaryDomain?: MultidisciplinaryDomain) {
+  constructor(data: any = {},participant?: Participant, participant_situation?: ParticipantSituation, psychologicalAspects?: PsychologicalAspects, biologicalAspects?: BiologicalAspects, socialAspects?: SocialAspects, multidisciplinaryDomain?: MultidisciplinaryDomain, demandMap? : DemandMap) {
     this.id = data.id || -1;
     this.service = data.service;
 
@@ -61,18 +56,15 @@ export class Page {
     
 
     this.gerontologist = data.gerontologist;
-    this.participant_id = data.participant;
-    this.participant_situation_id = data.participant_situation;
-    this.psychologicalAspects_id = data.psychologicalAspects;
-    this.biologicalAspects_id = data.biologicalAspects;
-    this.socialAspects_id = data.socialAspects;
-    this.multidisciplinaryDomain_id = data.multidisciplinaryDomain; 
+
+
     this.participant = participant;
     this.participant_situation = participant_situation;
     this.psychologicalAspects = psychologicalAspects;
     this.biologicalAspects = biologicalAspects;
     this.socialAspects = socialAspects;
     this.multidisciplinaryDomain = multidisciplinaryDomain;
+    this.demandMap = demandMap;
   }
 
   getId() { return this.id; }
@@ -83,12 +75,7 @@ export class Page {
   getAvaliation_date() { return this.avaliation_date; }
   getUpdated_at() { return this.updated_at; }
   getGerontologist() { return this.gerontologist; }
-  getParticipantId() { return this.participant_id; }
-  getParticipant_situationId() { return this.participant_situation_id; }
-  getPsychologicalAspectsId() { return this.psychologicalAspects_id; }
-  getBiologicalAspectsId() { return this.biologicalAspects_id; }
-  getSocialAspectsId() { return this.socialAspects_id; }
-  getMultidisciplinaryDomainId() { return this.multidisciplinaryDomain_id; }
+
 
   getCabecaPage() { return new CabecaPage({
     id: this.id,
@@ -100,7 +87,7 @@ export class Page {
     created_at: this.created_at,
     updated_at: this.updated_at,
     gerontologist: this.gerontologist,
-    participant : this.participant_id
+    participant : this.participant.getId()
   });}
   getParticipant() { return this.participant; }
   getParticipant_situation() { return this.participant_situation; }

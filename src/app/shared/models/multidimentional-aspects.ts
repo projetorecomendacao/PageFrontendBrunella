@@ -92,7 +92,7 @@ export class MultidisciplinaryDomain {
 
       this.falls_instance = falls_instance;
 
-      this.comments_multi = data.string;
+      this.comments_multi = data.comments_multi;
     }
 
     getId() { return this.id; }

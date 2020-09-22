@@ -13,7 +13,7 @@
         Email:
       </div>
       <div class="caixa-70">
-        <input class="w-100 form-control fu" type="email" id="email" formControlName="p00_email">
+        <input class="w-100 form-control fu" type="email" formControlName="p00_email">
       </div>
       <div class="caixa-10">
         <img [src]="mudou('p00_email')" width="15px" height="15px">
@@ -110,7 +110,7 @@
       ------->
     <div class="caixa-100">
       <div class="caixa-20 d-flex align-items-center">
-        <button class="btn btn-danger" (click)="addParticipantForm.reset()" type="button" data-toggle="collapse" data-target="#addParticipant">Cancelar</button>
+        <button class="btn btn-danger" (click)="cancelar()" type="button" data-toggle="collapse" data-target="#addParticipant">Cancelar</button>
       </div>
       <div class="caixa-60"></div>
       <div *ngIf="formValido()" class="caixa-20 d-flex align-items-center">      
@@ -130,6 +130,7 @@
   <div class="d-flex flex-wrap w-xl-50 w-lg-75 mx-auto mb-5">
     <!--User1-->
     <div class="d-flex w-25 align-items-center flex-column p-2 border bg-white" *ngFor="let participant of participants">
+      <button class="btn btn-info mt-4" (click)="alterar(participant.getId())" data-toggle="collapse" data-target="#addParticipant">Editar</button>
       <img class="img-fluid px-5" src="assets/profile_placeholder.svg" alt="Foto de perfil">
       <h6 class="font-weight-bold text-primary text-center">{{ participant.getName() || 'Nome não registrado' }}</h6>
       <span class="m-0">{{ participant.getAge() + ' anos' || 'Idade não registrada' }}</span>

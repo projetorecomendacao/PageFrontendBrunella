@@ -4,7 +4,7 @@ export class Participant {
   private p01_name: string;
   private p02_address: string;
   private p03_communication: string;
-  private p04_birth_date: string;
+  private p04_birth_date: Date;
   private p05_age: number;
   private p06_gender: string;
   private p20_profile_photo_URL: string;

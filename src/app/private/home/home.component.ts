@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Participant } from '../../shared/models/participant.model';
 import { DAOService } from '../../shared/dao.service';
 import { REST_URL_PARTICIPANTS } from '../../shared/REST_API_URLs';
@@ -11,7 +11,11 @@ import { ChecaCampo } from 'src/app/shared/checa-campo';
   selector: 'app-home',
   templateUrl: './home.component.html'
 })
+
+
 export class HomeComponent implements OnInit {
+  @ViewChild('aForm') aForm: ElementRef;
+  participant_pos : number = -1;
   private p: Participant;
   public participants: Participant[] = new Array<Participant>();
   public addParticipantForm: FormGroup = this.form.group({
@@ -42,9 +46,16 @@ export class HomeComponent implements OnInit {
 
   //Salva o participante no banco de dados e atualiza a lista
   addParticipant() {
-    this.dao.postObject(REST_URL_PARTICIPANTS, this.addParticipantForm.getRawValue()).subscribe((data: any) => {
-      this.participants.push(new Participant(data));
-    });
+    if (this.participant_pos == -1) {
+      this.dao.postObject(REST_URL_PARTICIPANTS, this.addParticipantForm.getRawValue()).subscribe((data: any) => {
+        this.participants.push(new Participant(data));
+      }); 
+    } else {
+      this.dao.putObject(REST_URL_PARTICIPANTS, this.addParticipantForm.getRawValue(),this.p.getId().toString()).subscribe((data: any) => {
+        this.participants[this.participant_pos]= new Participant(data);
+        this.participant_pos = -1;
+      });  
+    }
     this.addParticipantForm.reset();
   }
 
@@ -63,6 +74,9 @@ export class HomeComponent implements OnInit {
 
     // método que verifica a situação dos campos do form
     mudou(campo: string): string{ 
+      if (this.addParticipantForm.get(campo).valid)
+        return this.checaCampo.checa(true);
+
       var volta: string = this.checaCampo.inicio();
       if(!this.addParticipantForm.get(campo).pristine){
         volta = this.checaCampo.checa(this.addParticipantForm.get(campo).valid);
@@ -103,5 +117,32 @@ export class HomeComponent implements OnInit {
         return true;
       }
       return false;
+    }
+
+    //Alteração do participante
+    
+    alterar (id : number){
+      for(var i=0; i< this.participants.length; i++){
+        if (this.participants[i].getId() == id ) {
+          this.p = this.participants[i];
+          this.participant_pos = i;
+          this.addParticipantForm.get('p00_email').setValue(this.p.getEmail()); 
+          this.addParticipantForm.get('p01_name').setValue(this.p.getName()); 
+          this.addParticipantForm.get('p02_address').setValue(this.p.getAddress()); 
+          this.addParticipantForm.get('p03_communication').setValue(this.p.getCommunication()); 
+          this.addParticipantForm.get('p04_birth_date').setValue(this.p.getBirth_date()); 
+          this.addParticipantForm.get('p05_age').setValue(this.p.getAge()); 
+          this.addParticipantForm.get('p06_gender').setValue(this.p.getGender()); 
+          this.addParticipantForm.get('p20_profile_photo_URL').setValue(this.p.getProfile_photo_URL()); 
+          break;
+        }
+      }
+      const ele = this.aForm.nativeElement['campoEmail'];
+      ele.focus();
+    }
+
+    cancelar(){
+      this.addParticipantForm.reset();
+      this.participant_pos = -1;
     }
 }

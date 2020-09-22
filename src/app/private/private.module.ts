@@ -90,6 +90,7 @@ import {PageGerador} from './participant/page/page.gerador'
 import { AtividadesRec } from '../shared/models/atividades-service';
 import { RecomendacaoComponent } from './participant/page/final-analise/recomendacao/recomendacao.component';
 import { AtividadesRecomendadasComponent } from './participant/page/final-analise/recomendacao/atividades-recomendadas/atividades-recomendadas.component';
+import { PageControlComponent } from './participant/page/visual_components/page-control/page-control.component';
 
 @NgModule({
   declarations: [
@@ -138,6 +139,7 @@ import { AtividadesRecomendadasComponent } from './participant/page/final-analis
     DoencasComponent,
     RecomendacaoComponent,
     AtividadesRecomendadasComponent,
+    PageControlComponent,
   ],
   imports: [
     CommonModule,

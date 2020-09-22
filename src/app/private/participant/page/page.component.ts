@@ -4,6 +4,7 @@ import { DAOService } from '../../../shared/dao.service';
 import { PageService } from './page.service';
 import { PageForm } from './page.form';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class PageComponent implements OnInit {
   get page() { return this.pageService.page; }
 
 
-  constructor(private dao: DAOService, private pageService: PageService, private pf: PageForm) { }
+  constructor(private dao: DAOService, private pageService: PageService, private pf: PageForm, private router: Router) { }
 
   pageForm : FormGroup;
   participant : Participant;
@@ -30,5 +31,16 @@ export class PageComponent implements OnInit {
     this.pageForm = this.pf.geraFormGroup(this.pageService.page);
     console.log("cheio");
    }
+  }
+
+  salvar(){
+    this.pageService.submit(this.pageForm);    
+    alert('PAGe salvo com sucesso!!');
+    this.router.navigate(['private/']).then();
+  }
+
+  cancelar(){
+    if (window.confirm("Confirma o cancelamento da edição do PAGe? As alterações realizadas serão descartadas."))
+      this.router.navigate(['private/']).then();
   }
 }
