@@ -1,35 +1,49 @@
-<div *ngIf="graficos()" class="caixa-100">
-  <app-escores [pageForm]="pageForm"></app-escores>
+<div class="d-flex justify-content-center align-items-center w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" >
+  <button type="button" (click)="gerarPDF()" class="btn btn-primary">Gerar PDF</button>
 </div>
 
-<div class="d-flex justify-content-center align-items-center w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" style="background-color: gray; margin-bottom: 30px; height: 30px;">
-    <b>Mapa das Demandas</b>
-</div>
+<div id="div_pdf">
+  <div id="div_participante">
+    <div class="d-flex justify-content-center align-items-center w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" style="background-color: gray; margin-bottom: 30px; height: 30px; margin-top: 30px;">
+        <b>Participante:  </b> {{nome}}
+    </div>
+  </div>
 
+  <div *ngIf="graficos()" class="caixa-100" id="div_escores">
+    <app-escores [pageForm]="pageForm"></app-escores>
+  </div>
 
-<h2 class="text-center mt-5">
-  <span class="rounded-pill rounded-bottom-0 text-white px-5 py-2" style="font-size: 16px; background-color:gray; font-weight: bold ;">
-      Contribuição (em %) de Cada Domínio
-  </span>
-</h2>
-<div *ngIf="graficos()" class="d-flex justify-content-center align-items-center w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" style="margin-bottom: 60px;">
-  <div class="graficos">
-    <app-grafico-dominios [pageForm]="pageForm"></app-grafico-dominios>
+  <div id="div_dominio">
+    <h2 class="text-center mt-5">
+      <span class="rounded-pill rounded-bottom-0 text-white px-5 py-2" style="font-size: 16px; background-color:gray; font-weight: bold ;">
+          Contribuição (em %) de Cada Domínio
+      </span>
+    </h2>
+    <div *ngIf="graficos()" class="d-flex justify-content-center align-items-center w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" style="margin-bottom: 60px;">
+      <div class="graficos">
+        <app-grafico-dominios [pageForm]="pageForm"></app-grafico-dominios>
+      </div>
+    </div>
+  </div>
+
+  <div id="div_dimensao">
+    <h2 class="text-center mt-5">
+      <span class="rounded-pill rounded-bottom-0 text-white px-5 py-2" style="font-size: 16px; background-color:gray; font-weight: bold ;" >
+          Contribuição (em %) de Cada Dimensão
+      </span>
+    </h2>
+    <div *ngIf="graficos()" class="d-flex justify-content-center align-items-center w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" style="margin-bottom: 60px;">
+      <div class="graficos">
+        <app-grafico-dimesoes [pageForm]="pageForm"></app-grafico-dimesoes>
+      </div>
+    </div> 
   </div>
 </div>
-
-<h2 class="text-center mt-5">
-  <span class="rounded-pill rounded-bottom-0 text-white px-5 py-2" style="font-size: 16px; background-color:gray; font-weight: bold ;" >
-      Contribuição (em %) de Cada Dimensão
-  </span>
-</h2>
-<div *ngIf="graficos()" class="d-flex justify-content-center align-items-center w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" style="margin-bottom: 60px;">
-  <div class="graficos">
-    <app-grafico-dimesoes [pageForm]="pageForm"></app-grafico-dimesoes>
+<div>
+  <div class="d-flex justify-content-center align-items-center w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" style="background-color: gray; margin-bottom: 30px; height: 30px;">
+      <b>Mapa das Demandas</b>
   </div>
-</div> 
-
-
+</div>
 
 <div class="w-xl-75 w-lg-75 mx-auto border bg-white shadow-lg" [formGroup]="pageForm" style="margin-bottom: 60px;">
   <div class="form-group p-3" formGroupName="demandMapForm">
@@ -153,7 +167,7 @@
       </button>
     </div>
     
-
+    <!--
     <div *ngIf='!formValido()' class="caixa-15r d-flex justify-content-center" >
       <button type="button" class="btn btn-secondary" disabled >
         Salvar 
@@ -165,6 +179,7 @@
         Salvar
       </button>
     </div>
+    -->
  
   </div>
 </div>
