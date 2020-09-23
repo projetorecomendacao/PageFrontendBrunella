@@ -14,8 +14,8 @@ import { ChecaCampo } from 'src/app/shared/checa-campo';
 
 
 export class HomeComponent implements OnInit {
-  @ViewChild('aForm') aForm: ElementRef;
   participant_pos : number = -1;
+  name = "Teste";
   private p: Participant;
   public participants: Participant[] = new Array<Participant>();
   public addParticipantForm: FormGroup = this.form.group({
@@ -137,8 +137,6 @@ export class HomeComponent implements OnInit {
           break;
         }
       }
-      const ele = this.aForm.nativeElement['campoEmail'];
-      ele.focus();
     }
 
     cancelar(){

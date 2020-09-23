@@ -63,7 +63,7 @@ export class FinalAnaliseComponent implements OnInit {
       var heightLeft = imgHeight;  
       const contentDataURL = canvas.toDataURL('image/png')  
       var position = 0;  
-      let pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+      let pdf = new jspdf.jsPDF('p', 'mm', 'a3');
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
       pdf.save('MYPdf.pdf'); // Generated PDF   
     });  
