@@ -1,19 +1,21 @@
 <main class="container-flex">
   <!--Adicionar Participante-->
   <div class="d-flex justify-content-center mt-5">
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addParticipant">Adicionar participante</button>
+    <button class="btn btn-primary" #myinput type="button" data-toggle="collapse" data-target="#addParticipant">Adicionar participante</button>
   </div>
   <!-------------------------->
   <!--Menu Adicionar Participante-->
   <form class="d-flex flex-wrap w-50 mx-auto bg-white shadow px-4 py-4 mt-5 collapse" id="addParticipant" [formGroup]="addParticipantForm">
-    <h1 class="font-weight-bold mb-4 text-primary w-100">Dados do novo participante</h1>
+    <div class="caixa-100 d-flex align-items-center">
+      <h1 class="font-weight-bold mb-4 text-primary w-100">Dados do participante</h1>
+    </div>
     <!--Email-->
     <div class="caixa-100 d-flex align-items-center">
       <div class="caixa-20">
         Email:
       </div>
       <div class="caixa-70">
-        <input class="w-100 form-control fu" type="email" name="campoEmail" formControlName="p00_email">
+        <input class="w-100 form-control fu"  type="email" name="campoEmail" formControlName="p00_email">
       </div>
       <div class="caixa-10">
         <img [src]="mudou('p00_email')" width="15px" height="15px">

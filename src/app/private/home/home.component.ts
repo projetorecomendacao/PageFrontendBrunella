@@ -14,6 +14,7 @@ import { ChecaCampo } from 'src/app/shared/checa-campo';
 
 
 export class HomeComponent implements OnInit {
+  @ViewChild("myinput") myInputField: ElementRef;
   participant_pos : number = -1;
   name = "Teste";
   private p: Participant;
@@ -137,6 +138,7 @@ export class HomeComponent implements OnInit {
           break;
         }
       }
+      this.myInputField.nativeElement.focus();
     }
 
     cancelar(){
