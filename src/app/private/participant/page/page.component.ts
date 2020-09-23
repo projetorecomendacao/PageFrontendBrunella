@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
   templateUrl: './page.component.html'
 })
 export class PageComponent implements OnInit {
+  isOptional : boolean;
 
   get page() { return this.pageService.page; }
 
@@ -23,14 +24,20 @@ export class PageComponent implements OnInit {
 
   ngOnInit(): void {
    this.participant = this.pageService.participant;
-   console.log(this.pageService.page);
    if (this.pageService.page.getId() == -1){
       this.pageForm = this.pf.geraFormGroup();
-      console.log("vazio");
    } else {
     this.pageForm = this.pf.geraFormGroup(this.pageService.page);
-    console.log("cheio");
    }
+   console.log(this.pageForm.valid);
+   if (this.pageForm.valid) {
+     console.log('valido');
+     this.isOptional = true;
+   } else {
+     this.isOptional = false;
+     console.log('valido');
+   }
+
   }
 
   salvar(){
