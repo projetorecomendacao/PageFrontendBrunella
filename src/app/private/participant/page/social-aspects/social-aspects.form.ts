@@ -18,7 +18,7 @@ export class SocialAspectsForm  implements CriaForm {
               private commentsForm: ObservationsSocialForm) { }
   
   geraFormGroup(data?: SocialAspects): FormGroup {
-    if (data){
+    if (data && data.getId() != -1 ){
       this.socialAspectsForm = new FormGroup ({
         'environmentalProblemsForm': this.environmentalProblemsForm.geraFormGroup(data.environmentalProblemsInstance),
         'lowSocialSupportForm' : this.lowSocialSupportForm.geraFormGroup(data.lowSocialSupportInstance),

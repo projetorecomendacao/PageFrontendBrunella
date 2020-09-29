@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ChecaCampo } from 'src/app/shared/checa-campo';
+import { PageService } from '../page.service';
 
 @Component({
   selector: 'app-cabeca-page',
@@ -49,17 +50,13 @@ export class CabecaPageComponent implements OnInit {
     return this.pageForm.get(this.dominio).valid;
   }
 
-  constructor(private checaCampo: ChecaCampo){}
+  constructor(private checaCampo: ChecaCampo, private pageService: PageService){}
 
   ngOnInit() { 
     this.formValido();
   }
 
   submit() { 
-    //for (var caca in this.pageForm.get('cabecaPageForm').value){
-    //  console.log(caca);
-    //  this.pageForm.get('cabecaPageForm').get(caca).markAsTouched;
-    //  this.pageForm.get('cabecaPageForm').get(caca).updateValueAndValidity;
-    //}
+    this.pageService.submit(this.pageForm, 0);
   }
 }

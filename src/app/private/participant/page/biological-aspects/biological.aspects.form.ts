@@ -24,7 +24,7 @@ export class BiologicalAspectsForm implements CriaForm {
   }
 
   geraFormGroup(data?: BiologicalAspects): FormGroup {
-    if (data){
+    if (data && data.getId() != -1 ){
         this.biologicalAspectsForm = new FormGroup({
             'cardiovascularFactorsForm' : this.cardiovascularFactorsForm.geraFormGroup(data.cardiovascularFactorsInstance),
             'functionalDisabilityForm': this.functionalDisabilityForm.geraFormGroup(data.functionalDisabilityInstance),

@@ -22,31 +22,32 @@ export class Falls {
     private need_investigation_falls: string;
 
     constructor(data: any = {}) {
-      if(data.id){
+      if(data.id && data.id != -1){
         this.id = data.id;
+        this.q87_falls_last_year = data.q87_falls_last_year;
+        this.q87_amount_falls_last_year = data.q87_amount_falls_last_year;
+        this.q88_fractures_due_to_falls = data.q88_fractures_due_to_falls;
+        this.q88_fractures_due_to_falls_list = data.q88_fractures_due_to_falls_list;
+        this.q89_fractures_list = data.q89_fractures_list;
+        this.q90_strength_mmii = data.q90_strength_mmii;
+        this.q91_equilibrium = data.q91_equilibrium;
+        this.q92_older_than75 = data.q92_older_than75;
+        this.q93_female = data.q93_female;
+        this.q94_cognitive_alterations = data.q94_cognitive_alterations;
+        this.q95_av_ds_commitment = data.q95_av_ds_commitment;
+        this.q96_visual_deficit = data.q96_visual_deficit;
+        this.q97_domestic_risks = data.q97_domestic_risks;
+        this.q98_behavior_risk = data.q98_behavior_risk;
+        this.q99_inactivity = data.q99_inactivity;
+        this.q100_prior_ave = data.q100_prior_ave;
+        this.q101_psychotropic_medications_use = data.q101_psychotropic_medications_use;
+        this.q102_has_diseases = data.q102_has_diseases;
+        this.score = data.score;
+        this.need_investigation_falls = data.need_investigation_falls;
       } else {
         this.id = -1;
       }
-      this.q87_falls_last_year = data.q87_falls_last_year;
-      this.q87_amount_falls_last_year = data.q87_amount_falls_last_year;
-      this.q88_fractures_due_to_falls = data.q88_fractures_due_to_falls;
-      this.q88_fractures_due_to_falls_list = data.q88_fractures_due_to_falls_list;
-      this.q89_fractures_list = data.q89_fractures_list;
-      this.q90_strength_mmii = data.q90_strength_mmii;
-      this.q91_equilibrium = data.q91_equilibrium;
-      this.q92_older_than75 = data.q92_older_than75;
-      this.q93_female = data.q93_female;
-      this.q94_cognitive_alterations = data.q94_cognitive_alterations;
-      this.q95_av_ds_commitment = data.q95_av_ds_commitment;
-      this.q96_visual_deficit = data.q96_visual_deficit;
-      this.q97_domestic_risks = data.q97_domestic_risks;
-      this.q98_behavior_risk = data.q98_behavior_risk;
-      this.q99_inactivity = data.q99_inactivity;
-      this.q100_prior_ave = data.q100_prior_ave;
-      this.q101_psychotropic_medications_use = data.q101_psychotropic_medications_use;
-      this.q102_has_diseases = data.q102_has_diseases;
-      this.score = data.score;
-      this.need_investigation_falls = data.need_investigation_falls;
+
     }
 
     getId() { return this.id; }

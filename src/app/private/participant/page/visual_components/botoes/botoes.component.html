@@ -21,7 +21,7 @@
       </div>
    
       <div *ngIf='valido' class="caixa-15r d-flex justify-content-center" >
-        <button type="button" class="btn btn-success" name="bc2" matStepperNext>
+        <button type="button" class="btn btn-success" name="bc2" (click)="gravar()" matStepperNext>
           Próximo>> 
         </button>
       </div>

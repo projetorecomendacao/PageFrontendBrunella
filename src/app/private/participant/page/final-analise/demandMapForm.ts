@@ -12,7 +12,7 @@ export class DemandMapForm implements CriaForm {
   constructor(private fb: FormBuilder) { }
   
   geraFormGroup(data?: DemandMap): FormGroup {
-    if (data){
+    if (data && data.getId() != -1 ){
         this.demandMapForm = this.fb.group({
             dm3_unmet_demands: [data.getDm3_unmet_demands(), [Validators.required]],
             gerontologist_assessment: [data.getGerontologist_assessment(),[Validators.required]],

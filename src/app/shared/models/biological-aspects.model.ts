@@ -12,18 +12,18 @@ export class SensoryDeficit {
   
 
   constructor(data: any = {}) {
-    if(data.id){
+    if(data.id && data.id != -1){
       this.id = data.id;
+      this.q15_vision_problems = data.q15_vision_problems;
+      this.q16_hearing_problems = data.q16_hearing_problems;
+      this.q17_taste_problems = data.q17_taste_problems;
+      this.q18_senses_problems = data.q18_senses_problems;
+      this.q19_interaction_problems = data.q19_interaction_problems;
+      this.score = data.score;
+      this.need_investigation_sensory = data.need_investigation_sensory;
     } else {
       this.id = -1;
     }
-    this.q15_vision_problems = data.q15_vision_problems;
-    this.q16_hearing_problems = data.q16_hearing_problems;
-    this.q17_taste_problems = data.q17_taste_problems;
-    this.q18_senses_problems = data.q18_senses_problems;
-    this.q19_interaction_problems = data.q19_interaction_problems;
-    this.score = data.score;
-    this.need_investigation_sensory = data.need_investigation_sensory;
   }
 
   getId() { return this.id; }
@@ -50,19 +50,19 @@ export class FunctionalDisability {
   private max_score_functional: number;
 
   constructor(data: any = {}) {
-    if(data.id){
+    if(data.id && data.id != -1){
       this.id = data.id;
+      this.q20_to_shop = data.q20_to_shop;
+      this.q21_use_transport = data.q21_use_transport;
+      this.q22_to_cook = data.q22_to_cook;
+      this.q23UseTelephone = data.q23UseTelephone;
+      this.q24_dress_up = data.q24_dress_up;
+      this.q25TakeShower = data.q25TakeShower;
+      this.score = data.score;
+      this.need_investigation_functional = data.need_investigation_functional;
     } else {
       this.id = -1;
     }
-    this.q20_to_shop = data.q20_to_shop;
-    this.q21_use_transport = data.q21_use_transport;
-    this.q22_to_cook = data.q22_to_cook;
-    this.q23UseTelephone = data.q23UseTelephone;
-    this.q24_dress_up = data.q24_dress_up;
-    this.q25TakeShower = data.q25TakeShower;
-    this.score = data.score;
-    this.need_investigation_functional = data.need_investigation_functional;
   }
 
   getId() { return this.id; }
@@ -95,24 +95,25 @@ export class Malnutrition {
   private max_score_malnutrition: number;
 
   constructor(data: any = {}) {
-    if(data.id){
+    if(data.id && data.id != -1){
       this.id = data.id;
+      this.q26_yourself_malnourished = data.q26_yourself_malnourished;
+      this.q27_chewing_mouth_problems = data.q27_chewing_mouth_problems;
+      this.q28_less3_meal_daily = data.q28_less3_meal_daily;
+      this.q29_decreases_amount_food = data.q29_decreases_amount_food;
+      this.q30_lost_weight_no_reason = data.q30_lost_weight_no_reason;
+      this.q31_stress_illness_hospitalization = data.q31_stress_illness_hospitalization;
+      this.q32_bmi_less22 = data.q32_bmi_less22;
+      this.need_investigation_malnutrition = data.need_investigation_malnutrition;
+      this.q30_lost_weight_no_reason_amount = data.q30_lost_weight_no_reason_amount;
+      this.q31_stress = data.q31_stress;
+      this.q31_illnes = data.q31_illnes;
+      this.q31_hospital = data.q31_hospital;    
+      this.score = data.score;
     } else {
       this.id = -1;
     }
-    this.q26_yourself_malnourished = data.q26_yourself_malnourished;
-    this.q27_chewing_mouth_problems = data.q27_chewing_mouth_problems;
-    this.q28_less3_meal_daily = data.q28_less3_meal_daily;
-    this.q29_decreases_amount_food = data.q29_decreases_amount_food;
-    this.q30_lost_weight_no_reason = data.q30_lost_weight_no_reason;
-    this.q31_stress_illness_hospitalization = data.q31_stress_illness_hospitalization;
-    this.q32_bmi_less22 = data.q32_bmi_less22;
-    this.need_investigation_malnutrition = data.need_investigation_malnutrition;
-    this.q30_lost_weight_no_reason_amount = data.q30_lost_weight_no_reason_amount;
-    this.q31_stress = data.q31_stress;
-    this.q31_illnes = data.q31_illnes;
-    this.q31_hospital = data.q31_hospital;    
-    this.score = data.score;
+
   }
 
   getId() { return this.id; }
@@ -152,26 +153,27 @@ export class CardiovascularFactors {
   private max_score_cardio: number;
 
   constructor(data: any = {}) {
-    if(data.id){
+    if(data.id && data.id != -1){
       this.id = data.id;
+      this.q33_dcv_familiar_history = data.q33_dcv_familiar_history;
+      this.q34_hypertension = data.q34_hypertension;
+      this.q34_hypertension_unknow = data.q34_hypertension_unknow;
+      this.q35_uncontrolled_diabetes = data.q35_uncontrolled_diabetes;
+      this.q35_unknown_value_glycemia = data.q35_unknown_value_glycemia;
+      this.q36_cholesterol = data.q36_cholesterol;
+      this.q36_unknown_value_ct_hdl = data.q36_unknown_value_ct_hdl;
+      this.q37_smoker = data.q37_smoker;
+      this.q38_practice_150_minutes_exercises = data.q38_practice_150_minutes_exercises;
+      this.q39_healthy_eating = data.q39_healthy_eating;
+      this.q40_alcohol_Ingested_last_week = data.q40_alcohol_Ingested_last_week;
+      this.q40_alcohol_Ingested_last_week_amount = data.q40_alcohol_Ingested_last_week_amount;
+      this.q41_bmi_obesity = data.q41_bmi_obesity;
+      this.score = data.score;
+      this.need_investigation_cardio = data.need_investigation_cardio;
     } else {
       this.id = -1;
     }
-    this.q33_dcv_familiar_history = data.q33_dcv_familiar_history;
-    this.q34_hypertension = data.q34_hypertension;
-    this.q34_hypertension_unknow = data.q34_hypertension_unknow;
-    this.q35_uncontrolled_diabetes = data.q35_uncontrolled_diabetes;
-    this.q35_unknown_value_glycemia = data.q35_unknown_value_glycemia;
-    this.q36_cholesterol = data.q36_cholesterol;
-    this.q36_unknown_value_ct_hdl = data.q36_unknown_value_ct_hdl;
-    this.q37_smoker = data.q37_smoker;
-    this.q38_practice_150_minutes_exercises = data.q38_practice_150_minutes_exercises;
-    this.q39_healthy_eating = data.q39_healthy_eating;
-    this.q40_alcohol_Ingested_last_week = data.q40_alcohol_Ingested_last_week;
-    this.q40_alcohol_Ingested_last_week_amount = data.q40_alcohol_Ingested_last_week_amount;
-    this.q41_bmi_obesity = data.q41_bmi_obesity;
-    this.score = data.score;
-    this.need_investigation_cardio = data.need_investigation_cardio;
+
   }
 
   getId() { return this.id; }
@@ -230,43 +232,43 @@ export class MisuseMedications {
   private max_score_misuse: number;
 
   constructor(data: any = {}) {
-    if(data.id){
+    if(data.id && data.id != -1){
       this.id = data.id;
+      this.q42_diseases_last_5_years_a = data.q42_diseases_last_5_years_a;
+      this.q42_diseases_last_5_years_b = data.q42_diseases_last_5_years_b;
+      this.q42_diseases_last_5_years_c = data.q42_diseases_last_5_years_c;
+      this.q42_diseases_last_5_years_d = data.q42_diseases_last_5_years_d;
+      this.q42_diseases_last_5_years_e = data.q42_diseases_last_5_years_e;
+      this.q42_diseases_last_5_years_f = data.q42_diseases_last_5_years_f;
+      this.q42_diseases_last_5_years_g = data.q42_diseases_last_5_years_g;
+      this.q42_diseases_last_5_years_h = data.q42_diseases_last_5_years_h;
+      this.q42_diseases_last_5_years_i = data.q42_diseases_last_5_years_i;
+      this.q42_diseases_last_5_years_j = data.q42_diseases_last_5_years_j;
+      this.q42_diseases_last_5_years_k = data.q42_diseases_last_5_years_k;
+      this.q42_diseases_last_5_years_l = data.q42_diseases_last_5_years_l;
+      this.q43_health_problems_a = data.q43_health_problems_a;
+      this.q43_health_problems_b = data.q43_health_problems_b;
+      this.q43_health_problems_c = data.q43_health_problems_c;
+      this.q43_health_problems_d = data.q43_health_problems_d;
+      this.q43_health_problems_e = data.q43_health_problems_e;
+      this.q43_health_problems_f = data.q43_health_problems_f;
+      this.q43_health_problems_g = data.q43_health_problems_g;
+      this.q43_health_problems_h = data.q43_health_problems_h;
+      this.q44_amount_diagnostics = data.q44_amount_diagnostics;
+      this.q45_medicines = data.q45_medicines;
+      this.q46_medicines_increase = data.q46_medicines_increase;
+      this.q47_know_medicines = data.q47_know_medicines;
+      this.q48_medications_prescribed = data.q48_medications_prescribed;
+      this.q49_medicine_medical_advice = data.q49_medicine_medical_advice;
+      this.q50_already_stopped_medicines = data.q50_already_stopped_medicines;
+      this.q51_self_medication = data.q51_self_medication;
+      this.q52_inappropriate_medication = data.q52_inappropriate_medication;
+      this.q53_risk_adverse_reaction = data.q53_risk_adverse_reaction;
+      this.need_investigation_misuse = data.need_investigation_misuse;
+      this.score = data.score;
     } else {
       this.id = -1;
     }
-    this.q42_diseases_last_5_years_a = data.q42_diseases_last_5_years_a;
-    this.q42_diseases_last_5_years_b = data.q42_diseases_last_5_years_b;
-    this.q42_diseases_last_5_years_c = data.q42_diseases_last_5_years_c;
-    this.q42_diseases_last_5_years_d = data.q42_diseases_last_5_years_d;
-    this.q42_diseases_last_5_years_e = data.q42_diseases_last_5_years_e;
-    this.q42_diseases_last_5_years_f = data.q42_diseases_last_5_years_f;
-    this.q42_diseases_last_5_years_g = data.q42_diseases_last_5_years_g;
-    this.q42_diseases_last_5_years_h = data.q42_diseases_last_5_years_h;
-    this.q42_diseases_last_5_years_i = data.q42_diseases_last_5_years_i;
-    this.q42_diseases_last_5_years_j = data.q42_diseases_last_5_years_j;
-    this.q42_diseases_last_5_years_k = data.q42_diseases_last_5_years_k;
-    this.q42_diseases_last_5_years_l = data.q42_diseases_last_5_years_l;
-    this.q43_health_problems_a = data.q43_health_problems_a;
-    this.q43_health_problems_b = data.q43_health_problems_b;
-    this.q43_health_problems_c = data.q43_health_problems_c;
-    this.q43_health_problems_d = data.q43_health_problems_d;
-    this.q43_health_problems_e = data.q43_health_problems_e;
-    this.q43_health_problems_f = data.q43_health_problems_f;
-    this.q43_health_problems_g = data.q43_health_problems_g;
-    this.q43_health_problems_h = data.q43_health_problems_h;
-    this.q44_amount_diagnostics = data.q44_amount_diagnostics;
-    this.q45_medicines = data.q45_medicines;
-    this.q46_medicines_increase = data.q46_medicines_increase;
-    this.q47_know_medicines = data.q47_know_medicines;
-    this.q48_medications_prescribed = data.q48_medications_prescribed;
-    this.q49_medicine_medical_advice = data.q49_medicine_medical_advice;
-    this.q50_already_stopped_medicines = data.q50_already_stopped_medicines;
-    this.q51_self_medication = data.q51_self_medication;
-    this.q52_inappropriate_medication = data.q52_inappropriate_medication;
-    this.q53_risk_adverse_reaction = data.q53_risk_adverse_reaction;
-    this.need_investigation_misuse = data.need_investigation_misuse;
-    this.score = data.score;
   }
 
   getId() { return this.id; }
@@ -324,25 +326,17 @@ export class BiologicalAspects {
   private max_score_bio: number;
 
   constructor(data: any = {}, sensoryDeficit_instance?: SensoryDeficit, functionalDisability_instance?: FunctionalDisability, malNutrition_instance?: Malnutrition, cardiovascularFactors_instance?: CardiovascularFactors, misuseMedications_instance?: MisuseMedications) {
-    if(data.id){
+    if(data.id && data.id != -1){
       this.id = data.id;
+      this.sensoryDeficit_instance = sensoryDeficit_instance;
+      this.functionalDisability_instance = functionalDisability_instance;
+      this.malNutrition_instance = malNutrition_instance;
+      this.cardiovascularFactors_instance = cardiovascularFactors_instance;
+      this.misuseMedications_instance = misuseMedications_instance;
+      this.comments_bio = data.comments_bio;
     } else {
       this.id = -1;
     }
-
-    //this.sensoryDeficit = data.sensoryDeficit;
-    //this.functionalDisability = data.functionalDisability;
-    //this.malNutrition = data.malNutrition;
-    //this.cardiovascularFactors = data.cardiovascularFactors;
-    //this.misuseMedications = data.misuseMedications;
-
-    this.sensoryDeficit_instance = sensoryDeficit_instance;
-    this.functionalDisability_instance = functionalDisability_instance;
-    this.malNutrition_instance = malNutrition_instance;
-    this.cardiovascularFactors_instance = cardiovascularFactors_instance;
-    this.misuseMedications_instance = misuseMedications_instance;
-
-    this.comments_bio = data.comments_bio;
   }
 
   getId() { return this.id; }

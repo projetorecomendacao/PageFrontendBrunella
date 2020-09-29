@@ -1,7 +1,6 @@
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {CriaForm} from '../../../../shared/cria-forms';
 import { Injectable } from '@angular/core';
-import { Page } from 'src/app/shared/models/page.model';
 import { CabecaPage } from 'src/app/shared/models/cabecaPage';
 import { PageService } from '../page.service';
 import { UserService } from 'src/app/security/user.service';
@@ -17,9 +16,7 @@ export class CabecaPageForm implements CriaForm {
   ) { }
   
   geraFormGroup(data?: CabecaPage): FormGroup {
-    if (data){
-      console.log(`Participante ${data.getParticipant()}`)
-      console.log(`Geronto: ${data.getGerontologist()}`)
+    if (data && data.getId() != -1 ){
       this.cabecaPageForm = this.fb.group({
             service: [data.getService(), [Validators.required, Validators.maxLength(60)]],
             entrance: [data.getEntrance().toISOString().substring(0, 10), [Validators.required]],

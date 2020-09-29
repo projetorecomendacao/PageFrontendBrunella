@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PrivateComponent } from './private.component';
 import { PrivateRoutingModule } from './private-routing.module';
 import { HomeComponent } from './home/home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { NgControl, ReactiveFormsModule } from '@angular/forms';
 import { ParticipantComponent } from './participant/participant.component';
 import { SidebarComponent } from './participant/sidebar/sidebar.component';
 import { ParticipantInfoComponent } from './participant/participant-info/participant-info.component';
@@ -179,7 +179,7 @@ import { PageControlComponent } from './participant/page/visual_components/page-
     DemandMapForm,
     ChecaCampo,
     PageGerador,
-    AtividadesRec
+    AtividadesRec,
   ]
 })
 export class PrivateModule { }

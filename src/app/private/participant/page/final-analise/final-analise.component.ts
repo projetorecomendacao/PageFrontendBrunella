@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { PageService } from '../page.service';
 import * as jspdf from 'jspdf';  
 import html2canvas from 'html2canvas'; 
+declare const expFile : any;
 
 
 @Component({
@@ -17,6 +18,7 @@ export class FinalAnaliseComponent implements OnInit {
 
   nome : string;
   hoje : Date;
+  resultado : string;
 
   conta:number=0;
   
@@ -67,6 +69,10 @@ export class FinalAnaliseComponent implements OnInit {
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
       pdf.save('MYPdf.pdf'); // Generated PDF   
     });  
+  }
 
+  gravarTxt(){
+    this.resultado = "Page: " + this.pageService.page.getId().toString() + JSON.stringify(this.pageForm.value,null,2)
+    expFile(this.resultado);
   }
 }

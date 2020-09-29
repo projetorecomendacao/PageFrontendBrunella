@@ -18,7 +18,7 @@ export class PsychologicalAspectsForm implements CriaForm {
               private comments: ObservationsPsychologicalForm) { }
   
   geraFormGroup(data?: PsychologicalAspects): FormGroup {
-    if (data){ 
+    if (data && data.getId() != -1 ){ 
       this.psychologicalAspectsForm = new FormGroup({
       'cognitiveDeficitForm' : this.cognitiveDeficitForm.geraFormGroup(data.cognitionDeficitInstance),
       'depressionForm' : this.depression.geraFormGroup(data.depressionInstance),

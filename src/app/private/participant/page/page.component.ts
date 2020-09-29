@@ -1,10 +1,11 @@
-import { Component, Input,  OnInit} from '@angular/core';
+import { Component, Input,  OnInit, ViewChild} from '@angular/core';
 import {Participant} from '../../../shared/models/participant.model';
 import { DAOService } from '../../../shared/dao.service';
 import { PageService } from './page.service';
 import { PageForm } from './page.form';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -12,7 +13,10 @@ import { Router } from '@angular/router';
   templateUrl: './page.component.html'
 })
 export class PageComponent implements OnInit {
+  @ViewChild('fileInput') fileInput;
   isOptional : boolean;
+  folder: string;
+  file : File;
 
   get page() { return this.pageService.page; }
 
@@ -41,13 +45,12 @@ export class PageComponent implements OnInit {
   }
 
   salvar(){
-    this.pageService.submit(this.pageForm);    
-    alert('PAGe salvo com sucesso!!');
-    this.router.navigate(['private/']).then();
+    this.pageService.submit(this.pageForm, 10);    
   }
 
   cancelar(){
     if (window.confirm("Confirma o cancelamento da edição do PAGe? As alterações realizadas serão descartadas."))
       this.router.navigate(['private/']).then();
   }
+
 }

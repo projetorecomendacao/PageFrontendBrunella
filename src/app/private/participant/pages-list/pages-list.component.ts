@@ -45,10 +45,19 @@ export class PagesListComponent implements OnInit {
       for (const page of response) {
         if (page.participant == this.pageService.participant.getId()){
           this.pages.push(new Page(page));
-          console.log(page);
         }
       }
     });
+  }
+
+  verificaPage(p : Page): boolean {
+    if (p.participant_situation_id == null) return false;
+    if (p.multidisciplinaryDomain_id == null) return false;
+    if (p.psychologicalAspects_id == null) return false;
+    if (p.biologicalAspects_id == null) return false;
+    if (p.socialAspects_id == null) return false;
+    if (p.demandMap_id == null) return false;
+    return true
   }
 
   // Sets the page and redirects

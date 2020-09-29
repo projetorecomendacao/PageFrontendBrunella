@@ -17,6 +17,13 @@ export class Page {
   private updated_at: Date;
   private gerontologist: number;
 
+  public participant_situation_id: number;
+  public psychologicalAspects_id: number;
+  public biologicalAspects_id: number;
+  public socialAspects_id: number;
+  public multidisciplinaryDomain_id: number;
+  public demandMap_id : number;
+
 
   //private cabeca_page : CabecaPage;
   private participant: Participant;
@@ -57,6 +64,13 @@ export class Page {
 
     this.gerontologist = data.gerontologist;
 
+    this.participant_situation_id = data.participant_situation;
+    this.psychologicalAspects_id= data.psychologicalAspects;
+    this.biologicalAspects_id= data.biologicalAspects;
+    this.socialAspects_id= data.socialAspects;
+    this.multidisciplinaryDomain_id= data.multidisciplinaryDomain;
+    this.demandMap_id = data.demandMap;
+
 
     this.participant = participant;
     this.participant_situation = participant_situation;
@@ -75,7 +89,6 @@ export class Page {
   getAvaliation_date() { return this.avaliation_date; }
   getUpdated_at() { return this.updated_at; }
   getGerontologist() { return this.gerontologist; }
-
 
   getCabecaPage() { return new CabecaPage({
     id: this.id,

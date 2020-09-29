@@ -9,11 +9,7 @@ export class DemandMap {
     private actions_organization : string;
 
     constructor (data: any = {}){
-        if(data.id){
-            this.id = data.id;
-          } else {
-            this.id = -1;
-          }
+      if(data.id && data.id != -1){
         this.created_at = data.created_at; 
         this.updated_at = data.updated_at; 
         this.dm3_unmet_demands = data.dm3_unmet_demands;  
@@ -21,6 +17,10 @@ export class DemandMap {
         this.demands_problems = data.demands_problems;
         this.goals = data.goals;
         this.actions_organization = data.actions_organization; 
+        this.id = data.id;
+      } else {
+        this.id = -1;
+      }
     }
 
     getId() {return this.id;}
