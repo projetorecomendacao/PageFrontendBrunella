@@ -50,9 +50,12 @@ export class FinalAnaliseComponent implements OnInit {
   } 
 
   submit() { 
-    this.pageService.submit(this.pageForm);    
-    alert('PAGe salvo com sucesso!!');
-    this.router.navigate(['private/']).then();
+    if (this.pageService.submit(this.pageForm)) {
+      alert('PAGe salvo com sucesso!!');
+      this.router.navigate(['private/']).then();
+    } else {
+      alert('O Page não foi salvo.. Tente novamente.. Grave um TXT por segurança..')
+    }
   }
 
   gerarPDF(){

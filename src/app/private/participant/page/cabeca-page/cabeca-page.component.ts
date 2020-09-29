@@ -35,7 +35,7 @@ export class CabecaPageComponent implements OnInit {
   }
 
   // método que verifica se o form está válido
-  formValido(): Boolean{
+  formValido(): boolean{
     this.branco = false;
     this.errado = false;
     for (var caca in this.pageForm.get(this.dominio).value){

@@ -43,7 +43,7 @@ export class PageService {
 
     
   //Método que é utilizado para gravar o page
-  submit(pageForm: FormGroup, grupo?:number) {
+  submit(pageForm: FormGroup, grupo?:number): boolean {
     // O grupo 0 é o botão do cabeça page.. quando grava a primeira vez atualiza o id do PAGE
     if (grupo == 0){
       if (this._page.getId() == -1){
@@ -64,7 +64,8 @@ export class PageService {
           alert('PAGe salvo com sucesso!!');
           this.router.navigate(['private/']).then();          
         },error => {
-          alert('Erro na gravação..');  
+          alert('Erro na gravação..'); 
+          return false; 
         });   
       } else {
         // cada botão de avançar grava um pedaço do page.. o controle dos ids é feito no backend
@@ -81,5 +82,6 @@ export class PageService {
         });   
       }
     }
+    return true;
   }
 }
